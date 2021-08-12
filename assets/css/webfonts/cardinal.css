@@ -1,0 +1,450 @@
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 700;
+  src: url("../../webfonts/cardinal/VCCardinal-Bold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-Bold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 700;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinal-BoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-BoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 800;
+  src: url("../../webfonts/cardinal/VCCardinal-ExtraBold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-ExtraBold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 800;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinal-ExtraBoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-ExtraBoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 200;
+  src: url("../../webfonts/cardinal/VCCardinal-ExtraLight.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-ExtraLight.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 200;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinal-ExtraLightItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-ExtraLightItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 300;
+  src: url("../../webfonts/cardinal/VCCardinal-Light.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-Light.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 300;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinal-LightItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-LightItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 500;
+  src: url("../../webfonts/cardinal/VCCardinal-Medium.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-Medium.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 500;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinal-MediumItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-MediumItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 400;
+  src: url("../../webfonts/cardinal/VCCardinal-Regular.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-Regular.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 400;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinal-RegularItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-RegularItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 600;
+  src: url("../../webfonts/cardinal/VCCardinal-SemiBold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-SemiBold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 600;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinal-SemiBoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-SemiBoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 100;
+  src: url("../../webfonts/cardinal/VCCardinal-Thin.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-Thin.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal';
+  font-weight: 100;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinal-ThinItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinal-ThinItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 700;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-Bold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-Bold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 700;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-BoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-BoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 800;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-ExtraBold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-ExtraBold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 800;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-ExtraBoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-ExtraBoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 200;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-ExtraLight.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-ExtraLight.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 200;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-ExtraLightItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-ExtraLightItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 300;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-Light.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-Light.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 300;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-LightItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-LightItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 500;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-Medium.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-Medium.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 500;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-MediumItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-MediumItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 400;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-Regular.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-Regular.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 400;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-RegularItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-RegularItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 600;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-SemiBold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-SemiBold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 600;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-SemiBoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-SemiBoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 100;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-Thin.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-Thin.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Condensed';
+  font-weight: 100;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-ThinItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueCondensed-ThinItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 700;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-Bold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-Bold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 700;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-BoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-BoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 800;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-ExtraBold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-ExtraBold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 800;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-ExtraBoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-ExtraBoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 200;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-ExtraLight.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-ExtraLight.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 200;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-ExtraLightItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-ExtraLightItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 300;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-Light.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-Light.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 300;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-LightItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-LightItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 500;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-Medium.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-Medium.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 500;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-MediumItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-MediumItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 400;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-Regular.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-Regular.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 400;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-RegularItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-RegularItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 600;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-SemiBold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-SemiBold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 600;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-SemiBoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-SemiBoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 100;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-Thin.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-Thin.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal ExtraCondensed';
+  font-weight: 100;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-ThinItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalGrotesqueExtraCondensed-ThinItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 700;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-Bold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-Bold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 700;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-BoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-BoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 800;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-ExtraBold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-ExtraBold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 800;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-ExtraBoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-ExtraBoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 200;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-ExtraLight.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-ExtraLight.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 200;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-ExtraLightItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-ExtraLightItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 300;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-Light.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-Light.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 300;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-LightItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-LightItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 500;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-Medium.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-Medium.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 500;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-MediumItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-MediumItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 400;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-Regular.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-Regular.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 400;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-RegularItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-RegularItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 600;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-SemiBold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-SemiBold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 600;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-SemiBoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-SemiBoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 100;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-Thin.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-Thin.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal SemiCondensed';
+  font-weight: 100;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalSemiCondensed-ThinItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalSemiCondensed-ThinItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 900;
+  src: url("../../webfonts/cardinal/VCCardinalWide-Black.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-Black.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 900;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalWide-BlackItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-BlackItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 700;
+  src: url("../../webfonts/cardinal/VCCardinalWide-Bold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-Bold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 700;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalWide-BoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-BoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 800;
+  src: url("../../webfonts/cardinal/VCCardinalWide-ExtraBold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-ExtraBold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 800;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalWide-ExtraBoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-ExtraBoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 200;
+  src: url("../../webfonts/cardinal/VCCardinalWide-ExtraLight.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-ExtraLight.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 200;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalWide-ExtraLightItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-ExtraLightItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 300;
+  src: url("../../webfonts/cardinal/VCCardinalWide-Light.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-Light.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 300;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalWide-LightItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-LightItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 500;
+  src: url("../../webfonts/cardinal/VCCardinalWide-Medium.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-Medium.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 500;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalWide-MediumItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-MediumItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 400;
+  src: url("../../webfonts/cardinal/VCCardinalWide-Regular.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-Regular.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 400;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalWide-RegularItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-RegularItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 600;
+  src: url("../../webfonts/cardinal/VCCardinalWide-SemiBold.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-SemiBold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 600;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalWide-SemiBoldItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-SemiBoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 100;
+  src: url("../../webfonts/cardinal/VCCardinalWide-Thin.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-Thin.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Cardinal Wide';
+  font-weight: 100;
+  font-style: italic;
+  src: url("../../webfonts/cardinal/VCCardinalWide-ThinItalic.woff2") format("woff2"), url("../../webfonts/cardinal/VCCardinalWide-ThinItalic.woff") format("woff"); }

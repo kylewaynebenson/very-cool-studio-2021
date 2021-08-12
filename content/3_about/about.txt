@@ -1,0 +1,38 @@
+Title: About
+
+----
+
+Layout: [{"attrs":[],"columns":[{"blocks":[{"content":{"level":"h1","text":"About"},"id":"e1a907db-661a-4b1c-951a-c74ac4c88db4","isHidden":false,"type":"heading"},{"content":{"text":"<p>Very Cool is a digital type foundry based in Oakland. The foundry produces retail fonts that have been used by brands like Apple, Netflix, and Away, and custom fonts for brands like Bluehost, Intercom, and Qualtrics.<\/p>"},"id":"4df84349-a3d3-4d4f-b414-dce16474b737","isHidden":false,"type":"text"},{"content":{"text":"<p>The foundry was formed by Kyle Benson in March 2017, about 20 months after buying the domain name. At the time of writing the foundry is happy to report healthy sales and good customers.<\/p>"},"id":"47db35b1-728b-46d7-9d33-407dc9ad6971","isHidden":false,"type":"text"}],"id":"593e6783-7bc4-483c-91f7-ac25ab6a4f80","width":"1\/2"},{"blocks":[{"content":{"location":"kirby","image":[],"src":"","alt":"","caption":"","link":"","ratio":"","crop":"false"},"id":"ef85821d-6dba-4dc7-8a0d-5378fc67c14c","isHidden":false,"type":"image"}],"id":"0f12dfab-ae26-47fc-95e1-7516a4955199","width":"1\/2"}],"id":"cf9d8d69-3236-4b4f-a7fb-93e0b4a081e7"},{"attrs":[],"columns":[{"blocks":[],"id":"cca87bd9-28f9-4b90-84de-6502ec2e9688","width":"1\/3"},{"blocks":[{"content":{"level":"h2","text":"Contact"},"id":"dbef763a-2a53-4e51-80a7-04c0a1ebc897","isHidden":false,"type":"heading"},{"content":{"text":"<p>Please read our FAQs and our terms for more information. If your questions are not answered there, or you wish to say hi or to provide a compliment or a gift of some sort, please email Kyle at hello@verycoolstudio.com.<\/p>"},"id":"98b70f61-81d6-4774-b9dc-9c9502a12587","isHidden":false,"type":"text"}],"id":"162ff072-cdee-41fd-adb9-b688aa53e9bd","width":"1\/3"},{"blocks":[{"content":{"level":"h5","text":"Support"},"id":"6f8642ff-c51e-45c9-ae12-fa23bf915f37","isHidden":false,"type":"heading"},{"content":{"text":"<p>hello@verycoolstudio.com<\/p>"},"id":"a0ae327f-f6a0-4830-8d4e-1691294fb7c9","isHidden":false,"type":"text"},{"content":{"level":"h5","text":"Address"},"id":"b1507f19-334c-48d5-9c82-6c16af986be9","isHidden":false,"type":"heading"},{"content":{"text":"<p>25 Home Pl E, Oakland CA 94610<\/p>"},"id":"9b9dd2eb-483b-417e-98a9-cf16cbdbfee5","isHidden":false,"type":"text"},{"content":{"level":"h5","text":"Phone"},"id":"a4ca48b1-5eb4-4eea-a621-e61a39bea0c6","isHidden":false,"type":"heading"},{"content":{"text":"<p>(801) 448-6140<\/p>"},"id":"37a103aa-e75d-4d1e-aeb4-1188329dac0b","isHidden":false,"type":"text"}],"id":"503ba624-ece4-4e1c-81d7-f5ad7924e546","width":"1\/3"}],"id":"23cbf9df-075d-4a14-a1ea-8d19c0eb47f7"},{"attrs":[],"columns":[{"blocks":[{"content":{"level":"h5","text":"Also distributed by"},"id":"a137ea33-a709-4ca0-a0a8-517029355dda","isHidden":false,"type":"heading"},{"content":{"images":[]},"id":"87d94402-24cd-40bb-8f4e-02b3c8665ea4","isHidden":false,"type":"gallery"}],"id":"a1f377c4-2b5f-4fa1-a593-fcacb983b7f9","width":"1\/1"}],"id":"fb8f73c1-db9a-4aef-a872-431adf623635"}]
+
+----
+
+Social:
+
+- 
+  question: What is this
+  answer: Yeah
+
+----
+
+Address: Mægazine Inc. <br>Sesamestreet 1 <br>Gotham City <br>USA
+
+----
+
+Email: mail@maegazine.com
+
+----
+
+Phone: +49 1234 5678
+
+----
+
+Text: <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth. Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar. The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and made herself on the way. When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way. On her way she met a copy.</p>
+
+----
+
+Contact:
+
+Kirby Magazine Inc.
+Sesamestreet 1
+Gotham City
+USA

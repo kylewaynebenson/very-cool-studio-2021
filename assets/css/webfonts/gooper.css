@@ -1,0 +1,268 @@
+@font-face {
+  font-family: 'VC Gooper';
+  font-style: normal;
+  font-weight: 900;
+  src: url("../../webfonts/gooper/VCGooper-Super.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-Super.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper';
+  font-style: normal;
+  font-weight: 800;
+  src: url("../../webfonts/gooper/VCGooper-Black.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-Black.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../../webfonts/gooper/VCGooper-Bold.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-Bold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper';
+  font-style: normal;
+  font-weight: 600;
+  src: url("../../webfonts/gooper/VCGooper-SemiBold.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-SemiBold.woff") format("woff"); }
+
+  @font-face {
+  font-family: 'VC Gooper';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../webfonts/gooper/VCGooper-Regular.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-Regular.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper';
+  font-style: normal;
+  font-weight: 300;
+  src: url("../../webfonts/gooper/VCGooper-Light.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-Light.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper';
+  font-style: normal;
+  font-weight: 100;
+  src: url("../../webfonts/gooper/VCGooper-Thin.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-Thin.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper';
+  font-style: italic;
+  font-weight: 900;
+  src: url("../../webfonts/gooper/VCGooper-SuperItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-SuperItalic.woff") format("woff"); }
+
+  @font-face {
+  font-family: 'VC Gooper';
+  font-style: italic;
+  font-weight: 800;
+  src: url("../../webfonts/gooper/VCGooper-BlackItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-BlackItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper';
+  font-style: italic;
+  font-weight: 700;
+  src: url("../../webfonts/gooper/VCGooper-BoldItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-BoldItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper';
+  font-style: italic;
+  font-weight: 600;
+  src: url("../../webfonts/gooper/VCGooper-SemiBoldItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-SemiBoldItalic.woff") format("woff"); }
+
+  @font-face {
+  font-family: 'VC Gooper';
+  font-style: italic;
+  font-weight: 400;
+  src: url("../../webfonts/gooper/VCGooper-RegularItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-RegularItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper';
+  font-style: italic;
+  font-weight: 300;
+  src: url("../../webfonts/gooper/VCGooper-LightItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-LightItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper';
+  font-style: italic;
+  font-weight: 100;
+  src: url("../../webfonts/gooper/VCGooper-ThinItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooper-ThinItalic.woff") format("woff"); }
+  
+@font-face {
+  font-family: 'VC Gooper SemiCondensed';
+  font-style: normal;
+  font-weight: 900;
+  src: url("../../webfonts/gooper/VCGooperSemiCondensed-Super.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperSemiCondensed-Super.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper SemiCondensed';
+  font-style: normal;
+  font-weight: 800;
+  src: url("../../webfonts/gooper/VCGooperSemiCondensed-Black.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperSemiCondensed-Black.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper SemiCondensed';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../../webfonts/gooper/VCGooperSemiCondensed-Bold.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperSemiCondensed-Bold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper SemiCondensed';
+  font-style: normal;
+  font-weight: 600;
+  src: url("../../webfonts/gooper/VCGooperSemiCondensed-SemiBold.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperSemiCondensed-SemiBold.woff") format("woff"); }
+
+  @font-face {
+  font-family: 'VC Gooper SemiCondensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../webfonts/gooper/VCGooperSemiCondensed-Regular.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperSemiCondensed-Regular.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper SemiCondensed';
+  font-style: normal;
+  font-weight: 300;
+  src: url("../../webfonts/gooper/VCGooperSemiCondensed-Light.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperSemiCondensed-Light.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper SemiCondensed';
+  font-style: normal;
+  font-weight: 100;
+  src: url("../../webfonts/gooper/VCGooperSemiCondensed-Thin.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperSemiCondensed-Thin.woff") format("woff"); }
+  
+@font-face {
+  font-family: 'VC Gooper Condensed';
+  font-style: normal;
+  font-weight: 900;
+  src: url("../../webfonts/gooper/VCGooperCondensed-Super.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperCondensed-Super.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Condensed';
+  font-style: normal;
+  font-weight: 800;
+  src: url("../../webfonts/gooper/VCGooperCondensed-Black.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperCondensed-Black.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../../webfonts/gooper/VCGooperCondensed-Bold.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperCondensed-Bold.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Condensed';
+  font-style: normal;
+  font-weight: 600;
+  src: url("../../webfonts/gooper/VCGooperCondensed-SemiBold.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperCondensed-SemiBold.woff") format("woff"); }
+
+  @font-face {
+  font-family: 'VC Gooper Condensed';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../webfonts/gooper/VCGooperCondensed-Regular.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperCondensed-Regular.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Condensed';
+  font-style: normal;
+  font-weight: 300;
+  src: url("../../webfonts/gooper/VCGooperCondensed-Light.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperCondensed-Light.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Condensed';
+  font-style: normal;
+  font-weight: 100;
+  src: url("../../webfonts/gooper/VCGooperCondensed-Thin.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperCondensed-Thin.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Text';
+  font-style: normal;
+  font-weight: 800;
+  src: url("../../webfonts/gooper/VCGooperText-Black.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperText-Black.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Text';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../../webfonts/gooper/VCGooperText-Bold.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperText-Bold.woff") format("woff"); }
+
+
+@font-face {
+  font-family: 'VC Gooper Text';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../webfonts/gooper/VCGooperText-Regular.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperText-Regular.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Text';
+  font-style: normal;
+  font-weight: 300;
+  src: url("../../webfonts/gooper/VCGooperText-Light.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperText-Light.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Text';
+  font-style: italic;
+  font-weight: 800;
+  src: url("../../webfonts/gooper/VCGooperText-BlackItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperText-BlackItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Text';
+  font-style: italic;
+  font-weight: 700;
+  src: url("../../webfonts/gooper/VCGooperText-BoldItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperText-BoldItalic.woff") format("woff"); }
+
+
+@font-face {
+  font-family: 'VC Gooper Text';
+  font-style: italic;
+  font-weight: 400;
+  src: url("../../webfonts/gooper/VCGooperText-RegularItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperText-RegularItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Text';
+  font-style: italic;
+  font-weight: 300;
+  src: url("../../webfonts/gooper/VCGooperText-LightItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperText-LightItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Deck';
+  font-style: normal;
+  font-weight: 800;
+  src: url("../../webfonts/gooper/VCGooperDeck-Black.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperDeck-Black.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Deck';
+  font-style: normal;
+  font-weight: 700;
+  src: url("../../webfonts/gooper/VCGooperDeck-Bold.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperDeck-Bold.woff") format("woff"); }
+
+
+@font-face {
+  font-family: 'VC Gooper Deck';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../webfonts/gooper/VCGooperDeck-Regular.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperDeck-Regular.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Deck';
+  font-style: normal;
+  font-weight: 300;
+  src: url("../../webfonts/gooper/VCGooperDeck-Light.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperDeck-Light.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Deck';
+  font-style: italic;
+  font-weight: 800;
+  src: url("../../webfonts/gooper/VCGooperDeck-BlackItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperDeck-BlackItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Deck';
+  font-style: italic;
+  font-weight: 700;
+  src: url("../../webfonts/gooper/VCGooperDeck-BoldItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperDeck-BoldItalic.woff") format("woff"); }
+
+
+@font-face {
+  font-family: 'VC Gooper Deck';
+  font-style: italic;
+  font-weight: 400;
+  src: url("../../webfonts/gooper/VCGooperDeck-RegularItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperDeck-RegularItalic.woff") format("woff"); }
+
+@font-face {
+  font-family: 'VC Gooper Deck';
+  font-style: italic;
+  font-weight: 300;
+  src: url("../../webfonts/gooper/VCGooperDeck-LightItalic.woff2") format("woff2"), url("../../webfonts/gooper/VCGooperDeck-LightItalic.woff") format("woff"); }
+
