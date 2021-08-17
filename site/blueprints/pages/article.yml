@@ -43,7 +43,7 @@ columns:
           cover: fields/cover
           date:
             type: date
-            time: true
+            time: false
             default: now
           author:
             type: users

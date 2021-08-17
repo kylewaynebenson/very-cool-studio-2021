@@ -1,0 +1,65 @@
+Title: Cornbread
+
+----
+
+Headline: 
+
+----
+
+Font: Cornbread-Semibold
+
+----
+
+Sample: Hello World!
+
+----
+
+Charset: Wider Latin
+
+----
+
+Released: 2022
+
+----
+
+Designer: Kyle Benson
+
+----
+
+Styles: 24
+
+----
+
+Shopify: 
+
+----
+
+Futurefonts: 
+
+----
+
+Text: <p>In the war on texts, readability is one of the most sacred battlefields. Many make bold claims about the readability of their fonts. Cornbread will make no such claim. Its soft, thick stems are plenty legible and have better things to do than to brag in vagaries. These letters are soldiers, dammit, and if readability was under any sort of question they wouldn’t even be here, now would they? Cornbread is nib-weighted, the way God intended serifs to be. It carries the musk of a book passed down from your grandfather, and the class of a time when a man and his printing press were comrade-in-arms, celebrating each other’s strength over a hefty text font.</p>
+
+----
+
+Tags: serif, old style
+
+----
+
+Specimen: 
+
+----
+
+Samples:
+
+- 
+  font: Cornbread Semi Bold
+  sample: Hello mom!
+
+----
+
+Cover: 
+
+----
+
+Subheadline: Teaparty Muggers

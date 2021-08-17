@@ -1,0 +1,31 @@
+Title: Announcing Very Cool, Again
+
+----
+
+Text: [{"content":{"text":"<p>Okay, look.<\/p><p>When I set up VeryCoolStudio.com back in 2016, Wordpress was the easiest option for an e-commerce site. But that just isn't true anymore! Wordpress is on its last leg, and the rest of the web is on version 5.0 (I think). In the last five years, as Wordpress plugins get less support, and hackers catch on, I've been dealing with vulerabilities and exploits left and right.<\/p><p>Last year, in the middle of the pandemic, I started looking into having my site engineered by somebody other than little old time strapped me. Lots of great people making font specific content management systems, all of them nice. But, I didn't follow through on any of the convos! I'm not great at that kind of thing.<\/p><p>So, I got exploited AGAIN after the launch of&nbsp;<a href=\"https:\/\/www.futurefonts.xyz\/very-cool-studio\/nudge\" rel=\"noopener noreferrer nofollow\">Nudge<\/a>, and then I watched the Bee Gees doc and something about the mixture of the two got me thinking I'm a programming superhero and I can just code this thing myself.<\/p><p>New site is on its way. In the meantime, buy my shit on&nbsp;<a href=\"https:\/\/www.futurefonts.xyz\/very-cool-studio\/\" rel=\"noopener noreferrer nofollow\">FutureFonts.<\/a><\/p><p>Best,&nbsp;<a href=\"mailto:help@verycoolstudio.com\" rel=\"noopener noreferrer nofollow\">Kyle<\/a><\/p><p><\/p>"},"id":"fa3d0b61-5cab-4cb4-94ae-1cdc18aba936","isHidden":false,"type":"text"}]
+
+----
+
+Cover: 
+
+----
+
+Date: 2021-08-16
+
+----
+
+Author:
+
+- PDRAP2hP
+
+----
+
+Intro: 
+
+----
+
+Footnotes: 
+
+----
+
+Tags: 

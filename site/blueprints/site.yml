@@ -12,7 +12,7 @@ columns:
   # It reuses the pages section defined in `/site/blueprints/sections/albums.yml`
   - width: 1/2
     sections:
-      albums: sections/albums
+      typefaces: sections/typefaces
 
   # The second column has two sections, `articles` and `pages`
   - width: 1/2

@@ -26,21 +26,30 @@
     we call a method like `children()` in this case
   */
   ?>
-  <?php if ($typePage = page('type')): ?>
+  <?php if ($typePage = page('typefaces')): ?>
   <ul>
     <?php foreach ($typePage->children()->listed() as $font): ?>
-    <div class="type-preview bb-tan padding">
-      <a href="<?= $font->url() ?>">
-        <div class="full-width-text" style="font-family: <?= $font->title() ?>" contenteditable="true">
-          <?= $font->subheadline() ?>
+    <a class="hover-blue type-preview bb-soft-blue padding" href="<?= $font->url() ?>" style="display:block;">
+      <style>
+      @font-face {
+        font-family: '<?= $font->font() ?> Home';
+        font-weight: 100;
+        src: url("<?= kirby()->urls()->assets() . '/webfonts/' . $font->title()->lower() . '/VC' . $font->font() . '.woff2' ?>") format("woff2"), url("<?= kirby()->urls()->assets() . '/webfonts/' . $font->title()->lower() . '/VC' . $font->font() . '.woff' ?>") format("woff"); 
+      }
+      </style>
+        <div class="full-width-text" style="font-family: <?= $font->font() ?> Home; font-weight: 100; line-height: .9; letter-spacing: 0px; margin-top: -1.25vw; margin-bottom: 1.25vw;">
+          <?= $font->sample() ?>
         </div>
         <div class="autogrid">
-          <h6 class="color-grey"><?= $font->title() ?></h6>
-          <h6 class="color-grey">115px</h6>
-          <h6 class="color-grey">From $50</h6>
+          <?php 
+            $fontname = str_replace("-", "", $font->font());
+            $fontname = implode(' ',preg_split('/(?=[A-Z])/', $fontname));
+            $fontname = trim($fontname);
+          ?>
+          <h6 class="color-grey no-mb"><?= $fontname ?></h6>
+          <h6 class="color-grey no-mb text-right">From $50</h6>
         </div>
       </a>
-    </div>
     <?php endforeach ?>
   </ul>
   <?php endif ?>

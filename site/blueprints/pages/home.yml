@@ -28,7 +28,7 @@ sections:
 # More about reusing and extending sections: https://getkirby.com/docs/guide/blueprints/extending-blueprints#reusing-and-extending-sectionss
   type:
     headline: Type
-    extends: sections/albums
+    extends: sections/typefaces
     status: listed
     size: small
     help: All projects for the homepage are being pulled from the photography page.

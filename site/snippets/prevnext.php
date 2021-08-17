@@ -5,23 +5,26 @@
 
   The prevnext snippet renders the nice "keep on reading"
   section below each article in the blog, to jump between
-  articles. It reuses the note snippet to render a full
+  articles. It reuses the article snippet to render a full
   excerpt of the article.
 
   More about snippets:
   https://getkirby.com/docs/guide/templates/snippets
 */
 ?>
-<nav class="blog-prevnext">
-  <h2 class="h2">Keep on reading</h2>
+<?php if($next = $page->getNext($articles) && $prev = $page->getPrev($articles)): ?>
+<nav class="blog-prevnext bg-white bt-tan padding">
+  <div class="container">
+    <h5 class="color-grey">More reading</h5>
+    <div class="autogrid" style="--gutter:2px;">
+        <?php if ($prev = $page->prevListed()): ?>
+        <?php snippet('article', ['article' => $prev, 'excerpt' => false])  ?>
+        <?php endif ?>
 
-  <div class="autogrid" style="--gutter: 1.5rem">
-    <?php if ($prev = $page->prevListed()): ?>
-    <?php snippet('note', ['note' => $prev, 'excerpt' => false])  ?>
-    <?php endif ?>
-
-    <?php if ($next = $page->nextListed()): ?>
-    <?php snippet('note', ['note' => $next, 'excerpt' => false])  ?>
-    <?php endif ?>
+        <?php if ($next = $page->nextListed()): ?>
+        <?php snippet('article', ['article' => $next, 'excerpt' => false])  ?>
+        <?php endif ?>
+      </div>
+    </nav>
   </div>
-</nav>
+<?php endif ?>

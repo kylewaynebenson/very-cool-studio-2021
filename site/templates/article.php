@@ -23,21 +23,16 @@
 ?>
 <?php snippet('header') ?>
 
-<?php if ($cover = $page->cover()): ?>
-<a href="<?= $cover->url() ?>" data-lightbox class="img" style="--w:2; --h:1">
-  <?= $cover->crop(1200, 600) ?>
-</a>
-<?php endif ?>
-
-<article class="article grid container" style="--gutter: 2rem">
+<article class="article grid container padding" style="--gutter: 1.5vw">
   <header class="article-header column" style="--columns: 5">
     <h1 class="article-title"><?= $page->title()->html() ?></h1>
     <dl class="grid">
-      <dt class="column" style="--columns: 6"><h5>Published</h5></dt>
-      <dd><h6><time class="article-date" datetime="<?= $page->date('c') ?>"><?= $page->date() ?></time></h6></dd>
-
-      <dt class="column" style="--columns: 6"><h5>By</h5></dt>
-      <dd><h6><?= $page->author() ?></h6></dd>
+      <dt class="column" style="--columns: 5"><h5>Published</h5></dt>
+      <dd class="column" style="--columns: 7"><h6><time class="article-date" datetime="<?= $page->date() ?>"><?= $page->date() ?></time></h6></dd>
+      <?php if($author = $page->author()->toUser()): ?>
+        <dt class="column" style="--columns: 5"><h5>By</h5></dt>
+        <dd class="column" style="--columns: 7"><h6><?= $author->name() ?></h6></dd>
+      <?php endif ?>
     </dl>
     <?php if ($page->subheading()->isarticlempty()): ?>
     <p class="article-subheading"><small><?= $page->subheading()->html() ?></small></p>
@@ -51,17 +46,26 @@
         <?php endforeach ?>
       </ul>
     <?php endif ?>
-    <div class="article-intro bg-tan">
-      <?= $page->intro()->html() ?>
-    </div>
+    <?php if ($page->intro()->html()->isNotEmpty()): ?>
+      <div class="article-intro bg-tan">
+        <?= $page->intro()->html() ?>
+      </div>
+    <?php endif ?>
   </header>
   <div class="article-text column" style="--columns: 7">
     <?= $page->text()->toBlocks() ?>
-    <footer class="article-footer bg-tan">
-      <?= $page->footnotes()->toBlocks() ?>
-    </footer>
   </div>
 </article>
+<?php if (!empty($page->footnotes())): ?>
+<footer class="article-footer bg-white bt-tan" >
+  <div class="grid container padding" style="--gutter: 1.5vw">
+    <h5 class="column color-grey" style="--columns: 5">Footnotes</h5>
+    <div class="article-footnotes column color-grey" style="--columns: 7">
+      <?= $page->footnotes()->toBlocks() ?>
+    </div>
+  </div>
+</footer>
+<?php endif ?>
 <?php snippet('prevnext') ?>
 
 <?php snippet('footer') ?>

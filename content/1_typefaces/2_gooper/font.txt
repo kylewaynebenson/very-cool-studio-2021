@@ -1,0 +1,76 @@
+Title: Gooper
+
+----
+
+Headline: 
+
+----
+
+Font: Gooper-Black
+
+----
+
+Sample: Emily Brown
+
+----
+
+Charset: Wider Latin
+
+----
+
+Released: 2018
+
+----
+
+Designer: Kyle Benson
+
+----
+
+Styles: 44
+
+----
+
+Shopify: 
+
+----
+
+Futurefonts: https://www.futurefonts.xyz/very-cool-studio/gooper
+
+----
+
+Text: <p>The word “gooper” calls to mind not only words like “goo,” or “goop” but also words like “flubber,” which you may recognize as the anthropomorphized version of goop itself. There’s a reason for that, and that reason is that gooper is a lively, loveable, sticky typeface made for the use of squishy living things, so they can communicate with other squishy living things. So go ahead and switch out whatever heartless minimalist font you were using for this bouncy sticky pal— and glippity, gloppity, goop! Your text is ALIVE!</p><p>Gooper is currently in production, and is available for sale in progress on Future Fonts.</p>
+
+----
+
+Tags: serif, old style
+
+----
+
+Specimen:
+
+- verycoolstudio_nudgev0.3.pdf
+
+----
+
+Samples:
+
+- 
+  font: Gooper Condensed Bold
+  sample: Hello World
+- 
+  font: Gooper Deck Bold Italic
+  sample: Whatever mom!
+- 
+  font: Gooper Light
+  sample: This is the end
+- 
+  font: Gooper Text Medium Italic
+  sample: Thanks for telling me!
+
+----
+
+Cover: 
+
+----
+
+Subheadline: Categorizing Glaciologists

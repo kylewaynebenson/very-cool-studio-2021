@@ -1,0 +1,79 @@
+Title: Cardinal
+
+----
+
+Headline: 
+
+----
+
+Font: CardinalCondensed-Semibold
+
+----
+
+Sample: This is the longest one yet!
+
+----
+
+Charset: Extended Latin
+
+----
+
+Released: 2017
+
+----
+
+Designer: Kyle Benson
+
+----
+
+Styles: 48
+
+----
+
+Shopify: 6795725177039
+
+----
+
+Text: <p>For as long as there have been poster grotesques there have been sign painter’s titling. As sung in the old Scottish folk ballad, “An’ a grotesque sans there hae e’er been/ an’ a sign painter’s titling, sweet/ but the two don’t ‘bide together, my son/ an ne’er the twain shall meet.” And yet—it appears that with the drawing of Cardinal Grotesque, star-crossed lovers from either camp have come together! This type family is in fact, a combination of the two—sleek and clean wed to vernacular zest. If you use Cardinal Grotesque, you too will be celebrating that union and contributing to the Neue Sachlichkeit of the genre. Help put this longstanding feud to bed! “For never was a tale so full of desk than that of the paintbrush and Cardinal Grotesque.”</p>
+
+----
+
+Tags: sans
+
+----
+
+Specimen: 
+
+----
+
+Samples:
+
+- 
+  font: Cardinal Wide Bold
+  sample: Hello Mother
+- 
+  font: Cardinal Condensed Light Italic
+  sample: Well You bet your Ass!
+
+----
+
+Cover: 
+
+----
+
+Subheadline: Temperance Handshakes
+
+----
+
+Faqs:
+
+- 
+  font: VC Cardinal Condensed Bold
+  sample: Hello mother!
+  question: VC Cardinal Condensed Bold
+  answer: Jeffery Jumpdogs
+- 
+  font: VC Cardinal Italic
+  sample: Goodbye mother!
+  question: VC Cardinal Wide Regular
+  answer: Big Old Dogs!!

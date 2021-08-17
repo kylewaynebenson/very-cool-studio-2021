@@ -17,7 +17,32 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+  <style>
+    [data-theme="light"] {
+      --color-black: #000;
+      --color-bg-black: #000;
+      --color-white: #fff;
+      --color-grey: #999491;
+      --color-yellow: #FFD138;
+      --color-coral: #FF7B52;
+      --color-soft-blue: #D7E7FF;
+      --color-tan: #F9F4F2;
+    }
+    [data-theme="dark"] {
+      --color-black: #ffffff;
+      --color-bg-black: #2b2b2b;
+      --color-white: #000000;
+      --color-grey: #999491;
+      --color-coral: #2b2b2b;
+      --color-soft-blue: #2b2b2b;
+      --color-yellow: #000000;
+      --color-tan: #2b2b2b;
+    }
+    html {
+      color: var(--color-black);
+      background: var(--color-white);
+    }
+  </style>
   <?php
   /*
     In the title tag we show the title of our
@@ -34,18 +59,11 @@
   */
   ?>
   <?= css([
-    'assets/css/prism.css',
-    'assets/css/lightbox.css',
     'assets/css/index.css',
-    'assets/css/fontsampler-skin.css',
     '@auto'
   ]) ?>
-
-  <!-- custom css -->
-  <?= css('assets/css/webfonts/'.$page->uid().'.css') ?>
-  <!-- load fonts -->
   <style>
-  @font-face {
+@font-face {
   font-family: 'VC Cardinal';
   font-weight: 600;
   src: url("<?= kirby()->urls()->assets() . '/webfonts/cardinal/VCCardinal-SemiBold.woff2' ?>") format("woff2"), url("<?= kirby()->urls()->assets() . '/webfonts/cardinal/VCCardinal-SemiBold.woff' ?>") format("woff"); 
@@ -83,7 +101,11 @@
   ?>
   <link rel="shortcut icon" type="image/x-icon" href="<?= url('favicon.ico') ?>">
 </head>
-<body>
+<?php if ($page->parents()->count()): ?>
+  <body class="page-<?= $page->uid(); ?> page-<?= $page->parent()->uid(); ?>">
+<?php else: ?>
+  <body class="page-<?= $page->uid(); ?>">
+<?php endif; ?>
 
   <header class="header">
     <?php
@@ -93,15 +115,16 @@
       probably want to replace this with an SVG.
     */
     ?>
-    <a class="logo" href="<?= $site->url() ?>">
-      <div class="mobile-only">
-        <?= svg('assets/icons/c-logo.svg') ?>
-      </div>
-      <div class="desktop-only">
-        <?= svg('assets/icons/verycool.svg') ?>
-      </div>
-    </a>
-
+    <div class="logo">
+      <a href="<?= $site->url() ?>">
+        <div class="mobile-only">
+          <?= svg('assets/icons/c-logo.svg') ?>
+        </div>
+        <div class="desktop-only">
+          <?= svg('assets/icons/verycool.svg') ?>
+        </div>
+      </a>
+    </div>
     <nav class="menu">
       <?php
       /*
@@ -116,16 +139,20 @@
         https://getkirby.com/docs/reference/panel/blueprints/page#statuses
       */
       ?>
-      <?php foreach ($site->children()->listed() as $item): ?>
-        <h4>
-          <a <?php e($item->isOpen(), 'aria-current ') ?> href="<?= $item->url() ?>"><?= $item->title()->html() ?></a>
-        </h4>
+      <?php foreach ($site->children()->listed()->not("typefaces") as $item): ?>
+        <div class="link">
+          <a <?php e($item->isOpen(), 'aria-current ') ?> href="<?= $item->url() ?>">
+            <h4 class="no-mb">
+              <?= $item->title()->html() ?>
+            </h4>
+          </a>
+        </div>
       <?php endforeach ?>
-      <a>
+      <div id="shopify-cart-toggle" class="shopify-cart-toggle">
         <svg width="29" height="34" viewBox="0 0 29 34" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path class="fill-black" fill-rule="evenodd" clip-rule="evenodd" d="M14.5 0C10.3579 0 7 3.35786 7 7.5V10H5C2.23858 10 0 12.2386 0 15V29C0 31.7614 2.23858 34 5 34H24C26.7614 34 29 31.7614 29 29V15C29 12.2386 26.7614 10 24 10H22V7.5C22 3.35786 18.6421 0 14.5 0ZM20 12V15H22V12H24C25.6569 12 27 13.3431 27 15V29C27 30.6569 25.6569 32 24 32H5C3.34315 32 2 30.6569 2 29V15C2 13.3431 3.34315 12 5 12H7V15H9V12H20ZM20 10V7.5C20 4.46243 17.5376 2 14.5 2C11.4624 2 9 4.46243 9 7.5V10H20Z" fill="black"/>
         </svg>
-      </a>
+      </div>
       <div class="theme-switch-wrapper">
           <label class="theme-switch" for="checkbox">
               <input type="checkbox" id="checkbox" />
@@ -136,5 +163,4 @@
       </div>
     </nav>
   </header>
-
   <main class="main">

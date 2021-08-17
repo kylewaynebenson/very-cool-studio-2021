@@ -25,10 +25,11 @@
     "license": "MIT"
   },
   "devDependencies": {
-    "browser-sync": "^2.18.13",
+    "browser-sync": "^2.27.5",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
-    "gulp-connect-php": "^1.0.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-connect-php": "^1.0.3",
     "gulp-cssnano": "^2.1.2",
     "gulp-imagemin": "^3.4.0",
     "gulp-rename": "^1.2.2",

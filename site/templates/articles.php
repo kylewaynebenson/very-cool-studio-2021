@@ -22,8 +22,8 @@
 */
 ?>
 <?php snippet('header') ?>
-<div class="container">
-  <div class="grid padding">
+<div class="container padding">
+  <div class="grid " style="--gutter: 1.5vw">
     <?php if (empty($tag) === false): ?>
     <header class="column" style="--columns: 4">
       <h1>
@@ -43,9 +43,9 @@
           <?php snippet('article', ['article' => $article]) ?>
       </li>
       <?php endforeach ?>
+      <?php snippet('pagination', ['pagination' => $articles->pagination()]) ?>
     </ul>
   </div>
 </div>
 
-<?php snippet('pagination', ['pagination' => $articles->pagination()]) ?>
 <?php snippet('footer') ?>

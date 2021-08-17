@@ -11,13 +11,35 @@
 */
 ?>
 <?php foreach ($field->toLayouts() as $layout): ?>
-<section class="grid margin-xl" id="<?= $layout->id() ?>" style="--gutter: 1.5rem">
+<section id="<?= $layout->id() ?>">
+  <div class="container padding grid" style="--gutter: 1.5rem">
   <?php foreach ($layout->columns() as $column): ?>
   <div class="column" style="--columns:<?= $column->span() ?>">
     <div class="text">
-      <?= $column->blocks() ?>
+      <?php foreach ($column->blocks() as $block): ?>
+        <?php if ($block->type() == "gallery"): ?>
+          <figure>
+          <ul>
+            <?php foreach ($block->images()->toFiles() as $image): ?>
+            <li>
+              <?php if ($image->link()->isNotEmpty()): ?>
+                <a href="<?= $image->link() ?>">
+                  <?= $image ?>
+                </a>
+              <?php else: ?>
+              <?= $image ?>
+              <?php endif ?>
+            </li>
+            <?php endforeach ?>
+          </ul>
+        </figure>
+        <?php else: ?>
+          <?= $block ?>
+        <?php endif ?>
+      <?php endforeach ?>
     </div>
   </div>
   <?php endforeach ?>
+  </div>
 </section>
 <?php endforeach ?>

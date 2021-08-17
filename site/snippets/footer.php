@@ -11,34 +11,41 @@
 ?>
   </main>
 
-  <footer class="footer">
-    <div class="grid">
-      <div class="column bg-tan" style="--columns: 4">
+  <footer class="footer bt-white">
+    <div class="grid bg-tan" style="--gutter: 2px">
+      <div class="column" style="--columns: 4">
         <?= svg('assets/icons/c-logo.svg') ?>
       </div>
-      <div class="column bg-tan" style="--columns: 5">
+      <div class="column" style="--columns: 5">
         <?php snippet('trials') ?>
       </div>
-      <div class="column bg-yellow " style="--columns: 3; display: flex; flex-direction: column;">
+      <div class="column bg-yellow" style="--columns: 3; display: flex; flex-direction: column;">
         <ul style="flex-grow: 1;">
-          <?php foreach ($site->children()->listed() as $example): ?>
+          <li><h4><a href="<?= $site->url() ?>">Typefaces</a></h4></li>
+          <?php foreach ($site->children()->listed()->not("typefaces") as $example): ?>
           <li><h4><a href="<?= $example->url() ?>"><?= $example->title()->html() ?></a></h4></li>
           <?php endforeach ?>
         </ul>
         <?php snippet('social') ?>
       </div>
     </div>
-    <div class="column bt-white bg-blue" style="--columns: 12">
-      <h5>© 2021 Very Cool Studio</h5>
+    <div class="column bt-white bg-black" style="--columns: 12">
+      <h5 class="no-mb"><span class="color-white">©</span> <span class="color-soft-blue">2021</span> <span class="color-coral">Very</span> <span class="color-yellow">Cool</span> <span class="color-soft-blue">Studio</span></h5>
     </div>
   </footer>
-
   <?= js([
-    'assets/js/prism.js',
-    'assets/js/lightbox.js',
     'assets/js/index.js',
     '@auto'
   ]) ?>
+  <?php if ($page->shopify()->isNotEmpty()): ?>
+    <script type="text/javascript">
+      ShopifyInit(<?= $page->shopify() ?>);
+    </script>
+  <?php else: ?>
+    <script type="text/javascript">
+      ShopifyInit();
+    </script>
+  <?php endif; ?>
 
 </body>
 </html>

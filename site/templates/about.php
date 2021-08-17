@@ -21,30 +21,22 @@
 */
 ?>
 <?php snippet('header') ?>
-<?php snippet('intro') ?>
 <?php snippet('layouts', ['field' => $page->layout()])  ?>
-
-<aside class="contact">
-  <h2 class="h1">Get in contact</h2>
-  <div class="grid" style="--gutter: 1.5rem">
-    <section class="column text" style="--columns: 4">
-      <h3>Address</h2>
-      <?= $page->address()->kt() ?>
-    </section>
-    <section class="column text" style="--columns: 4">
-      <h3>Email</h2>
-      <p><?= html::email($page->email()) ?></p>
-      <h3>Phone</h2>
-      <p><?= html::tel($page->phone()) ?></p>
-    </section>
-    <section class="column text" style="--columns: 4">
-      <h3>On the web</h2>
-      <ul>
-        <?php foreach ($page->social()->toStructure() as $social): ?>
-        <li><?= html::a($social->url(), $social->platform()) ?></li>
+<aside class="contact bg-tan">
+  <div class="padding container grid" style="--gutter: 1vw;">
+    <h2 id="faqs" class="column" style="--columns:3;">Frequently Asked Questions</h2>
+      <div class="grid column" style="--gutter: 1vw;--columns:9;">
+        <?php 
+        // using the `toStructure()` method, we create a structure collection
+        $items = $page->faqs()->toStructure();
+        // we can then loop through the entries and render the individual fields
+        foreach ($items as $item): ?>
+          <h6 class="column" style="--columns:3;"><?= $item->question() ?></h6>
+          <div class="column" style="--columns:1;"></div>
+          <div class="column" style="--columns:8;"><?= $item->answer()->toBlocks() ?></div>
         <?php endforeach ?>
-      </ul>
-    </section>
+      </div>
+    </div>
   </div>
 </aside>
 
