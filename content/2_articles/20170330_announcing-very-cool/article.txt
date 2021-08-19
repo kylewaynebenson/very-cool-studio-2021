@@ -1,0 +1,31 @@
+Title: Announcing Very Cool
+
+----
+
+Text: [{"content":{"text":"<p>I am proud introduce my new foundry, store, and design service provider: Very Cool Studio!  Very Cool Studio specializes in type design and lettering, logo and brand development, and commercial font licensing. All fonts and services are available exclusively through this very site, verycoolstudio.com. This new venture represents the natural next step of my work (Kyle Wayne Benson) and my foundry <em>Fonts by Kyle Wayne Benson<\/em>.<\/p><p>With the opening of Very Cool Studio, I\u2019ve released a brand-new font family called Cardinal Grotesque, as well as re-released new and improved versions of Kansas Casual and Maritime Champion. With the launch of verycoolstudio.com and the new foundry name, for the time being I will no longer be selling new releases through major distributors. It's simply too hard to make a living as a type designer while distributors maintain their 50%+ claim of sales.<\/p><p>My old site, fonts.kylewaynebenson.com, went online <a href=\"https:\/\/dribbble.com\/shots\/853421-fonts-Kylewaynebenson-com\" rel=\"noopener noreferrer nofollow\">in late 2012<\/a> with only two font files for sale, and a simple digital downloads Wordpress plugin hooked up to Paypal for payment processing. As the font collection expanded it became more apparent how ill equipped the site was to keep up with the ideas I had for the future of the foundry. At the same time, selling fonts under my name presented an ego problem. I felt uncomfortable tooting my own horn\u2014I needed a brand I could hide my vanity behind. So, two years ago I decided to write up a list of all the things I'd love to build into a site. I still have 31 items on that list. Here are just a few examples where that list came to life in this new site.<\/p>"},"id":"b35c65e9-b18d-4e64-b066-a2ff0254400a","isHidden":false,"type":"text"},{"content":{"location":"kirby","image":["typetesternew.gif"],"src":"","alt":"","caption":"A type tester that lets you test font features","link":"","ratio":"","crop":"false"},"id":"cee2b079-5631-430e-9126-3839ca5533bf","isHidden":false,"type":"image"},{"content":{"location":"kirby","image":["screen-shot-2017-03-31-at-3-38-09-pm-1.gif"],"src":"","alt":"","caption":"Editable waterfalls for all font styles","link":"","ratio":"","crop":"false"},"id":"f8a6e78e-fc7f-4ef0-b00a-880e031ecd6b","isHidden":false,"type":"image"},{"content":{"location":"kirby","image":["screen-shot-2017-04-05-at-4-07-48-pm.png"],"src":"","alt":"","caption":"The ability to showcase type work in progress","link":"","ratio":"","crop":"false"},"id":"c569de05-9b23-4975-a1cc-ff5b23bc4076","isHidden":false,"type":"image"},{"content":{"location":"kirby","image":["screen-shot-2017-04-05-at-4-01-56-pm.png"],"src":"","alt":"","caption":"A robust shopping cart that allows more specific sales","link":"","ratio":"","crop":"false"},"id":"05c4ccf3-c873-4553-ae1e-0c238d19c103","isHidden":false,"type":"image"},{"content":{"level":"h4","text":"And more!"},"id":"0ac9442b-36a4-436c-8af3-c6ec76aa975c","isHidden":false,"type":"heading"},{"content":{"text":"<ul><li>User profiles for download links and shipping status<\/li><li>A place to publish articles, thoughts, process, non-type work etc<\/li><li>Good jokes and well written copy<\/li><li>Easter eggs!<\/li><\/ul>"},"id":"e3eb3467-029c-4cdb-8364-82efad57983a","isHidden":false,"type":"list"},{"content":{"text":"<p>Going at it without distributors is risky. So if you love me, give me a hand by following me or spreading the word:<\/p>"},"id":"608d348e-87a7-4345-bfa7-d9e59a808c6f","isHidden":false,"type":"text"},{"content":{"text":"<ul><li><a href=\"http:\/\/instagram.com\/verycoolstudio\" rel=\"noopener noreferrer nofollow\">Instagram<\/a><\/li><li><a href=\"http:\/\/twitter.com\/verycoolstudio\" rel=\"noopener noreferrer nofollow\">Twitter<\/a><\/li><li><a href=\"http:\/\/eepurl.com\/CvOvL\" rel=\"noopener noreferrer nofollow\">Subscribe to the Very Cool Mailing list<\/a><\/li><\/ul>"},"id":"435f6bd8-23f4-49c3-b844-cd80607d08e9","isHidden":false,"type":"list"}]
+
+----
+
+Cover: 
+
+----
+
+Date: 2017-03-30
+
+----
+
+Author:
+
+- PDRAP2hP
+
+----
+
+Intro: 
+
+----
+
+Footnotes: 
+
+----
+
+Tags: 

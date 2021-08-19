@@ -19,18 +19,19 @@
 */
 
 ?>
- <?= js([
+<?php snippet('header') ?>
+<?= js([
     'assets/js/font.js',
   ]) ?>
   <?php
-    $path  = './assets/webfonts/' . $page->title();
+    $path  = './assets/webfonts/' . $page->slug();
     $files = glob($path . '/*.{woff}', GLOB_BRACE);
     $fontlist = array();
     $count = 0;
     foreach ($files as $file):    
       $filename = basename($file);
       # adding url
-      $fontlist[$count]['files'][0] = '../../assets/webfonts/' . $page->title() . '/' . $filename;
+      $fontlist[$count]['files'][0] = '../../assets/webfonts/' . $page->slug() . '/' . $filename;
       # create a fake nice name
       $fontname = str_replace("-", "", $filename);
       $fontname = str_replace("VC", " ", $fontname);
@@ -46,24 +47,35 @@
     'assets/js/fontsampler.js',
     'assets/js/fontsampler-skin.js'
   ]) ?>
-<?php snippet('header') ?>
 <header class="grid padding" style="--gutter: 6vw;">
   <div class="column" style="--columns: 4">
-    <h1 class="margin-l"><?= $page->title() ?></h1>
+    <h1 class="margin-l">
+      <?= $page->title() ?>
+    </h1>
+    <?php if ($page->version()->isNotEmpty()): ?>
+      <dl>
+        <dt><h5 class="color-grey">Version</h5></dt>
+        <dd><h6><?= $page->version() ?></h6></dd>
+      </dl>
+      <? endif; ?>
+    <?php if ($page->charset()->isNotEmpty()): ?>
+      <dl>
+        <dt><h5 class="color-grey">Char set</h5></dt>
+        <dd><h6><?= $page->charset() ?></h6></dd>
+      </dl>
+    <? endif; ?>
     <dl>
-      <dt><h5>Char set</h5></dt>
-      <dd><h6><?= $page->charset() ?></h6></dd>
-    </dl>
-    <dl>
-      <dt><h5>Released</h5></dt>
+      <dt><h5 class="color-grey">Released</h5></dt>
       <dd><h6><?= $page->released() ?></h6></dd>
     </dl>
-    <dl>
-      <dt><h5>Designer</h5></dt>
-      <dd><h6><?= $page->designer() ?></h6></dd>
-    </dl>
+    <?php if ($page->designer()->isNotEmpty()): ?>
+      <dl>
+        <dt><h5 class="color-grey">Designer</h5></dt>
+        <dd><h6><?= $page->designer() ?></h6></dd>
+      </dl>
+    <? endif; ?>
     <dl class="margin-l">
-      <dt><h5>Styles</h5></dt>
+      <dt><h5 class="color-grey">Styles</h5></dt>
       <dd><h6><?php echo $count; ?></h6></dd>
     </dl>
     <div class="grid margin-l" style="--gutter: 1vw;">
@@ -91,12 +103,18 @@
     <div class="text">
       <?= $page->text() ?>
     </div>
+    <?php if ($page->designinfo()->isNotEmpty()): ?>
+      <div class="design-info">
+      <a class="link" href="/<?= $page->designinfo() ?>">
+      Read more about <?= $page->title() ?>'s design process
+      </a>
+      </div>
+    <? endif; ?>
   </div>
 
   <div class="column" style="--columns: 3">
     <?php if ($page->shopify()->isNotEmpty()): ?>
       <div id="product-component-<?= $page->shopify() ?>" class="shopify-placeholder"></div>
-  </div></div></div></div>
     <?php endif ?>
     <?php if ($page->futurefonts()->isNotEmpty()): ?>
       <a href="<?= $page->futurefonts() ?>" class="block padding-sm text-center rounded-corners bg-blue">
@@ -105,8 +123,6 @@
         </h5>
       </a>
     <?php endif ?>
-
-    </a>
   </div>
 </header>
 <article>
@@ -139,11 +155,11 @@
             // The font-size slider
             fontsize: {
                 // Any CSS unit is valid (e.g. px, em, %, etc.)
-                unit: "px",
-                init: 145,
-                min: 16,
-                max: 200,
-                step: 6,
+                unit: "vw",
+                init: 11.75,
+                min: .5,
+                max: 20,
+                step: .25,
                 // The text label to render for the element, set to false to disabled 
                 // rendering a label
                 label: "Size"
@@ -196,6 +212,30 @@
       <?= $demo ?>.init()
       </script>
     <?php endforeach ?>
+    <?php if ($page->features()->isNotEmpty()): ?>
+    <aside class="bt-blue bg-blue-gradient">
+      <div class="padding container grid" style="--gutter: 1vw;">
+        <h2 id="features" class="column" style="--columns:3;">Opentype Features</h2>
+        <div class="grid column" style="--gutter: 1vw;--columns:9;">
+        <?php 
+          // using the `toStructure()` method, we create a structure collection
+          $items = $page->features()->toStructure();
+          // we can then loop through the entries and render the individual fields
+          foreach ($items as $item): ?>
+            <h5 class="column color-grey" style="--columns:1; margin-top: 4px;"><?= $item->feature() ?></h5>
+            <div class="column margin-s" style="--columns:5;">
+              <h1 class="no-mb inline-block feature-off color-grey" style="font-feature-settings: '<?= $item->feature() ?>' 0; font-family:'<?= $item->font() ?>';">
+              <?= $item->sample() ?>
+              </h1>
+              <h1 class="no-mb inline-block feature-on" style="font-feature-settings: '<?= $item->feature() ?>' 1; font-family:'<?= $item->font() ?>';">
+              <?= $item->sample() ?>
+              </h1>
+            </div>
+          <?php endforeach ?>
+        </div>
+      </div>
+    </aside>
+    <?php endif ?>
   <div class="column" style="--columns: 3">
     <ul class="album-gallery">
       <?php foreach ($gallery as $image): ?>

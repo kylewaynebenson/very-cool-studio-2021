@@ -25,20 +25,23 @@
 
 <article class="article grid container padding" style="--gutter: 1.5vw">
   <header class="article-header column" style="--columns: 5">
-    <h1 class="article-title"><?= $page->title()->html() ?></h1>
-    <dl class="grid">
-      <dt class="column" style="--columns: 5"><h5>Published</h5></dt>
-      <dd class="column" style="--columns: 7"><h6><time class="article-date" datetime="<?= $page->date() ?>"><?= $page->date() ?></time></h6></dd>
+    <h1 class="article-title margin-l"><?= $page->title()->html() ?></h1>
+    <dl>
+      <dt><h5>Published</h5></dt>
+      <dd><h6><time class="article-date" datetime="<?= $page->date() ?>"><?= $page->date() ?></time></h6></dd>
+    </dl>
       <?php if($author = $page->author()->toUser()): ?>
-        <dt class="column" style="--columns: 5"><h5>By</h5></dt>
-        <dd class="column" style="--columns: 7"><h6><?= $author->name() ?></h6></dd>
+        <dl>
+          <dt><h5>By</h5></dt>
+          <dd><h6><?= $author->name() ?></h6></dd>
+      </dl>
       <?php endif ?>
     </dl>
     <?php if ($page->subheading()->isarticlempty()): ?>
     <p class="article-subheading"><small><?= $page->subheading()->html() ?></small></p>
     <?php endif ?>
     <?php if (!empty($tags)): ?>
-      <ul class="article-tags">
+      <ul class="article-tags margin-m">
         <?php foreach ($tags as $tag): ?>
         <li>
           <a href="<?= $page->parent()->url(['params' => ['tag' => $tag]]) ?>"><?= html($tag) ?></a>

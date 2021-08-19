@@ -1,0 +1,120 @@
+Title: Nudge
+
+----
+
+Headline: Nudge
+
+----
+
+Font: Nudge-Bold
+
+----
+
+Sample: Cardiovascular Tonalities
+
+----
+
+Charset: 
+
+----
+
+Released: 2021
+
+----
+
+Designer: 
+
+----
+
+Styles: 5
+
+----
+
+Widths: 
+
+----
+
+Optical: 
+
+----
+
+Version: 
+
+----
+
+Shopify: 
+
+----
+
+Futurefonts: https://www.futurefonts.xyz/very-cool-studio/nudge
+
+----
+
+Text: <p>With an X-Acto blade, a basic memory of Helvetica Condensed, half a Letraset sheet for Avant Garde Medium Condensed, and 15 minutes, you might create Nudge. That's not how I designed Nudge, but it might be how you would. It's  based on a dog defecation sign composed of hand cut vinyl letters which I saw at Silver Lake Reservoir in LA. The letters on the sign stood out for having uncharacteristically narrow n's, and nearly closed apertures. Nudge is in that vein. The contrast is low, the tapers are hardly visible. The rules feel a little broken, I'm not keeping track of which.</p>
+
+----
+
+Tags: Gothic, Sans, Condensed
+
+----
+
+Specimen:
+
+- verycoolstudio_nudgev0.3.pdf
+
+----
+
+Designinfo: articles/nudge-design-information
+
+----
+
+Samples:
+
+- 
+  font: Nudge Bold
+  sample: Notwithstanding
+- 
+  font: Nudge Semi Bold
+  sample: Proletarianization
+- 
+  font: Nudge Regular
+  sample: Conversationalists
+- 
+  font: Nudge Light
+  sample: Miscomprehended
+- 
+  font: Nudge Thin
+  sample: Absentmindedness
+
+----
+
+Features:
+
+- 
+  feature: frac
+  font: VCNudgeBold
+  sample: 17/23
+- 
+  feature: ss01
+  font: VCNudgeBold
+  sample: G
+- 
+  feature: ss02
+  font: VCNudgeBold
+  sample: R
+- 
+  feature: ss03
+  font: VCNudgeBold
+  sample: g
+- 
+  feature: ss04
+  font: VCNudgeBold
+  sample: "7"
+- 
+  feature: ss05
+  font: VCNudgeBold
+  sample: a
+- 
+  feature: ss06
+  font: VCNudgeBold
+  sample: "1"

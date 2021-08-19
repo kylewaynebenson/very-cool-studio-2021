@@ -10,7 +10,7 @@ Font: Gooper-Black
 
 ----
 
-Sample: Emily Brown
+Sample: Cursing Analogy
 
 ----
 
@@ -27,6 +27,18 @@ Designer: Kyle Benson
 ----
 
 Styles: 44
+
+----
+
+Widths: 3
+
+----
+
+Optical: 3
+
+----
+
+Version: 
 
 ----
 
@@ -48,24 +60,75 @@ Tags: serif, old style
 
 Specimen:
 
-- verycoolstudio_nudgev0.3.pdf
+- 2103_verycoolstudio_gooper.pdf
+
+----
+
+Designinfo: articles/gooper-design-information
 
 ----
 
 Samples:
 
 - 
-  font: Gooper Condensed Bold
-  sample: Hello World
-- 
-  font: Gooper Deck Bold Italic
-  sample: Whatever mom!
-- 
-  font: Gooper Light
-  sample: This is the end
+  font: Gooper Black
+  sample: Gloomy Sunday
 - 
   font: Gooper Text Medium Italic
-  sample: Thanks for telling me!
+  sample: Reincarnation
+- 
+  font: Gooper Condensed Semi Bold
+  sample: Spaceflight Dogmatists
+- 
+  font: Gooper Semi Condensed Regular
+  sample: Slapstick Espresso
+- 
+  font: Gooper Light
+  sample: Fluffier Cashew
+- 
+  font: Gooper Thin
+  sample: Palaeontological
+
+----
+
+Features:
+
+- 
+  feature: swsh
+  font: VCGooperBold
+  sample: O
+- 
+  feature: ss01
+  font: VCGooperBold
+  sample: AB
+- 
+  feature: ss02
+  font: VCGooperBold
+  sample: ag
+- 
+  feature: dlig
+  font: VCGooperBold
+  sample: oo
+- 
+  feature: ss03
+  font: VCGooperBold
+  sample: di
+- 
+  feature: ss04
+  font: VCGooperBold
+  sample: Cc
+- 
+  feature: ss05
+  font: VCGooperBold
+  sample: R
+- 
+  feature: frac
+  font: VCGooperBold
+  sample: 1/2
+- 
+  feature: onum
+  font: VCGooperBold
+  sample: "123"
 
 ----
 

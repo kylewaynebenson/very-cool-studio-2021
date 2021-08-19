@@ -34,20 +34,26 @@
       @font-face {
         font-family: '<?= $font->font() ?> Home';
         font-weight: 100;
-        src: url("<?= kirby()->urls()->assets() . '/webfonts/' . $font->title()->lower() . '/VC' . $font->font() . '.woff2' ?>") format("woff2"), url("<?= kirby()->urls()->assets() . '/webfonts/' . $font->title()->lower() . '/VC' . $font->font() . '.woff' ?>") format("woff"); 
+        src: url("<?= kirby()->urls()->assets() . '/webfonts/' . $font->slug() . '/VC' . $font->font() . '.woff2' ?>") format("woff2"), url("<?= kirby()->urls()->assets() . '/webfonts/' . $font->slug() . '/VC' . $font->font() . '.woff' ?>") format("woff"); 
       }
       </style>
-        <div class="full-width-text" style="font-family: <?= $font->font() ?> Home; font-weight: 100; line-height: .9; letter-spacing: 0px; margin-top: -1.25vw; margin-bottom: 1.25vw;">
+        <div class="full-width-text" style="font-family: <?= $font->font() ?> Home; font-weight: 100; line-height: .9; letter-spacing: 0px;">
           <?= $font->sample() ?>
         </div>
-        <div class="autogrid">
+        <div class="flex font-details" style="justify-content: space-between; align-items: baseline;">
           <?php 
             $fontname = str_replace("-", "", $font->font());
             $fontname = implode(' ',preg_split('/(?=[A-Z])/', $fontname));
             $fontname = trim($fontname);
           ?>
-          <h6 class="color-grey no-mb"><?= $fontname ?></h6>
-          <h6 class="color-grey no-mb text-right">From $50</h6>
+          <h6 class="no-mb"><?= $fontname ?></h6>
+          <?php if ($font->widths()->isNotEmpty()): ?>
+            <h5 class="no-mb"><?= $font->widths() ?> Widths</h5>
+          <?php endif ?>
+          <?php if ($font->optical()->isNotEmpty()): ?>
+            <h5 class="no-mb"><?= $font->optical() ?> Optical sizes</h5>
+          <?php endif ?>
+          <h5 class="no-mb"><?= $font->styles() ?> Styles</h5>
         </div>
       </a>
     <?php endforeach ?>

@@ -49,6 +49,13 @@ tabs:
             placeholder: Kyle Benson
           styles:
             type: text
+          widths:
+            type: text
+          optical:
+            type: text
+          version:
+            type: text
+            placeholder: 0.1
           shopify:
             type: text
             placeholder: 0000000000000
@@ -72,6 +79,10 @@ tabs:
             label: Select specimen...
             type: files
             multiple: false
+          designinfo:
+            label: Design info
+            type: select
+            options: pages
 
       - width: 1/3
         sections:
@@ -93,7 +104,7 @@ tabs:
     label: Preview
     icon: headline
     columns:
-      - width: 1/1
+      - width: 1/2
         fields:
           samples:
             label: Text previews
@@ -107,4 +118,22 @@ tabs:
                 label: Sample text
                 type: text
                 width: 1/2
+      - width: 1/2
+        fields:
+          features:
+            label: Feature previews
+            type: structure
+            fields:
+              feature:
+                label: Feature
+                type: text
+                width: 1/3
+              font:
+                label: Font
+                type: text
+                width: 1/3
+              sample:
+                label: Sample text
+                type: text
+                width: 1/3
 

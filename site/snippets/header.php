@@ -17,6 +17,8 @@
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title><?= $site->title() ?> | <?= $page->title() ?></title>
+  <meta name="description" content="Very Cool is a type foundry run by Kyle Benson in Oakland, California."/>
   <style>
     [data-theme="light"] {
       --color-black: #000;
@@ -49,7 +51,6 @@
     site and the title of the current page
   */
   ?>
-  <title><?= $site->title() ?> | <?= $page->title() ?></title>
 
   <?php
   /*
@@ -139,6 +140,17 @@
         https://getkirby.com/docs/reference/panel/blueprints/page#statuses
       */
       ?>
+      <div class="link">
+          <?php if ($page->isHomePage()): ?>
+            <a aria-current href="<?= $site->url() ?>">
+          <?php else: ?>
+            <a href="<?= $site->url() ?>">
+          <?php endif ?>
+            <h4 class="no-mb">
+              Typefaces
+            </h4>
+          </a>
+        </div>
       <?php foreach ($site->children()->listed()->not("typefaces") as $item): ?>
         <div class="link">
           <a <?php e($item->isOpen(), 'aria-current ') ?> href="<?= $item->url() ?>">
@@ -163,4 +175,7 @@
       </div>
     </nav>
   </header>
+  <?= js([
+    'assets/js/theme.js',
+  ]) ?>
   <main class="main">

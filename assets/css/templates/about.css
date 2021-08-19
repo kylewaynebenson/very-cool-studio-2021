@@ -4,6 +4,9 @@
 .contact .h1 {
   margin-bottom: 1.5rem;
 }
+.page-about .main section {
+  background-image: linear-gradient(var(--color-soft-blue), rgba(0,0,0,0));
+}
 .page-about .main section:last-of-type {
   background: var(--color-coral);
   padding: var(--padding);

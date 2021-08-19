@@ -1,0 +1,88 @@
+Title: Kansas Casual
+
+----
+
+Headline: 
+
+----
+
+Font: KansasCasual-SemiBold
+
+----
+
+Sample: Jazziest Skincare
+
+----
+
+Charset: 
+
+----
+
+Released: 2014
+
+----
+
+Designer: Kyle Benson
+
+----
+
+Styles: 12
+
+----
+
+Widths: 
+
+----
+
+Optical: 
+
+----
+
+Version: 1.04
+
+----
+
+Shopify: 
+
+----
+
+Futurefonts: 
+
+----
+
+Text: <p>Want to say something very loud, but also very friendly? One way you could do that is by yelling (in an easygoing, good-natured way). Another is to hire a plane guy to write it genially in the sky. But the best and most amiable way of all is using Kansas Casual. One thing that makes Kansas Casual loud is how it is in ALL CAPS! And of course it’s friendly because it’s based on sign painter stuff, and sign painters are the friendliest guys in the whole world! Like those sign painters, the letters of Kansas Casual are full of snappy old guy jokes and great technique. Get ready to say your loudest friendliest message yet.</p>
+
+----
+
+Tags: 
+
+----
+
+Specimen: 
+
+----
+
+Designinfo: articles/kansas-casual-design-information
+
+----
+
+Samples:
+
+- 
+  font: Kansas Casual Light
+  sample: Berserk Redheads
+- 
+  font: Kansas Casual Regular
+  sample: Howling Milkman
+- 
+  font: Kansas Casual Medium
+  sample: Queenly Escapist
+- 
+  font: Kansas Casual Semi Bold
+  sample: Sucking Muffins
+- 
+  font: Kansas Casual Bold
+  sample: Meagre Nugget
+- 
+  font: Kansas Casual Black
+  sample: Reggae Igniter
