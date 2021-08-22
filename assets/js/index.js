@@ -17,11 +17,20 @@
                     "title": true,
                     "price": false,
                     "priceWithDiscounts": true,
-                    "quantity": false,
-                    "quantityIncrement": false,
+                    "quantity": true,
+                    "quantityIncrement": true,
                     "quantityDecrement": true,
                     "quantityInput": false,
                   },
+                  "order": [
+                    'quantity',
+                    'image',
+                    'title',
+                    'variantTitle',
+                    'customAttributes',
+                    'price',
+                    'priceWithDiscounts',
+                  ],
             },
             "product": {
               "iframe": false,
@@ -32,8 +41,8 @@
                 "quantityIncrement": false
               },
               "order": [
-                'button',
-                'options'
+                'options',
+                'button'
               ],
               "text": {
                   "button": 'Buy license'
@@ -62,7 +71,7 @@
               "text": {
                 "total": "SUBTOTAL",
                 "button": "Checkout",
-                "notice": ""
+                "notice": "Note: license quantity is not the same as company size. Company size, selected via dropdown on the font page, is the size of the license (ex: 100 employees). License quantity is the amount of licensees (ex: two companies)."
               },
               "events": {
                 "openCheckout": function (cart) {},

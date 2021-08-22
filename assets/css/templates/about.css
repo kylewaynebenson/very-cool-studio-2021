@@ -9,7 +9,6 @@
 }
 .page-about .main section:last-of-type {
   background: var(--color-coral);
-  padding: var(--padding);
   margin-bottom: 0px;
 }
 .page-about .main section:last-of-type img {

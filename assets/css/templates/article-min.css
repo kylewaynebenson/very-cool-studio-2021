@@ -1,0 +1,38 @@
+.note {
+  max-width: 35rem;
+  margin: 0 auto;
+}
+.note-header {
+  padding-top: -webkit-calc(4px + 2.4vw);
+  padding-top: calc(4px + 2.4vw);
+  margin-bottom: -webkit-calc(4px + 2.4vw);
+  margin-bottom: calc(4px + 2.4vw);
+}
+.note-footer {
+  padding: 6rem 0;
+}
+.note-date {
+  color: var(--color-text-grey);
+}
+.note-tags {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+.note-tags li {
+  margin-right: .5rem;
+}
+.note-tags a {
+  padding: .5rem 1rem;
+  display: block;
+  background: var(--color-light);
+}
+.note-tags a:hover {
+  background: var(--color-black);
+  color: var(--color-white);
+}
+.article-text {
+  margin-top: 1.25vw;
+}

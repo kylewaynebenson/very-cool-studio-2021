@@ -1,0 +1,31 @@
+Title: Announcing Very Cool, Again
+
+----
+
+Text: [{"content":{"text":"<p>I launched verycoolstudio.com five years ago, and have spent countless hours regretting just about every decision I made in engineering it. The pageload times were awful, it was difficult to update or add new fonts to, and the two of us fought like eagle gripping snake right up until I decided to drop it from several hundred feet in the air and eat a small bunny instead. I wish I was the snake in that metaphor but honestly I can't figure out how the snake \u201cwins\u201d without it also losing.<\/p><p>When I started developing the site, oh, say, 2015, I was woefully out of touch with modern development, and Wordpress felt like the obvious choice. It was easiest, cheapest, option for an e-commerce site. But Wordpress is on its last leg, and the rest of the web is on version 5.0 (I think). So, Wordpress plugins are getting less support from developers, and hackers have caught on to which commonly used ones have easy vulnerabilities. Long story short, I've been dealing with exploits left and right.<\/p><p>In the summer of 2019, tired of responding to support emails, I started looking into having my site engineered by somebody other than little old time strapped me. In 2010 you could hardly host a custom font online, let alone make a good online store. But a lot has changed in the last decade. Better, faster, site CMS's and loads of great people making bespoke font selling platforms. I started a few conversations with some of the folks who make custom sites, but ultimately I didn't follow through on any of the convos! This is a known bug. Please don't send a support email about it.<\/p><p>If I'm sitting down and reviewing this with my therapist: I was scared to goof again. Sure, my website was giving me hell, but devil you know and all that. If I goofed once, couldn't I goof again? And maybe harder?<\/p><p>So the Figma files for Very Cool V2 sat and gathered dust. After the launch of&nbsp;<a href=\"https:\/\/www.futurefonts.xyz\/very-cool-studio\/nudge\" rel=\"noopener noreferrer nofollow\">Nudge<\/a>, the site got exploited again. I think via my contact form? IDK, php is confusing to me. It was embarrassing. I was pointing all these cool people to my website, where I'd written this nice article about the design process, and all they were seeing was bullshit and porn (and not in a cool way!). <\/p>"},"id":"fa3d0b61-5cab-4cb4-94ae-1cdc18aba936","isHidden":false,"type":"text"},{"content":{"text":"<p>In the weeks that followed I reached out again to onoe of these font website creators. They said they were now flush with customers and it would be a few months before they had time for me.<\/p><p>I needed a website NOW, and the shame story I was telling myself about making exploitable websites wasn't helping anyone! <\/p>"},"id":"9309a545-88d7-47e0-8f8d-74dccdb75e57","isHidden":false,"type":"text"},{"content":{"text":"\u201c...artists in any genre, have basically the same themes and concerns forever\u2026And the technique always has to be different, because otherwise you\u2019d literally just be writing the same novel again and again...\u201d","citation":"Sally Rooney"},"id":"ba17a0a0-6695-489b-8237-b6d194312be8","isHidden":false,"type":"quote"},{"content":{"text":"<p>I love it. I love treating concerns and themes with the same framing. I think about this quote all the time. George Saunders believes a similar thing. Paraphrasing here, but Saunders thinks we don't ever really grow out of our weakness, we just learn how to better direct it.<\/p><p>Somewhere in the middle of this month, I watched the <a href=\"https:\/\/www.hbo.com\/documentaries\/the-bee-gees-how-can-you-mend-a-broken-heart\" rel=\"noopener noreferrer nofollow\">The Bee Gees: How Can You Mend A Broken Heart<\/a> and a bolt of lightning ran up my spine.<\/p><p>I mean, you should watch the doc. But if you can't, because you\u2019re like scared of bees or whatever, here\u2019s my summary: the Bee Gees never stopped changing their technique. The concerns and themes were the same, but the technique was always changing. One bad website doesn't make a bad website maker. If the Bee Gees could keep changing, so can I. As a musician, I'm embarrassed to say that when the film ended I picked up my macbook over my guitar. But that's how it happened! And I think we're all better for it.<\/p><p>I burned some midnight oil to make this new website. Honestly, I'm like a B+ developer and never dreamed I could make something this good. I'm so fucking proud of myself! Hope you enjoy it too!<\/p>"},"id":"4e771d77-882f-4345-a10b-d0db4912faa6","isHidden":false,"type":"text"}]
+
+----
+
+Cover: 
+
+----
+
+Date: 2021-08-23
+
+----
+
+Author:
+
+- PDRAP2hP
+
+----
+
+Intro: 
+
+----
+
+Footnotes: 
+
+----
+
+Tags: 

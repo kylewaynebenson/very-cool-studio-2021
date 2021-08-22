@@ -27,9 +27,9 @@ sections:
 # The photography section extends a pages section defined in the `/site/blueprints/section/album.yml` blueprint
 # More about reusing and extending sections: https://getkirby.com/docs/guide/blueprints/extending-blueprints#reusing-and-extending-sectionss
   type:
-    headline: Type
-    extends: sections/type
+    headline: Typfaces
+    extends: sections/typefaces
     status: listed
-    size: small
+    size: tiny
 
 

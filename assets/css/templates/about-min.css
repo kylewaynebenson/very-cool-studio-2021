@@ -4,9 +4,12 @@
 .contact .h1 {
   margin-bottom: 1.5rem;
 }
+.page-about .main section {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color-soft-blue)), to(rgba(0,0,0,0)));
+  background-image: linear-gradient(var(--color-soft-blue), rgba(0,0,0,0));
+}
 .page-about .main section:last-of-type {
   background: var(--color-coral);
-  padding: var(--padding);
   margin-bottom: 0px;
 }
 .page-about .main section:last-of-type img {

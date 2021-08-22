@@ -13,8 +13,8 @@
 */
 ?>
 <?php if($next = $page->getNext($articles) && $prev = $page->getPrev($articles)): ?>
-<nav class="blog-prevnext bg-white bt-tan padding">
-  <div class="container">
+<nav class="blog-prevnext bg-white bt-tan">
+  <div class="container padding">
     <h5 class="color-grey">More reading</h5>
     <div class="autogrid" style="--gutter:2px;">
         <?php if ($prev = $page->prevListed()): ?>

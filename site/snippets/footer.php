@@ -25,6 +25,7 @@
           <?php foreach ($site->children()->listed()->not("typefaces") as $example): ?>
           <li><h4><a href="<?= $example->url() ?>"><?= $example->title()->html() ?></a></h4></li>
           <?php endforeach ?>
+          <li><h4><a href="<?= $site->find("Terms")->url() ?>">Terms</a></h4></li>
         </ul>
         <?php snippet('social') ?>
       </div>
@@ -46,6 +47,15 @@
       ShopifyInit();
     </script>
   <?php endif; ?>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-96409329-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-96409329-1');
+  </script>
 
 </body>
 </html>

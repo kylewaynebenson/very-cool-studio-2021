@@ -1,11 +1,10 @@
 @charset "UTF-8";
 .fsjs-skin {
-  -webkit-transition: opacity 0.2s ease-out;
-  transition: opacity 0.2s ease-out;
   opacity: 0;
-  color: var(--color-grey);
-  border-top: var(--border) var(--color-tan);
+  border-top: var(--border) var(--color-blue);
+  position: relative;
 }
+
 .fsjs-skin.fsjs-initialized {
   opacity: 1;
   display: block;
@@ -31,6 +30,19 @@
   -webkit-flex-wrap: wrap;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(var(--color-soft-blue)), to(rgba(0,0,0,0)));
+  background-image: linear-gradient(var(--color-soft-blue), rgba(0,0,0,0));
+  -webkit-transition: color 0.2s ease-out;
+  transition: color 0.2s ease-out;
+  color: var(--color-soft-blue);
+}
+.fsjs-skin:hover .fsjs-wrapper {
+  color: var(--color-grey);
+}
+@media screen and (max-width: 53.9999rem) {
+  .fsjs-skin .fsjs-block:not(.fsjs-block-fontsize, .fsjs-block-fontfamily, .fsjs-block-tester, .fsjs-block-type-textfield) {
+    display: none;
+  }
 }
 @media screen and (min-width: 54rem) {
   .fsjs-skin > .fsjs-wrapper {
@@ -48,7 +60,7 @@
   margin-bottom: 1.5vw;
 }
 .fsjs-skin .fsjs-block-tester .fsjs-element:focus {
-  background: var(--color-soft-blue);
+  
 }
 
 .fsjs-skin .fsjs-block,
@@ -107,7 +119,7 @@
   color: var(--color-black);
 }
 .fsjs-skin .fsjs-button, .fsjs-skin .fsjs-block-type-buttongroup button {
-  background: var(--color-white);
+  background: transparent;
   color: inherit;
   cursor: pointer;
   font-family: inherit;
@@ -117,16 +129,12 @@
   -webkit-align-self: center;
   -ms-flex-item-align: center;
   align-self: center;
-  width: 36px;
-  height: 36px;
+  width: 24px;
+  height: 24px;
 }
-.fsjs-skin .fsjs-button:hover, .fsjs-skin .fsjs-block-type-buttongroup button:hover, .fsjs-skin .fsjs-button:focus, .fsjs-skin .fsjs-block-type-buttongroup button:focus {
+.fsjs-skin .fsjs-button:hover, .fsjs-skin .fsjs-block-type-buttongroup button:hover {
   background: var(--color-soft-blue);
-  color: var(--color-black);
-}
-.fsjs-skin .fsjs-button.fsjs-button-selected, .fsjs-skin .fsjs-block-type-buttongroup button.fsjs-button-selected {
-  background: var(--color-tan);
-  color: var(--color-black);
+  color: var(--color-grey);
 }
 
 .fsjs-skin .fsjs-block-type-buttongroup button {
@@ -166,10 +174,10 @@
   flex-grow: 1;
 }
 .fsjs-skin .fsjs-block-type-checkboxes [data-fsjs] label input[type=checkbox] + span:before {
-  background: var(--color-tan);
+  background: var(--color-soft-blue);
 }
 .fsjs-skin .fsjs-block-type-checkboxes [data-fsjs] label:hover input[type=checkbox] + span:before, .fsjs-skin .fsjs-block-type-checkboxes [data-fsjs] label:focus input[type=checkbox] + span:before {
-  background: var(--color-soft-blue);
+  background: var(--color-grey);
 }
 .fsjs-skin .fsjs-block-type-checkboxes input[type=checkbox] {
   position: absolute;
@@ -181,11 +189,8 @@
 .fsjs-skin .fsjs-block-type-checkboxes label.fsjs-checkbox-inactive {
   pointer-events: none;
 }
-.fsjs-skin .fsjs-block-type-checkboxes label.fsjs-checkbox-inactive input[type=checkbox] + span:before, .fsjs-skin .fsjs-block-type-checkboxes label.fsjs-checkbox-inactive input[type=checkbox] + span:after {
-  border-color: var(--color-grey);
-}
 .fsjs-skin .fsjs-block-type-checkboxes label.fsjs-checkbox-inactive input[type=checkbox]:checked + span:after {
-  background: var(--color-grey);
+  background: var(--color-black);
 }
 .fsjs-skin .fsjs-block-type-checkboxes input[type=checkbox] + span {
   position: relative;
@@ -196,10 +201,10 @@
   display: block;
   border-radius: 2px;
   position: absolute;
-  left: 0;
-  top: 2px;
-  height: 16px;
-  width: 16px;
+  left: 6px;
+  top: 6px;
+  height: 10px;
+  width: 10px;
 }
 .fsjs-skin .fsjs-block-type-checkboxes input[type=checkbox]:checked + span:after {
   border-radius: 0;
@@ -207,8 +212,8 @@
   border: 0px solid var(--color-black);
   border-radius: 2px;
   padding: 0;
-  top: 2px;
-  left: 0px;
+  left: 6px;
+  top: 6px;
 }
 .fsjs-skin .dk-select,
 .fsjs-skin .dk-select *,
@@ -229,11 +234,11 @@
   cursor: pointer;
 }
 .fsjs-skin .dk-selected {
-  min-width: 220px;
+  min-width: 230px;
   white-space: nowrap;
   overflow: hidden;
   position: relative;
-  background-color: var(--color-white);
+  background-color: transparent;
   padding: 0.1em 0.5em 0;
   padding-right: 1.5em;
   line-height: 2em;
@@ -249,7 +254,6 @@
   top: 50%;
   border: var(--border) transparent;
   border-width: 0.25em 0.25em 0;
-  border-top-color: var(--color-black);
   margin: -0.125em 0.5em 0 0;
 }
 .fsjs-skin .dk-selected:after {
@@ -258,7 +262,7 @@
   margin: 0 1.5em 0 0;
 }
 .fsjs-skin .dk-selected-disabled {
-  color: #BBBBBB;
+  color: var(--color-grey);
 }
 .fsjs-skin .dk-select .dk-select-options {
   position: absolute;
@@ -280,7 +284,6 @@
   max-height: 10em;
 }
 .fsjs-skin .dk-select-options {
-  background-color: white;
   list-style: none;
   margin: 0;
   max-height: 75vh;
@@ -302,9 +305,10 @@
 }
 .fsjs-skin .dk-select-options .dk-option-highlight {
   background: var(--color-soft-blue);
+  color: var(--color-black);
 }
 .fsjs-skin .dk-select-options .dk-option-disabled {
-  color: #BBBBBB;
+  color: var(--color-grey);
   background-color: transparent;
 }
 .fsjs-skin .dk-select-options .dk-option-hidden {
@@ -320,6 +324,7 @@
 .fsjs-skin .dk-selected:focus {
   outline: none;
   background: var(--color-soft-blue);
+  color: var(--color-black);
 }
 .fsjs-skin .dk-select-disabled {
   opacity: 0.6;
@@ -361,16 +366,26 @@
   height: 2px;
   width: 100%;
 }
+
 .fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider > .rangeSlider {
-  height: 0px;
   opacity: 0;
+  -webkit-transition: opacity 0.2s ease-out;
+  transition: opacity 0.2s ease-out;
 }
 .fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider:hover, .fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider:active {
   background: var(--color-soft-blue);
   color: var(--color-soft-blue);
 }
+.fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider:hover .fsjs-skin .dk-selected:before, .fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider:active .fsjs-skin .dk-selected:before {
+  border-top-color: var(--color-black);
+}
+.fsjs-skin .fsjs-block-type-checkboxes label.fsjs-checkbox-inactive input[type=checkbox] + span:before, .fsjs-skin .fsjs-block-type-checkboxes label.fsjs-checkbox-inactive input[type=checkbox] + span:after {
+  border-color: var(--color-black);
+}
+.fsjs-skin .fsjs-button.fsjs-button-selected, .fsjs-skin .fsjs-block-type-buttongroup button.fsjs-button-selected {
+  color: var(--color-black);
+}
 .fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider:hover > .rangeSlider, .fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider:active > .rangeSlider {
-  height: 10px;
   opacity: 1;
 }
 
@@ -439,70 +454,85 @@
     display: block;
   }
 }
-
-.album-gallery {
-  line-height: 0;
-  -webkit-columns: 1;
-  -moz-columns: 1;
-  columns: 1;
-  -webkit-column-gap: 1.5rem;
-  -moz-column-gap: 1.5rem;
-  column-gap: 1.5rem;
+figure {
+  -webkit-filter: grayscale(1);
+  filter: grayscale(1);
+  -webkit-transition: -webkit-filter 250ms ease-in;
+  transition: -webkit-filter 250ms ease-in;
+  transition: filter 250ms ease-in;
+  transition: filter 250ms ease-in, -webkit-filter 250ms ease-in;
 }
-.album-gallery li {
-  display: block;
-  margin-bottom: 1.5rem;
-  -webkit-column-break-inside: avoid;
-  -moz-column-break-inside: avoid;
-  break-inside: avoid;
+figure:hover {
+  -webkit-filter: grayscale(0);
+  filter: grayscale(0);
 }
-@media screen and (min-width: 60rem) {
-  .album-gallery {
-    -webkit-columns: 2;
-    -moz-columns: 2;
-    columns: 2;
-  }
+.main > .padding {
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
-.shopify-buy__product {
+.shopify-placeholder {
+  -webkit-transform: scaleY(.5);
+  -ms-transform: scaleY(.5);
+  transform: scaleY(.5); 
+  -webkit-transform-origin: top; 
+  -ms-transform-origin: top; 
+  transform-origin: top;
+  width: 100%;
+  max-width: 320px;
+  opacity: 0;
+  -webkit-transition: opacity 600ms ease-in, -webkit-transform 300ms ease-in;
+  transition: opacity 600ms ease-in, -webkit-transform 300ms ease-in;
+  transition: transform 300ms ease-in, opacity 600ms ease-in;
+  transition: transform 300ms ease-in, opacity 600ms ease-in, -webkit-transform 300ms ease-in;
+}
+.shopify-placeholder.shopify-buy-frame {
+  -webkit-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.shopify-buy__product label {
+  font-family: var(--font-family-eyebrow);
+  letter-spacing: 0.02em;
+  font-size: 0.75rem;
+  margin-bottom: .7vw;
+  display: inline-block;
+  text-transform: uppercase;
+  color: var(--color-grey);
  
 }
 .shopify-buy__option-select-wrapper {
   position: relative;
 }
-.shopify-buy__option-select__select {
+.shopify-buy__product .shopify-buy__option-select__select {
   color: var(--color-black);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   width: 100%;
   padding: var(--padding-sm);
-  background: var(--color-tan);
+  background: var(--color-soft-blue);
   border: 0px;
   font-family: var(--font-family-sans);
   font-size: 1rem;
-  margin-bottom: 1vw;
   letter-spacing: .05rem;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+  border-bottom: var(--border) var(--color-white);
 }
-.visuallyhidden {
-  display: none;
-}
-.shopify-buy__select-icon {
+.shopify-buy__product .shopify-buy__select-icon {
   position: absolute;
   pointer-events: none;
   height: 20px;
   width: 20px;
   right: 1.5vw;
   top: 50%;
-  margin-top: -5px;
+  margin-top: 0px;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-.shopify-buy__btn {
-  background: var(--color-coral);
-  padding: var(--padding-sm);
-  width: 100%;
-  border-radius: var(--border-radius);
+.shopify-buy__product .shopify-buy__btn {
+  border-radius: 0px 0px var(--border-radius) var(--border-radius);
 }

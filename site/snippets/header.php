@@ -19,6 +19,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title><?= $site->title() ?> | <?= $page->title() ?></title>
   <meta name="description" content="Very Cool is a type foundry run by Kyle Benson in Oakland, California."/>
+  <meta property="og:title" content="<?= $site->title() . ' | ' . $page->title() ?>">
+  <meta property="og:image" content="<?php echo kirby()->urls()->assets() . '/images/share-image.png' ?>">
   <style>
     [data-theme="light"] {
       --color-black: #000;
@@ -45,20 +47,7 @@
       background: var(--color-white);
     }
   </style>
-  <?php
-  /*
-    In the title tag we show the title of our
-    site and the title of the current page
-  */
-  ?>
 
-  <?php
-  /*
-    Stylesheets can be included using the `css()` helper.
-    Kirby also provides the `js()` helper to include script file.
-    More Kirby helpers: https://getkirby.com/docs/reference/templates/helpers
-  */
-  ?>
   <?= css([
     'assets/css/index.css',
     '@auto'
@@ -93,13 +82,7 @@
   src: url("<?= kirby()->urls()->assets() . '/webfonts/gooper/VCGooperText-Bold.woff2' ?>") format("woff2"), url("<?= kirby()->urls()->assets() . '/webfonts/gooper/VCGooperText-Bold.woff' ?>") format("woff"); }
 </style>
 
-  <?php
-  /*
-    The `url()` helper is a great way to create reliable
-    absolute URLs in Kirby that always start with the
-    base URL of your site.
-  */
-  ?>
+
   <link rel="shortcut icon" type="image/x-icon" href="<?= url('favicon.ico') ?>">
 </head>
 <?php if ($page->parents()->count()): ?>
@@ -109,13 +92,6 @@
 <?php endif; ?>
 
   <header class="header">
-    <?php
-    /*
-      We use `$site->url()` to create a link back to the homepage
-      for the logo and `$site->title()` as a temporary logo. You
-      probably want to replace this with an SVG.
-    */
-    ?>
     <div class="logo">
       <a href="<?= $site->url() ?>">
         <div class="mobile-only">

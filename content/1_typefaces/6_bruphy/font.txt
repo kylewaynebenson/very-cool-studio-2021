@@ -1,0 +1,85 @@
+Title: Bruphy
+
+----
+
+Headline: Bruphy
+
+----
+
+Font: Bruphy-Bold
+
+----
+
+Sample: Anfractuous Venture
+
+----
+
+Charset: 
+
+----
+
+Released: 2019
+
+----
+
+Designer: 
+
+----
+
+Styles: 29
+
+----
+
+Widths: 3
+
+----
+
+Optical: 2
+
+----
+
+Version: 
+
+----
+
+Shopify: 
+
+----
+
+Futurefonts: https://www.futurefonts.xyz/very-cool-studio/bruphy
+
+----
+
+Text: <p>An anfractuous venture of Very Cool Studios, Bruphy is the result of taking humankind’s oldest and most unfeigned question and asking it again: “can a Robert Simmons Sapphire Short Handle Flat Brush write 20th century latin letters worthy of MakeOTF?” While philosophers and literary critics have long suffered over the physical limitations of this question, only one (1) person has braved the path of experimentation. Like Marie Curie, who imposed her experiments upon herself, this death-or-glory typographer (me) walked the untrod path (make font) and crafted the antidote to generations of hankering. In Bruphy, today this riddle is solved, this question answered.</p>
+
+----
+
+Tags: 
+
+----
+
+Specimen:
+
+- verycoolstudio-bruphy-v3.pdf
+
+----
+
+Designinfo: articles/bruphy-design-information
+
+----
+
+Samples:
+
+- 
+  font: Bruphy Extrabold Condensed
+  sample: Unaccommodating Dogma
+- 
+  font: Bruphy Black
+  sample: Best Camerawork
+- 
+  font: Bruphy Text Bold
+  sample: Coworking Tails
+
+----
+
+Features: 

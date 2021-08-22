@@ -22,7 +22,7 @@
 ?>
 <?php snippet('header') ?>
 <?php snippet('layouts', ['field' => $page->layout()])  ?>
-<aside class="contact bg-tan">
+<aside class="contact bg-tan bt-white">
   <div class="padding container grid" style="--gutter: 1vw;">
     <h2 id="faqs" class="column" style="--columns:3;">Frequently Asked Questions</h2>
       <div class="grid column" style="--gutter: 1vw;--columns:9;">

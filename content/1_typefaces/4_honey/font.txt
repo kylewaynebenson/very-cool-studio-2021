@@ -1,0 +1,110 @@
+Title: Honey
+
+----
+
+Headline: Honey
+
+----
+
+Font: Honey-BoldBanner
+
+----
+
+Sample: Crumby Bagpipes
+
+----
+
+Charset: 
+
+----
+
+Released: 
+
+----
+
+Designer: 
+
+----
+
+Styles: 
+
+----
+
+Widths: 
+
+----
+
+Optical: 
+
+----
+
+Version: 
+
+----
+
+Shopify: 
+
+----
+
+Futurefonts: 
+
+----
+
+Text: 
+
+----
+
+Tags: 
+
+----
+
+Specimen: 
+
+----
+
+Designinfo: 
+
+----
+
+Samples:
+
+- 
+  font: Honey Thin
+  sample: Together Scuttling
+- 
+  font: Honey Regular
+  sample: Gateway Almonds
+- 
+  font: Honey Semi Bold Deck
+  sample: Petulant Rosaries
+- 
+  font: Honey Bold
+  sample: Tallyho Females
+- 
+  font: Honey Black Banner
+  sample: Deltoid Zillions
+
+----
+
+Features:
+
+- 
+  feature: ss01
+  font: VCHoneyBold
+  sample: Qk
+- 
+  feature: ss02
+  font: VCHoneyBold
+  sample: g
+- 
+  feature: frac
+  font: VCHoneyBold
+  sample: 12/34
+- 
+  feature: liga
+  font: VCHoneyBold
+  sample: Co
+- 
+  feature: onum
+  font: VCHoneyBold
+  sample: "567"

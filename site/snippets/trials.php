@@ -35,7 +35,7 @@
     </div>
     <div class="terms terms-and-conditions flex" style="align-items: center;">
       <input class="margin-s input-checkbox" type="checkbox" name="terms" id="terms" style="margin-right: 10px;">
-      <label class="checkbox" for="terms"><h6 class="margin-s">I accept the trail <a href="/terms#free-trials" target="_blank">terms &amp; conditions</a></h6></label>
+      <label class="checkbox" for="terms"><h6 class="margin-s">I accept the trail <a href="/trial-terms" class="link" target="_blank">terms &amp; conditions</a></h6></label>
       <input class="margin-s" type="hidden" name="terms-field" value="1">
     </div>
     <div id="mce-responses">

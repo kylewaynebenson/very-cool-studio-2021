@@ -96,11 +96,11 @@ Features:
 - 
   feature: swsh
   font: VCGooperBold
-  sample: O
+  sample: Oranges
 - 
   feature: ss01
   font: VCGooperBold
-  sample: AB
+  sample: A
 - 
   feature: ss02
   font: VCGooperBold

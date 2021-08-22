@@ -29,7 +29,9 @@ options:
   changeTemplate: 
     - home 
     - default
+    - complex
     - articles
+    - typefaces
 
 # A page preset can have a freely defined set of fields
 # List of all available field types: https://getkirby.com/docs/reference/panel/fields

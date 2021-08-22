@@ -23,16 +23,16 @@
 ?>
 <?php snippet('header') ?>
 
-<article class="article grid container padding" style="--gutter: 1.5vw">
+<article class="article grid container padding" style="--gutter: 3vw">
   <header class="article-header column" style="--columns: 5">
     <h1 class="article-title margin-l"><?= $page->title()->html() ?></h1>
     <dl>
-      <dt><h5>Published</h5></dt>
+      <dt><h5 class="no-mb color-grey">Published</h5></dt>
       <dd><h6><time class="article-date" datetime="<?= $page->date() ?>"><?= $page->date() ?></time></h6></dd>
     </dl>
       <?php if($author = $page->author()->toUser()): ?>
         <dl>
-          <dt><h5>By</h5></dt>
+          <dt><h5 class="color-grey">By</h5></dt>
           <dd><h6><?= $author->name() ?></h6></dd>
       </dl>
       <?php endif ?>
@@ -43,8 +43,13 @@
     <?php if (!empty($tags)): ?>
       <ul class="article-tags margin-m">
         <?php foreach ($tags as $tag): ?>
-        <li>
-          <a href="<?= $page->parent()->url(['params' => ['tag' => $tag]]) ?>"><?= html($tag) ?></a>
+        <li class="inline-block">
+          <a class="bg-blue" href="<?= $page->parent()->url(['params' => ['tag' => $tag]]) ?>">
+            <?= html($tag) ?>
+            <div class="hover-show inline-block" style="align-self:center; margin-left: 3px; margin-right: -3px;" >
+              <?= svg('assets/icons/tiny-arrow-right.svg') ?>
+            </div>
+          </a>
         </li>
         <?php endforeach ?>
       </ul>
@@ -59,9 +64,9 @@
     <?= $page->text()->toBlocks() ?>
   </div>
 </article>
-<?php if (!empty($page->footnotes())): ?>
+<?php if ($page->footnotes()->isNotEmpty()): ?>
 <footer class="article-footer bg-white bt-tan" >
-  <div class="grid container padding" style="--gutter: 1.5vw">
+  <div class="grid container padding" style="--gutter: 3vw">
     <h5 class="column color-grey" style="--columns: 5">Footnotes</h5>
     <div class="article-footnotes column color-grey" style="--columns: 7">
       <?= $page->footnotes()->toBlocks() ?>

@@ -417,58 +417,67 @@
     display: block;
   }
 }
-
-.album-gallery {
-  line-height: 0;
-  columns: 1;
-  column-gap: 1.5rem;
+figure {
+  filter: grayscale(1);
+  transition: filter 250ms ease-in;
 }
-.album-gallery li {
-  display: block;
-  margin-bottom: 1.5rem;
-  break-inside: avoid;
+figure:hover {
+  filter: grayscale(0);
 }
-@media screen and (min-width: 60rem) {
-  .album-gallery {
-    columns: 2;
-  }
+.main > .padding {
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
-.shopify-buy__product {
+.shopify-placeholder {
+  transform: scaleY(.5); 
+  transform-origin: top;
+  width: 100%;
+  max-width: 320px;
+  opacity: 0;
+  transition: transform 300ms ease-in, opacity 600ms ease-in;
+}
+.shopify-placeholder.shopify-buy-frame {
+  transform: scaleY(1);
+  opacity: 1;
+}
+
+.shopify-buy__product label {
+  font-family: var(--font-family-eyebrow);
+  letter-spacing: 0.02em;
+  font-size: 0.75rem;
+  margin-bottom: .7vw;
+  display: inline-block;
+  text-transform: uppercase;
+  color: var(--color-grey);
  
 }
 .shopify-buy__option-select-wrapper {
   position: relative;
 }
-.shopify-buy__option-select__select {
+.shopify-buy__product .shopify-buy__option-select__select {
   color: var(--color-black);
   appearance: none;
   width: 100%;
   padding: var(--padding-sm);
-  background: var(--color-tan);
+  background: var(--color-soft-blue);
   border: 0px;
   font-family: var(--font-family-sans);
   font-size: 1rem;
-  margin-bottom: 1vw;
   letter-spacing: .05rem;
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius) var(--border-radius) 0px 0px;
+  border-bottom: var(--border) var(--color-white);
 }
-.visuallyhidden {
-  display: none;
-}
-.shopify-buy__select-icon {
+.shopify-buy__product .shopify-buy__select-icon {
   position: absolute;
   pointer-events: none;
   height: 20px;
   width: 20px;
   right: 1.5vw;
   top: 50%;
-  margin-top: -5px;
+  margin-top: 0px;
   transform: translateY(-50%);
 }
-.shopify-buy__btn {
-  background: var(--color-coral);
-  padding: var(--padding-sm);
-  width: 100%;
-  border-radius: var(--border-radius);
+.shopify-buy__product .shopify-buy__btn {
+  border-radius: 0px 0px var(--border-radius) var(--border-radius);
 }

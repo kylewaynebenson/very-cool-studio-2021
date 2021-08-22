@@ -12,9 +12,13 @@
 <section class="gallery">
   <?php foreach ($gallery->images() as $image): ?>
   <figure>
-    <a href="<?= $image->link()->or($image->url()) ?>">
-      <?= $image->crop(600, 800) ?>
-    </a>
+    <?php if ($image->link()->isNotEmpty()): ?>
+      <a href="<?= $image->link() ?>">
+        <?= $image ?>
+      </a>
+    <?php else: ?>
+    <?= $image ?>
+    <?php endif ?>
   </figure>
   <?php endforeach ?>
 </section>

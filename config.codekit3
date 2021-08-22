@@ -157,6 +157,18 @@
       "oF" : 0,
       "pg" : 0
     },
+    "\/assets\/css\/templates\/home-min.css" : {
+      "aP" : 1,
+      "bl" : 0,
+      "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/css\/templates\/home-min-min.css",
+      "oF" : 0,
+      "pg" : 0
+    },
     "\/assets\/css\/templates\/home.css" : {
       "aP" : 1,
       "bl" : 0,
@@ -265,6 +277,36 @@
       "oF" : 0,
       "pg" : 0
     },
+    "\/assets\/icons\/align-center.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/icons\/align-center.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/assets\/icons\/align-left.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/icons\/align-left.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/assets\/icons\/align-right.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/icons\/align-right.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
     "\/assets\/icons\/arrow-left.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -338,6 +380,16 @@
       "plM" : 52780316221407,
       "prP" : 0
     },
+    "\/assets\/icons\/tiny-arrow-right.svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/assets\/icons\/tiny-arrow-right.svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
     "\/assets\/icons\/trialfonts.svg" : {
       "ft" : 2097152,
       "miP" : 0,
@@ -368,27 +420,18 @@
       "plM" : 52780316221407,
       "prP" : 0
     },
-    "\/assets\/js\/font-min.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
+    "\/assets\/images\/share-image.png" : {
+      "ft" : 32768,
+      "iS" : 132759,
       "oA" : 0,
-      "oAP" : "\/assets\/js\/font-min-min.js",
+      "oAP" : "\/assets\/images\/share-image.png",
       "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
-    "\/assets\/js\/font.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/assets\/js\/font-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
     },
     "\/assets\/js\/fontsampler-skin.js" : {
       "bF" : 0,
@@ -434,17 +477,6 @@
       "sC" : 3,
       "tS" : 0
     },
-    "\/assets\/js\/lightbox.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/assets\/js\/lightbox-min.js",
-      "oF" : 0,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/assets\/js\/opentype-inspector-min.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -474,6 +506,17 @@
       "mi" : 1,
       "oA" : 0,
       "oAP" : "\/assets\/js\/prism-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/assets\/js\/theme-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/assets\/js\/theme-min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -3145,6 +3188,342 @@
       "oAP" : "\/assets\/webfonts\/gooper\/VCGooperText-SemiBoldItalic.woff2",
       "oF" : 0
     },
+    "\/assets\/webfonts\/honey\/VCHoney-Black.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-Black.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-Black.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-Black.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-BlackBanner.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-BlackBanner.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-BlackBanner.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-BlackBanner.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-BlackDeck.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-BlackDeck.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-BlackDeck.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-BlackDeck.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-Bold.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-Bold.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-Bold.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-Bold.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-BoldBanner.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-BoldBanner.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-BoldBanner.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-BoldBanner.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-BoldDeck.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-BoldDeck.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-BoldDeck.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-BoldDeck.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-Extrabold.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-Extrabold.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-Extrabold.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-Extrabold.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-ExtraboldBanner.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-ExtraboldBanner.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-ExtraboldBanner.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-ExtraboldBanner.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-ExtraboldDeck.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-ExtraboldDeck.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-ExtraboldDeck.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-ExtraboldDeck.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-Light.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-Light.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-Light.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-Light.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-LightBanner.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-LightBanner.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-LightBanner.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-LightBanner.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-LightDeck.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-LightDeck.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-LightDeck.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-LightDeck.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-Regular.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-Regular.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-Regular.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-Regular.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-RegularBanner.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-RegularBanner.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-RegularBanner.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-RegularBanner.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-RegularDeck.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-RegularDeck.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-RegularDeck.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-RegularDeck.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-SemiBold.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-SemiBold.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-SemiBold.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-SemiBold.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-SemiBoldBanner.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-SemiBoldBanner.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-SemiBoldBanner.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-SemiBoldBanner.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-SemiBoldDeck.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-SemiBoldDeck.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-SemiBoldDeck.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-SemiBoldDeck.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-Thin.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-Thin.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-Thin.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-Thin.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-ThinBanner.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-ThinBanner.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-ThinBanner.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-ThinBanner.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-ThinDeck.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-ThinDeck.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/honey\/VCHoney-ThinDeck.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/honey\/VCHoney-ThinDeck.woff2",
+      "oF" : 0
+    },
     "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Black.woff" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3329,12 +3708,78 @@
       "oO" : 1,
       "oS" : 1
     },
+    "\/content\/_drafts\/trial-terms\/complex.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/_drafts\/trial-terms\/complex.txt",
+      "oF" : 0
+    },
+    "\/content\/_drafts\/trial-terms\/verycool_triallicenseagreement-1.0.pdf" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/_drafts\/trial-terms\/verycool_triallicenseagreement-1.0.pdf",
+      "oF" : 0
+    },
+    "\/content\/_drafts\/trial-terms\/verycool_triallicenseagreement-1.0.pdf.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/_drafts\/trial-terms\/verycool_triallicenseagreement-1.0.pdf.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/1_nudge\/e6xm2iaucaixxem.jpeg" : {
+      "ft" : 16384,
+      "iS" : 695063,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/1_nudge\/e6xm2iaucaixxem.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/1_nudge\/e6xm2iaucaixxem.jpeg.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/1_nudge\/e6xm2iaucaixxem.jpeg.txt",
+      "oF" : 0
+    },
     "\/content\/1_typefaces\/1_nudge\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/content\/1_typefaces\/1_nudge\/font.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/1_nudge\/nem-makers.png" : {
+      "ft" : 32768,
+      "iS" : 608695,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/1_nudge\/nem-makers.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/1_nudge\/nem-makers.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/1_nudge\/nem-makers.png.txt",
       "oF" : 0
     },
     "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.3.pdf" : {
@@ -3353,14 +3798,6 @@
       "oAP" : "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.3.pdf.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/2_gooper\/.lock" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/.lock",
-      "oF" : 0
-    },
     "\/content\/1_typefaces\/2_gooper\/2103_verycoolstudio_gooper.pdf" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3377,12 +3814,201 @@
       "oAP" : "\/content\/1_typefaces\/2_gooper\/2103_verycoolstudio_gooper.pdf.txt",
       "oF" : 0
     },
+    "\/content\/1_typefaces\/2_gooper\/42619074_2155350121453392_5144387511747861958_n.jpg" : {
+      "ft" : 16384,
+      "iS" : 47984,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/42619074_2155350121453392_5144387511747861958_n.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/2_gooper\/42619074_2155350121453392_5144387511747861958_n.jpg.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/42619074_2155350121453392_5144387511747861958_n.jpg.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/2_gooper\/bm6-chris.jpeg" : {
+      "ft" : 16384,
+      "iS" : 360085,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/bm6-chris.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/2_gooper\/bm6-chris.jpeg.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/bm6-chris.jpeg.txt",
+      "oF" : 0
+    },
     "\/content\/1_typefaces\/2_gooper\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/content\/1_typefaces\/2_gooper\/font.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/2_gooper\/good-garms-image-1.jpeg" : {
+      "ft" : 16384,
+      "iS" : 77540,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/good-garms-image-1.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/2_gooper\/good-garms-image-1.jpeg.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/good-garms-image-1.jpeg.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/2_gooper\/gooperitalic.jpeg" : {
+      "ft" : 16384,
+      "iS" : 120860,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/gooperitalic.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/2_gooper\/gooperitalic.jpeg.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/gooperitalic.jpeg.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/2_gooper\/robertas-pizza.jpg" : {
+      "ft" : 16384,
+      "iS" : 86020,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/robertas-pizza.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/2_gooper\/robertas-pizza.jpg.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/robertas-pizza.jpg.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/2_gooper\/screen-shot-2021-08-19-at-7.22.55-pm.png" : {
+      "ft" : 32768,
+      "iS" : 348235,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/screen-shot-2021-08-19-at-7.22.55-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/2_gooper\/screen-shot-2021-08-19-at-7.22.55-pm.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/screen-shot-2021-08-19-at-7.22.55-pm.png.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/2_gooper\/sonder.png" : {
+      "ft" : 32768,
+      "iS" : 2053697,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/sonder.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/2_gooper\/sonder.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/sonder.png.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/3_cardinal\/cardinal-banzai.png" : {
+      "ft" : 32768,
+      "iS" : 619952,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/3_cardinal\/cardinal-banzai.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/3_cardinal\/cardinal-banzai.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/3_cardinal\/cardinal-banzai.png.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/3_cardinal\/cardinal-jeff-wiggins.png" : {
+      "ft" : 32768,
+      "iS" : 567291,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/3_cardinal\/cardinal-jeff-wiggins.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/3_cardinal\/cardinal-jeff-wiggins.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/3_cardinal\/cardinal-jeff-wiggins.png.txt",
       "oF" : 0
     },
     "\/content\/1_typefaces\/3_cardinal\/font.txt" : {
@@ -3393,52 +4019,94 @@
       "oAP" : "\/content\/1_typefaces\/3_cardinal\/font.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/4_cornbread\/font.txt" : {
+    "\/content\/1_typefaces\/4_honey\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/4_cornbread\/font.txt",
+      "oAP" : "\/content\/1_typefaces\/4_honey\/font.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/5_bruphy\/font.txt" : {
+    "\/content\/1_typefaces\/5_cornbread\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/5_bruphy\/font.txt",
+      "oAP" : "\/content\/1_typefaces\/5_cornbread\/font.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/5_bruphy\/verycoolstudio-bruphy-v3.pdf" : {
+    "\/content\/1_typefaces\/6_bruphy\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/5_bruphy\/verycoolstudio-bruphy-v3.pdf",
+      "oAP" : "\/content\/1_typefaces\/6_bruphy\/font.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/5_bruphy\/verycoolstudio-bruphy-v3.pdf.txt" : {
+    "\/content\/1_typefaces\/6_bruphy\/verycoolstudio-bruphy-v3.pdf" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/5_bruphy\/verycoolstudio-bruphy-v3.pdf.txt",
+      "oAP" : "\/content\/1_typefaces\/6_bruphy\/verycoolstudio-bruphy-v3.pdf",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/6_kansas-casual\/font.txt" : {
+    "\/content\/1_typefaces\/6_bruphy\/verycoolstudio-bruphy-v3.pdf.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/6_kansas-casual\/font.txt",
+      "oAP" : "\/content\/1_typefaces\/6_bruphy\/verycoolstudio-bruphy-v3.pdf.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/font.txt" : {
+    "\/content\/1_typefaces\/7_kansas-casual\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/font.txt",
+      "oAP" : "\/content\/1_typefaces\/7_kansas-casual\/font.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-banzai.png" : {
+      "ft" : 32768,
+      "iS" : 558943,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-banzai.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-banzai.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-banzai.png.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-camp.png" : {
+      "ft" : 32768,
+      "iS" : 1465736,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-camp.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-camp.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-camp.png.txt",
       "oF" : 0
     },
     "\/content\/1_typefaces\/screen-shot-2017-04-05-at-5-08-26-pm.png" : {
@@ -3462,12 +4130,12 @@
       "oAP" : "\/content\/1_typefaces\/screen-shot-2017-04-05-at-5-08-26-pm.png.txt",
       "oF" : 0
     },
-    "\/content\/2_articles\/_drafts\/announcing-very-cool-again\/article.txt" : {
+    "\/content\/1_typefaces\/typefaces.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/2_articles\/_drafts\/announcing-very-cool-again\/article.txt",
+      "oAP" : "\/content\/1_typefaces\/typefaces.txt",
       "oF" : 0
     },
     "\/content\/2_articles\/_drafts\/cardinal-grotesque-italic-design-information\/article.txt" : {
@@ -4629,6 +5297,14 @@
       "oAP" : "\/content\/2_articles\/20210622_nudge-design-information\/voice-deviance.jpg.txt",
       "oF" : 0
     },
+    "\/content\/2_articles\/20210823_announcing-very-cool-again\/article.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20210823_announcing-very-cool-again\/article.txt",
+      "oF" : 0
+    },
     "\/content\/2_articles\/articles.txt" : {
       "cB" : 0,
       "ft" : 8192,
@@ -4782,12 +5458,28 @@
       "oAP" : "\/content\/site.txt",
       "oF" : 0
     },
-    "\/content\/terms\/default.txt" : {
+    "\/content\/terms\/complex.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/terms\/default.txt",
+      "oAP" : "\/content\/terms\/complex.txt",
+      "oF" : 0
+    },
+    "\/content\/terms\/verycool_commerciallicenseagreement-1.1.pdf" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/terms\/verycool_commerciallicenseagreement-1.1.pdf",
+      "oF" : 0
+    },
+    "\/content\/terms\/verycool_commerciallicenseagreement-1.1.pdf.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/terms\/verycool_commerciallicenseagreement-1.1.pdf.txt",
       "oF" : 0
     },
     "\/favicon.ico" : {
@@ -19243,14 +19935,6 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/media\/pages\/articles\/announcing-very-cool\/869f8b41b0-1629055195\/.jobs\/screen-shot-2017-03-31-at-3-38-09-pm-1-864x.gif.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/articles\/announcing-very-cool\/869f8b41b0-1629055195\/.jobs\/screen-shot-2017-03-31-at-3-38-09-pm-1-864x.gif-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
     "\/media\/pages\/articles\/announcing-very-cool\/869f8b41b0-1629055195\/.jobs\/screen-shot-2017-03-31-at-3-38-09-pm-1-1408x.gif.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -19264,6 +19948,16 @@
       "iS" : 3370,
       "oA" : 0,
       "oAP" : "\/media\/pages\/articles\/announcing-very-cool\/869f8b41b0-1629055195\/screen-shot-2017-03-31-at-3-38-09-pm-1-76x76.gif",
+      "oF" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/announcing-very-cool\/869f8b41b0-1629055195\/screen-shot-2017-03-31-at-3-38-09-pm-1-864x.gif" : {
+      "ft" : 4194304,
+      "iS" : 148025,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/announcing-very-cool\/869f8b41b0-1629055195\/screen-shot-2017-03-31-at-3-38-09-pm-1-864x.gif",
       "oF" : 0,
       "opt" : 0,
       "ou" : "lpckwebp-none",
@@ -19625,14 +20319,6 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/media\/pages\/articles\/bruphy-design-information\/89cdabb08e-1629235852\/.jobs\/1806-handpaintedpromise-frame-2-864x.gif.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/articles\/bruphy-design-information\/89cdabb08e-1629235852\/.jobs\/1806-handpaintedpromise-frame-2-864x.gif-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
     "\/media\/pages\/articles\/bruphy-design-information\/89cdabb08e-1629235852\/.jobs\/1806-handpaintedpromise-frame-2-1408x.gif.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -19656,6 +20342,16 @@
       "iS" : 5436,
       "oA" : 0,
       "oAP" : "\/media\/pages\/articles\/bruphy-design-information\/89cdabb08e-1629235852\/1806-handpaintedpromise-frame-2-76x76.gif",
+      "oF" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/bruphy-design-information\/89cdabb08e-1629235852\/1806-handpaintedpromise-frame-2-864x.gif" : {
+      "ft" : 4194304,
+      "iS" : 145128,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/bruphy-design-information\/89cdabb08e-1629235852\/1806-handpaintedpromise-frame-2-864x.gif",
       "oF" : 0,
       "opt" : 0,
       "ou" : "lpckwebp-none",
@@ -20186,14 +20882,6 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/media\/pages\/articles\/cardinal-grotesque-design-information\/9eecd45842-1628958301\/.jobs\/1-losgal-864x.png.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/9eecd45842-1628958301\/.jobs\/1-losgal-864x.png-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
     "\/media\/pages\/articles\/cardinal-grotesque-design-information\/9eecd45842-1628958301\/.jobs\/1-losgal-1408x.png.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -20207,6 +20895,19 @@
       "iS" : 13429,
       "oA" : 0,
       "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/9eecd45842-1628958301\/1-losgal-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/cardinal-grotesque-design-information\/9eecd45842-1628958301\/1-losgal-864x.png" : {
+      "ft" : 32768,
+      "iS" : 629944,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/9eecd45842-1628958301\/1-losgal-864x.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -21346,14 +22047,6 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/media\/pages\/articles\/gooper-design-information\/42df6125c5-1628897799\/.jobs\/1804-blog-oldstyle-864x.jpg.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/articles\/gooper-design-information\/42df6125c5-1628897799\/.jobs\/1804-blog-oldstyle-864x.jpg-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
     "\/media\/pages\/articles\/gooper-design-information\/42df6125c5-1628897799\/.jobs\/1804-blog-oldstyle-1408x.jpg.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -21381,6 +22074,19 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/media\/pages\/articles\/gooper-design-information\/42df6125c5-1628897799\/1804-blog-oldstyle-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gooper-design-information\/42df6125c5-1628897799\/1804-blog-oldstyle-864x.jpg" : {
+      "ft" : 16384,
+      "iS" : 18460,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gooper-design-information\/42df6125c5-1628897799\/1804-blog-oldstyle-864x.jpg",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -23306,14 +24012,6 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/media\/pages\/articles\/kansas-casual-design-information\/d2038f2a23-1629054027\/.jobs\/kansas-casual-specs-2-864x.jpg.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/articles\/kansas-casual-design-information\/d2038f2a23-1629054027\/.jobs\/kansas-casual-specs-2-864x.jpg-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
     "\/media\/pages\/articles\/kansas-casual-design-information\/d2038f2a23-1629054027\/.jobs\/kansas-casual-specs-2-1408x.jpg.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -23328,6 +24026,19 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/media\/pages\/articles\/kansas-casual-design-information\/d2038f2a23-1629054027\/kansas-casual-specs-2-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/kansas-casual-design-information\/d2038f2a23-1629054027\/kansas-casual-specs-2-864x.jpg" : {
+      "ft" : 16384,
+      "iS" : 34937,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/kansas-casual-design-information\/d2038f2a23-1629054027\/kansas-casual-specs-2-864x.jpg",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -24466,14 +25177,6 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/media\/pages\/articles\/nudge-design-information\/e98950e100-1628895671\/.jobs\/2105-nudge-specs-08-864x.jpg.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/articles\/nudge-design-information\/e98950e100-1628895671\/.jobs\/2105-nudge-specs-08-864x.jpg-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
     "\/media\/pages\/articles\/nudge-design-information\/e98950e100-1628895671\/.jobs\/2105-nudge-specs-08-1408x.jpg.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -24507,6 +25210,27 @@
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
+    },
+    "\/media\/pages\/articles\/nudge-design-information\/e98950e100-1628895671\/2105-nudge-specs-08-864x.jpg" : {
+      "ft" : 16384,
+      "iS" : 144006,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/nudge-design-information\/e98950e100-1628895671\/2105-nudge-specs-08-864x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/terms\/befc537ccd-1629490587\/verycool_commerciallicenseagreement-1.1.pdf" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/terms\/befc537ccd-1629490587\/verycool_commerciallicenseagreement-1.1.pdf",
+      "oF" : 0
     },
     "\/media\/pages\/typefaces\/6e9e9cc837-1629017438\/.jobs\/screen-shot-2017-04-05-at-5-08-26-pm-38x38.png.json" : {
       "ft" : 524288,
@@ -24550,6 +25274,927 @@
       "iS" : 55411,
       "oA" : 0,
       "oAP" : "\/media\/pages\/typefaces\/6e9e9cc837-1629017438\/screen-shot-2017-04-05-at-5-08-26-pm-864x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/.jobs\/cardinal-banzai-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/.jobs\/cardinal-banzai-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/.jobs\/cardinal-banzai-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/.jobs\/cardinal-banzai-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/.jobs\/cardinal-banzai-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/.jobs\/cardinal-banzai-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/cardinal-banzai-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 5004,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/cardinal-banzai-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/cardinal-banzai-1408x.png" : {
+      "ft" : 32768,
+      "iS" : 601756,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/cardinal-banzai-1408x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/cardinal-banzai.png" : {
+      "ft" : 32768,
+      "iS" : 619952,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/cardinal-banzai.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/.jobs\/cardinal-jeff-wiggins-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/.jobs\/cardinal-jeff-wiggins-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/.jobs\/cardinal-jeff-wiggins-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/.jobs\/cardinal-jeff-wiggins-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/.jobs\/cardinal-jeff-wiggins-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/.jobs\/cardinal-jeff-wiggins-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/cardinal-jeff-wiggins-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 4058,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/cardinal-jeff-wiggins-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/cardinal-jeff-wiggins-1408x.png" : {
+      "ft" : 32768,
+      "iS" : 383978,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/cardinal-jeff-wiggins-1408x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/cardinal-jeff-wiggins.png" : {
+      "ft" : 32768,
+      "iS" : 567291,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/cardinal-jeff-wiggins.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/.jobs\/42619074-2155350121453392-5144387511747861958-n-38x38.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/.jobs\/42619074-2155350121453392-5144387511747861958-n-38x38.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/.jobs\/42619074-2155350121453392-5144387511747861958-n-352x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/.jobs\/42619074-2155350121453392-5144387511747861958-n-352x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/42619074_2155350121453392_5144387511747861958_n.jpg" : {
+      "ft" : 16384,
+      "iS" : 47984,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/42619074_2155350121453392_5144387511747861958_n.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/42619074-2155350121453392-5144387511747861958-n-76x76.jpg" : {
+      "ft" : 16384,
+      "iS" : 2711,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/42619074-2155350121453392-5144387511747861958-n-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/42619074-2155350121453392-5144387511747861958-n-864x.jpg" : {
+      "ft" : 16384,
+      "iS" : 57129,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/42619074-2155350121453392-5144387511747861958-n-864x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/42619074-2155350121453392-5144387511747861958-n-1408x.jpg" : {
+      "ft" : 16384,
+      "iS" : 63458,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/42619074-2155350121453392-5144387511747861958-n-1408x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/.jobs\/gooperitalic-38x38.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/.jobs\/gooperitalic-38x38.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/.jobs\/gooperitalic-352x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/.jobs\/gooperitalic-352x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/gooperitalic-76x76.jpg" : {
+      "ft" : 16384,
+      "iS" : 2778,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/gooperitalic-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/gooperitalic-700x.jpg" : {
+      "ft" : 16384,
+      "iS" : 60272,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/gooperitalic-700x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/gooperitalic-800x.jpg" : {
+      "ft" : 16384,
+      "iS" : 74349,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/gooperitalic-800x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/gooperitalic-864x.jpg" : {
+      "ft" : 16384,
+      "iS" : 82647,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/gooperitalic-864x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/gooperitalic-1408x.jpg" : {
+      "ft" : 16384,
+      "iS" : 127593,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/gooperitalic-1408x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/gooperitalic.jpeg" : {
+      "ft" : 16384,
+      "iS" : 120860,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/39eb8003bb-1629359277\/gooperitalic.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/.jobs\/good-garms-image-1-38x38.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/.jobs\/good-garms-image-1-38x38.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/.jobs\/good-garms-image-1-352x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/.jobs\/good-garms-image-1-352x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/good-garms-image-1-76x76.jpg" : {
+      "ft" : 16384,
+      "iS" : 2157,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/good-garms-image-1-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/good-garms-image-1-700x.jpg" : {
+      "ft" : 16384,
+      "iS" : 29773,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/good-garms-image-1-700x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/good-garms-image-1-800x.jpg" : {
+      "ft" : 16384,
+      "iS" : 35238,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/good-garms-image-1-800x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/good-garms-image-1-864x.jpg" : {
+      "ft" : 16384,
+      "iS" : 38404,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/good-garms-image-1-864x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/good-garms-image-1-1408x.jpg" : {
+      "ft" : 16384,
+      "iS" : 71461,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/good-garms-image-1-1408x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/good-garms-image-1.jpeg" : {
+      "ft" : 16384,
+      "iS" : 77540,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/68ca062d57-1629359277\/good-garms-image-1.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/71aad3564d-1629426213\/.jobs\/robertas-pizza-38x38.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/71aad3564d-1629426213\/.jobs\/robertas-pizza-38x38.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/71aad3564d-1629426213\/.jobs\/robertas-pizza-352x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/71aad3564d-1629426213\/.jobs\/robertas-pizza-352x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/71aad3564d-1629426213\/robertas-pizza-76x76.jpg" : {
+      "ft" : 16384,
+      "iS" : 3122,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/71aad3564d-1629426213\/robertas-pizza-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/71aad3564d-1629426213\/robertas-pizza-864x.jpg" : {
+      "ft" : 16384,
+      "iS" : 81819,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/71aad3564d-1629426213\/robertas-pizza-864x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/71aad3564d-1629426213\/robertas-pizza-1408x.jpg" : {
+      "ft" : 16384,
+      "iS" : 100533,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/71aad3564d-1629426213\/robertas-pizza-1408x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/71aad3564d-1629426213\/robertas-pizza.jpg" : {
+      "ft" : 16384,
+      "iS" : 86020,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/71aad3564d-1629426213\/robertas-pizza.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/.jobs\/sonder-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/.jobs\/sonder-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/.jobs\/sonder-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/.jobs\/sonder-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/sonder-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 11517,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/sonder-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/sonder-864x.png" : {
+      "ft" : 32768,
+      "iS" : 824715,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/sonder-864x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/sonder-1408x.png" : {
+      "ft" : 32768,
+      "iS" : 1987751,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/sonder-1408x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/sonder.png" : {
+      "ft" : 32768,
+      "iS" : 2053697,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/sonder.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/.jobs\/bm6-chris-38x38.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/.jobs\/bm6-chris-38x38.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/.jobs\/bm6-chris-352x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/.jobs\/bm6-chris-352x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/bm6-chris-76x76.jpg" : {
+      "ft" : 16384,
+      "iS" : 3647,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/bm6-chris-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/bm6-chris-864x.jpg" : {
+      "ft" : 16384,
+      "iS" : 310289,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/bm6-chris-864x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/bm6-chris-1408x.jpg" : {
+      "ft" : 16384,
+      "iS" : 349293,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/bm6-chris-1408x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/bm6-chris.jpeg" : {
+      "ft" : 16384,
+      "iS" : 360085,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/bm6-chris.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/ed1f9c5649-1629426234\/.jobs\/screen-shot-2021-08-19-at-7-22-55-pm-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/ed1f9c5649-1629426234\/.jobs\/screen-shot-2021-08-19-at-7-22-55-pm-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/ed1f9c5649-1629426234\/.jobs\/screen-shot-2021-08-19-at-7-22-55-pm-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/ed1f9c5649-1629426234\/.jobs\/screen-shot-2021-08-19-at-7-22-55-pm-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/ed1f9c5649-1629426234\/screen-shot-2021-08-19-at-7-22-55-pm-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 6671,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/ed1f9c5649-1629426234\/screen-shot-2021-08-19-at-7-22-55-pm-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/ed1f9c5649-1629426234\/screen-shot-2021-08-19-at-7-22-55-pm-864x.png" : {
+      "ft" : 32768,
+      "iS" : 367049,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/ed1f9c5649-1629426234\/screen-shot-2021-08-19-at-7-22-55-pm-864x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/ed1f9c5649-1629426234\/screen-shot-2021-08-19-at-7-22-55-pm-1408x.png" : {
+      "ft" : 32768,
+      "iS" : 280315,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/ed1f9c5649-1629426234\/screen-shot-2021-08-19-at-7-22-55-pm-1408x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/ed1f9c5649-1629426234\/screen-shot-2021-08-19-at-7.22.55-pm.png" : {
+      "ft" : 32768,
+      "iS" : 348235,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/ed1f9c5649-1629426234\/screen-shot-2021-08-19-at-7.22.55-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/1c443f8718-1629426442\/.jobs\/kansas-casual-camp-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/1c443f8718-1629426442\/.jobs\/kansas-casual-camp-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/1c443f8718-1629426442\/.jobs\/kansas-casual-camp-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/1c443f8718-1629426442\/.jobs\/kansas-casual-camp-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/1c443f8718-1629426442\/kansas-casual-camp-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 12081,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/1c443f8718-1629426442\/kansas-casual-camp-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/1c443f8718-1629426442\/kansas-casual-camp-864x.png" : {
+      "ft" : 32768,
+      "iS" : 1465736,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/1c443f8718-1629426442\/kansas-casual-camp-864x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/1c443f8718-1629426442\/kansas-casual-camp-1408x.png" : {
+      "ft" : 32768,
+      "iS" : 1136176,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/1c443f8718-1629426442\/kansas-casual-camp-1408x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/1c443f8718-1629426442\/kansas-casual-camp.png" : {
+      "ft" : 32768,
+      "iS" : 1465736,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/1c443f8718-1629426442\/kansas-casual-camp.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/.jobs\/kansas-casual-banzai-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/.jobs\/kansas-casual-banzai-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/.jobs\/kansas-casual-banzai-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/.jobs\/kansas-casual-banzai-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/.jobs\/kansas-casual-banzai-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/.jobs\/kansas-casual-banzai-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/kansas-casual-banzai-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 5532,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/kansas-casual-banzai-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/kansas-casual-banzai-1408x.png" : {
+      "ft" : 32768,
+      "iS" : 831109,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/kansas-casual-banzai-1408x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/kansas-casual-banzai.png" : {
+      "ft" : 32768,
+      "iS" : 558943,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/kansas-casual-banzai.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/.jobs\/e6xm2iaucaixxem-38x38.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/.jobs\/e6xm2iaucaixxem-38x38.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/.jobs\/e6xm2iaucaixxem-352x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/.jobs\/e6xm2iaucaixxem-352x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/e6xm2iaucaixxem-76x76.jpg" : {
+      "ft" : 16384,
+      "iS" : 3120,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/e6xm2iaucaixxem-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/e6xm2iaucaixxem-864x.jpg" : {
+      "ft" : 16384,
+      "iS" : 200623,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/e6xm2iaucaixxem-864x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/e6xm2iaucaixxem-1408x.jpg" : {
+      "ft" : 16384,
+      "iS" : 497886,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/e6xm2iaucaixxem-1408x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/e6xm2iaucaixxem.jpeg" : {
+      "ft" : 16384,
+      "iS" : 695063,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/e6xm2iaucaixxem.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/.jobs\/nem-makers-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/.jobs\/nem-makers-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/.jobs\/nem-makers-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/.jobs\/nem-makers-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/nem-makers-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 7499,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/nem-makers-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/nem-makers-864x.png" : {
+      "ft" : 32768,
+      "iS" : 609176,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/nem-makers-864x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/nem-makers-1408x.png" : {
+      "ft" : 32768,
+      "iS" : 413029,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/nem-makers-1408x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/nem-makers.png" : {
+      "ft" : 32768,
+      "iS" : 608695,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/nem-makers.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -24855,6 +26500,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/site\/blueprints\/pages\/articles.yml",
+      "oF" : 0
+    },
+    "\/site\/blueprints\/pages\/complex.yml" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/site\/blueprints\/pages\/complex.yml",
       "oF" : 0
     },
     "\/site\/blueprints\/pages\/default.yml" : {
@@ -27862,6 +29515,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/site\/templates\/articles.php",
+      "oF" : 0
+    },
+    "\/site\/templates\/complex.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/site\/templates\/complex.php",
       "oF" : 0
     },
     "\/site\/templates\/default.php" : {

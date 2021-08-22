@@ -33,6 +33,18 @@
             <?php endforeach ?>
           </ul>
         </figure>
+        <?php elseif ($image = $block->type() == "image"): ?>
+          <figure>
+            <?php foreach ($block->image()->toFiles() as $image): ?>
+              <?php if ($image->link()->isNotEmpty()): ?>
+                <a href="<?= $image->link() ?>">
+                  <?= $image ?>
+                </a>
+              <?php else: ?>
+              <?= $image ?>
+              <?php endif ?>
+            <?php endforeach ?>
+        </figure>
         <?php else: ?>
           <?= $block ?>
         <?php endif ?>

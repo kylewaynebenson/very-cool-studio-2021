@@ -20,9 +20,6 @@
 
 ?>
 <?php snippet('header') ?>
-<?= js([
-    'assets/js/font.js',
-  ]) ?>
   <?php
     $path  = './assets/webfonts/' . $page->slug();
     $files = glob($path . '/*.{woff}', GLOB_BRACE);
@@ -47,7 +44,7 @@
     'assets/js/fontsampler.js',
     'assets/js/fontsampler-skin.js'
   ]) ?>
-<header class="grid padding" style="--gutter: 6vw;">
+<header class="grid padding" style="--gutter: 3vw;">
   <div class="column" style="--columns: 4">
     <h1 class="margin-l">
       <?= $page->title() ?>
@@ -64,10 +61,12 @@
         <dd><h6><?= $page->charset() ?></h6></dd>
       </dl>
     <? endif; ?>
+    <?php if ($page->released()->isNotEmpty()): ?>
     <dl>
       <dt><h5 class="color-grey">Released</h5></dt>
       <dd><h6><?= $page->released() ?></h6></dd>
     </dl>
+    <? endif; ?>
     <?php if ($page->designer()->isNotEmpty()): ?>
       <dl>
         <dt><h5 class="color-grey">Designer</h5></dt>
@@ -78,7 +77,8 @@
       <dt><h5 class="color-grey">Styles</h5></dt>
       <dd><h6><?php echo $count; ?></h6></dd>
     </dl>
-    <div class="grid margin-l" style="--gutter: 1vw;">
+    <?php if ($page->shopify()->isNotEmpty() || $page->futurefonts()->isNotEmpty()): ?>
+    <div class="grid-locked margin-l" style="--gutter: 1vw;">
       <a class="block text-center" href="#trial-fonts" style="max-width:140px;">
         <div class="margin-s">  
           <?= svg('assets/icons/trialfonts.svg') ?>
@@ -98,26 +98,31 @@
       </a>
       <? endif; ?>
     </div>
+    <? endif; ?>
   </div>
-  <div class="column" style="--columns: 5">
+  <div class="column" style="--columns: 4">
     <div class="text">
       <?= $page->text() ?>
     </div>
     <?php if ($page->designinfo()->isNotEmpty()): ?>
       <div class="design-info">
       <a class="link" href="/<?= $page->designinfo() ?>">
-      Read more about <?= $page->title() ?>'s design process
+      Read about <?= $page->title() ?>’s design process
       </a>
       </div>
     <? endif; ?>
   </div>
-
+  <div class="column" style="--columns: 1">
+  </div>
   <div class="column" style="--columns: 3">
     <?php if ($page->shopify()->isNotEmpty()): ?>
       <div id="product-component-<?= $page->shopify() ?>" class="shopify-placeholder"></div>
+      <a href="<?= $pages->find('About')->url() ?>#license" class="link">
+        Trouble picking a license?
+      </a>
     <?php endif ?>
     <?php if ($page->futurefonts()->isNotEmpty()): ?>
-      <a href="<?= $page->futurefonts() ?>" class="block padding-sm text-center rounded-corners bg-blue">
+      <a href="<?= $page->futurefonts() ?>" class="block padding-sm text-center rounded-corners bg-black color-white">
         <h5 class="no-mb">
           License on Future Fonts
         </h5>
@@ -201,7 +206,7 @@
             // A set of checkboxes; NOTE: No validation whatsoever if the font
             // supports these opentype features
             opentype: {
-                choices: ["liga|fi", "frac|½"],
+                choices: ["swsh|Sw", "frac|½"],
                 init: ["liga"],
                 label: ""
             }
@@ -215,19 +220,23 @@
     <?php if ($page->features()->isNotEmpty()): ?>
     <aside class="bt-blue bg-blue-gradient">
       <div class="padding container grid" style="--gutter: 1vw;">
-        <h2 id="features" class="column" style="--columns:3;">Opentype Features</h2>
-        <div class="grid column" style="--gutter: 1vw;--columns:9;">
+        <h2 id="features" class="column" style="--columns:3;">Opentype features</h2>
+        <div class="grid-locked column" style="--gutter: 1vw;--columns:9;">
         <?php 
           // using the `toStructure()` method, we create a structure collection
           $items = $page->features()->toStructure();
           // we can then loop through the entries and render the individual fields
           foreach ($items as $item): ?>
             <h5 class="column color-grey" style="--columns:1; margin-top: 4px;"><?= $item->feature() ?></h5>
-            <div class="column margin-s" style="--columns:5;">
+            <?php if (strlen($item->sample()) < 5): ?>
+              <div class="column margin-s" style="--columns:5;">
+            <?php else: ?>
+              <div class="column margin-s" style="--columns:11;">
+            <?php endif ?>
               <h1 class="no-mb inline-block feature-off color-grey" style="font-feature-settings: '<?= $item->feature() ?>' 0; font-family:'<?= $item->font() ?>';">
               <?= $item->sample() ?>
               </h1>
-              <h1 class="no-mb inline-block feature-on" style="font-feature-settings: '<?= $item->feature() ?>' 1; font-family:'<?= $item->font() ?>';">
+              <h1 contenteditable class="no-mb inline-block feature-on" style="font-feature-settings: '<?= $item->feature() ?>' 1; font-family:'<?= $item->font() ?>'; max-width: 100%; text-overflow: ellipsis;">
               <?= $item->sample() ?>
               </h1>
             </div>
@@ -236,18 +245,27 @@
       </div>
     </aside>
     <?php endif ?>
-  <div class="column" style="--columns: 3">
-    <ul class="album-gallery">
-      <?php foreach ($gallery as $image): ?>
-      <li>
-        <a href="<?= $image->url() ?>" data-lightbox>
-          <figure class="img" style="--w:<?= $image->width() ?>;--h:<?= $image->height() ?>">
-            <?= $image->resize(800) ?>
-          </figure>
+    <?php if ($gallery->isNotEmpty()): ?>
+    <aside class="bt-blue bg-blue-gradient in-use">
+      <div class="padding container grid" style="--gutter: .5vw;">
+        <h2 id="in-use" class="column" style="--columns:3;"><?= $page->title() ?> in use</h2>
+        <div class="column grid" style="--columns:9;--gutter: 1vw;">
+        <?php foreach ($gallery as $image): ?>
+          <?php if ($image->link()->isNotEmpty()): ?>
+            <a class="inline-block column" style="--columns:6;" href="<?= $image->link() ?>" target="_blank">
+              <figure  style="--w:<?= $image->width() ?>;--h:<?= $image->height() ?>;">
+                <?= $image ?>
+                <figcaption>
+                <?= $image->caption() ?>
+                </figcaption>
+              </figure>
+            </a>
+          <?php endif ?>
         </a>
-      </li>
-      <?php endforeach ?>
-    </ul>
-  </div>
+        <?php endforeach ?>
+        </div>
+      </div>
+    </aside>
+    <?php endif ?>
 </article>
 <?php snippet('footer') ?>
