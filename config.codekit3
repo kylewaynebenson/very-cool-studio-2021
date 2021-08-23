@@ -5375,19 +5375,6 @@
       "oAP" : "\/content\/3_about\/futurefonts.png.txt",
       "oF" : 0
     },
-    "\/content\/3_about\/table.jpg" : {
-      "ft" : 16384,
-      "iS" : 16965,
-      "jF" : 0,
-      "oA" : 0,
-      "oAP" : "\/content\/3_about\/table.jpg",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/content\/3_about\/table.jpg.txt" : {
       "cB" : 0,
       "ft" : 8192,
@@ -5423,8 +5410,8 @@
       "oA" : 0,
       "oAP" : "\/content\/3_about\/verycool.png",
       "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
+      "oIPL" : 1,
+      "opt" : 1,
       "oT" : 1,
       "ou" : "lpckwebp-none",
       "q" : 100,
