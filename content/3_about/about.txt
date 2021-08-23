@@ -21,7 +21,7 @@ Faqs:
     [{"content":{"text":"<a name=\"license\">Our<\/a> licensing is based on one metric: company size. Sounds too simple to be true? Well, yeah, I guess it is. You should read the full [terms](\/terms) for the complicated bits. But also, no, it's pretty simple! Industry standard font licensing is based on how many computers the fonts are installed on, or how many people visit the app or website the font is hosted on. Under that model, even in good faith, it's pretty safe to say most people aren't tracking to make sure they stay within their font license. Our fonts are licensed based on size of company. A few recent foundries have adopted this model. It makes the licensing easier to understand, and by extension of that follow."},"id":"41ca0673-b865-4d29-bf96-676e0d85b35f","isHidden":false,"type":"markdown"}]
 - 
   question: >
-    What languages or scripts to your fonts
+    What languages or scripts do your fonts
     support?
   answer: |
     [{"content":{"text":"<p>Each type family's page includes details about all the languages it covers. Our fonts generally cover the standard Latin character set.<\/p>"},"id":"b0b83cfa-0b95-4b6a-84e1-377756bde1af","isHidden":false,"type":"text"}]
