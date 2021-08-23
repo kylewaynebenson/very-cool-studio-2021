@@ -83,7 +83,7 @@
 </style>
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="<?= url('favicon.ico') ?>">
+<link rel="shortcut icon" type="image/x-icon" href="<?= kirby()->urls()->assets() .'/images/favicon.png' ?>">
 </head>
 <?php if ($page->parents()->count()): ?>
   <body class="page-<?= $page->uid(); ?> page-<?= $page->parent()->uid(); ?>">

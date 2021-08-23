@@ -432,6 +432,27 @@
       "plM" : 52780316221407,
       "prP" : 0
     },
+    "\/assets\/images\/favicon.ico" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/images\/favicon.ico",
+      "oF" : 0
+    },
+    "\/assets\/images\/favicon.png" : {
+      "ft" : 32768,
+      "iS" : 1440,
+      "oA" : 0,
+      "oAP" : "\/assets\/images\/favicon.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/assets\/images\/share-image.png" : {
       "ft" : 32768,
       "iS" : 132759,
@@ -5493,27 +5514,6 @@
       "oA" : 0,
       "oAP" : "\/content\/terms\/verycool_commerciallicenseagreement-1.1.pdf.txt",
       "oF" : 0
-    },
-    "\/favicon.ico" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/favicon.ico",
-      "oF" : 0
-    },
-    "\/favicon.png" : {
-      "ft" : 32768,
-      "iS" : 1440,
-      "oA" : 0,
-      "oAP" : "\/favicon.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
     },
     "\/index.php" : {
       "cB" : 0,
@@ -25310,19 +25310,24 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/.jobs\/cardinal-banzai-864x.png.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/.jobs\/cardinal-banzai-864x.png-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
     "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/cardinal-banzai-76x76.png" : {
       "ft" : 32768,
       "iS" : 5004,
       "oA" : 0,
       "oAP" : "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/cardinal-banzai-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/cardinal-banzai-864x.png" : {
+      "ft" : 32768,
+      "iS" : 239940,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/cardinal-banzai-864x.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -25373,19 +25378,24 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/.jobs\/cardinal-jeff-wiggins-864x.png.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/.jobs\/cardinal-jeff-wiggins-864x.png-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
     "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/cardinal-jeff-wiggins-76x76.png" : {
       "ft" : 32768,
       "iS" : 4058,
       "oA" : 0,
       "oAP" : "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/cardinal-jeff-wiggins-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/cardinal-jeff-wiggins-864x.png" : {
+      "ft" : 32768,
+      "iS" : 284282,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/eee3855ad5-1629442029\/cardinal-jeff-wiggins-864x.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,

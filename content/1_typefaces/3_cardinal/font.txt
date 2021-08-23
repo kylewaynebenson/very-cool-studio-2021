@@ -6,7 +6,7 @@ Headline:
 
 ----
 
-Font: CardinalCondensed-SemiboldItalic
+Font: CardinalCondensed-SemiBoldItalic
 
 ----
 
@@ -83,6 +83,10 @@ Samples:
 - 
   font: Cardinal Extra Condensed Extra Bold
   sample: Manifesting Greenhouse Gas Alternatives
+
+----
+
+Features: 
 
 ----
 
