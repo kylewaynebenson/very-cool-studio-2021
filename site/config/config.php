@@ -8,9 +8,6 @@
  * All config options: https://getkirby.com/docs/reference/system/options
  */
 return [
-    'debug' => true,
-    'ww.merx.stripe.test.publishable_key' => 'pk_test_TYooMQauvdEDq54NiTphI7jx',
-    'ww.merx.stripe.test.secret_key' => 'sk_test_4eC39HqLyjWDarjtT1zdp7dc',
-    'ww.merx.stripe.live.publishable_key' => 'pk_live_4QvzIPwSrjpJ2kQptBJWUYvB',
-    'ww.merx.stripe.live.secret_key' => 'pk_live_4QvzIPwSrjpJ2kQptBJWUYvB',
+    'debug' => false,
+    'panel.install' => true
 ];
