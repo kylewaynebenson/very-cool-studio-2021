@@ -28,7 +28,7 @@
 html {
   font-family: var(--font-family-serif);
   font-weight: 400;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.4;
   -webkit-transition: color 700ms ease-in;
   transition: color 700ms ease-in;
@@ -46,14 +46,14 @@ html {
   text-shadow: 2px 2px 2px var(--color-white);
 }
 h1 { 
-  font-size: 4rem;
+  font-size: 3.875rem;
   margin-bottom: 1.2vw;
   line-height: .98;
   font-family: var(--font-family-headline);
   font-weight: 600;
 }
 h2 { 
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-bottom: -webkit-calc(4px + .8vw);
   margin-bottom: calc(4px + .8vw);
   line-height: 1.2;
@@ -62,7 +62,7 @@ h2 {
   font-weight: 600;
 }
 h4 { 
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   margin-bottom: -webkit-calc(4px + .8vw);
   margin-bottom: calc(4px + .8vw);
   line-height: 1.4;
@@ -71,7 +71,7 @@ h4 {
   font-weight: 600;
 }
 h5 { 
-  font-size: .75rem;
+  font-size: .675rem;
   margin-bottom: -webkit-calc(4px + .8vw);
   margin-bottom: calc(4px + .8vw);
   line-height: 1;
@@ -81,7 +81,7 @@ h5 {
   font-weight: 600;
 }
 h6 { 
-  font-size: .9rem;
+  font-size: .875rem;
   margin-bottom: -webkit-calc(4px + .8vw);
   margin-bottom: calc(4px + .8vw);
   letter-spacing: .05rem;
@@ -91,13 +91,13 @@ h6 {
 }
 @media screen and (max-width: 39.9999rem) {
   html {
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.4;
   }
 }
 @media screen and (min-width: 40rem) and (max-width: 59.9999rem) {
   html {
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.4;
   }
 }
@@ -552,7 +552,7 @@ input[type="submit"] {
   font-family: var(--font-family-headline-wide);
   max-width: 360px;
 }
-.article-text figure figcaption, .article-footnotes p, .in-use figure figcaption {
+.article-text figure figcaption, .article-footnotes ol, .in-use figure figcaption {
   font-weight: 600;
   letter-spacing: 0.065em;
   font-size: .75rem;
