@@ -21,6 +21,11 @@
   <meta name="description" content="Very Cool is a type foundry run by Kyle Benson in Oakland, California."/>
   <meta property="og:title" content="<?= $site->title() . ' | ' . $page->title() ?>">
   <meta property="og:image" content="<?php echo kirby()->urls()->assets() . '/images/share-image.png' ?>">
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@verycoolstudio" />
+  <meta name="twitter:title" content="<?= $site->title() . ' | ' . $page->title() ?>" />
+  <meta name="twitter:description" content="Very Cool is a type foundry run by Kyle Benson in Oakland, California." />
+  <meta name="twitter:image" content="<?php echo kirby()->urls()->assets() . '/images/share-image-twitter.png' ?>" />
   <style>
     [data-theme="light"] {
       --color-black: #000;
