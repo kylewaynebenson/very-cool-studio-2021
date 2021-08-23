@@ -33,7 +33,10 @@ columns:
       pages:
         type: pages
         create: default
-        templates:
-          - about
-          - home
-          - default
+        status: listed
+      unlisted:
+        type: pages
+        status: unlisted
+      drafts:
+        type: pages
+        status: drafts

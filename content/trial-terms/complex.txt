@@ -20,7 +20,7 @@ Version: 1.0
 
 ----
 
-Footnotes: [{"content":{"text":""},"id":"f516e05f-456a-492b-a359-521d5e2eb8f5","isHidden":false,"type":"text"}]
+Footnotes: 
 
 ----
 

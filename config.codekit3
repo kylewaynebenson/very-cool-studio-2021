@@ -3610,30 +3610,6 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/content\/_drafts\/trial-terms\/complex.txt" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/content\/_drafts\/trial-terms\/complex.txt",
-      "oF" : 0
-    },
-    "\/content\/_drafts\/trial-terms\/verycool_triallicenseagreement-1.0.pdf" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/content\/_drafts\/trial-terms\/verycool_triallicenseagreement-1.0.pdf",
-      "oF" : 0
-    },
-    "\/content\/_drafts\/trial-terms\/verycool_triallicenseagreement-1.0.pdf.txt" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/content\/_drafts\/trial-terms\/verycool_triallicenseagreement-1.0.pdf.txt",
-      "oF" : 0
-    },
     "\/content\/1_typefaces\/1_nudge\/e6xm2iaucaixxem.jpeg" : {
       "ft" : 16384,
       "iS" : 695063,
@@ -5319,6 +5295,30 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/content\/terms\/verycool_commerciallicenseagreement-1.1.pdf.txt",
+      "oF" : 0
+    },
+    "\/content\/trial-terms\/complex.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/trial-terms\/complex.txt",
+      "oF" : 0
+    },
+    "\/content\/trial-terms\/verycool_triallicenseagreement-1.0.pdf" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/trial-terms\/verycool_triallicenseagreement-1.0.pdf",
+      "oF" : 0
+    },
+    "\/content\/trial-terms\/verycool_triallicenseagreement-1.0.pdf.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/trial-terms\/verycool_triallicenseagreement-1.0.pdf.txt",
       "oF" : 0
     },
     "\/index.php" : {
@@ -19463,6 +19463,46 @@
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
+    },
+    "\/media\/pages\/about\/fba7efd974-1629681191\/.jobs\/verycool-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/about\/fba7efd974-1629681191\/.jobs\/verycool-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/about\/fba7efd974-1629681191\/.jobs\/verycool-76x76.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/about\/fba7efd974-1629681191\/.jobs\/verycool-76x76.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/about\/fba7efd974-1629681191\/.jobs\/verycool-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/about\/fba7efd974-1629681191\/.jobs\/verycool-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/about\/fba7efd974-1629681191\/.jobs\/verycool-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/about\/fba7efd974-1629681191\/.jobs\/verycool-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/about\/fba7efd974-1629681191\/.jobs\/verycool-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/about\/fba7efd974-1629681191\/.jobs\/verycool-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
     },
     "\/media\/pages\/about\/fba7efd974-1629681191\/verycool.png" : {
       "ft" : 32768,
