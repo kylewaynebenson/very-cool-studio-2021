@@ -5375,35 +5375,6 @@
       "oAP" : "\/content\/3_about\/futurefonts.png.txt",
       "oF" : 0
     },
-    "\/content\/3_about\/table.jpg.txt" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/content\/3_about\/table.jpg.txt",
-      "oF" : 0
-    },
-    "\/content\/3_about\/team.jpg" : {
-      "ft" : 16384,
-      "iS" : 107641,
-      "jF" : 0,
-      "oA" : 0,
-      "oAP" : "\/content\/3_about\/team.jpg",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/content\/3_about\/team.jpg.txt" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/content\/3_about\/team.jpg.txt",
-      "oF" : 0
-    },
     "\/content\/3_about\/verycool.png" : {
       "ft" : 32768,
       "iS" : 485869,
@@ -5423,27 +5394,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/content\/3_about\/verycool.png.txt",
-      "oF" : 0
-    },
-    "\/content\/3_about\/writing.jpg" : {
-      "ft" : 16384,
-      "iS" : 172554,
-      "jF" : 0,
-      "oA" : 0,
-      "oAP" : "\/content\/3_about\/writing.jpg",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/content\/3_about\/writing.jpg.txt" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/content\/3_about\/writing.jpg.txt",
       "oF" : 0
     },
     "\/content\/error\/error.txt" : {
@@ -19645,51 +19595,11 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/media\/pages\/about\/fba7efd974-1628892111\/.jobs\/verycool-38x38.png.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/about\/fba7efd974-1628892111\/.jobs\/verycool-38x38.png-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
-    "\/media\/pages\/about\/fba7efd974-1628892111\/.jobs\/verycool-76x76.png.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/about\/fba7efd974-1628892111\/.jobs\/verycool-76x76.png-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
-    "\/media\/pages\/about\/fba7efd974-1628892111\/.jobs\/verycool-352x.png.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/about\/fba7efd974-1628892111\/.jobs\/verycool-352x.png-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
-    "\/media\/pages\/about\/fba7efd974-1628892111\/.jobs\/verycool-864x.png.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/about\/fba7efd974-1628892111\/.jobs\/verycool-864x.png-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
-    "\/media\/pages\/about\/fba7efd974-1628892111\/.jobs\/verycool-1408x.png.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/media\/pages\/about\/fba7efd974-1628892111\/.jobs\/verycool-1408x.png-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
-    "\/media\/pages\/about\/fba7efd974-1628892111\/verycool.png" : {
+    "\/media\/pages\/about\/fba7efd974-1629681191\/verycool.png" : {
       "ft" : 32768,
-      "iS" : 485869,
+      "iS" : 114461,
       "oA" : 0,
-      "oAP" : "\/media\/pages\/about\/fba7efd974-1628892111\/verycool.png",
+      "oAP" : "\/media\/pages\/about\/fba7efd974-1629681191\/verycool.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
