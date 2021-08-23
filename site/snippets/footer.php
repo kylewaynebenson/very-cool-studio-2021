@@ -34,10 +34,8 @@
       <h5 class="no-mb"><span class="color-white">©</span> <span class="color-soft-blue">2021</span> <span class="color-coral">Very</span> <span class="color-yellow">Cool</span> <span class="color-soft-blue">Studio</span></h5>
     </div>
   </footer>
-  <?= js([
-    'assets/js/index-min.js',
-    '@auto'
-  ]) ?>
+  <?php echo js('assets/js/index-min.js?v='.time().'') ?>
+  <?= js('@auto') ?>
   <?php if ($page->shopify()->isNotEmpty()): ?>
     <script type="text/javascript">
       ShopifyInit(<?= $page->shopify() ?>);

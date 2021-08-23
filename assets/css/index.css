@@ -955,10 +955,6 @@ input:checked + svg {
   position: relative;
   transition: background 500ms ease-in;
 }
-.full-width-text {
-  margin-top: -.75vw;
-  margin-bottom: .75vw;
-}
 .page-home .type-preview .font-details {
   position: absolute;
   padding: var(--padding-sm);
@@ -985,6 +981,8 @@ input:checked + svg {
   
 }
 .full-width-text {
+  margin-top: -.75vw;
+  margin-bottom: .75vw;
   text-align: center;
   font-size: 180px; /* Some tweener fallback that doesn't look awful */ 
   font-size: 10.5vw;

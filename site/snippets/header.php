@@ -51,11 +51,9 @@
       background: var(--color-white);
     }
   </style>
-
-  <?= css([
-    'assets/css/index-min.css',
-    '@auto'
-  ]) ?>
+<?php echo css('assets/css/index-min.css?v='.time().'') ?>
+<?= css('@auto') ?>
+  
   <style>
 @font-face {
   font-family: 'VC Cardinal';
