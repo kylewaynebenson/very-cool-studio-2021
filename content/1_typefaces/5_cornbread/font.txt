@@ -89,6 +89,10 @@ Samples:
 Features:
 
 - 
+  feature: frac
+  font: VCCornbreadSemiBold
+  sample: 12/34
+- 
   feature: ss01
   font: VCCornbreadSemiBold
   sample: Qk
@@ -100,10 +104,6 @@ Features:
   feature: lnum
   font: VCCornbreadSemiBold
   sample: "567"
-- 
-  feature: frac
-  font: VCCornbreadSemiBold
-  sample: 12/34
 - 
   feature: smcp
   font: VCCornbreadSemiBold

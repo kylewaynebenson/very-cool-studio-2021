@@ -403,6 +403,17 @@
       "sC" : 3,
       "tS" : 0
     },
+    "\/assets\/js\/mailchimp-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/assets\/js\/mailchimp-min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
     "\/assets\/js\/mailchimp.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -3927,6 +3938,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/content\/1_typefaces\/4_honey\/font.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/5_cornbread\/.lock" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/5_cornbread\/.lock",
       "oF" : 0
     },
     "\/content\/1_typefaces\/5_cornbread\/font.txt" : {
