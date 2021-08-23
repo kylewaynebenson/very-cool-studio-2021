@@ -30,7 +30,7 @@
         <input class="margin-s" type="text" value="" name="LNAME" class="input-text " id="mce-LNAME">
       </div>
       <div>
-        <input class="margin-s" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe">
+        <input class="margin-s button" type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe">
       </div>
     </div>
     <div class="terms terms-and-conditions flex" style="align-items: center;">

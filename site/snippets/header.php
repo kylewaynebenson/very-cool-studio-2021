@@ -30,6 +30,8 @@
       --color-yellow: #FFD138;
       --color-coral: #FF7B52;
       --color-soft-blue: #D7E7FF;
+      --color-soft-blue-solid: #D7E7FFFF;
+      --color-soft-blue-clear: #D7E7FF00;
       --color-tan: #F9F4F2;
     }
     [data-theme="dark"] {
@@ -39,6 +41,8 @@
       --color-grey: #999491;
       --color-coral: #2b2b2b;
       --color-soft-blue: #2b2b2b;
+      --color-soft-blue-solid: #2b2b2bFF;
+      --color-soft-blue-clear: #2b2b2b00;
       --color-yellow: #000000;
       --color-tan: #2b2b2b;
     }
@@ -49,7 +53,7 @@
   </style>
 
   <?= css([
-    'assets/css/index.css',
+    'assets/css/index-min.css',
     '@auto'
   ]) ?>
   <style>
@@ -91,7 +95,7 @@
   <body class="page-<?= $page->uid(); ?>">
 <?php endif; ?>
 
-  <header class="header">
+  <nav class="nav">
     <div class="logo">
       <a href="<?= $site->url() ?>">
         <div class="mobile-only">
@@ -102,7 +106,7 @@
         </div>
       </a>
     </div>
-    <nav class="menu">
+    <div class="menu">
       <?php
       /*
         In the menu, we only fetch listed pages,
@@ -116,7 +120,7 @@
         https://getkirby.com/docs/reference/panel/blueprints/page#statuses
       */
       ?>
-      <div class="link">
+      <div class="link desktop-only">
           <?php if ($page->isHomePage()): ?>
             <a aria-current href="<?= $site->url() ?>">
           <?php else: ?>
@@ -149,9 +153,9 @@
               </svg>
         </label>
       </div>
-    </nav>
-  </header>
+    </div>
+  </nav>
   <?= js([
-    'assets/js/theme.js',
+    'assets/js/theme-min.js',
   ]) ?>
   <main class="main">

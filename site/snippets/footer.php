@@ -13,7 +13,7 @@
 
   <footer class="footer bt-white">
     <div class="grid bg-tan" style="--gutter: 2px">
-      <div class="column" style="--columns: 4">
+      <div class="column desktop-only" style="--columns: 4">
         <?= svg('assets/icons/c-logo.svg') ?>
       </div>
       <div class="column" style="--columns: 5">
@@ -25,7 +25,7 @@
           <?php foreach ($site->children()->listed()->not("typefaces") as $example): ?>
           <li><h4><a href="<?= $example->url() ?>"><?= $example->title()->html() ?></a></h4></li>
           <?php endforeach ?>
-          <li><h4><a href="<?= $site->find("Terms")->url() ?>">Terms</a></h4></li>
+          <li><h4><a href="<?= $site->find('Terms')->url() ?>">Terms</a></h4></li>
         </ul>
         <?php snippet('social') ?>
       </div>
@@ -35,7 +35,7 @@
     </div>
   </footer>
   <?= js([
-    'assets/js/index.js',
+    'assets/js/index-min.js',
     '@auto'
   ]) ?>
   <?php if ($page->shopify()->isNotEmpty()): ?>
@@ -53,7 +53,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-96409329-1');
   </script>
 

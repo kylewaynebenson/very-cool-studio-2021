@@ -122,7 +122,7 @@
       </a>
     <?php endif ?>
     <?php if ($page->futurefonts()->isNotEmpty()): ?>
-      <a href="<?= $page->futurefonts() ?>" class="block padding-sm text-center rounded-corners bg-black color-white">
+      <a href="<?= $page->futurefonts() ?>" class="block button">
         <h5 class="no-mb">
           License on Future Fonts
         </h5>
