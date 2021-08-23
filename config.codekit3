@@ -63,9 +63,9 @@
     },
     "\/assets\/css\/index.css" : {
       "aP" : 1,
-      "bl" : 0,
+      "bl" : 1,
       "ci" : 0,
-      "co" : 0,
+      "co" : 1,
       "ft" : 16,
       "ma" : 0,
       "oA" : 0,

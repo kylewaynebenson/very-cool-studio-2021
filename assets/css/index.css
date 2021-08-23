@@ -4,7 +4,7 @@
 }
 
 :root {
-  --padding: calc(7px + 1.7vw) calc(8px + 2.4vw);
+  --padding: calc(8px + 1.7vw) calc(8px + 2.4vw);
   --padding-md: calc(6px + 1.35vw) calc(7px + 1.4vw);
   --padding-sm: calc(5px + 1.1vw) calc(6px + 1.25vw);
   --padding-xs: calc(3px + .25vw) calc(3px + .65vw);
@@ -63,7 +63,7 @@ h4 {
 }
 h5 { 
   font-size: .675rem;
-  margin-bottom: var(--margin-m);
+  margin-bottom: var(--margin-s);
   line-height: 1;
   letter-spacing: .05rem;
   text-transform: uppercase;
@@ -72,19 +72,19 @@ h5 {
 }
 h6 { 
   font-size: .875rem;
-  margin-bottom: var(--margin-m);
+  margin-bottom: var(--margin-s);
   letter-spacing: .05rem;
   line-height: 1.1;
   font-family: var(--font-family-headline-wide);
   font-weight: 600;
 }
-@media screen and (max-width: 39.9999rem) {
+@media screen and (max-width: 480px) {
   html {
     font-size: 16px;
     line-height: 1.4;
   }
 }
-@media screen and (min-width: 40rem) and (max-width: 59.9999rem) {
+@media screen and (min-width: 481px) and (max-width: 1000px) {
   html {
     font-size: 17px;
     line-height: 1.4;
@@ -335,7 +335,7 @@ input[type="submit"] {
   align-items: center;
   height: 37px;
 }
-@media screen and (max-width: 59.9999rem) {
+@media screen and (max-width: 829px) {
   .nav svg {
     max-height: 30px;
   }
@@ -544,7 +544,7 @@ hr {
 }
 
 .intro {
-  max-width: 40rem;
+  max-width: 481px;
 }
 .intro *:not(:last-child) {
   margin-bottom: 1em;
@@ -621,12 +621,12 @@ hr {
   margin-bottom: var(--margin-xxl);
 }
 
-@media screen and (max-width: 60rem) {
+@media screen and (max-width: 829px) {
   .desktop-only {
     display: none !important;
   }
 }
-@media screen and (min-width: 60rem) {
+@media screen and (min-width: 829px) {
   .mobile-only {
     display: none !important;
   }
@@ -971,7 +971,7 @@ input:checked + svg {
   opacity: 1;
   transition: color 150ms ease-in;
 }
-@media screen and (max-width: 39.9999rem) {
+@media screen and (max-width: 480px) {
   .page-home .type-preview .font-details {
     opacity: 0;
   }
@@ -987,7 +987,7 @@ input:checked + svg {
 .full-width-text {
   text-align: center;
   font-size: 180px; /* Some tweener fallback that doesn't look awful */ 
-  font-size: calc((83.25vw - 5rem) / 7);
+  font-size: 10.5vw;
   line-height: 1.05;
   
 }
@@ -1074,12 +1074,12 @@ contact .h1 {
 .fsjs-skin:hover .fsjs-wrapper {
   color: var(--color-grey);
 }
-@media screen and (max-width: 53.9999rem) {
+@media screen and (max-width: 829px) {
   .fsjs-skin .fsjs-block:not(.fsjs-block-fontsize, .fsjs-block-fontfamily, .fsjs-block-tester, .fsjs-block-type-textfield) {
     display: none;
   }
 }
-@media screen and (min-width: 54rem) {
+@media screen and (min-width: 830px) {
   .fsjs-skin > .fsjs-wrapper {
     flex-wrap: nowrap;
   }
@@ -1124,6 +1124,7 @@ contact .h1 {
 }
 .fsjs-skin .fsjs-label {
   line-height: 1.5em;
+  font-size: .875rem;
 }
 .fsjs-wrapper > div.fsjs-block.fsjs-block-type-slider > label > .fsjs-label-text {
   display: none;
