@@ -15,6 +15,12 @@ RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
 RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L,NE]
 
+# old links to new links
+RewriteRule ^type/(.*)$ /typefaces/$1 [R=301,NC,L]
+
+# typefaces sub directory forces to root
+RedirectMatch 301 ^/typefaces/$ https://www.verycoolstudio.com/
+
 # make sure to set the RewriteBase correctly
 # if you are running the site in a subfolder;
 # otherwise links or the entire site will break.
