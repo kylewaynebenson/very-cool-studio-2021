@@ -3461,102 +3461,6 @@
       "oAP" : "\/assets\/webfonts\/honey\/VCHoney-ThinDeck.woff2",
       "oF" : 0
     },
-    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Black.woff" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Black.woff",
-      "oF" : 0
-    },
-    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Black.woff2" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Black.woff2",
-      "oF" : 0
-    },
-    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Bold.woff" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Bold.woff",
-      "oF" : 0
-    },
-    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Bold.woff2" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Bold.woff2",
-      "oF" : 0
-    },
-    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Light.woff" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Light.woff",
-      "oF" : 0
-    },
-    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Light.woff2" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Light.woff2",
-      "oF" : 0
-    },
-    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Medium.woff" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Medium.woff",
-      "oF" : 0
-    },
-    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Medium.woff2" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Medium.woff2",
-      "oF" : 0
-    },
-    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Regular.woff" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Regular.woff",
-      "oF" : 0
-    },
-    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Regular.woff2" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Regular.woff2",
-      "oF" : 0
-    },
-    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-SemiBold.woff" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-SemiBold.woff",
-      "oF" : 0
-    },
-    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-SemiBold.woff2" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-SemiBold.woff2",
-      "oF" : 0
-    },
     "\/assets\/webfonts\/nudge\/VCNudge-Bold.woff" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3938,14 +3842,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/content\/1_typefaces\/4_honey\/font.txt",
-      "oF" : 0
-    },
-    "\/content\/1_typefaces\/5_cornbread\/.lock" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/5_cornbread\/.lock",
       "oF" : 0
     },
     "\/content\/1_typefaces\/5_cornbread\/font.txt" : {
@@ -5216,6 +5112,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/content\/2_articles\/20210622_nudge-design-information\/voice-deviance.jpg.txt",
+      "oF" : 0
+    },
+    "\/content\/2_articles\/20210823_announcing-very-cool-again\/.lock" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20210823_announcing-very-cool-again\/.lock",
       "oF" : 0
     },
     "\/content\/2_articles\/20210823_announcing-very-cool-again\/article.txt" : {
