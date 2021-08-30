@@ -26,6 +26,8 @@
   <meta name="twitter:description" content="Very Cool is a type foundry run by Kyle Benson in Oakland, California." />
   <meta name="twitter:image" content="<?php echo kirby()->urls()->assets() . '/images/share-image.png' ?>" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src https://*; child-src 'none';">
   <style>
     [data-theme="light"] {
       --color-black: #000;
