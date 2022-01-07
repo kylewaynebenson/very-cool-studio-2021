@@ -1,0 +1,99 @@
+Title: Henrietta
+
+----
+
+Headline: Henrietta
+
+----
+
+Font: Henrietta-Bold
+
+----
+
+Sample: Fungi Wranglers
+
+----
+
+Charset: 
+
+----
+
+Released: ????
+
+----
+
+Designer: 
+
+----
+
+Styles: 6
+
+----
+
+Widths: 2
+
+----
+
+Optical: 
+
+----
+
+Version: 0.1
+
+----
+
+Shopify: 
+
+----
+
+Futurefonts: 
+
+----
+
+Text: <p>Henrietta is not yet released. Inquire at&nbsp;<a href="mailto:hello@verycoolstudio.com" rel="noopener noreferrer nofollow">hello@verycoolstudio.com</a>&nbsp;for licensing.</p>
+
+----
+
+Tags: Oldstyle, Soft
+
+----
+
+Specimen: 
+
+----
+
+Designinfo: 
+
+----
+
+Samples:
+
+- 
+  font: Henrietta Medium
+  sample: Quaint Ladybug
+- 
+  font: Henrietta Semi Bold
+  sample: Bawdier Jiujitsu
+- 
+  font: Henrietta Bold
+  sample: Rooibos Waffle
+- 
+  font: Henrietta Semi Bold Condensed
+  sample: Chipmunk Nunnery
+
+----
+
+Features:
+
+- 
+  feature: ss01
+  font: VCHenriettaSemiBold
+  sample: 'Q&'
+- 
+  feature: ss02
+  font: VCHenriettaSemiBold
+  sample: nmh
+- 
+  feature: ss03
+  font: VCHenriettaSemiBold
+  sample: ji

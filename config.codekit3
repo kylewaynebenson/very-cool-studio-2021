@@ -3125,6 +3125,54 @@
       "oAP" : "\/assets\/webfonts\/gooper\/VCGooperText-SemiBoldItalic.woff2",
       "oF" : 0
     },
+    "\/assets\/webfonts\/henrietta\/VCHenrietta-Bold.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/henrietta\/VCHenrietta-Bold.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/henrietta\/VCHenrietta-Bold.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/henrietta\/VCHenrietta-Bold.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/henrietta\/VCHenrietta-Medium.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/henrietta\/VCHenrietta-Medium.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/henrietta\/VCHenrietta-Medium.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/henrietta\/VCHenrietta-Medium.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/henrietta\/VCHenrietta-SemiBold.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/henrietta\/VCHenrietta-SemiBold.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/henrietta\/VCHenrietta-SemiBold.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/henrietta\/VCHenrietta-SemiBold.woff2",
+      "oF" : 0
+    },
     "\/assets\/webfonts\/honey\/VCHoney-Black.woff" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3461,6 +3509,118 @@
       "oAP" : "\/assets\/webfonts\/honey\/VCHoney-ThinDeck.woff2",
       "oF" : 0
     },
+    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Black.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Black.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Black.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Black.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Bold.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Bold.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Bold.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Bold.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Light.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Light.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Light.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Light.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Medium.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Medium.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Medium.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Medium.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Regular.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Regular.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Regular.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-Regular.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-SemiBold.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-SemiBold.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-SemiBold.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/kansas-casual\/VCKansasCasual-SemiBold.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/nudge\/VCNudge-Black.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/nudge\/VCNudge-Black.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/nudge\/VCNudge-Black.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/nudge\/VCNudge-Black.woff2",
+      "oF" : 0
+    },
     "\/assets\/webfonts\/nudge\/VCNudge-Bold.woff" : {
       "cB" : 0,
       "ft" : 8192,
@@ -3475,6 +3635,22 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/assets\/webfonts\/nudge\/VCNudge-Bold.woff2",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/nudge\/VCNudge-ExtraBold.woff" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/nudge\/VCNudge-ExtraBold.woff",
+      "oF" : 0
+    },
+    "\/assets\/webfonts\/nudge\/VCNudge-ExtraBold.woff2" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/assets\/webfonts\/nudge\/VCNudge-ExtraBold.woff2",
       "oF" : 0
     },
     "\/assets\/webfonts\/nudge\/VCNudge-Light.woff" : {
@@ -3549,12 +3725,20 @@
       "oO" : 1,
       "oS" : 1
     },
-    "\/content\/1_typefaces\/1_nudge\/e6xm2iaucaixxem.jpeg" : {
+    "\/content\/1_typefaces\/1_henrietta\/font.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/1_henrietta\/font.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/2_nudge\/e6xm2iaucaixxem.jpeg" : {
       "ft" : 16384,
       "iS" : 695063,
       "jF" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/1_nudge\/e6xm2iaucaixxem.jpg",
+      "oAP" : "\/content\/1_typefaces\/2_nudge\/e6xm2iaucaixxem.jpg",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3562,27 +3746,27 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/1_nudge\/e6xm2iaucaixxem.jpeg.txt" : {
+    "\/content\/1_typefaces\/2_nudge\/e6xm2iaucaixxem.jpeg.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/1_nudge\/e6xm2iaucaixxem.jpeg.txt",
+      "oAP" : "\/content\/1_typefaces\/2_nudge\/e6xm2iaucaixxem.jpeg.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/1_nudge\/font.txt" : {
+    "\/content\/1_typefaces\/2_nudge\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/1_nudge\/font.txt",
+      "oAP" : "\/content\/1_typefaces\/2_nudge\/font.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/1_nudge\/nem-makers.png" : {
+    "\/content\/1_typefaces\/2_nudge\/nem-makers.png" : {
       "ft" : 32768,
       "iS" : 608695,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/1_nudge\/nem-makers.png",
+      "oAP" : "\/content\/1_typefaces\/2_nudge\/nem-makers.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3591,52 +3775,52 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/1_nudge\/nem-makers.png.txt" : {
+    "\/content\/1_typefaces\/2_nudge\/nem-makers.png.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/1_nudge\/nem-makers.png.txt",
+      "oAP" : "\/content\/1_typefaces\/2_nudge\/nem-makers.png.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.3.pdf" : {
+    "\/content\/1_typefaces\/2_nudge\/verycoolstudio_nudgev0.3.pdf" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.3.pdf",
+      "oAP" : "\/content\/1_typefaces\/2_nudge\/verycoolstudio_nudgev0.3.pdf",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.3.pdf.txt" : {
+    "\/content\/1_typefaces\/2_nudge\/verycoolstudio_nudgev0.3.pdf.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.3.pdf.txt",
+      "oAP" : "\/content\/1_typefaces\/2_nudge\/verycoolstudio_nudgev0.3.pdf.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/2_gooper\/2103_verycoolstudio_gooper.pdf" : {
+    "\/content\/1_typefaces\/3_gooper\/2103_verycoolstudio_gooper.pdf" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/2103_verycoolstudio_gooper.pdf",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/2103_verycoolstudio_gooper.pdf",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/2_gooper\/2103_verycoolstudio_gooper.pdf.txt" : {
+    "\/content\/1_typefaces\/3_gooper\/2103_verycoolstudio_gooper.pdf.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/2103_verycoolstudio_gooper.pdf.txt",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/2103_verycoolstudio_gooper.pdf.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/2_gooper\/42619074_2155350121453392_5144387511747861958_n.jpg" : {
+    "\/content\/1_typefaces\/3_gooper\/42619074_2155350121453392_5144387511747861958_n.jpg" : {
       "ft" : 16384,
       "iS" : 47984,
       "jF" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/42619074_2155350121453392_5144387511747861958_n.jpg",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/42619074_2155350121453392_5144387511747861958_n.jpg",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3644,20 +3828,20 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/2_gooper\/42619074_2155350121453392_5144387511747861958_n.jpg.txt" : {
+    "\/content\/1_typefaces\/3_gooper\/42619074_2155350121453392_5144387511747861958_n.jpg.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/42619074_2155350121453392_5144387511747861958_n.jpg.txt",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/42619074_2155350121453392_5144387511747861958_n.jpg.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/2_gooper\/bm6-chris.jpeg" : {
+    "\/content\/1_typefaces\/3_gooper\/bm6-chris.jpeg" : {
       "ft" : 16384,
       "iS" : 360085,
       "jF" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/bm6-chris.jpg",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/bm6-chris.jpg",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3665,28 +3849,28 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/2_gooper\/bm6-chris.jpeg.txt" : {
+    "\/content\/1_typefaces\/3_gooper\/bm6-chris.jpeg.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/bm6-chris.jpeg.txt",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/bm6-chris.jpeg.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/2_gooper\/font.txt" : {
+    "\/content\/1_typefaces\/3_gooper\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/font.txt",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/font.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/2_gooper\/good-garms-image-1.jpeg" : {
+    "\/content\/1_typefaces\/3_gooper\/good-garms-image-1.jpeg" : {
       "ft" : 16384,
       "iS" : 77540,
       "jF" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/good-garms-image-1.jpg",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/good-garms-image-1.jpg",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3694,20 +3878,20 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/2_gooper\/good-garms-image-1.jpeg.txt" : {
+    "\/content\/1_typefaces\/3_gooper\/good-garms-image-1.jpeg.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/good-garms-image-1.jpeg.txt",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/good-garms-image-1.jpeg.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/2_gooper\/gooperitalic.jpeg" : {
+    "\/content\/1_typefaces\/3_gooper\/gooperitalic.jpeg" : {
       "ft" : 16384,
       "iS" : 120860,
       "jF" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/gooperitalic.jpg",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/gooperitalic.jpg",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3715,20 +3899,20 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/2_gooper\/gooperitalic.jpeg.txt" : {
+    "\/content\/1_typefaces\/3_gooper\/gooperitalic.jpeg.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/gooperitalic.jpeg.txt",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/gooperitalic.jpeg.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/2_gooper\/robertas-pizza.jpg" : {
+    "\/content\/1_typefaces\/3_gooper\/robertas-pizza.jpg" : {
       "ft" : 16384,
       "iS" : 86020,
       "jF" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/robertas-pizza.jpg",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/robertas-pizza.jpg",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3736,19 +3920,19 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/2_gooper\/robertas-pizza.jpg.txt" : {
+    "\/content\/1_typefaces\/3_gooper\/robertas-pizza.jpg.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/robertas-pizza.jpg.txt",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/robertas-pizza.jpg.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/2_gooper\/screen-shot-2021-08-19-at-7.22.55-pm.png" : {
+    "\/content\/1_typefaces\/3_gooper\/screen-shot-2021-08-19-at-7.22.55-pm.png" : {
       "ft" : 32768,
       "iS" : 348235,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/screen-shot-2021-08-19-at-7.22.55-pm.png",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/screen-shot-2021-08-19-at-7.22.55-pm.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3757,19 +3941,19 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/2_gooper\/screen-shot-2021-08-19-at-7.22.55-pm.png.txt" : {
+    "\/content\/1_typefaces\/3_gooper\/screen-shot-2021-08-19-at-7.22.55-pm.png.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/screen-shot-2021-08-19-at-7.22.55-pm.png.txt",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/screen-shot-2021-08-19-at-7.22.55-pm.png.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/2_gooper\/sonder.png" : {
+    "\/content\/1_typefaces\/3_gooper\/sonder.png" : {
       "ft" : 32768,
       "iS" : 2053697,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/sonder.png",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/sonder.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3778,19 +3962,19 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/2_gooper\/sonder.png.txt" : {
+    "\/content\/1_typefaces\/3_gooper\/sonder.png.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/2_gooper\/sonder.png.txt",
+      "oAP" : "\/content\/1_typefaces\/3_gooper\/sonder.png.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/3_cardinal\/cardinal-banzai.png" : {
+    "\/content\/1_typefaces\/4_cardinal\/cardinal-banzai.png" : {
       "ft" : 32768,
       "iS" : 619952,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/3_cardinal\/cardinal-banzai.png",
+      "oAP" : "\/content\/1_typefaces\/4_cardinal\/cardinal-banzai.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3799,19 +3983,19 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/3_cardinal\/cardinal-banzai.png.txt" : {
+    "\/content\/1_typefaces\/4_cardinal\/cardinal-banzai.png.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/3_cardinal\/cardinal-banzai.png.txt",
+      "oAP" : "\/content\/1_typefaces\/4_cardinal\/cardinal-banzai.png.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/3_cardinal\/cardinal-jeff-wiggins.png" : {
+    "\/content\/1_typefaces\/4_cardinal\/cardinal-jeff-wiggins.png" : {
       "ft" : 32768,
       "iS" : 567291,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/3_cardinal\/cardinal-jeff-wiggins.png",
+      "oAP" : "\/content\/1_typefaces\/4_cardinal\/cardinal-jeff-wiggins.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3820,75 +4004,75 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/3_cardinal\/cardinal-jeff-wiggins.png.txt" : {
+    "\/content\/1_typefaces\/4_cardinal\/cardinal-jeff-wiggins.png.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/3_cardinal\/cardinal-jeff-wiggins.png.txt",
+      "oAP" : "\/content\/1_typefaces\/4_cardinal\/cardinal-jeff-wiggins.png.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/3_cardinal\/font.txt" : {
+    "\/content\/1_typefaces\/4_cardinal\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/3_cardinal\/font.txt",
+      "oAP" : "\/content\/1_typefaces\/4_cardinal\/font.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/4_honey\/font.txt" : {
+    "\/content\/1_typefaces\/5_honey\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/4_honey\/font.txt",
+      "oAP" : "\/content\/1_typefaces\/5_honey\/font.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/5_cornbread\/font.txt" : {
+    "\/content\/1_typefaces\/6_cornbread\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/5_cornbread\/font.txt",
+      "oAP" : "\/content\/1_typefaces\/6_cornbread\/font.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/6_bruphy\/font.txt" : {
+    "\/content\/1_typefaces\/7_bruphy\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/6_bruphy\/font.txt",
+      "oAP" : "\/content\/1_typefaces\/7_bruphy\/font.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/6_bruphy\/verycoolstudio-bruphy-v3.pdf" : {
+    "\/content\/1_typefaces\/7_bruphy\/verycoolstudio-bruphy-v3.pdf" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/6_bruphy\/verycoolstudio-bruphy-v3.pdf",
+      "oAP" : "\/content\/1_typefaces\/7_bruphy\/verycoolstudio-bruphy-v3.pdf",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/6_bruphy\/verycoolstudio-bruphy-v3.pdf.txt" : {
+    "\/content\/1_typefaces\/7_bruphy\/verycoolstudio-bruphy-v3.pdf.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/6_bruphy\/verycoolstudio-bruphy-v3.pdf.txt",
+      "oAP" : "\/content\/1_typefaces\/7_bruphy\/verycoolstudio-bruphy-v3.pdf.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/7_kansas-casual\/font.txt" : {
+    "\/content\/1_typefaces\/8_kansas-casual\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/7_kansas-casual\/font.txt",
+      "oAP" : "\/content\/1_typefaces\/8_kansas-casual\/font.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-banzai.png" : {
+    "\/content\/1_typefaces\/8_kansas-casual\/kansas-casual-banzai.png" : {
       "ft" : 32768,
       "iS" : 558943,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-banzai.png",
+      "oAP" : "\/content\/1_typefaces\/8_kansas-casual\/kansas-casual-banzai.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3897,19 +4081,19 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-banzai.png.txt" : {
+    "\/content\/1_typefaces\/8_kansas-casual\/kansas-casual-banzai.png.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-banzai.png.txt",
+      "oAP" : "\/content\/1_typefaces\/8_kansas-casual\/kansas-casual-banzai.png.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-camp.png" : {
+    "\/content\/1_typefaces\/8_kansas-casual\/kansas-casual-camp.png" : {
       "ft" : 32768,
       "iS" : 1465736,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-camp.png",
+      "oAP" : "\/content\/1_typefaces\/8_kansas-casual\/kansas-casual-camp.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -3918,12 +4102,12 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-camp.png.txt" : {
+    "\/content\/1_typefaces\/8_kansas-casual\/kansas-casual-camp.png.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/7_kansas-casual\/kansas-casual-camp.png.txt",
+      "oAP" : "\/content\/1_typefaces\/8_kansas-casual\/kansas-casual-camp.png.txt",
       "oF" : 0
     },
     "\/content\/1_typefaces\/screen-shot-2017-04-05-at-5-08-26-pm.png" : {
@@ -5112,14 +5296,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/content\/2_articles\/20210622_nudge-design-information\/voice-deviance.jpg.txt",
-      "oF" : 0
-    },
-    "\/content\/2_articles\/20210823_announcing-very-cool-again\/.lock" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/content\/2_articles\/20210823_announcing-very-cool-again\/.lock",
       "oF" : 0
     },
     "\/content\/2_articles\/20210823_announcing-very-cool-again\/article.txt" : {
@@ -25183,6 +25359,32 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/typefaces\/gooper\/8c5bc9e9b0-1629426213\/robertas-pizza.jpg" : {
+      "ft" : 16384,
+      "iS" : 86020,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/8c5bc9e9b0-1629426213\/robertas-pizza.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/8ea2708aa6-1629426234\/screen-shot-2021-08-19-at-7.22.55-pm.png" : {
+      "ft" : 32768,
+      "iS" : 348235,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/8ea2708aa6-1629426234\/screen-shot-2021-08-19-at-7.22.55-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/typefaces\/gooper\/29f67765cd-1629442523\/.jobs\/42619074-2155350121453392-5144387511747861958-n-38x38.jpg.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -25507,6 +25709,32 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/typefaces\/gooper\/85c97d4cb4-1629442523\/42619074_2155350121453392_5144387511747861958_n.jpg" : {
+      "ft" : 16384,
+      "iS" : 47984,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/85c97d4cb4-1629442523\/42619074_2155350121453392_5144387511747861958_n.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/0443c59461-1629361655\/sonder.png" : {
+      "ft" : 32768,
+      "iS" : 2053697,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/0443c59461-1629361655\/sonder.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/typefaces\/gooper\/464c9b6d48-1629361655\/.jobs\/sonder-38x38.png.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -25575,6 +25803,32 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/typefaces\/gooper\/b49128dc9a-1629359277\/gooperitalic.jpeg" : {
+      "ft" : 16384,
+      "iS" : 120860,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/b49128dc9a-1629359277\/gooperitalic.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/d7a895e813-1629404522\/bm6-chris.jpeg" : {
+      "ft" : 16384,
+      "iS" : 360085,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/d7a895e813-1629404522\/bm6-chris.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/.jobs\/bm6-chris-38x38.jpg.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -25636,6 +25890,19 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/media\/pages\/typefaces\/gooper\/d9557bd6ee-1629404522\/bm6-chris.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/e9a48b149e-1629359277\/good-garms-image-1.jpeg" : {
+      "ft" : 16384,
+      "iS" : 77540,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/e9a48b149e-1629359277\/good-garms-image-1.jpg",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -25910,6 +26177,19 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/typefaces\/nudge\/98ef611ddd-1629429314\/e6xm2iaucaixxem.jpeg" : {
+      "ft" : 16384,
+      "iS" : 695063,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/98ef611ddd-1629429314\/e6xm2iaucaixxem.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/.jobs\/nem-makers-38x38.png.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -25970,6 +26250,19 @@
       "iS" : 608695,
       "oA" : 0,
       "oAP" : "\/media\/pages\/typefaces\/nudge\/aaed292581-1629429229\/nem-makers.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/nudge\/be0c8190d4-1629429229\/nem-makers.png" : {
+      "ft" : 32768,
+      "iS" : 608695,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/be0c8190d4-1629429229\/nem-makers.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -29116,60 +29409,60 @@
       "oAP" : "\/site\/plugins\/meta-tags\/vendor\/pedroborges\/meta-tags\/src\/MetaTags.php",
       "oF" : 0
     },
-    "\/site\/sessions\/1629914294.13eae6fac74d4bc32157.sess" : {
+    "\/site\/sessions\/1635393816.2ee89915f7d5c8a45130.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1629914294.13eae6fac74d4bc32157.sess",
+      "oAP" : "\/site\/sessions\/1635393816.2ee89915f7d5c8a45130.sess",
       "oF" : 0
     },
-    "\/site\/sessions\/1629914294.36971bb0462b4f7eb86e.sess" : {
+    "\/site\/sessions\/1635393816.d843aed1e43d55cb8f4d.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1629914294.36971bb0462b4f7eb86e.sess",
+      "oAP" : "\/site\/sessions\/1635393816.d843aed1e43d55cb8f4d.sess",
       "oF" : 0
     },
-    "\/site\/sessions\/1629929634.8d17728d73ec20971bbd.sess" : {
+    "\/site\/sessions\/1635396040.4d787365076b555cd1e6.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1629929634.8d17728d73ec20971bbd.sess",
+      "oAP" : "\/site\/sessions\/1635396040.4d787365076b555cd1e6.sess",
       "oF" : 0
     },
-    "\/site\/sessions\/1629929634.a54460b481abc0ca5137.sess" : {
+    "\/site\/sessions\/1635396040.859eb07abe9bb28aea8a.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1629929634.a54460b481abc0ca5137.sess",
+      "oAP" : "\/site\/sessions\/1635396040.859eb07abe9bb28aea8a.sess",
       "oF" : 0
     },
-    "\/site\/sessions\/1630101590.1f7bb3d8b9dd51aa4e27.sess" : {
+    "\/site\/sessions\/1635399667.c66a8a6c2bd622de9e55.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1630101590.1f7bb3d8b9dd51aa4e27.sess",
+      "oAP" : "\/site\/sessions\/1635399667.c66a8a6c2bd622de9e55.sess",
       "oF" : 0
     },
-    "\/site\/sessions\/1630101590.52190e517df41a259d67.sess" : {
+    "\/site\/sessions\/1635403279.9ff6bfdb14096f4e79e2.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1630101590.52190e517df41a259d67.sess",
+      "oAP" : "\/site\/sessions\/1635403279.9ff6bfdb14096f4e79e2.sess",
       "oF" : 0
     },
-    "\/site\/sessions\/1630538003.daa08a3c99c694978ede.sess" : {
+    "\/site\/sessions\/1635406893.49a899c92028befc6a7b.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1630538003.daa08a3c99c694978ede.sess",
+      "oAP" : "\/site\/sessions\/1635406893.49a899c92028befc6a7b.sess",
       "oF" : 0
     },
     "\/site\/snippets\/article.php" : {

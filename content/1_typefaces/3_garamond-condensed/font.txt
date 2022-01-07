@@ -1,0 +1,83 @@
+Title: Garamond Condensed
+
+----
+
+Headline: Garamond Condensed
+
+----
+
+Font: GaramondCondensed-Bold
+
+----
+
+Sample: Horsey Cowgirl Reunion
+
+----
+
+Charset: 58 Characters
+
+----
+
+Released: 2022
+
+----
+
+Designer: 
+
+----
+
+Styles: 3
+
+----
+
+Widths: 
+
+----
+
+Optical: 
+
+----
+
+Version: 0.1
+
+----
+
+Shopify: 
+
+----
+
+Futurefonts: 
+
+----
+
+Text: <p>VC Garamond Condensed is a font family with a very limited character set, drawn from memory over the course of a couple weekends. It will probably never be completed. <a href="https://twitter.com/verycoolstudio/status/1478967520287621128?s=20" rel="noopener noreferrer nofollow">Download it here</a>.</p>
+
+----
+
+Tags: Soft
+
+----
+
+Specimen: 
+
+----
+
+Designinfo: 
+
+----
+
+Samples:
+
+- 
+  font: Garamond Condensed Bold
+  sample: Polygamous Lambda
+- 
+  font: Garamond Condensed Semi Bold
+  sample: Queenly Teethmarks
+- 
+  font: Garamond Condensed Regular
+  sample: Cashless Stockbroker
+
+----
+
+Features: 
