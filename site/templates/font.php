@@ -139,8 +139,19 @@
   foreach ($items as $item):
     $i = $i + 1; 
     $demo = "demo" . $i;
+  
+    // Headline or text sample
+    if (strlen($item->sample()) < 30) {
+      $fontSize = 11.75;
+      $lineHeight = 100;
+      $class = "headline";
+    } else {
+      $fontSize = 2;
+      $lineHeight = 130;
+      $class = "text";
+    }
     ?>
-    <div id="<?= $demo ?>"><?= $item->sample() ?></div>
+    <div id="<?= $demo ?>" class="<?= $class ?>"><?= $item->sample() ?></div>
       <script>
       var fonts = <?php echo json_encode($fontlist); ?>;
       var options = {
@@ -161,7 +172,7 @@
             fontsize: {
                 // Any CSS unit is valid (e.g. px, em, %, etc.)
                 unit: "vw",
-                init: 11.75,
+                init: "<?= $fontSize ?>",
                 min: .5,
                 max: 20,
                 step: .25,
@@ -172,7 +183,7 @@
             // The line-height slider
             lineheight: {
                 unit: "%",
-                init: 100,
+                init: "<?= $lineHeight ?>",
                 min: 90,
                 max: 160,
                 step: 5,

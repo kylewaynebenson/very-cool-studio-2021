@@ -88,6 +88,17 @@ Samples:
 - 
   font: Gooper Thin
   sample: Palaeontological
+- 
+  font: Gooper Text Medium
+  sample: >
+    At that moment, I believe, though I have
+    not fully appreciated it until now, the
+    certainty that I had had interesting
+    experiences, and that one day I would be
+    able to convey their poignancy in words
+    of great precision, died. Over the years
+    it was to die many deaths, none
+    altogether fatal.
 
 ----
 

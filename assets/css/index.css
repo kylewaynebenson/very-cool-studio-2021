@@ -1110,6 +1110,16 @@ contact .h1 {
   margin-top: -1.5vw; 
   margin-bottom: 1.5vw;
 }
+.fsjs-skin.text .fsjs-block-tester .fsjs-element {
+  column-count: 2;
+  column-gap: 2vw;
+  column-width: 350px;
+  padding: var(--padding-md);
+  width: 90%;
+  margin: -1.5vw auto 1.5vw auto;
+  max-width: 2000px;
+}
+
 .fsjs-skin .fsjs-block-tester .fsjs-element:focus {
   
 }
