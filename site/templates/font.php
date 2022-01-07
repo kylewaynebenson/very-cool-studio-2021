@@ -145,10 +145,12 @@
       $fontSize = 11.75;
       $lineHeight = 100;
       $class = "headline";
+      $alignment = "center";
     } else {
       $fontSize = 1.75;
       $lineHeight = 135;
       $class = "text";
+      $alignment = "left";
     }
     ?>
     <div id="<?= $demo ?>" class="<?= $class ?>"><?= $item->sample() ?></div>
@@ -211,7 +213,7 @@
                 // or the strings are separated by | to use as value|Display label
                 choices: ["left|L", "center|C", "right|R"],
                 // Has to be one of the above choices
-                init: "center",
+                init: "<?= $alignment ?>",
                 label: ""
             },
             // A set of checkboxes; NOTE: No validation whatsoever if the font
