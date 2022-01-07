@@ -146,8 +146,8 @@
       $lineHeight = 100;
       $class = "headline";
     } else {
-      $fontSize = 2;
-      $lineHeight = 130;
+      $fontSize = 1.75;
+      $lineHeight = 135;
       $class = "text";
     }
     ?>

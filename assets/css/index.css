@@ -1112,11 +1112,11 @@ contact .h1 {
 }
 .fsjs-skin.text .fsjs-block-tester .fsjs-element {
   column-count: 2;
-  column-gap: 2vw;
+  column-gap: 2.5vw;
   column-width: 350px;
   padding: var(--padding-md);
   width: 90%;
-  margin: -1.5vw auto 1.5vw auto;
+  margin: -1.25vw auto 1.25vw auto;
   max-width: 2000px;
 }
 
