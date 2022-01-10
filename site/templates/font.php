@@ -141,7 +141,7 @@
     $demo = "demo" . $i;
   
     // Headline or text sample
-    if (strlen($item->sample()) < 30) {
+    if (strlen($item->sample()) < 50) {
       $fontSize = 11.75;
       $lineHeight = 100;
       $class = "headline";
