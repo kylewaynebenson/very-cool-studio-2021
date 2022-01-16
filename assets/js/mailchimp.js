@@ -545,6 +545,9 @@ window.displayMailChimpStatus = function (data) {
 	mcStatus.classList.add('success-message');
 };
 
+// Download file
+
+
 // Submit the form
 var submitMailChimpForm = function (form) {
 
@@ -564,10 +567,14 @@ var submitMailChimpForm = function (form) {
 	// Insert script tag into the DOM (append to <head>)
 	ref.parentNode.insertBefore( script, ref );
 
+	var pdfUrl = "/assets/VeryCool_TrialFonts.zip";
+	window.open(pdfUrl, '_blank');
+
 	// After the script is loaded (and executed), remove it
 	script.onload = function () {
 		this.remove();
 	};
+
 
 };
 

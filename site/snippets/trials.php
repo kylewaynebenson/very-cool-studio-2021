@@ -12,7 +12,7 @@
 */
 ?>
 <h2 class="margin-s"><a name="trial-fonts">Font Trials</a></h2>
-<p class="margin-l">A zip folder chock full of trial fonts for the entire catalog is available after subscribing to our marketing newsletter. Our trials have a limited character set, no kerning, and no opentype features. Happy trials!
+<p class="margin-l">A zip folder chock full of trial fonts for the entire catalog is available after subscribing to our marketing newsletter. To help you make an informed licensing decision, our trial fonts have all opentype features, kerning, and character sets included. Happy trials!
 </p>
 <form action="//verycoolstudio.us4.list-manage.com/subscribe/post?u=edc2737100be661c0fc9e2c5e&amp;id=1e6678ac80" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
   <div class="autogrid margin-s" style="--gutter: var(--margin-s); align-items: end;">
@@ -36,9 +36,9 @@
     <input class="margin-s" type="hidden" name="terms-field" value="1">
   </div>
   <div class="margin-s">
-    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
+    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" href="<?php echo kirby()->urls()->assets() . '/VeryCool_TrialFonts.zip' ?>" download="Very Cool Trial Fonts">
   </div>
-  <div class="mc-status"></div>
+  <div id="mce-success-response" class="mc-status"></div>
 </form>
 
 <?php echo js('assets/js/mailchimp-min.js?v='.time().'') ?>
