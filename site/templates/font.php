@@ -114,7 +114,7 @@
   </div>
   <div class="column" style="--columns: 1">
   </div>
-  <div class="column" style="--columns: 3">
+  <div class="column license-button" style="--columns: 3">
     <?php if ($page->shopify()->isNotEmpty()): ?>
       <div id="product-component-<?= $page->shopify() ?>" class="shopify-placeholder"></div>
       <a href="<?= $pages->find('About')->url() ?>#license" class="link">
@@ -256,6 +256,27 @@
           <?php endforeach ?>
         </div>
       </div>
+    </aside>
+    <?php endif ?>
+    <?php if ($page->glyphs()->isNotEmpty()): ?>
+    <aside class="bt-blue bg-blue-gradient in-use">
+    <div class="padding container">
+        <h2 id="features">Glyphs</h2>
+        <?php 
+          // using the `toStructure()` method, we create a structure collection
+          $items = $page->glyphs()->toStructure();
+          // we can then loop through the entries and render the individual fields
+          foreach ($items as $item): ?>
+            <h5 class="color-grey"><?= $item->section() ?></h5>
+            <div class="grid glyphs-grid margin-s">
+              <?php $glyphs = mb_str_split($item->sample(), 1);
+              foreach ($glyphs as $glyph): ?>
+                <div class="color-black" style="--aspect-ratio: 1/1; font-family:'<?= $item->font() ?>';">
+                  <span><?= $glyph ?></span>
+                </div>
+              <?php endforeach ?>
+            </div>
+          <?php endforeach ?>
     </aside>
     <?php endif ?>
     <?php if ($gallery->isNotEmpty()): ?>

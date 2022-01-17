@@ -36,6 +36,7 @@ tabs:
             help: Leave empty to use the title as headline
           font:
             type: text
+            help: FamilyName-StyleName
             placeholder: FamilyName-StyleName
           sample:
             type: text
@@ -112,6 +113,7 @@ tabs:
             fields:
               font:
                 label: Font
+                help: Family Name Style Name
                 type: text
                 width: 1/2
               sample:
@@ -130,12 +132,36 @@ tabs:
                 width: 1/3
               font:
                 label: Font
+                help: VCFamilyNameStyleName
                 type: text
                 width: 1/3
               sample:
                 label: Sample text
                 type: text
                 width: 1/3
+                fields:
+      - width: 1/1
+        fields:
+          glyphs:
+            label: Glyphs
+            type: structure
+            fields:
+              section:
+                label: Title
+                type: text
+                placeholder: Uppercase, Lowercase, etc
+                width: 1/4
+              font:
+                label: Font
+                placeholder: VCFamilyNameStyleName
+                type: text
+                width: 1/4
+              sample:
+                label: Characters
+                placeholder: Comma seperated
+                type: text
+                width: 2/4
+
 
 options: 
   changeTemplate: 

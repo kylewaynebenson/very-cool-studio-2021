@@ -118,3 +118,38 @@ Features:
   feature: ss06
   font: VCNudgeBold
   sample: "1"
+
+----
+
+Glyphs:
+
+- 
+  section: Uppercase
+  font: VCNudgeBold
+  sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+- 
+  section: Uppercase accents
+  font: VCNudgeBold
+  sample: >
+    ÁĂÂÄÀĀĄÅÃÆĆČÇĊÐĎĐÉĚÊËĖÈĒĘẼĞĢĠĦÍÎÏİÌĪĮĨĶĹĽĻŁŃŇŅÑŊÓÔÖÒŐŌØÕŒÞŔŘŖŚŠŞȘẞƏŦŤŢȚÚÛÜÙŰŪŲŮŨẂŴẄẀÝŶŸỲỸŹŽŻ
+- 
+  section: Lowercase
+  font: VCNudgeBold
+  sample: abcdefghijklmnopqrstuvwxyz
+- 
+  section: Lowercase accents
+  font: VCNudgeBold
+  sample: >
+    áăâäàāąåãæćčçċðďđéěêëėèēęẽəğģġħıíîïìīįĩķĺľļłńňņñŋóôöòőōøõœþŕřŗśšşșßŧťţțúŭûüùűūųůũẃŵẅẁýŷÿỳỹźžż
+- 
+  section: Numerals
+  font: VCNudgeBold
+  sample: 0123456789⓪①②③④⑤⑥⑦⑧⑨
+- 
+  section: Currency and math
+  font: VCNudgeBold
+  sample: '¢$€£¥+=><%~^'
+- 
+  section: Punctuation and symbols
+  font: VCNudgeBold
+  sample: '☜☝☞✊✋✧✨❋@&©®™|№🎵🖐🤏'
