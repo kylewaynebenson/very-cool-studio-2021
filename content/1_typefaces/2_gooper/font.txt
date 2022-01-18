@@ -26,7 +26,7 @@ Designer: Kyle Benson
 
 ----
 
-Styles: 44
+Styles: 56
 
 ----
 
@@ -89,16 +89,30 @@ Samples:
   font: Gooper Thin
   sample: Palaeontological
 - 
-  font: Gooper Text Medium
+  font: Gooper Text Regular
   sample: >
-    At that moment, I believe, though I have
-    not fully appreciated it until now, the
-    certainty that I had had interesting
-    experiences, and that one day I would be
-    able to convey their poignancy in words
-    of great precision, died. Over the years
-    it was to die many deaths, none
-    altogether fatal.
+    You could tell by the way they sat on
+    their hands, wiggling side to side,
+    suppressing withered grins, the apostles
+    were saving something special for the
+    finish. As we neared the final hour of
+    the weekend long event, there was little
+    question this would be a conference to
+    remember. In corridors during
+    intermissions, attendees buzzed with
+    rumors. There was much excitement about
+    the idea of a change in commandments.
+    They had experienced some minor and
+    major policy change in the last decade
+    (a little bit more rights for these
+    folks, a bit fewer rights for those
+    folks), and now the saints were ripe for
+    something much bigger. In wards and
+    meeting halls in the six months since
+    the preceding conference, much had been
+    speculated on. The lesser laws got a lot
+    of talk. Maybe the saints would be
+    allowed to drink coffee?
 
 ----
 
@@ -140,6 +154,43 @@ Features:
   feature: onum
   font: VCGooperBold
   sample: "123"
+
+----
+
+Glyphs:
+
+- 
+  section: Uppercase
+  feature: ""
+  font: VCGooperDeckBold
+  sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+- 
+  section: Uppercase accents
+  feature: ""
+  font: VCGooperDeckBold
+  sample: >
+    ÁĂÂÄÀĀĄÅÃÆĆČÇĊÐĎĐÉĚÊËĖÈĒĘẼĞĢĠĦÍÎÏİÌĪĮĨĶĹĽĻŁŃŇŅÑŊÓÔÖÒŐŌØÕŒÞŔŘŖŚŠŞȘẞŦŤŢȚÚÛÜÙŰŪŲŮŨẂŴẄẀÝŶŸỲỸŹŽŻ
+- 
+  section: Lowercase
+  feature: ""
+  font: VCGooperDeckBold
+  sample: abcdefghijklmnopqrstuvwxyz
+- 
+  section: Lowercase accents
+  feature: ""
+  font: VCGooperDeckBold
+  sample: >
+    áăâäàāąåãæćčçċðďđéěêëėèēęẽğģġħıíîïìīįĩķĺľļłńňņñŋóôöòőōøõœþŕřŗśšşșßŧťţțúŭûüùűūųůũẃŵẅẁýŷÿỳỹźžż
+- 
+  section: Numerals
+  feature: ""
+  font: VCGooperDeckBold
+  sample: "0123456789"
+- 
+  section: Oldstyle numerals
+  feature: onum
+  font: VCGooperDeckBold
+  sample: "0123456789"
 
 ----
 

@@ -128,6 +128,7 @@ tabs:
             fields:
               feature:
                 label: Feature
+                placeholder: swsh, ss01
                 type: text
                 width: 1/3
               font:
@@ -150,17 +151,22 @@ tabs:
                 label: Title
                 type: text
                 placeholder: Uppercase, Lowercase, etc
-                width: 1/4
+                width: 1/5
+              feature:
+                label: Feature
+                placeholder: swsh, ss01
+                type: text
+                width: 1/5
               font:
                 label: Font
                 placeholder: VCFamilyNameStyleName
                 type: text
-                width: 1/4
+                width: 1/5
               sample:
                 label: Characters
-                placeholder: Comma seperated
+                placeholder: No seperation
                 type: text
-                width: 2/4
+                width: 2/5
 
 
 options: 

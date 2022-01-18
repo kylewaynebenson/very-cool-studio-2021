@@ -268,10 +268,10 @@
           // we can then loop through the entries and render the individual fields
           foreach ($items as $item): ?>
             <h5 class="color-grey"><?= $item->section() ?></h5>
-            <div class="grid glyphs-grid margin-s">
+            <div class="grid glyphs-grid margin-s" style="font-feature-settings: '<?= $item->feature() ?>' 1; font-family:'<?= $item->font() ?>';">
               <?php $glyphs = mb_str_split($item->sample(), 1);
               foreach ($glyphs as $glyph): ?>
-                <div class="color-black" style="--aspect-ratio: 1/1; font-family:'<?= $item->font() ?>';">
+                <div class="color-black" style="--aspect-ratio: 1/1;">
                   <span><?= $glyph ?></span>
                 </div>
               <?php endforeach ?>
