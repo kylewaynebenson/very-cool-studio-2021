@@ -271,7 +271,7 @@
             <div class="grid glyphs-grid margin-s" style="font-feature-settings: '<?= $item->feature() ?>' 1; font-family:'<?= $item->font() ?>';">
               <?php $glyphs = mb_str_split($item->sample(), 1);
               foreach ($glyphs as $glyph): ?>
-                <div class="color-black" style="--aspect-ratio: 1/1;">
+                <div class="color-black zoom" style="--aspect-ratio: 1/1;">
                   <span><?= $glyph ?></span>
                 </div>
               <?php endforeach ?>

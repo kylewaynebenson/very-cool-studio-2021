@@ -1080,6 +1080,15 @@ contact .h1 {
     grid-template-columns: repeat(16, 1fr);
     font-size: 28px;
   }
+  .zoom {
+    transition: transform 500ms; /* Animation */
+    transform-origin: top left;
+  }
+  .zoom:hover {
+    z-index: 1;
+    transform: scale(1.982);
+    border-width: 1px;
+  }
 }
 .glyphs-grid {
   align-items: center;
@@ -1088,6 +1097,7 @@ contact .h1 {
 .glyphs-grid > div {
   margin-left: -2px;
   margin-bottom: -2px;
+  background-color: var(--color-white);
   border: var(--border) var(--color-grey);
   text-align: center;
   line-height: 0;
