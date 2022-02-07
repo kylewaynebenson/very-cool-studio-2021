@@ -146,9 +146,7 @@ function featureOn(checkbox, feature) {
   var featurePreview = feature+"-sample";
   if(checkbox.checked == true){
       document.getElementById(featurePreview).setAttribute("style", fontFeature);
-      console.log("naw");
   }else {
     document.getElementById(featurePreview).removeAttribute("style", fontFeature);
-    console.log("yeah!");
   }
 }

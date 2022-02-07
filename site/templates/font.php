@@ -247,8 +247,8 @@
                 <label class="tgl-btn" for="toggle-'<?= $item->feature() ?>'"></label>
               </div>
               <div class="margin-s">
-                <h1 class="no-mb" style="font-family:'<?= $item->font() ?>'; max-width: 100%; text-overflow: ellipsis;">
-                <span id="<?= $item->feature() ?>-sample" contenteditable style="font-feature-settings: '<?= $item->feature() ?>' 1; "><?= $item->sample() ?></span>
+                <h1 class="no-mb" contenteditable style="font-family:'<?= $item->font() ?>'; max-width: 100%; text-overflow: ellipsis;">
+                <span id="<?= $item->feature() ?>-sample" style="font-feature-settings: '<?= $item->feature() ?>' 1; "><?= $item->sample() ?></span>
                 </h1>
               </div>
             </div>
