@@ -31,7 +31,7 @@
       --color-black: #000;
       --color-bg-black: #000;
       --color-white: #fff;
-      --color-grey: #999491;
+      --color-grey: #7C8DA6;
       --color-yellow: #FFD138;
       --color-coral: #FF7B52;
       --color-soft-blue: #D7E7FF;

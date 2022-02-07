@@ -556,6 +556,7 @@ input[type="submit"] {
 .main {
   transition: height 200ms ease-in;
   min-height: 50vh;
+  overflow-x: hidden;
 }
  dl > *, dl > * {
   display: inline-block;
@@ -1146,8 +1147,7 @@ contact .h1 {
 .glyphs-grid > div {
   margin-left: -2px;
   margin-bottom: -2px;
-  background-color: var(--color-white);
-  border: var(--border) var(--color-grey);
+  border: var(--border) var(--color-soft-blue);
   text-align: center;
   line-height: 0;
   position: relative;
@@ -1264,10 +1264,31 @@ contact .h1 {
 .fsjs-skin .fsjs-block-type-slidergroup .fsjs-label span:first-child {
   margin-right: auto;
 }
-
-.fsjs-skin .fsjs-block-opentype .fsjs-label {
+/* opentype dropdown menu */
+.fsjs-skin .fsjs-block-opentype {
+  position: relative;
+}
+.fsjs-skin .fsjs-block-opentype {
   display: block;
   justify-content: flex-start;
+}
+.fsjs-skin .fsjs-block-opentype:hover {
+  background: var(--color-soft-blue);
+}
+.fsjs-skin .fsjs-block-opentype [data-fsjs] {
+  position: absolute;
+  background-color: var(--color-white);
+  top: 0px;
+  left: 100%;
+  height: 140px;
+  width: 100%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 3px 3px 0px 0px var(--color-grey);
+}
+.fsjs-skin .fsjs-block-opentype:hover [data-fsjs] {
+  left: 0px;
 }
 .fsjs-skin [contenteditable] {
   outline: none;

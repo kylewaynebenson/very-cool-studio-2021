@@ -134,6 +134,8 @@
   <?php 
   // using the `toStructure()` method, we create a structure collection
   $items = $page->samples()->toStructure();
+  //gathering features in a list
+  $features = '"' . implode('","', $page->features()->toStructure()->pluck('feature')) . '"';
   $i = 0;
   // we can then loop through the entries and render the individual fields
   foreach ($items as $item):
@@ -219,9 +221,10 @@
             // A set of checkboxes; NOTE: No validation whatsoever if the font
             // supports these opentype features
             opentype: {
-                choices: ["swsh|Sw", "frac|½"],
+                choices: [<?= $features ?>],
                 init: ["liga"],
-                label: ""
+                label: "Features",
+                class: "dropdown",
             }
           }
         }      
