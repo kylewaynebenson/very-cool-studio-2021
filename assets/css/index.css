@@ -1035,7 +1035,7 @@ input:checked + svg {
   outline: 0;
   display: block;
   width: 1.3em;
-  height: .8em;
+  height: .78em;
   position: relative;
   cursor: pointer;
   -webkit-user-select: none;
@@ -1072,6 +1072,9 @@ input:checked + svg {
   transition: all 0.2s ease;
 }
 .tgl-light:checked + .tgl-btn {
+  background: var(--color-grey);
+}
+.tgl-light:checked + .tgl-btn:hover {
   background: var(--color-black);
 }
 

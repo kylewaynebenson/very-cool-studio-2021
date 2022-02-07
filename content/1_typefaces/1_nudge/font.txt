@@ -71,6 +71,12 @@ Designinfo: articles/nudge-design-information
 Samples:
 
 - 
+  font: Nudge Black
+  sample: Bibliographies
+- 
+  font: Nudge Extra Bold
+  sample: Circumnavigate
+- 
   font: Nudge Bold
   sample: Notwithstanding
 - 
@@ -93,31 +99,43 @@ Features:
 - 
   feature: frac
   font: VCNudgeBold
-  sample: 17/23
+  sample: 1234/56789
+  description: Fractions
 - 
   feature: ss01
   font: VCNudgeBold
-  sample: G
+  sample: Glistening
+  description: Round G
 - 
   feature: ss02
   font: VCNudgeBold
-  sample: R
+  sample: REFLECTED
+  description: Straight Leg R
 - 
   feature: ss03
   font: VCNudgeBold
-  sample: g
+  sample: Redesigns
+  description: Two story g
 - 
   feature: ss04
   font: VCNudgeBold
-  sample: "7"
+  sample: 71 + 7 = 78
+  description: Straight seven
 - 
   feature: ss05
   font: VCNudgeBold
-  sample: a
+  sample: Graveyard
+  description: One story a
 - 
   feature: ss06
   font: VCNudgeBold
-  sample: "1"
+  sample: 100 Ways
+  description: Tabular one
+- 
+  feature: case
+  font: VCNudgeBold
+  sample: HI-FI
+  description: Uppercase styles
 
 ----
 
@@ -125,31 +143,38 @@ Glyphs:
 
 - 
   section: Uppercase
+  feature: ""
   font: VCNudgeBold
   sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
 - 
   section: Uppercase accents
+  feature: ""
   font: VCNudgeBold
   sample: >
     ÁĂÂÄÀĀĄÅÃÆĆČÇĊÐĎĐÉĚÊËĖÈĒĘẼĞĢĠĦÍÎÏİÌĪĮĨĶĹĽĻŁŃŇŅÑŊÓÔÖÒŐŌØÕŒÞŔŘŖŚŠŞȘẞƏŦŤŢȚÚÛÜÙŰŪŲŮŨẂŴẄẀÝŶŸỲỸŹŽŻ
 - 
   section: Lowercase
+  feature: ""
   font: VCNudgeBold
   sample: abcdefghijklmnopqrstuvwxyz
 - 
   section: Lowercase accents
+  feature: ""
   font: VCNudgeBold
   sample: >
     áăâäàāąåãæćčçċðďđéěêëėèēęẽəğģġħıíîïìīįĩķĺľļłńňņñŋóôöòőōøõœþŕřŗśšşșßŧťţțúŭûüùűūųůũẃŵẅẁýŷÿỳỹźžż
 - 
   section: Numerals
+  feature: ""
   font: VCNudgeBold
   sample: 0123456789⓪①②③④⑤⑥⑦⑧⑨
 - 
   section: Currency and math
+  feature: ""
   font: VCNudgeBold
   sample: '¢$€£¥+=><%~^'
 - 
   section: Punctuation and symbols
+  feature: ""
   font: VCNudgeBold
   sample: '☜☝☞✊✋✧✨❋@&©®™|№🎵🖐🤏'

@@ -244,13 +244,14 @@
           // we can then loop through the entries and render the individual fields
           foreach ($items as $item): ?>
             <div class="column bb-soft-blue" style="--columns:4;">
-              <div class="flex">
-                <h5 class="flex-grow color-grey"><?= $item->feature() ?></h5>
+              <div class="grid-locked margin-s" style="--gutter:1vw;--columns:12; align-items: center;">
                 <input class="tgl tgl-light" id="toggle-'<?= $item->feature() ?>'" onchange="featureOn(this, '<?= $item->feature() ?>');" type="checkbox" checked/>
                 <label class="tgl-btn" for="toggle-'<?= $item->feature() ?>'"></label>
+                <h5 class="color-grey no-mb"><?= $item->feature() ?></h5>
+                <h6 class="color-grey column no-mb" style="--columns:10;"><?= $item->description() ?></h6>
               </div>
               <div class="margin-s">
-                <h1 class="no-mb" contenteditable style="font-family:'<?= $item->font() ?>'; max-width: 100%; text-overflow: ellipsis;">
+                <h1 class="no-mb" contenteditable style="font-family:'<?= $item->font() ?>'; max-width: 100%;">
                 <span id="<?= $item->feature() ?>-sample" style="font-feature-settings: '<?= $item->feature() ?>' 1; "><?= $item->sample() ?></span>
                 </h1>
               </div>

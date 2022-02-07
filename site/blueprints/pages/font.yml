@@ -130,17 +130,21 @@ tabs:
                 label: Feature
                 placeholder: swsh, ss01
                 type: text
-                width: 1/3
+                width: 1/4
               font:
                 label: Font
                 help: VCFamilyNameStyleName
                 type: text
-                width: 1/3
+                width: 1/4
               sample:
                 label: Sample text
                 type: text
-                width: 1/3
-                fields:
+                width: 1/4
+              description:
+                label: Description
+                help: Single story a
+                type: text
+                width: 1/4
       - width: 1/1
         fields:
           glyphs:
