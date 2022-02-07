@@ -231,27 +231,26 @@
       </script>
     <?php endforeach ?>
     <?php if ($page->features()->isNotEmpty()): ?>
-    <aside class="bt-blue bg-blue-gradient">
-      <div class="padding container grid" style="--gutter: 1vw;">
-        <h2 id="features" class="column" style="--columns:3;">Opentype features</h2>
-        <div class="grid-locked column" style="--gutter: 1vw;--columns:9;">
+    <aside class="bt-blue bg-blue-gradient features">
+      <div class="padding container">
+        <h2 id="features">Opentype features</h2>
+        <div class="grid" style="--gutter:1vw;">
         <?php 
           // using the `toStructure()` method, we create a structure collection
           $items = $page->features()->toStructure();
           // we can then loop through the entries and render the individual fields
           foreach ($items as $item): ?>
-            <h5 class="column color-grey" style="--columns:1; margin-top: 4px;"><?= $item->feature() ?></h5>
-            <?php if (strlen($item->sample()) < 5): ?>
-              <div class="column margin-s" style="--columns:5;">
-            <?php else: ?>
-              <div class="column margin-s" style="--columns:11;">
-            <?php endif ?>
-              <h1 class="no-mb inline-block feature-off color-grey" style="font-feature-settings: '<?= $item->feature() ?>' 0; font-family:'<?= $item->font() ?>';">
-              <?= $item->sample() ?>
-              </h1>
-              <h1 contenteditable class="no-mb inline-block feature-on" style="font-feature-settings: '<?= $item->feature() ?>' 1; font-family:'<?= $item->font() ?>'; max-width: 100%; text-overflow: ellipsis;">
-              <?= $item->sample() ?>
-              </h1>
+            <div class="column bb-soft-blue" style="--columns:4;">
+              <div class="flex">
+                <h5 class="flex-grow color-grey"><?= $item->feature() ?></h5>
+                <input class="tgl tgl-light" id="toggle-'<?= $item->feature() ?>'" onchange="featureOn(this, '<?= $item->feature() ?>');" type="checkbox" checked/>
+                <label class="tgl-btn" for="toggle-'<?= $item->feature() ?>'"></label>
+              </div>
+              <div class="margin-s">
+                <h1 class="no-mb" style="font-family:'<?= $item->font() ?>'; max-width: 100%; text-overflow: ellipsis;">
+                <span id="<?= $item->feature() ?>-sample" contenteditable style="font-feature-settings: '<?= $item->feature() ?>' 1; "><?= $item->sample() ?></span>
+                </h1>
+              </div>
             </div>
           <?php endforeach ?>
         </div>
@@ -259,9 +258,9 @@
     </aside>
     <?php endif ?>
     <?php if ($page->glyphs()->isNotEmpty()): ?>
-    <aside class="bt-blue bg-blue-gradient in-use">
+    <aside class="bt-blue bg-blue-gradient glyphs">
     <div class="padding container">
-        <h2 id="features">Glyphs</h2>
+        <h2 id="glyphs">Glyphs</h2>
         <?php 
           // using the `toStructure()` method, we create a structure collection
           $items = $page->glyphs()->toStructure();

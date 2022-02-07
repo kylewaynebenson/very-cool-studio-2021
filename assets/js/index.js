@@ -141,3 +141,14 @@
       }
       /*]]>*/
 
+function featureOn(checkbox, feature) {
+  var fontFeature = "font-feature-settings: '"+feature+"' 1;"
+  var featurePreview = feature+"-sample";
+  if(checkbox.checked == true){
+      document.getElementById(featurePreview).setAttribute("style", fontFeature);
+      console.log("naw");
+  }else {
+    document.getElementById(featurePreview).removeAttribute("style", fontFeature);
+    console.log("yeah!");
+  }
+}
