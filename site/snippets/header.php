@@ -21,11 +21,11 @@
   <meta name="description" content="Very Cool is a type foundry run by Kyle Benson in Oakland, California."/>
   <meta property="og:title" content="<?= $site->title() . ' | ' . $page->title() ?>">
   <?php
-  $graphimage = $page->opengraphimage()->toFile()->url();
+  $graphimage = $page->opengraphimage()->toFile();
   if ($graphimage) {
   ?>
-    <meta property="og:image" content="<?= $graphimage ?>">
-    <meta name="twitter:image" content="<?= $graphimage ?>"/>
+    <meta property="og:image" content="<?= $graphimage->url() ?>">
+    <meta name="twitter:image" content="<?= $graphimage->url() ?>"/>
     <meta property="og:image:alt" content="<?php echo kirby()->urls()->assets() . '/images/share-image.png' ?>">
   <?php } else { ?>
     <meta property="og:image" content="<?php echo kirby()->urls()->assets() . '/images/share-image.png' ?>">
