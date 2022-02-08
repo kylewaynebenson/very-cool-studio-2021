@@ -26,7 +26,7 @@ Designer:
 
 ----
 
-Styles: 5
+Styles: 7
 
 ----
 
@@ -38,7 +38,7 @@ Optical:
 
 ----
 
-Version: 
+Version: 0.4
 
 ----
 
@@ -50,7 +50,7 @@ Futurefonts: https://www.futurefonts.xyz/very-cool-studio/nudge
 
 ----
 
-Text: <p>With an X-Acto blade, a basic memory of Helvetica Condensed, half a Letraset sheet for Avant Garde Medium Condensed, and 15 minutes, you might create Nudge. That's not how I designed Nudge, but it might be how you would. It's  based on a dog defecation sign composed of hand cut vinyl letters which I saw at Silver Lake Reservoir in LA. The letters on the sign stood out for having uncharacteristically narrow n's, and nearly closed apertures. Nudge is in that vein. The contrast is low, the tapers are hardly visible. The rules feel a little broken, I'm not keeping track of which.</p>
+Text: <p>With an X-Acto blade, a basic memory of Helvetica Condensed, half a Letraset sheet for Avant Garde Medium Condensed, and 15 minutes, you might create Nudge. That's not how I designed Nudge, but it might be how you would. It’s based on a dog defecation sign composed of hand cut vinyl letters which I saw at Silver Lake Reservoir in LA. The letters on the sign stood out for having uncharacteristically narrow n’s, and nearly closed apertures. Nudge is in that vein. The contrast is low, the tapers are hardly visible. The rules feel a little broken, I’m not keeping track of which.</p>
 
 ----
 
@@ -60,11 +60,17 @@ Tags: Gothic, Sans, Condensed
 
 Specimen:
 
-- verycoolstudio_nudgev0.3.pdf
+- verycoolstudio_nudgev0.4.pdf
 
 ----
 
 Designinfo: articles/nudge-design-information
+
+----
+
+Opengraphimage:
+
+- nudgeshareimage.jpg
 
 ----
 

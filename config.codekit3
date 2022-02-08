@@ -4087,20 +4087,41 @@
       "oAP" : "\/content\/1_typefaces\/1_nudge\/nem-makers.png.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.3.pdf" : {
+    "\/content\/1_typefaces\/1_nudge\/nudgeshareimage.jpg" : {
+      "ft" : 16384,
+      "iS" : 69057,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/1_nudge\/nudgeshareimage.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/1_nudge\/nudgeshareimage.jpg.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.3.pdf",
+      "oAP" : "\/content\/1_typefaces\/1_nudge\/nudgeshareimage.jpg.txt",
       "oF" : 0
     },
-    "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.3.pdf.txt" : {
+    "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.4.pdf" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.3.pdf.txt",
+      "oAP" : "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.4.pdf",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.4.pdf.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/1_nudge\/verycoolstudio_nudgev0.4.pdf.txt",
       "oF" : 0
     },
     "\/content\/1_typefaces\/2_gooper\/2103_verycoolstudio_gooper.pdf" : {
@@ -26437,6 +26458,64 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/typefaces\/nudge\/0e7b4613f0-1644347521\/.jobs\/nudgeshareimage-38x38.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/0e7b4613f0-1644347521\/.jobs\/nudgeshareimage-38x38.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/nudge\/0e7b4613f0-1644347521\/.jobs\/nudgeshareimage-352x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/0e7b4613f0-1644347521\/.jobs\/nudgeshareimage-352x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/nudge\/0e7b4613f0-1644347521\/.jobs\/nudgeshareimage-864x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/0e7b4613f0-1644347521\/.jobs\/nudgeshareimage-864x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/nudge\/0e7b4613f0-1644347521\/.jobs\/nudgeshareimage-1408x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/0e7b4613f0-1644347521\/.jobs\/nudgeshareimage-1408x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/nudge\/0e7b4613f0-1644347521\/nudgeshareimage-76x76.jpg" : {
+      "ft" : 16384,
+      "iS" : 3379,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/0e7b4613f0-1644347521\/nudgeshareimage-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/nudge\/0e7b4613f0-1644347521\/nudgeshareimage.jpg" : {
+      "ft" : 16384,
+      "iS" : 69057,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/0e7b4613f0-1644347521\/nudgeshareimage.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/typefaces\/nudge\/43e12a71e9-1629429314\/.jobs\/e6xm2iaucaixxem-38x38.jpg.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -29737,36 +29816,20 @@
       "oAP" : "\/site\/plugins\/meta-tags\/vendor\/pedroborges\/meta-tags\/src\/MetaTags.php",
       "oF" : 0
     },
-    "\/site\/sessions\/1642496741.4284b447c1378cbecb9c.sess" : {
+    "\/site\/sessions\/1644353650.999e878b28687c96e215.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1642496741.4284b447c1378cbecb9c.sess",
+      "oAP" : "\/site\/sessions\/1644353650.999e878b28687c96e215.sess",
       "oF" : 0
     },
-    "\/site\/sessions\/1642496741.dc39c018d44c8e19c307.sess" : {
+    "\/site\/sessions\/1644353650.a5a15e9731541b74fe5b.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1642496741.dc39c018d44c8e19c307.sess",
-      "oF" : 0
-    },
-    "\/site\/sessions\/1644265548.05d09f785986701b1beb.sess" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/site\/sessions\/1644265548.05d09f785986701b1beb.sess",
-      "oF" : 0
-    },
-    "\/site\/sessions\/1644265548.e8042604d0155b1705c9.sess" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/site\/sessions\/1644265548.e8042604d0155b1705c9.sess",
+      "oAP" : "\/site\/sessions\/1644353650.a5a15e9731541b74fe5b.sess",
       "oF" : 0
     },
     "\/site\/snippets\/article.php" : {
