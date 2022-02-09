@@ -67,7 +67,6 @@
   </style>
 <?php echo css('assets/css/index-min.css?v='.time().'') ?>
 <?= css('@auto') ?>
-  
   <style>
 @font-face {
   font-family: 'VC Cardinal';
@@ -98,7 +97,6 @@
   src: url("<?= kirby()->urls()->assets() . '/webfonts/gooper/VCGooperText-Bold.woff2' ?>") format("woff2"), url("<?= kirby()->urls()->assets() . '/webfonts/gooper/VCGooperText-Bold.woff' ?>") format("woff"); }
 </style>
 
-
 <link rel="shortcut icon" type="image/x-icon" href="<?= kirby()->urls()->assets() .'/images/favicon.png' ?>">
 </head>
 <?php if ($page->parents()->count()): ?>
@@ -119,19 +117,6 @@
       </a>
     </div>
     <div class="menu">
-      <?php
-      /*
-        In the menu, we only fetch listed pages,
-        i.e. the pages that have a prepended number
-        in their foldername.
-
-        We do not want to display links to unlisted
-        `error`, `home`, or `sandbox` pages.
-
-        More about page status:
-        https://getkirby.com/docs/reference/panel/blueprints/page#statuses
-      */
-      ?>
       <div class="link desktop-only">
           <?php if ($page->isHomePage()): ?>
             <a aria-current href="<?= $site->url() ?>">
