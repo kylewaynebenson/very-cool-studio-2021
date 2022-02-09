@@ -4232,6 +4232,27 @@
       "oAP" : "\/content\/1_typefaces\/2_gooper\/gooperitalic.jpeg.txt",
       "oF" : 0
     },
+    "\/content\/1_typefaces\/2_gooper\/goopershareimage.jpg" : {
+      "ft" : 16384,
+      "iS" : 105359,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/goopershareimage.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/2_gooper\/goopershareimage.jpg.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/2_gooper\/goopershareimage.jpg.txt",
+      "oF" : 0
+    },
     "\/content\/1_typefaces\/2_gooper\/robertas-pizza.jpg" : {
       "ft" : 16384,
       "iS" : 86020,
@@ -4361,12 +4382,54 @@
       "oAP" : "\/content\/1_typefaces\/5_cardinal\/font.txt",
       "oF" : 0
     },
+    "\/content\/1_typefaces\/6_honey\/15five.png" : {
+      "ft" : 32768,
+      "iS" : 911247,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/6_honey\/15five.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/6_honey\/15five.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/6_honey\/15five.png.txt",
+      "oF" : 0
+    },
     "\/content\/1_typefaces\/6_honey\/font.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/content\/1_typefaces\/6_honey\/font.txt",
+      "oF" : 0
+    },
+    "\/content\/1_typefaces\/6_honey\/intercom.png" : {
+      "ft" : 32768,
+      "iS" : 476872,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/6_honey\/intercom.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/1_typefaces\/6_honey\/intercom.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/1_typefaces\/6_honey\/intercom.png.txt",
       "oF" : 0
     },
     "\/content\/1_typefaces\/7_cornbread\/font.txt" : {
@@ -25572,6 +25635,132 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/typefaces\/cardinal\/8c500201db-1629442029\/.jobs\/cardinal-jeff-wiggins-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/8c500201db-1629442029\/.jobs\/cardinal-jeff-wiggins-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/8c500201db-1629442029\/.jobs\/cardinal-jeff-wiggins-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/8c500201db-1629442029\/.jobs\/cardinal-jeff-wiggins-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/8c500201db-1629442029\/.jobs\/cardinal-jeff-wiggins-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/8c500201db-1629442029\/.jobs\/cardinal-jeff-wiggins-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/8c500201db-1629442029\/cardinal-jeff-wiggins-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 4058,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/8c500201db-1629442029\/cardinal-jeff-wiggins-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/8c500201db-1629442029\/cardinal-jeff-wiggins-1408x.png" : {
+      "ft" : 32768,
+      "iS" : 383978,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/8c500201db-1629442029\/cardinal-jeff-wiggins-1408x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/8c500201db-1629442029\/cardinal-jeff-wiggins.png" : {
+      "ft" : 32768,
+      "iS" : 567291,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/8c500201db-1629442029\/cardinal-jeff-wiggins.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/aa7b488a58-1629442305\/.jobs\/cardinal-banzai-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/aa7b488a58-1629442305\/.jobs\/cardinal-banzai-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/aa7b488a58-1629442305\/.jobs\/cardinal-banzai-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/aa7b488a58-1629442305\/.jobs\/cardinal-banzai-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/aa7b488a58-1629442305\/.jobs\/cardinal-banzai-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/aa7b488a58-1629442305\/.jobs\/cardinal-banzai-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/aa7b488a58-1629442305\/cardinal-banzai-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 5004,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/aa7b488a58-1629442305\/cardinal-banzai-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/aa7b488a58-1629442305\/cardinal-banzai-1408x.png" : {
+      "ft" : 32768,
+      "iS" : 601756,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/aa7b488a58-1629442305\/cardinal-banzai-1408x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/aa7b488a58-1629442305\/cardinal-banzai.png" : {
+      "ft" : 32768,
+      "iS" : 619952,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/aa7b488a58-1629442305\/cardinal-banzai.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/typefaces\/cardinal\/d6bdd82d02-1629442305\/.jobs\/cardinal-banzai-38x38.png.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -26165,6 +26354,51 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/typefaces\/gooper\/bf205bdb15-1644349137\/.jobs\/goopershareimage-38x38.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/bf205bdb15-1644349137\/.jobs\/goopershareimage-38x38.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/bf205bdb15-1644349137\/.jobs\/goopershareimage-352x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/bf205bdb15-1644349137\/.jobs\/goopershareimage-352x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/bf205bdb15-1644349137\/.jobs\/goopershareimage-864x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/bf205bdb15-1644349137\/.jobs\/goopershareimage-864x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/bf205bdb15-1644349137\/.jobs\/goopershareimage-1408x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/bf205bdb15-1644349137\/.jobs\/goopershareimage-1408x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/bf205bdb15-1644349137\/goopershareimage-76x76.jpg" : {
+      "ft" : 16384,
+      "iS" : 3674,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/bf205bdb15-1644349137\/goopershareimage-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/typefaces\/gooper\/d7a895e813-1629404522\/bm6-chris.jpeg" : {
       "ft" : 16384,
       "iS" : 360085,
@@ -26395,6 +26629,19 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/typefaces\/kansas-casual\/9cc99c0bf2-1629442174\/kansas-casual-banzai.png" : {
+      "ft" : 32768,
+      "iS" : 558943,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/9cc99c0bf2-1629442174\/kansas-casual-banzai.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/.jobs\/kansas-casual-banzai-38x38.png.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -26450,6 +26697,19 @@
       "iS" : 558943,
       "oA" : 0,
       "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/b8f6254873-1629442174\/kansas-casual-banzai.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/f16b66f440-1629426442\/kansas-casual-camp.png" : {
+      "ft" : 32768,
+      "iS" : 1465736,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/f16b66f440-1629426442\/kansas-casual-camp.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -29830,6 +30090,30 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/site\/sessions\/1644353650.a5a15e9731541b74fe5b.sess",
+      "oF" : 0
+    },
+    "\/site\/sessions\/1644368683.3b01191cada5fae9590a.sess" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/site\/sessions\/1644368683.3b01191cada5fae9590a.sess",
+      "oF" : 0
+    },
+    "\/site\/sessions\/1644368683.a8621f7000ab46670160.sess" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/site\/sessions\/1644368683.a8621f7000ab46670160.sess",
+      "oF" : 0
+    },
+    "\/site\/sessions\/1644372368.2327a79b19873e51ffca.sess" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/site\/sessions\/1644372368.2327a79b19873e51ffca.sess",
       "oF" : 0
     },
     "\/site\/snippets\/article.php" : {

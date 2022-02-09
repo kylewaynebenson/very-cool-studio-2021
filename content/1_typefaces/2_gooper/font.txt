@@ -68,6 +68,12 @@ Designinfo: articles/gooper-design-information
 
 ----
 
+Opengraphimage:
+
+- goopershareimage.jpg
+
+----
+
 Samples:
 
 - 
@@ -122,38 +128,47 @@ Features:
   feature: swsh
   font: VCGooperBold
   sample: Oranges
+  description: Swash
 - 
   feature: ss01
   font: VCGooperBold
-  sample: A
+  sample: Absolve
+  description: Super swash
 - 
   feature: ss02
   font: VCGooperBold
-  sample: ag
+  sample: Bagels
+  description: Single story a, g
 - 
   feature: dlig
   font: VCGooperBold
-  sample: oo
+  sample: Groovy
+  description: ""
 - 
   feature: ss03
   font: VCGooperBold
-  sample: di
+  sample: Addition
+  description: Flat topped d, i
 - 
   feature: ss04
   font: VCGooperBold
-  sample: Cc
+  sample: Cocoa
+  description: Ball terminals
 - 
   feature: ss05
   font: VCGooperBold
-  sample: R
+  sample: Ready
+  description: Swash R
 - 
   feature: frac
   font: VCGooperBold
-  sample: 1/2
+  sample: 1234/56789
+  description: Fractions
 - 
   feature: onum
   font: VCGooperBold
-  sample: "123"
+  sample: "1234567"
+  description: Oldstyle figures
 
 ----
 

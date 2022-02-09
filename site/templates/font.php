@@ -136,6 +136,7 @@
   $items = $page->samples()->toStructure();
   //gathering features in a list
   $features = '"' . implode('","', $page->features()->toStructure()->pluck('feature')) . '"';
+  
   $i = 0;
   // we can then loop through the entries and render the individual fields
   foreach ($items as $item):
@@ -221,13 +222,23 @@
             // A set of checkboxes; NOTE: No validation whatsoever if the font
             // supports these opentype features
             opentype: {
-                choices: [<?= $features ?>],
+                choices: ["liga|Ligatures"],
                 init: ["liga"],
                 label: "Features",
                 class: "dropdown",
             }
           }
-        }      
+        }
+      if (<?= $features ?>.length > 1) {
+        console.log(<?= $features ?>);
+        // A set of checkboxes; NOTE: No validation whatsoever if the font
+        // supports these opentype features
+        options.ui.opentype =  {
+                choices: [<?= $features ?>],
+                init: ["liga"],
+                label: "Features",
+            } 
+        }    
       var <?= $demo ?> = new Fontsampler(document.getElementById("<?= $demo ?>"), fonts, options)
       FontsamplerSkin(<?= $demo ?>)
       <?= $demo ?>.init()
@@ -251,7 +262,7 @@
                 <h6 class="color-grey column no-mb" style="--columns:10;"><?= $item->description() ?></h6>
               </div>
               <div class="margin-s">
-                <h1 class="no-mb" contenteditable style="font-family:'<?= $item->font() ?>'; max-width: 100%;">
+                <h1 class="no-mb" contenteditable style="font-family:'<?= $item->font() ?>'; max-width: 100%; font-feature-settings: 'clig' 0, 'liga' 0;">
                 <span id="<?= $item->feature() ?>-sample" style="font-feature-settings: '<?= $item->feature() ?>' 1; "><?= $item->sample() ?></span>
                 </h1>
               </div>

@@ -88,12 +88,57 @@ Features:
 - 
   feature: ss01
   font: VCHenriettaSemiBold
-  sample: 'Q&'
+  sample: 'Q&A'
+  description: Alternate Q, &
 - 
   feature: ss02
   font: VCHenriettaSemiBold
-  sample: nmh
+  sample: niamh
+  description: Straight leg n, m, h
 - 
   feature: ss03
   font: VCHenriettaSemiBold
-  sample: ji
+  sample: jiggly
+  description: Round tiddle
+
+----
+
+Glyphs:
+
+- 
+  section: Uppercase
+  feature: ""
+  font: VCHenriettaSemiBold
+  sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+- 
+  section: Uppercase accents
+  feature: ""
+  font: VCHenriettaSemiBold
+  sample: >
+    ÁĂÂÄÀĀĄÅÃÆĆČÇĊÐĎĐÉĚÊËĖÈĒĘẼĞĢĠĦÍÎÏİÌĪĮĨĶĹĽĻŁŃŇŅÑŊÓÔÖÒŐŌØÕŒÞŔŘŖŚŠŞȘẞŦŤŢȚÚÛÜÙŰŪŲŮŨẂŴẄẀÝŶŸỲỸŹŽŻ
+- 
+  section: Lowercase
+  feature: ""
+  font: VCHenriettaSemiBold
+  sample: abcdefghijklmnopqrstuvwxyz
+- 
+  section: Lowercase accents
+  feature: ""
+  font: VCHenriettaSemiBold
+  sample: >
+    áăâäàāąåãæćčçċðďđéěêëėèēęẽğģġħıíîïìīįĩķĺľļłńňņñŋóôöòőōøõœþŕřŗśšşșßŧťţțúŭûüùűūųůũẃŵẅẁýŷÿỳỹźžż
+- 
+  section: Numerals
+  feature: ""
+  font: VCHenriettaSemiBold
+  sample: 0123456789
+- 
+  section: Currency and math
+  feature: ""
+  font: VCHenriettaSemiBold
+  sample: '$£¥+^%'
+- 
+  section: Punctuation and symbols
+  feature: ""
+  font: VCHenriettaSemiBold
+  sample: '.,:!?*#/-–—_(){}[]‚“”‘’‹›"'@&©®™'

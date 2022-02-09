@@ -26,7 +26,7 @@ Designer:
 
 ----
 
-Styles: 
+Styles: 21
 
 ----
 
@@ -34,7 +34,7 @@ Widths:
 
 ----
 
-Optical: 
+Optical: 3
 
 ----
 
@@ -50,11 +50,11 @@ Futurefonts:
 
 ----
 
-Text: 
+Text: <p>Honey is not yet released. Inquire at&nbsp;<a href="mailto:hello@verycoolstudio.com" rel="noopener noreferrer nofollow">hello@verycoolstudio.com</a>&nbsp;for licensing.</p>
 
 ----
 
-Tags: 
+Tags: Oldstyle, Soft
 
 ----
 
@@ -91,20 +91,64 @@ Features:
 - 
   feature: ss01
   font: VCHoneyBold
-  sample: Qk
+  sample: Quickly
+  description: Fancy Q
 - 
   feature: ss02
   font: VCHoneyBold
-  sample: g
+  sample: Goggles
+  description: Two story g
 - 
   feature: frac
   font: VCHoneyBold
   sample: 12/34
+  description: Fractions
 - 
   feature: liga
   font: VCHoneyBold
-  sample: Co
+  sample: Co. St.
+  description: Ligatures
 - 
   feature: onum
   font: VCHoneyBold
-  sample: "567"
+  sample: "1234567"
+  description: Oldstyle figures
+
+----
+
+Glyphs:
+
+- 
+  section: Uppercase
+  feature: ""
+  font: VCHoneyBoldDeck
+  sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+- 
+  section: Uppercase accents
+  feature: ""
+  font: VCHoneyBoldDeck
+  sample: >
+    ÁĂÂÄÀĀĄÅÃÆĆČÇĊÐĎĐÉĚÊËĖÈĒĘẼĞĢĠÍÎÏİÌĪĮĨĶĹĽĻŁŃŇŅÑŊÓÔÖÒŐŌØÕŒÞŔŘŖŚŠŞȘẞŦŤŢȚÚÛÜÙŰŪŲŮŨẂŴẄẀÝŶŸỲỸŹŽŻ
+- 
+  section: Lowercase
+  feature: ""
+  font: VCHoneyBoldDeck
+  sample: abcdefghijklmnopqrstuvwxyz
+- 
+  section: Lowercase accents
+  feature: ""
+  font: VCHoneyBoldDeck
+  sample: >
+    áăâäàāąåãæćčçċðďđéěêëėèēęẽğģġıíîïìīįĩķĺľļłńňņñŋóôöòőōøõœþŕřŗśšşșßŧťţțúŭûüùűūųůũẃŵẅẁýŷÿỳỹźžż
+- 
+  section: Numerals
+  feature: ""
+  font: VCHoneyBoldDeck
+  sample: "0123456789"
+- 
+  section: Oldstyle numerals
+  feature: onum
+  font: VCHoneyBoldDeck
+  sample: "0123456789"
+
+----

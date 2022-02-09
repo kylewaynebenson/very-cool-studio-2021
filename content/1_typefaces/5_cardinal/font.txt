@@ -66,6 +66,10 @@ Designinfo: articles/cardinal-grotesque-design-information
 
 ----
 
+Opengraphimage: 
+
+----
+
 Samples:
 
 - 
@@ -86,7 +90,105 @@ Samples:
 
 ----
 
-Features: 
+Features:
+
+- 
+  feature: frac
+  font: VCCardinalSemiBold
+  sample: 1234/5678
+  description: Fractions
+- 
+  feature: ss01
+  font: VCCardinalSemiBold
+  sample: Goggles
+  description: Alternate Gs
+- 
+  feature: ss02
+  font: VCCardinalSemiBold
+  sample: Adaptable
+  description: Single story a
+- 
+  feature: ss03
+  font: VCCardinalSemiBold
+  sample: MONOLINE
+  description: Non calligraphici contrast
+- 
+  feature: ss04
+  font: VCCardinalSemiBold
+  sample: Quilters
+  description: Fancy Q
+- 
+  feature: ss05
+  font: VCCardinalSemiBold
+  sample: Krusty
+  description: Fancy K
+- 
+  feature: ss06
+  font: VCCardinalSemiBold
+  sample: Raspberry
+  description: No tail on R, a
+- 
+  feature: ss07
+  font: VCCardinalSemiBold
+  sample: '“1% on-line”'
+  description: Thin furniture
+- 
+  feature: ss08
+  font: VCCardinalSemiBold
+  sample: 100 Ways
+  description: Simplified one
+- 
+  feature: ss09
+  font: VCCardinalSemiBold
+  sample: @©®
+  description: Thick outline symbols
+- 
+  feature: ss10
+  font: VCCardinalSemiBold
+  sample: 'Bee & Co'
+  description: 'Alternate &'
+- 
+  feature: ss11
+  font: VCCardinalSemiBold
+  sample: Not©Reg®
+  description: Small symbols
+
+----
+
+Glyphs:
+
+- 
+  section: Uppercase
+  feature: ""
+  font: VCCardinalWideSemiBold
+  sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+- 
+  section: Uppercase accents
+  feature: ""
+  font: VCCardinalWideSemiBold
+  sample: >
+    ÁĂÂÄÀĀĄÅÃÆĆČÇĊÐĎĐÉĚÊËĖÈĒĘẼĞĢĠĦÍÎÏİÌĪĮĨĶĹĽĻŁŃŇŅÑŊÓÔÖÒŐŌØÕŒÞŔŘŖŚŠŞȘẞŦŤŢȚÚÛÜÙŰŪŲŮŨẂŴẄẀÝŶŸỲỸŹŽŻ
+- 
+  section: Lowercase
+  feature: ""
+  font: VCCardinalWideSemiBold
+  sample: abcdefghijklmnopqrstuvwxyz
+- 
+  section: Lowercase accents
+  feature: ""
+  font: VCCardinalWideSemiBold
+  sample: >
+    áăâäàāąåãæćčçċðďđéěêëėèēęẽğģġħıíîïìīįĩķĺľļłńňņñŋóôöòőōøõœþŕřŗśšşșßŧťţțúŭûüùűūųůũẃŵẅẁýŷÿỳỹźžż
+- 
+  section: Numerals
+  feature: ""
+  font: VCCardinalWideSemiBold
+  sample: "0123456789"
+- 
+  section: Oldstyle numerals
+  feature: onum
+  font: VCCardinalWideSemiBold
+  sample: "0123456789"
 
 ----
 
@@ -97,16 +199,3 @@ Cover:
 Subheadline: Temperance Handshakes
 
 ----
-
-Faqs:
-
-- 
-  font: VC Cardinal Condensed Bold
-  sample: Hello mother!
-  question: VC Cardinal Condensed Bold
-  answer: Jeffery Jumpdogs
-- 
-  font: VC Cardinal Italic
-  sample: Goodbye mother!
-  question: VC Cardinal Wide Regular
-  answer: Big Old Dogs!!

@@ -77,7 +77,30 @@ Samples:
 - 
   font: Garamond Condensed Regular
   sample: Cashless Stockbroker
+- 
+  font: Garamond Condensed Regular
+  sample: My memory is blurry after the video. I know I signed a few small bits of paperwork then Jon collected a few of his things. He followed me out of the office, through the park, and with me onto the northbound train. He purchased a few cans of beans and meat at the corner store a block from my place and made us a spicy soup with salted ham for dinner. He made breakfast, lunch, and dinner for us both and slept on the floor near my bed. Over two weeks we hardly spoke. His attention seemed elsewhere, in a book or following a new bird song. I remember his snorting—he had some sinus infection, or perhaps chronic phlegm.
 
 ----
 
-Features: 
+Features:
+
+----
+
+Glyphs:
+
+- 
+  section: Uppercase
+  feature: ""
+  font: VCGaramondCondensedSemiBold
+  sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+- 
+  section: Lowercase
+  feature: ""
+  font: VCGaramondCondensedSemiBold
+  sample: abcdefghijklmnopqrstuvwxyz
+- 
+  section: Punctuation and symbols
+  feature: ""
+  font: VCGaramondCondensedSemiBold
+  sample: '’‘”“,.'

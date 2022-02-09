@@ -79,7 +79,80 @@ Samples:
 - 
   font: Bruphy Text Bold
   sample: Coworking Tails
+-
+  font: Bruphy Text Regular
+  sample: In the opening interior shot of the series, the south-side Smiths sit sprawled and stuffed on the couch and floor of their farmhouse-chic living room. Rawlings sits alone in the frame as the camera pans out slowly to reveal Coby, Carter, younger brother Clark, and sisters Charla, Carly, and Jessica. Coby sits shorter than the group, but each child younger stays about the same size. Even the baby Jessica, seven years old, sprawled out on the floor, leaning against Carter’s leg, looks twice her age. The only childish tell is visible in their varying abilities to stay still, decent on camera. They are a pile of puppies.
 
 ----
 
-Features: 
+Features:
+
+- 
+  feature: ss01
+  font: VCBruphySemiBold
+  sample: probably
+  description: Connected rounds
+- 
+  feature: ss02
+  font: VCBruphySemiBold
+  sample: KEEPERS
+  description: Stylized caps
+- 
+  feature: ss03
+  font: VCBruphySemiBold
+  sample: Illiad
+  description: Cap I, straight l
+- 
+  feature: ss04
+  font: VCBruphySemiBold
+  sample: Avocado
+  description: Diagonal v,w,y
+- 
+  feature: ss05
+  font: VCBruphySemiBold
+  sample: Brazen
+  description: Calligraphic styles
+- 
+  feature: tnum
+  font: VCBruphyTextSemiBold
+  sample: "1234567"
+  description: Tabular figures
+
+----
+
+Glyphs:
+
+- 
+  section: Uppercase
+  feature: ""
+  font: VCBruphySemiBoldWide
+  sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+- 
+  section: Uppercase accents
+  feature: ""
+  font: VCBruphySemiBoldWide
+  sample: >
+    ÁĂÂÄÀĀĄÅÃÆĆČÇĊÐĎĐÉĚÊËĖÈĒĘẼĞĢĠÍÎÏİÌĪĮĨĶĹĽĻŁŃŇŅÑŊÓÔÖÒŐŌØÕŒÞŔŘŖŚŠŞȘẞŦŤŢȚÚÛÜÙŰŪŲŮŨẂŴẄẀÝŶŸỲỸŹŽŻ
+- 
+  section: Lowercase
+  feature: ""
+  font: VCBruphySemiBoldWide
+  sample: abcdefghijklmnopqrstuvwxyz
+- 
+  section: Lowercase accents
+  feature: ""
+  font: VCBruphySemiBoldWide
+  sample: >
+    áăâäàāąåãæćčçċðďđéěêëėèēęẽğģġıíîïìīįĩķĺľļłńňņñŋóôöòőōøõœþŕřŗśšşșßŧťţțúŭûüùűūųůũẃŵẅẁýŷÿỳỹźžż
+- 
+  section: Numerals
+  feature: ""
+  font: VCBruphySemiBoldWide
+  sample: "0123456789"
+- 
+  section: Oldstyle numerals
+  feature: onum
+  font: VCBruphyTextBold
+  sample: "0123456789"
+
+----
