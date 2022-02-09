@@ -178,7 +178,7 @@ Glyphs:
   section: Currency and math
   feature: ""
   font: VCNudgeBold
-  sample: '¢$€£¥+=><%~^'
+  sample: '¢$€£¥+=><%'
 - 
   section: Punctuation and symbols
   feature: ""
