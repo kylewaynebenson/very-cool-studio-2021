@@ -66,7 +66,10 @@ Designinfo: articles/cardinal-grotesque-design-information
 
 ----
 
-Opengraphimage: 
+Opengraphimage:
+
+- >
+  2201_verycool_shareimages_kansas-casual-copy.jpg
 
 ----
 
@@ -197,5 +200,3 @@ Cover:
 ----
 
 Subheadline: Temperance Handshakes
-
-----

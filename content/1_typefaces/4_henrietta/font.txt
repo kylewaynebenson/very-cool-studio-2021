@@ -66,6 +66,12 @@ Designinfo:
 
 ----
 
+Opengraphimage:
+
+- 2201_verycool_shareimages_henrietta.jpg
+
+----
+
 Samples:
 
 - 
@@ -89,7 +95,7 @@ Features:
   feature: ss01
   font: VCHenriettaSemiBold
   sample: 'Q&A'
-  description: Alternate Q, &
+  description: 'Alternate Q, &'
 - 
   feature: ss02
   font: VCHenriettaSemiBold
@@ -131,7 +137,7 @@ Glyphs:
   section: Numerals
   feature: ""
   font: VCHenriettaSemiBold
-  sample: 0123456789
+  sample: "123456789"
 - 
   section: Currency and math
   feature: ""
@@ -141,4 +147,5 @@ Glyphs:
   section: Punctuation and symbols
   feature: ""
   font: VCHenriettaSemiBold
-  sample: '.,:!?*#/-–—_(){}[]‚“”‘’‹›"'@&©®™'
+  sample: |
+    .,:!?*#/-–—_(){}[]‚“”‘’‹›"'@&©®™

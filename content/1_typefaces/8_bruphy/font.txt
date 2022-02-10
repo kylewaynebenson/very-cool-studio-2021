@@ -68,6 +68,12 @@ Designinfo: articles/bruphy-design-information
 
 ----
 
+Opengraphimage:
+
+- 2201_verycool_shareimages_bruphy.jpg
+
+----
+
 Samples:
 
 - 
@@ -79,9 +85,26 @@ Samples:
 - 
   font: Bruphy Text Bold
   sample: Coworking Tails
--
+- 
   font: Bruphy Text Regular
-  sample: In the opening interior shot of the series, the south-side Smiths sit sprawled and stuffed on the couch and floor of their farmhouse-chic living room. Rawlings sits alone in the frame as the camera pans out slowly to reveal Coby, Carter, younger brother Clark, and sisters Charla, Carly, and Jessica. Coby sits shorter than the group, but each child younger stays about the same size. Even the baby Jessica, seven years old, sprawled out on the floor, leaning against Carter’s leg, looks twice her age. The only childish tell is visible in their varying abilities to stay still, decent on camera. They are a pile of puppies.
+  sample: >
+    In the opening interior shot of the
+    series, the south-side Smiths sit
+    sprawled and stuffed on the couch and
+    floor of their farmhouse-chic living
+    room. Rawlings sits alone in the frame
+    as the camera pans out slowly to reveal
+    Coby, Carter, younger brother Clark, and
+    sisters Charla, Carly, and Jessica. Coby
+    sits shorter than the group, but each
+    child younger stays about the same size.
+    Even the baby Jessica, seven years old,
+    sprawled out on the floor, leaning
+    against Carter’s leg, looks twice her
+    age. The only childish tell is visible
+    in their varying abilities to stay
+    still, decent on camera. They are a pile
+    of puppies.
 
 ----
 
@@ -154,5 +177,3 @@ Glyphs:
   feature: onum
   font: VCBruphyTextBold
   sample: "0123456789"
-
-----

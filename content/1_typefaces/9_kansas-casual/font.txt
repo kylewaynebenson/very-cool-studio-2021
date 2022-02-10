@@ -66,6 +66,13 @@ Designinfo: articles/kansas-casual-design-information
 
 ----
 
+Opengraphimage:
+
+- >
+  2201_verycool_shareimages_kansas-casual.jpg
+
+----
+
 Samples:
 
 - 
@@ -89,13 +96,13 @@ Samples:
 
 ----
 
-Features: 
+Features:
 
 - 
   feature: ss01
   font: VCKansasCasualSemiBold
-  sample: "Q&A"
-  description: Alternate &
+  sample: 'Q&A'
+  description: 'Alternate &'
 - 
   feature: frac
   font: VCKansasCasualSemiBold
@@ -126,10 +133,10 @@ Glyphs:
   section: Punctuation
   feature: ""
   font: VCKansasCasualSemiBold
-  sample: "*\·•:,…!¡#.?¿"';/_{}[]()—–-«»‹›„“”‘’‚"
+  sample: |
+    *\·•:,…!¡#.?¿"';/_{}[]()—–-«»‹›„“”‘’‚
 - 
   section: Math and Symbols
   feature: ""
   font: VCKansasCasualSemiBold
-  sample: "¢¤$€£¥=><%+→←◊|¦@&¶©®§™°^†‡"
-----
+  sample: '¢¤$€£¥=><%+→←◊|¦@&¶©®§™°^†‡'
