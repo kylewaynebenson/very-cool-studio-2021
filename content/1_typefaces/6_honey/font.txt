@@ -66,6 +66,12 @@ Designinfo:
 
 ----
 
+Opengraphimage:
+
+- 2201_verycool_shareimages_honey.jpg
+
+----
+
 Samples:
 
 - 
@@ -150,5 +156,3 @@ Glyphs:
   feature: onum
   font: VCHoneyBoldDeck
   sample: "0123456789"
-
-----

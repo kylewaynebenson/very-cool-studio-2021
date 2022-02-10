@@ -68,8 +68,7 @@ Designinfo: articles/cardinal-grotesque-design-information
 
 Opengraphimage:
 
-- >
-  2201_verycool_shareimages_kansas-casual-copy.jpg
+- 2201_verycool_shareimages_cardinal.jpg
 
 ----
 
