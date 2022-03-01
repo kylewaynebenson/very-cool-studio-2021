@@ -262,7 +262,7 @@
                 <h6 class="color-grey column no-mb" style="--columns:10;"><?= $item->description() ?></h6>
               </div>
               <div class="margin-s">
-                <h1 class="no-mb" contenteditable style="font-family:'<?= $item->font() ?>'; max-width: 100%; font-feature-settings: 'clig' 0, 'liga' 0;">
+                <h1 class="no-mb" contenteditable style="font-weight: inherit; font-family:'<?= $item->font() ?>'; max-width: 100%; font-feature-settings: 'clig' 0, 'liga' 0;">
                 <span id="<?= $item->feature() ?>-sample" style="font-feature-settings: '<?= $item->feature() ?>' 1; "><?= $item->sample() ?></span>
                 </h1>
               </div>
@@ -293,7 +293,7 @@
           <?php endforeach ?>
     </aside>
     <?php endif ?>
-    <?php if ($gallery->isNotEmpty()): ?>
+    <?php if ($gallery->count() > 1): ?>
     <aside class="bt-blue bg-blue-gradient in-use">
       <div class="padding container grid" style="--gutter: .5vw;">
         <h2 id="in-use" class="column" style="--columns:3;"><?= $page->title() ?> in use</h2>

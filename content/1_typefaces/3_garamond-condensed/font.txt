@@ -14,7 +14,7 @@ Sample: Horsey Cowgirl Reunion
 
 ----
 
-Charset: 58 Characters
+Charset: Basic Latin
 
 ----
 
@@ -26,7 +26,7 @@ Designer:
 
 ----
 
-Styles: 3
+Styles: 7
 
 ----
 
@@ -42,7 +42,7 @@ Version: 0.1
 
 ----
 
-Shopify: 
+Shopify: 6992038789327
 
 ----
 
@@ -50,11 +50,11 @@ Futurefonts:
 
 ----
 
-Text: <p>VC Garamond Condensed is a font family with a very limited character set, drawn from memory over the course of a couple weekends. It will probably never be completed. <a href="https://twitter.com/verycoolstudio/status/1478967520287621128?s=20" rel="noopener noreferrer nofollow">Download it here</a>.</p>
+Text: <p>VC Garamond Condensed is a font family with a very limited character set, drawn from memory.</p>
 
 ----
 
-Tags: Soft
+Tags: Soft, Serif
 
 ----
 
@@ -77,13 +77,25 @@ Samples:
 
 - 
   font: Garamond Condensed Bold
-  sample: Polygamous Lambda
+  sample: Evergreen Whodunit
 - 
   font: Garamond Condensed Semi Bold
+  sample: Polygamous Lambda
+- 
+  font: Garamond Condensed Medium
   sample: Queenly Teethmarks
 - 
   font: Garamond Condensed Regular
   sample: Cashless Stockbroker
+- 
+  font: Garamond Condensed Light
+  sample: Diamante Wallflower
+- 
+  font: Garamond Condensed Extra Light
+  sample: Unsatisfied Genuflect
+- 
+  font: Garamond Condensed Thin
+  sample: Officious Motorcyclist
 - 
   font: Garamond Condensed Regular
   sample: >
@@ -107,7 +119,33 @@ Samples:
 
 ----
 
-Features: 
+Features:
+
+- 
+  feature: onum
+  font: VCGaramondCondensedLight
+  sample: "0123456789"
+  description: Oldstyle numerals
+- 
+  feature: lnum
+  font: VCGaramondCondensedLight
+  sample: "0123456789"
+  description: Lining numerals
+- 
+  feature: liga
+  font: VCGaramondCondensedLight
+  sample: finish
+  description: Ligatures
+- 
+  feature: ss01
+  font: VCGaramondCondensedLight
+  sample: fluff
+  description: Short f
+- 
+  feature: ss02
+  font: VCGaramondCondensedLight
+  sample: Quicker
+  description: Stylized k
 
 ----
 
@@ -119,12 +157,35 @@ Glyphs:
   font: VCGaramondCondensedSemiBold
   sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
 - 
+  section: Uppercase accents
+  feature: ""
+  font: VCGaramondCondensedSemiBold
+  sample: >
+    ÁĂÂÄÀĀĄÅÃÆĆČÇĊÐĎĐÉĚÊËĖÈĒĘẼĞĢĠĦÍÎÏİÌĪĮĨĶĹĽĻŁŃŇŅÑŊÓÔÖÒŐŌØÕŒÞŔŘŖŚŠŞȘẞŦŤŢȚÚÛÜÙŰŪŲŮŨẂŴẄẀÝŶŸỲỸŹŽŻ
+- 
   section: Lowercase
   feature: ""
   font: VCGaramondCondensedSemiBold
   sample: abcdefghijklmnopqrstuvwxyz
 - 
+  section: Lowercase accents
+  feature: ""
+  font: VCGaramondCondensedSemiBold
+  sample: >
+    áăâäàāąåãæćčçċðďđéěêëėèēęẽğģġħıíîïìīįĩķĺľļłńňņñŋóôöòőōøõœþŕřŗśšşșßŧťţțúŭûüùűūųůũẃŵẅẁýŷÿỳỹźžż
+- 
+  section: Numerals
+  feature: ""
+  font: VCGaramondCondensedSemiBold
+  sample: "0123456789"
+- 
+  section: Oldstyle numerals
+  feature: onum
+  font: VCGaramondCondensedSemiBold
+  sample: "0123456789"
+- 
   section: Punctuation and symbols
   feature: ""
   font: VCGaramondCondensedSemiBold
-  sample: ’‘”“,.
+  sample: |
+    .,:;!¡?¿·*#/-–—_(){}[]‚„“”‘’«»‹›"'@&¢$€£¥+^%
