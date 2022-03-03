@@ -14,11 +14,11 @@ Sample: Crumby Bagpipes
 
 ----
 
-Charset: 
+Charset: Basic Latin
 
 ----
 
-Released: 
+Released: 2022
 
 ----
 
@@ -38,11 +38,11 @@ Optical: 3
 
 ----
 
-Version: 
+Version: 0.15
 
 ----
 
-Shopify: 
+Shopify: 6999575036111
 
 ----
 
@@ -50,7 +50,7 @@ Futurefonts:
 
 ----
 
-Text: <p>Honey is not yet released. Inquire at&nbsp;<a href="mailto:hello@verycoolstudio.com" rel="noopener noreferrer nofollow">hello@verycoolstudio.com</a>&nbsp;for licensing.</p>
+Text: <p>As its name implies, Honey&nbsp;is a natural sweetener&nbsp;with the historicity of soft serifs like Souvenir or ITC Grouch, but&nbsp;with more sternness, more glycemic stability&nbsp;than say ol "corn syrup" Cooper might have.</p>
 
 ----
 
