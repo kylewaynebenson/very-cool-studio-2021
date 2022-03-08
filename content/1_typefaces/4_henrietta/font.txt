@@ -18,7 +18,7 @@ Charset:
 
 ----
 
-Released: ????
+Released: 2022
 
 ----
 
@@ -46,11 +46,11 @@ Shopify:
 
 ----
 
-Futurefonts: 
+Futurefonts: https://www.futurefonts.xyz/very-cool-studio/henrietta
 
 ----
 
-Text: <p>Henrietta is not yet released. Inquire at&nbsp;<a href="mailto:hello@verycoolstudio.com" rel="noopener noreferrer nofollow">hello@verycoolstudio.com</a>&nbsp;for licensing.</p>
+Text: <p>Henrietta is a revival of a font by the same name that was (probably) designed in the 1980s. It’s a Souvenir rip-off. But a rip-off with its own underlying logic. One with defined departures from that ubiquitous soft serif queen. It has a flatness that keeps it from being an oldstyle, a warble that feels more Art Nouveau than it does Arts and Crafts, a tall x-height, thick terminals, low contrast, with a lot of the diagonality of Windsor. I think it's really beautiful. I'm hoping by reviving it, I can learn who drew it in the first place.</p>
 
 ----
 
