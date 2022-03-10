@@ -32,7 +32,7 @@
   <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_f2d244c0df42a0431bd08ddea_aeaa9dd034" tabindex="-1" value=""></div>
   <div class="terms terms-and-conditions flex margin-m" style="align-items: center;">
     <input class="margin-s input-checkbox" type="checkbox" name="terms" id="terms" style="margin-right: 10px;">
-    <label class="checkbox" for="terms"><h6 class="margin-s">I accept the trail <a href="/trial-terms" class="link" target="_blank">terms &amp; conditions</a></h6></label>
+    <label class="checkbox" for="terms"><h6 class="margin-s">I accept the trial <a href="/trial-terms" class="link" target="_blank">terms &amp; conditions</a></h6></label>
     <input class="margin-s" type="hidden" name="terms-field" value="1">
   </div>
   <div class="margin-s">
