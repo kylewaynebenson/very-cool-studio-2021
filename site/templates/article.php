@@ -74,6 +74,6 @@
   </div>
 </footer>
 <?php endif ?>
-<?php snippet('prevnext') ?>
 
+<?php snippet('prevnext') ?>
 <?php snippet('footer') ?>

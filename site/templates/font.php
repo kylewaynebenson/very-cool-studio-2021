@@ -20,30 +20,30 @@
 
 ?>
 <?php snippet('header') ?>
-  <?php
-    $path  = './assets/webfonts/' . $page->slug();
-    $files = glob($path . '/*.{woff}', GLOB_BRACE);
-    $fontlist = array();
-    $count = 0;
-    foreach ($files as $file):    
-      $filename = basename($file);
-      # adding url
-      $fontlist[$count]['files'][0] = '../../assets/webfonts/' . $page->slug() . '/' . $filename;
-      # create a fake nice name
-      $fontname = str_replace("-", "", $filename);
-      $fontname = str_replace("VC", " ", $fontname);
-      $fontname = str_replace(".woff", " ", $fontname);
-      $fontname = implode(' ',preg_split('/(?=[A-Z])/', $fontname));
-      $fontname = trim($fontname);
-      # adding name
-      $fontlist[$count]['name'] = $fontname;
-      $count++;
-    endforeach;
-  ?>
-  <?= js([
-    'assets/js/fontsampler.js',
-    'assets/js/fontsampler-skin.js'
-  ]) ?>
+<?php
+  $path  = './assets/webfonts/' . $page->slug();
+  $files = glob($path . '/*.{woff}', GLOB_BRACE);
+  $fontlist = array();
+  $count = 0;
+  foreach ($files as $file):    
+    $filename = basename($file);
+    # adding url
+    $fontlist[$count]['files'][0] = '../../assets/webfonts/' . $page->slug() . '/' . $filename;
+    # create a fake nice name
+    $fontname = str_replace("-", "", $filename);
+    $fontname = str_replace("VC", " ", $fontname);
+    $fontname = str_replace(".woff", " ", $fontname);
+    $fontname = implode(' ',preg_split('/(?=[A-Z])/', $fontname));
+    $fontname = trim($fontname);
+    # adding name
+    $fontlist[$count]['name'] = $fontname;
+    $count++;
+  endforeach;
+?>
+<?= js([
+  'assets/js/fontsampler.js',
+  'assets/js/fontsampler-skin.js'
+]) ?>
 <header class="grid padding" style="--gutter: 3vw;">
   <div class="column" style="--columns: 4">
     <h1 class="margin-l">
@@ -54,25 +54,25 @@
         <dt><h5 class="color-grey">Version</h5></dt>
         <dd><h6><?= $page->version() ?></h6></dd>
       </dl>
-      <? endif; ?>
+      <? endif ?>
     <?php if ($page->charset()->isNotEmpty()): ?>
       <dl>
         <dt><h5 class="color-grey">Char set</h5></dt>
         <dd><h6><?= $page->charset() ?></h6></dd>
       </dl>
-    <? endif; ?>
+    <? endif ?>
     <?php if ($page->released()->isNotEmpty()): ?>
     <dl>
       <dt><h5 class="color-grey">Released</h5></dt>
       <dd><h6><?= $page->released() ?></h6></dd>
     </dl>
-    <? endif; ?>
+    <? endif ?>
     <?php if ($page->designer()->isNotEmpty()): ?>
       <dl>
         <dt><h5 class="color-grey">Designer</h5></dt>
         <dd><h6><?= $page->designer() ?></h6></dd>
       </dl>
-    <? endif; ?>
+    <? endif ?>
     <dl class="margin-l">
       <dt><h5 class="color-grey">Styles</h5></dt>
       <dd><h6><?php echo $count; ?></h6></dd>
@@ -96,9 +96,9 @@
           <h6 class="no-mb">Specimen.pdf</h6>
         </div>
       </a>
-      <? endif; ?>
+      <? endif ?>
     </div>
-    <? endif; ?>
+    <? endif ?>
   </div>
   <div class="column" style="--columns: 4">
     <div class="text">
@@ -106,11 +106,9 @@
     </div>
     <?php if ($page->designinfo()->isNotEmpty()): ?>
       <div class="design-info">
-      <a class="link" href="/<?= $page->designinfo() ?>">
-      Read about <?= $page->title() ?>’s design process
-      </a>
+        <a class="link" href="/<?= $page->designinfo() ?>">Read about <?= $page->title() ?>’s design process</a>
       </div>
-    <? endif; ?>
+    <? endif ?>
   </div>
   <div class="column" style="--columns: 1">
   </div>

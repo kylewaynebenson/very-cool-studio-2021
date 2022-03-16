@@ -12,7 +12,7 @@
   https://getkirby.com/docs/guide/templates/snippets
 */
 ?>
-<?php if($next = $page->getNext($articles) && $prev = $page->getPrev($articles)): ?>
+
 <nav class="blog-prevnext bg-white bt-tan">
   <div class="container padding">
     <h5 class="color-grey">More reading</h5>
@@ -24,7 +24,6 @@
         <?php if ($next = $page->nextListed()): ?>
         <?php snippet('article', ['article' => $next, 'excerpt' => false])  ?>
         <?php endif ?>
-      </div>
-    </nav>
+    </div>
   </div>
-<?php endif ?>
+</nav>
