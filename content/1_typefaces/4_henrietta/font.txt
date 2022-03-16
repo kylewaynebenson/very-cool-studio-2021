@@ -62,7 +62,7 @@ Specimen:
 
 ----
 
-Designinfo: 
+Designinfo: articles/henrietta-design-information
 
 ----
 
