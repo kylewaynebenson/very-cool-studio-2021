@@ -46,11 +46,11 @@ Shopify: 7014458491087
 
 ----
 
-Futurefonts: https://www.futurefonts.xyz/very-cool-studio/gooper
+Futurefonts: 
 
 ----
 
-Text: <p>Gooper is a lively, loveable, sticky typeface made for the use of squishy living things, so they can communicate with other squishy living things. So go ahead and switch out whatever heartless minimalist font you were using for this bouncy sticky pal— and glippity, gloppity, goop! Your text is ALIVE!</p><p>Gooper is currently in production, and is available for sale in progress on Future Fonts.</p>
+Text: <p>Gooper is a lively, loveable, sticky typeface made for the use of squishy living things, so they can communicate with other squishy living things. So go ahead and switch out whatever heartless minimalist font you were using for this bouncy sticky pal— and glippity, gloppity, goop! Your text is ALIVE!</p><p>Gooper is currently in production, and is available for sale in progress on [<a href="https://www.futurefonts.xyz/very-cool-studio/gooper" rel="noopener noreferrer nofollow">https://www.futurefonts.xyz/very-cool-studio/gooper</a>](Future Fonts).</p>
 
 ----
 
