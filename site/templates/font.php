@@ -54,7 +54,7 @@
         <dt><h5 class="color-grey">Version</h5></dt>
         <dd><h6><?= $page->version() ?></h6></dd>
       </dl>
-      <? endif ?>
+    <? endif ?>
     <?php if ($page->charset()->isNotEmpty()): ?>
       <dl>
         <dt><h5 class="color-grey">Char set</h5></dt>
@@ -78,26 +78,26 @@
       <dd><h6><?php echo $count; ?></h6></dd>
     </dl>
     <?php if ($page->shopify()->isNotEmpty() || $page->futurefonts()->isNotEmpty()): ?>
-    <div class="grid-locked margin-l" style="--gutter: 1vw;">
-      <a class="block text-center" href="#trial-fonts" style="max-width:140px;">
-        <div class="margin-s">  
-          <?= svg('assets/icons/trialfonts.svg') ?>
-        </div>
-        <div class="bg-blue rounded-corners-full padding-xxs">
-          <h6 class="no-mb">TrialFonts.otf</h6>
-        </div>
-      </a>
-      <?php if ($specimen = $page->specimen()->filelink()->toFile()): ?>
-      <a class="block text-center" href="<?= $specimen->url() ?>" style="max-width:140px;" download="<?= $page->specimen()->itemtitle() ?>">
-        <div class="margin-s">  
-          <?= svg('assets/icons/specimen.svg') ?>
-        </div>
-        <div class="bg-blue rounded-corners-full padding-xxs">
-          <h6 class="no-mb">Specimen.pdf</h6>
-        </div>
-      </a>
-      <? endif ?>
-    </div>
+      <div class="grid-locked margin-l" style="--gutter: 1vw;">
+        <a class="block text-center" href="#trial-fonts" style="max-width:140px;">
+          <div class="margin-s">  
+            <?= svg('assets/icons/trialfonts.svg') ?>
+          </div>
+          <div class="bg-blue rounded-corners-full padding-xxs">
+            <h6 class="no-mb">TrialFonts.otf</h6>
+          </div>
+        </a>
+        <?php if ($specimen = $page->specimen()->filelink()->toFile()): ?>
+          <a class="block text-center" href="<?= $specimen->url() ?>" style="max-width:140px;" download="<?= $page->specimen()->itemtitle() ?>">
+            <div class="margin-s">  
+              <?= svg('assets/icons/specimen.svg') ?>
+            </div>
+            <div class="bg-blue rounded-corners-full padding-xxs">
+              <h6 class="no-mb">Specimen.pdf</h6>
+            </div>
+          </a>
+        <? endif ?>
+      </div>
     <? endif ?>
   </div>
   <div class="column" style="--columns: 4">

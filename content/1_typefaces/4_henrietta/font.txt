@@ -95,17 +95,37 @@ Features:
   feature: ss01
   font: VCHenriettaSemiBold
   sample: 'Q&A'
-  description: 'Alternate Q, &'
+  description: 'Detailed Q, &, $'
 - 
   feature: ss02
   font: VCHenriettaSemiBold
-  sample: niamh
+  sample: Knifes
   description: Straight leg n, m, h
 - 
   feature: ss03
   font: VCHenriettaSemiBold
+  sample: True!
+  description: Half moon punctuation
+- 
+  feature: ss04
+  font: VCHenriettaSemiBold
+  sample: Priestly
+  description: Upright e, P, B
+- 
+  feature: ss05
+  font: VCHenriettaSemiBold
   sample: jiggly
-  description: Round tiddle
+  description: Circle tiddle
+- 
+  feature: ss06
+  font: VCHenriettaSemiBold
+  sample: Sappho
+  description: Single story a
+- 
+  feature: ss07
+  font: VCHenriettaSemiBold
+  sample: Gogol
+  description: Two story g
 
 ----
 
