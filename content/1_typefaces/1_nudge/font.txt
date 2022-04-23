@@ -77,26 +77,45 @@ Opengraphimage:
 Samples:
 
 - 
-  font: Nudge Black
-  sample: Bibliographies
+  font: Nudge Ultra
+  sample: Schoolhouse
 - 
   font: Nudge Extra Bold
-  sample: Circumnavigate
+  sample: Computations
 - 
-  font: Nudge Bold
-  sample: Notwithstanding
-- 
-  font: Nudge Semi Bold
-  sample: Proletarianization
-- 
-  font: Nudge Regular
-  sample: Conversationalists
-- 
-  font: Nudge Light
-  sample: Miscomprehended
+  font: Nudge Medium
+  sample: Recordbreaking
 - 
   font: Nudge Thin
-  sample: Absentmindedness
+  sample: Acknowledgment
+- 
+  font: Nudge Normal Black
+  sample: Herbivore
+- 
+  font: Nudge Normal Bold
+  sample: Comedian
+- 
+  font: Nudge Normal Regular
+  sample: Sandstone
+- 
+  font: Nudge Normal Thin
+  sample: Gradualism
+- 
+  font: Nudge Normal Regular
+  sample: >
+    It’s April 1984, your first day
+    working at the copy shop on 76th Street.
+    This real 2nd person talkin’ ass named
+    D.J. Mel is demanding a 90 minute turn
+    around on 3500 B/W fliers for “D.J.
+    Mel’s uptown disco gig” happening
+    tonight. No sweat. You fire up the Xerox
+    2400, feed in his messy paste-up
+    and—pop, clang, beep, error. Ugh, MC
+    Jammer! With an X-Acto blade, a basic
+    memory of Helvetica, 15 minutes, half a
+    Letraset sheet for Avant Garde Medium
+    Condensed, you Nudge.
 
 ----
 
