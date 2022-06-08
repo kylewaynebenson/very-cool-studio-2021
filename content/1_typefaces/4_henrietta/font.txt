@@ -26,7 +26,7 @@ Designer:
 
 ----
 
-Styles: 6
+Styles: 12
 
 ----
 
@@ -38,7 +38,7 @@ Optical:
 
 ----
 
-Version: 0.1
+Version: 0.4
 
 ----
 
@@ -84,7 +84,7 @@ Samples:
   font: Henrietta Bold
   sample: Rooibos Waffle
 - 
-  font: Henrietta Semi Bold Condensed
+  font: Henrietta Condensed Semi Bold
   sample: Chipmunk Nunnery
 
 ----
