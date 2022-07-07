@@ -18,7 +18,7 @@ Charset: Wider Latin
 
 ----
 
-Released: ????
+Released: 2022
 
 ----
 
@@ -26,7 +26,7 @@ Designer: Kyle Benson
 
 ----
 
-Styles: 24
+Styles: 13
 
 ----
 
@@ -38,11 +38,11 @@ Optical:
 
 ----
 
-Version: 
+Version: 1.07
 
 ----
 
-Shopify: 
+Shopify: 7061278752975
 
 ----
 
@@ -50,7 +50,7 @@ Futurefonts:
 
 ----
 
-Text: <p>In the war on texts, readability is one of the most sacred battlefields. Many make bold claims about the readability of their fonts. Cornbread will make no such claim. Its soft, thick stems are plenty legible and have better things to do than to brag in vagaries. These letters are soldiers, dammit, and if readability was under any sort of question they wouldn’t even be here, now would they? Cornbread is nib-weighted, the way God intended serifs to be. It carries the musk of a book passed down from your grandfather, and the class of a time when a man and his printing press were comrade-in-arms, celebrating each other’s strength over a hefty text font.</p><p>Cornbread is not yet released. Inquire at&nbsp;<a href="mailto:hello@verycoolstudio.com" rel="noopener noreferrer nofollow">hello@verycoolstudio.com</a>&nbsp;for licensing.</p>
+Text: <p>In the war on texts, readability is one of the most sacred battlefields. Many make bold claims about the readability of their fonts. Cornbread will make no such claim. Its soft, thick stems are plenty legible and have better things to do than to brag in vagaries. These letters are soldiers, dammit, and if readability was under any sort of question they wouldn’t even be here, now would they? Cornbread is nib-weighted, the way God intended serifs to be. It carries the musk of a book passed down from your grandfather, and the class of a time when a man and his printing press were comrade-in-arms, celebrating each other’s strength over a hefty text font.</p>
 
 ----
 
