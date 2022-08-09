@@ -26,11 +26,11 @@ Designer:
 
 ----
 
-Styles: 7
+Styles: 54
 
 ----
 
-Widths: 
+Widths: 2
 
 ----
 
@@ -38,7 +38,7 @@ Optical:
 
 ----
 
-Version: 0.4
+Version: 0.6
 
 ----
 
@@ -192,7 +192,8 @@ Glyphs:
   section: Numerals
   feature: ""
   font: VCNudgeBold
-  sample: 0123456789⓪①②③④⑤⑥⑦⑧⑨
+  sample: >
+    0123456789⓪①②③④⑤⑥⑦⑧⑨⓿❶❷❸❹❺❻❼❽❾
 - 
   section: Currency and math
   feature: ""
@@ -202,4 +203,4 @@ Glyphs:
   section: Punctuation and symbols
   feature: ""
   font: VCNudgeBold
-  sample: '☜☝☞✊✋✧✨❋@&©®™|№🎵🖐🤏'
+  sample: '☜☝☞✊✋✧✨❋@&©®™|№🎵🖐🤏ƒ'
