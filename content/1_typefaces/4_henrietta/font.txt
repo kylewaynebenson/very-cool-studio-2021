@@ -26,7 +26,7 @@ Designer:
 
 ----
 
-Styles: 12
+Styles: 18
 
 ----
 
@@ -38,7 +38,7 @@ Optical:
 
 ----
 
-Version: 0.4
+Version: 0.5
 
 ----
 
@@ -78,11 +78,20 @@ Samples:
   font: Henrietta Medium
   sample: Quaint Ladybug
 - 
+  font: Henrietta Medium Italic
+  sample: Mystical Hiccup
+- 
   font: Henrietta Semi Bold
   sample: Bawdier Jiujitsu
 - 
+  font: Henrietta Semi Bold Italic
+  sample: Kingsize Factor
+- 
   font: Henrietta Bold
   sample: Rooibos Waffle
+- 
+  font: Henrietta Bold Italic
+  sample: Jerry’s Daffodil
 - 
   font: Henrietta Condensed Semi Bold
   sample: Chipmunk Nunnery
