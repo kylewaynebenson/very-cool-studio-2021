@@ -1,0 +1,176 @@
+Title: Gosh
+
+----
+
+Headline: Gosh
+
+----
+
+Font: Gosh-Bold
+
+----
+
+Sample: 3 Fab Maoists
+
+----
+
+Charset: Basic
+
+----
+
+Released: 2023
+
+----
+
+Designer: 
+
+----
+
+Styles: 1
+
+----
+
+Widths: 1
+
+----
+
+Optical: 
+
+----
+
+Version: 0.1
+
+----
+
+Shopify: 
+
+----
+
+Futurefonts: https://www.futurefonts.xyz/very-cool-studio/gosh
+
+----
+
+Text: <p>Well shucks, folks, we made somethin' special here. It's like a wedg'a lemon for your weekend beer, and all your favorite friends are there and they're goin on about what a lovely person you are. We didn't have much to work with, but we scraped together what leftovers we had and came up with a real winner.</p><p>We named it Gosh, because, sheesh, there's just somethin' so darn obvious about it.</p>
+
+----
+
+Tags: Sans, Condensed, Square
+
+----
+
+Specimen: 
+
+----
+
+Designinfo: 
+
+----
+
+Opengraphimage: 
+
+----
+
+Samples:
+
+- 
+  font: Gosh Bold
+  sample: Kingsized Win
+- 
+  font: Gosh Bold
+  sample: Shined Onions
+- 
+  font: Gosh Bold
+  sample: Joyful Blazing
+- 
+  font: Gosh Bold
+  sample: International
+- 
+  font: Gosh Bold
+  sample: 3 Fab Maoists
+- 
+  font: Gosh Bold
+  sample: Railroads Guy
+- 
+  font: Gosh Bold
+  sample: >
+    In October I flew business class for the
+    first time. In the chair next to me was
+    a crusty old man who readily introduced
+    himself as a tenured Math department
+    chair (and professor of Probability and
+    Statistics, he told me later) at Utah
+    Valley University. I wasn’t in a
+    chatty mood, but he didn’t seem to
+    notice. After some silence he pointed at
+    my journal and pen and commented “very
+    trad”.
+
+----
+
+Features:
+
+- 
+  feature: ss01
+  font: VCGoshBold
+  sample: Magazine
+  description: Single story g
+- 
+  feature: ss02
+  font: VCGoshBold
+  sample: Eater
+  description: Flat t, r
+- 
+  feature: ss04
+  font: VCGoshBold
+  sample: Sauce
+  description: Single story a
+- 
+  feature: ss05
+  font: VCGoshBold
+  sample: Quack
+  description: Q bottom tail
+- 
+  feature: ss06
+  font: VCGoshBold
+  sample: Quilt
+  description: Q angled tail
+- 
+  feature: ss07
+  font: VCGoshBold
+  sample: Risky
+  description: R with kick
+- 
+  feature: case
+  font: VCGoshBold
+  sample: HI-FI
+  description: Uppercase styles
+
+----
+
+Glyphs:
+
+- 
+  section: Uppercase
+  feature: ""
+  font: VCGoshBold
+  sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+- 
+  section: Lowercase
+  feature: ""
+  font: VCGoshBold
+  sample: abcdefghijklmnopqrstuvwxyz
+- 
+  section: Numerals
+  feature: ""
+  font: VCGoshBold
+  sample: "0123456789"
+- 
+  section: Currency and math
+  feature: ""
+  font: VCGoshBold
+  sample: '%+/$%¥'
+- 
+  section: Punctuation and symbols
+  feature: ""
+  font: VCGoshBold
+  sample: '@©™*{}/()?!.,;:”“'
