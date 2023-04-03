@@ -50,7 +50,7 @@ Futurefonts: https://www.futurefonts.xyz/very-cool-studio/gosh
 
 ----
 
-Text: <p>Well shucks, folks, we made somethin' special here. It's like a wedg'a lemon for your weekend beer, and all your favorite friends are there and they're goin on about what a lovely person you are. We didn't have much to work with, but we scraped together what leftovers we had and came up with a real winner.</p><p>We named it Gosh, because, sheesh, there's just somethin' so darn obvious about it.</p>
+Text: <p>Well shucks, folks, we made somethin’ special here. It's like a wedg’a lemon for your weekend beer, and all your favorite friends are there and they’re goin on about what a lovely person you are. We didn’t have much to work with, but we scraped together what leftovers we had and came up with a real winner.</p><p>We named it Gosh, because, sheesh, there’s just somethin’ so darn obvious about it.</p>
 
 ----
 
@@ -66,7 +66,9 @@ Designinfo:
 
 ----
 
-Opengraphimage: 
+Opengraphimage:
+
+- 2201_verycool_shareimages-gosh.jpg
 
 ----
 
@@ -112,12 +114,12 @@ Features:
 - 
   feature: ss01
   font: VCGoshBold
-  sample: Magazine
+  sample: Eggs
   description: Single story g
 - 
-  feature: ss02
+  feature: ss03
   font: VCGoshBold
-  sample: Eater
+  sample: Later
   description: Flat t, r
 - 
   feature: ss04
@@ -139,11 +141,6 @@ Features:
   font: VCGoshBold
   sample: Risky
   description: R with kick
-- 
-  feature: case
-  font: VCGoshBold
-  sample: HI-FI
-  description: Uppercase styles
 
 ----
 
