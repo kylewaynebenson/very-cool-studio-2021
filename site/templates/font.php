@@ -54,25 +54,25 @@
         <dt><h5 class="color-grey">Version</h5></dt>
         <dd><h6><?= $page->version() ?></h6></dd>
       </dl>
-    <? endif ?>
+    <?php endif ?>
     <?php if ($page->charset()->isNotEmpty()): ?>
       <dl>
         <dt><h5 class="color-grey">Char set</h5></dt>
         <dd><h6><?= $page->charset() ?></h6></dd>
       </dl>
-    <? endif ?>
+    <?php endif ?>
     <?php if ($page->released()->isNotEmpty()): ?>
     <dl>
       <dt><h5 class="color-grey">Released</h5></dt>
       <dd><h6><?= $page->released() ?></h6></dd>
     </dl>
-    <? endif ?>
+    <?php endif ?>
     <?php if ($page->designer()->isNotEmpty()): ?>
       <dl>
         <dt><h5 class="color-grey">Designer</h5></dt>
         <dd><h6><?= $page->designer() ?></h6></dd>
       </dl>
-    <? endif ?>
+    <?php endif ?>
     <dl class="margin-l">
       <dt><h5 class="color-grey">Styles</h5></dt>
       <dd><h6><?php echo $count; ?></h6></dd>
@@ -96,9 +96,9 @@
               <h6 class="no-mb">Specimen.pdf</h6>
             </div>
           </a>
-        <? endif ?>
+        <?php endif ?>
       </div>
-    <? endif ?>
+    <?php endif ?>
   </div>
   <div class="column" style="--columns: 4">
     <div class="text">
@@ -108,7 +108,7 @@
       <div class="design-info">
         <a class="link" href="/<?= $page->designinfo() ?>">Read about <?= $page->title() ?>’s design process</a>
       </div>
-    <? endif ?>
+    <?php endif ?>
   </div>
   <div class="column" style="--columns: 1">
   </div>

@@ -26,7 +26,7 @@ Designer:
 
 ----
 
-Styles: 7
+Styles: 14
 
 ----
 
@@ -38,7 +38,7 @@ Optical:
 
 ----
 
-Version: 0.1
+Version: 0.3
 
 ----
 
@@ -79,19 +79,19 @@ Samples:
   font: Garamond Condensed Bold
   sample: Evergreen Whodunit
 - 
-  font: Garamond Condensed Semi Bold
+  font: Garamond Condensed Semi Bold Italic
   sample: Polygamous Lambda
 - 
   font: Garamond Condensed Medium
   sample: Queenly Teethmarks
 - 
-  font: Garamond Condensed Regular
+  font: Garamond Condensed Regular Italic
   sample: Cashless Stockbroker
 - 
   font: Garamond Condensed Light
   sample: Diamante Wallflower
 - 
-  font: Garamond Condensed Extra Light
+  font: Garamond Condensed Extra Light Italic
   sample: Unsatisfied Genuflect
 - 
   font: Garamond Condensed Thin
