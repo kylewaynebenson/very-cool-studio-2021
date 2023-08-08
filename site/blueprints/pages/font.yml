@@ -153,29 +153,9 @@ tabs:
         fields:
           glyphs:
             label: Glyphs
-            type: structure
-            fields:
-              section:
-                label: Title
-                type: text
-                placeholder: Uppercase, Lowercase, etc
-                width: 1/5
-              feature:
-                label: Feature
-                placeholder: swsh, ss01
-                type: text
-                width: 1/5
-              font:
-                label: Font
-                placeholder: VCFamilyNameStyleName
-                type: text
-                width: 1/5
-              sample:
-                label: Characters
-                placeholder: No seperation
-                type: text
-                width: 2/5
-
+            type: text
+            help: VCFamilyName-StyleName
+            placeholder: VCFamilyName-StyleName
 
 options: 
   changeTemplate: 

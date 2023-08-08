@@ -144,30 +144,4 @@ Features:
 
 ----
 
-Glyphs:
-
-- 
-  section: Uppercase
-  feature: ""
-  font: VCGoshBold
-  sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
-- 
-  section: Lowercase
-  feature: ""
-  font: VCGoshBold
-  sample: abcdefghijklmnopqrstuvwxyz
-- 
-  section: Numerals
-  feature: ""
-  font: VCGoshBold
-  sample: "0123456789"
-- 
-  section: Currency and math
-  feature: ""
-  font: VCGoshBold
-  sample: '%+/$%¥'
-- 
-  section: Punctuation and symbols
-  feature: ""
-  font: VCGoshBold
-  sample: '@©™*{}/()?!.,;:”“'
+Glyphs: VCGosh-Bold

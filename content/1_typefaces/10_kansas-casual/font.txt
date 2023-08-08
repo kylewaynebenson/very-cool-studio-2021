@@ -111,32 +111,4 @@ Features:
 
 ----
 
-Glyphs:
-
-- 
-  section: Uppercase
-  feature: ""
-  font: VCKansasCasualSemiBold
-  sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
-- 
-  section: Uppercase accents
-  feature: ""
-  font: VCKansasCasualSemiBold
-  sample: >
-    ÁĂÂÄÀĀĄÅÃÆĆČÇÐĎĐÉĚÊËĖÈĒĘĢÍÎÏÌĮĨĶĹĽĻŁŃŇŅÑŊÓÔÖÒŐŌØÕŒÞŔŘŖŚŠŞȘŦŤŢȚÚÛÜÙŰŪŲŮẂŴẄẀÝŶŸỲŹŽŻ
-- 
-  section: Numerals
-  feature: ""
-  font: VCKansasCasualSemiBold
-  sample: "0123456789"
-- 
-  section: Punctuation
-  feature: ""
-  font: VCKansasCasualSemiBold
-  sample: |
-    *\·•:,…!¡#.?¿"';/_{}[]()—–-«»‹›„“”‘’‚
-- 
-  section: Math and Symbols
-  feature: ""
-  font: VCKansasCasualSemiBold
-  sample: '¢¤$€£¥=><%+→←◊|¦@&¶©®§™°^†‡'
+Glyphs: VCKansasCasual-SemiBold

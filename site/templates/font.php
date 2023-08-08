@@ -42,7 +42,8 @@
 ?>
 <?= js([
   'assets/js/fontsampler.js',
-  'assets/js/fontsampler-skin.js'
+  'assets/js/fontsampler-skin.js',
+  'assets/js/fonts.js'
 ]) ?>
 <header class="grid padding" style="--gutter: 3vw;">
   <div class="column" style="--columns: 4">
@@ -56,10 +57,10 @@
       </dl>
     <?php endif ?>
     <?php if ($page->charset()->isNotEmpty()): ?>
-      <dl>
+      <a href="#Glyphs"><dl>
         <dt><h5 class="color-grey">Char set</h5></dt>
         <dd><h6><?= $page->charset() ?></h6></dd>
-      </dl>
+      </dl></a>
     <?php endif ?>
     <?php if ($page->released()->isNotEmpty()): ?>
     <dl>
@@ -147,11 +148,13 @@
       $lineHeight = 100;
       $class = "headline";
       $alignment = "center";
+      $letterSpacing = "0em";
     } else {
       $fontSize = 1.75;
       $lineHeight = 135;
       $class = "text";
       $alignment = "left";
+      $letterSpacing = "0.02em";
     }
     ?>
     <div id="<?= $demo ?>" class="<?= $class ?>"><?= $item->sample() ?></div>
@@ -195,7 +198,7 @@
             // The letter-spacing slider
             letterspacing: {
                 unit: "em",
-                init: 0,
+                init: "<?= $letterSpacing ?>",
                 min: -.05,
                 max: .05,
                 step: 0.01,
@@ -228,7 +231,6 @@
           }
         }
       if (<?= $features ?>.length > 1) {
-        console.log(<?= $features ?>);
         // A set of checkboxes; NOTE: No validation whatsoever if the font
         // supports these opentype features
         options.ui.opentype =  {
@@ -244,7 +246,7 @@
     <?php endforeach ?>
     <?php if ($page->features()->isNotEmpty()): ?>
     <aside class="bt-blue bg-blue-gradient features">
-      <div class="padding container">
+      <div class="padding">
         <h2 id="features">Opentype features</h2>
         <div class="grid" style="--gutter:1vw;">
         <?php 
@@ -272,23 +274,65 @@
     <?php endif ?>
     <?php if ($page->glyphs()->isNotEmpty()): ?>
     <aside class="bt-blue bg-blue-gradient glyphs">
-    <div class="padding container">
-        <h2 id="glyphs">Glyphs</h2>
-        <?php 
-          // using the `toStructure()` method, we create a structure collection
-          $items = $page->glyphs()->toStructure();
-          // we can then loop through the entries and render the individual fields
-          foreach ($items as $item): ?>
-            <h5 class="color-grey"><?= $item->section() ?></h5>
-            <div class="grid glyphs-grid margin-s" style="font-feature-settings: '<?= $item->feature() ?>' 1; font-family:'<?= $item->font() ?>';">
-              <?php $glyphs = mb_str_split($item->sample(), 1);
-              foreach ($glyphs as $glyph): ?>
-                <div class="color-black zoom" style="--aspect-ratio: 1/1;">
-                  <span><?= $glyph ?></span>
-                </div>
-              <?php endforeach ?>
-            </div>
-          <?php endforeach ?>
+      <div class="padding grid preview-glyphs">
+        <div id="enlarged-character-container" class="preview">
+        <h5 id="enlarged-character-name" class="name inline-block bg-blue rounded-corners-full padding-xxs">A</h5>
+          <h5 id="enlarged-unicode-point" class="unicode inline-block bg-blue rounded-corners-full padding-xxs">U+0041</h5>
+          <div id="enlarged-character" class="letter" style="font-family:'<?= $item->font() ?>';">A</div>
+        </div>
+        <div id="Glyphs" class="grid glyphs-grid margin-s" style="font-family:'<?= $item->font() ?>';"></div>
+        <!-- Include OpenType.js library -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/opentype.js/0.6.5/opentype.min.js"></script>
+        <script>
+          // Initialize OpenType.js when the font is loaded
+          opentype.load('../../assets/webfonts/<?= $page->slug() ?>/<?= $page->glyphs() ?>.woff', function (err, font) {
+            if (err) {
+              console.error('Error loading font:', err);
+              return;
+            }
+
+            // Get the character set from the font
+            var characterSet = getCharacterSet(font);
+
+            // Create the grid elements
+            var gridContainer = document.getElementById('Glyphs');
+
+            for (var i = 0; i < characterSet.length; i++) {
+              var character = characterSet[i];
+              var glyph = font.charToGlyph(character);
+
+              // Create a grid item for each character
+              var gridItem = document.createElement('div');
+              gridItem.className = 'grid-item color-black';
+              gridItem.style = '--aspect-ratio: 1 / 1';
+
+              // Create a <span> element to wrap the character
+              var characterSpan = document.createElement('span');
+              characterSpan.textContent = character;
+
+              // Append the <span> to the grid item
+              gridItem.appendChild(characterSpan);
+
+              // Store the glyph data in a data attribute
+              gridItem.setAttribute('data-glyph', JSON.stringify(glyph));
+              // Store the character name in a data attribute
+              gridItem.setAttribute('data-character-name', glyph.name);
+              // Store the Unicode point in a data attribute
+              gridItem.setAttribute('data-unicode-point', glyph.unicode);
+
+              gridContainer.appendChild(gridItem);
+                  // Add click event listener to the grid item
+              gridItem.addEventListener('click', function () {
+                var glyphData = JSON.parse(this.getAttribute('data-glyph'));
+                var character = String.fromCharCode(glyphData.unicode);
+                var characterName = this.getAttribute('data-character-name');
+                var unicodePoint = this.getAttribute('data-unicode-point');
+
+                showEnlargedCharacter(character, characterName, unicodePoint);
+              });
+            }
+          });
+        </script>
     </aside>
     <?php endif ?>
     <?php if ($gallery->count() > 1): ?>

@@ -157,40 +157,7 @@ Features:
 
 ----
 
-Glyphs:
-
-- 
-  section: Uppercase
-  feature: ""
-  font: VCCardinalWideSemiBold
-  sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
-- 
-  section: Uppercase accents
-  feature: ""
-  font: VCCardinalWideSemiBold
-  sample: >
-    ÁĂÂÄÀĀĄÅÃÆĆČÇĊÐĎĐÉĚÊËĖÈĒĘẼĞĢĠĦÍÎÏİÌĪĮĨĶĹĽĻŁŃŇŅÑŊÓÔÖÒŐŌØÕŒÞŔŘŖŚŠŞȘẞŦŤŢȚÚÛÜÙŰŪŲŮŨẂŴẄẀÝŶŸỲỸŹŽŻ
-- 
-  section: Lowercase
-  feature: ""
-  font: VCCardinalWideSemiBold
-  sample: abcdefghijklmnopqrstuvwxyz
-- 
-  section: Lowercase accents
-  feature: ""
-  font: VCCardinalWideSemiBold
-  sample: >
-    áăâäàāąåãæćčçċðďđéěêëėèēęẽğģġħıíîïìīįĩķĺľļłńňņñŋóôöòőōøõœþŕřŗśšşșßŧťţțúŭûüùűūųůũẃŵẅẁýŷÿỳỹźžż
-- 
-  section: Numerals
-  feature: ""
-  font: VCCardinalWideSemiBold
-  sample: "0123456789"
-- 
-  section: Oldstyle numerals
-  feature: onum
-  font: VCCardinalWideSemiBold
-  sample: "0123456789"
+Glyphs: VCCardinalWide-SemiBold
 
 ----
 

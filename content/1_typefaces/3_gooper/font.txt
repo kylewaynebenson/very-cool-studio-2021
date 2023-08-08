@@ -172,40 +172,7 @@ Features:
 
 ----
 
-Glyphs:
-
-- 
-  section: Uppercase
-  feature: ""
-  font: VCGooperDeckBold
-  sample: ABCDEFGHIJKLMNOPQRSTUVWXYZ
-- 
-  section: Uppercase accents
-  feature: ""
-  font: VCGooperDeckBold
-  sample: >
-    ÁĂÂÄÀĀĄÅÃÆĆČÇĊÐĎĐÉĚÊËĖÈĒĘẼĞĢĠĦÍÎÏİÌĪĮĨĶĹĽĻŁŃŇŅÑŊÓÔÖÒŐŌØÕŒÞŔŘŖŚŠŞȘẞŦŤŢȚÚÛÜÙŰŪŲŮŨẂŴẄẀÝŶŸỲỸŹŽŻ
-- 
-  section: Lowercase
-  feature: ""
-  font: VCGooperDeckBold
-  sample: abcdefghijklmnopqrstuvwxyz
-- 
-  section: Lowercase accents
-  feature: ""
-  font: VCGooperDeckBold
-  sample: >
-    áăâäàāąåãæćčçċðďđéěêëėèēęẽğģġħıíîïìīįĩķĺľļłńňņñŋóôöòőōøõœþŕřŗśšşșßŧťţțúŭûüùűūųůũẃŵẅẁýŷÿỳỹźžż
-- 
-  section: Numerals
-  feature: ""
-  font: VCGooperDeckBold
-  sample: "0123456789"
-- 
-  section: Oldstyle numerals
-  feature: onum
-  font: VCGooperDeckBold
-  sample: "0123456789"
+Glyphs: VCGooperDeck-Bold
 
 ----
 
