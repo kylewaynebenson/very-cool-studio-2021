@@ -1147,7 +1147,7 @@ contact .h1 {
   }
   .preview-glyphs {
     grid-template-columns: 1fr;
-    grid-template-columns: 250px 1fr;
+    grid-template-columns: 325px 1fr;
     align-items: start;
   }
   .preview {
@@ -1157,7 +1157,7 @@ contact .h1 {
   }
 }
 .preview .letter {
-  font-size: 250px;
+  font-size: 280px;
   line-height: 1.1;
 }
 .glyphs-grid {

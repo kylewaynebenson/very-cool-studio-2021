@@ -23,8 +23,7 @@ Faqs:
   question: >
     What languages or scripts do your fonts
     support?
-  answer: |
-    [{"content":{"text":"<p>Each type family's page includes details about all the languages it covers. Our fonts generally cover the standard Latin character set.<\/p>"},"id":"b0b83cfa-0b95-4b6a-84e1-377756bde1af","isHidden":false,"type":"text"}]
+  answer: '[{"content":{"text":"<p>Each typeface\u2019s page includes details about its character support. Our fonts generally cover a relatively standard Latin character set. Please reach out if a font is missing the characters you need, I might already have it in the works.<\/p>"},"id":"b0b83cfa-0b95-4b6a-84e1-377756bde1af","isHidden":false,"type":"text"}]'
 - 
   question: Is your license modifyable?
   answer: |
@@ -43,6 +42,10 @@ Faqs:
     What software do you use to make your
     fonts?
   answer: '[{"content":{"text":"<p>It takes a village! My mainstays are: <a href=\"https:\/\/glyphsapp.com\/\" rel=\"noopener noreferrer nofollow\">Glyphs 3<\/a>, <a href=\"https:\/\/remix-tools.com\/\" rel=\"noopener noreferrer nofollow\">RMX Tools<\/a>, and <a href=\"https:\/\/kern-on.com\/\" rel=\"noopener noreferrer nofollow\">Kern On<\/a>.<\/p>"},"id":"381a9fab-a4a4-403b-bbbd-e7f1545f0d62","isHidden":false,"type":"text"}]'
+- 
+  question: Do you offer any discounts?
+  answer: |
+    [{"content":{"text":"<p>Yes! I do this all the time because I'm not great at running a business. If you're a student please do not buy a commercial license, just go wild with the trials. If you're a non-profit or charity and you're short on funds, please reach out.<\/p>"},"id":"7edf0f7c-8c9a-4168-a695-2d56e1241866","isHidden":false,"type":"text"}]
 
 ----
 
