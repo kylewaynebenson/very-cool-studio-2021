@@ -1,0 +1,31 @@
+Title: Gosh Design Information
+
+----
+
+Text: [{"content":{"text":"<p>In 2016 I was trying to create type that felt like lettering.<\/p>"},"id":"aeafe69f-1168-4689-90af-f6a268bd555a","isHidden":false,"type":"text"},{"content":{"location":"kirby","image":["14063968_10154349833180119_4062282818120972462_n.jpg"],"src":"","alt":"","caption":"2016, Sans serif drawn with rotated parallel pen","link":"","ratio":"","crop":"false"},"id":"ca5e6bae-5fc8-4f84-9724-04951bbc0cc6","isHidden":false,"type":"image"},{"content":{"text":"<p>There are characteristics of lettering that are difficult to translate to type. Many lettering-like fonts acheive that description through stylistic alternates or inky texture. My attention was focused on the way lettering appeared to grip the page whereas the smooth, perfectly beziered fonts I created felt floaty and disintegrated. Digital fonts scream \u201cI was put here by graphic design software!\u201d.<\/p>"},"id":"44d80ec8-de3a-48fe-a0ef-89530d0bf37e","isHidden":false,"type":"text"},{"content":{"location":"kirby","image":["screenshot-2023-08-08-at-4.55.15-pm.png"],"src":"","alt":"","caption":"2016, sans serif imitating rotated parallel pen","link":"","ratio":"","crop":"false"},"id":"e25ea21b-cdeb-4b87-9fae-a7aac58d0f2f","isHidden":false,"type":"image"},{"content":{"text":"<p>Bezier best practice lead me to uninteresting rounds. I started experimenting with putting nodes on the 45\u00b0 as well as the extrema. It slowed down my drawing process but had the nice byproduct of forcing me to think less about tension and more about shape.<\/p>"},"id":"944f838d-c284-4159-88fc-40abf0003f62","isHidden":false,"type":"text"},{"content":{"text":"<p>Gooper, released in 2017, played on similar themes. Its fluid outlines had many more nodes than the average nodes per font. Similar to my explorations in translating lettering, Gooper attempted to bring the warmth of ink bleed into uncannily smooth digital spaces.<\/p>"},"id":"552e5e18-b3db-4b03-b71b-0a30e3fdafb1","isHidden":false,"type":"text"},{"content":{"location":"kirby","image":["screenshot-2023-08-08-at-4.58.15-pm.png"],"src":"","alt":"","caption":"2017, early draft of Gosh Condensed","link":"","ratio":"","crop":"false"},"id":"6c4c5871-f323-4afe-8364-377647db4325","isHidden":false,"type":"image"},{"content":{"text":"<p>Gosh started while I was in that mindset<a href=\"#mindset\" rel=\"noopener noreferrer nofollow\">\u00b9<\/a>. I was prodding at my own inclination toward production and speed. By making making fonts slowly, and convoluted by design, I found myself in new territory.<\/p>"},"id":"aaa1f72d-8075-4ae5-9a3b-0a54a63965b8","isHidden":false,"type":"text"},{"content":{"location":"kirby","image":["screenshot-2023-08-09-at-12.37.59-pm.png"],"src":"","alt":"","caption":"2018, a sans serif with no straight lines","link":"","ratio":"","crop":"false"},"id":"717be9cf-913c-4db7-9615-95859ecc275e","isHidden":false,"type":"image"},{"content":{"location":"kirby","image":["1803_inter-women-ls.png"],"src":"","alt":"","caption":"2018, mix of Gooper and Gosh in a logo for Intercom's women's ERG","link":"","ratio":"","crop":"false"},"id":"bf842917-5746-428f-b8f1-bcfe2caf4ca1","isHidden":false,"type":"image"},{"content":{"location":"kirby","image":["1810_vote-ls.jpg"],"src":"","alt":"","caption":"2018, mix of Gosh and Gooper in a riso print","link":"","ratio":"","crop":"false"},"id":"7aa27576-540f-43ba-a6b9-fe5053866d0d","isHidden":false,"type":"image"},{"content":{"text":"<p>It isn't unusual for an idea to sit around until good reason forces me to revisit it. What can I say? I'm a pretty lazy guy! So, a couple years passed before I created the first regular proportioned styles of Gosh (to compliment some titles I created for <a href=\"https:\/\/kylewaynebenson.com\/work\/making-good\/\" rel=\"noopener noreferrer nofollow\">BYUtv's Making Good<\/a>). <\/p>"},"id":"bd58e7b5-2687-4195-9f2e-961bd6f951af","isHidden":false,"type":"text"},{"content":{"location":"kirby","image":["gosh-wide-medium.png"],"src":"","alt":"","caption":"2018, early version of Gosh","link":"","ratio":"","crop":"false"},"id":"f0cd493a-5ebc-45a2-a015-d62e97541d4f","isHidden":false,"type":"image"},{"content":{"text":"<p>Somewhere between then and now I'd pick up the drawings and make subtle adjustments. I can't really explain the thinking behind those changes at a macro level. But an overarching shift that is hopefully noticable, was in removing some of the stiffness.<\/p>"},"id":"cd138edb-af48-4a02-a095-f5af84785598","isHidden":false,"type":"text"},{"content":{"location":"kirby","image":["screenshot-2023-08-09-at-4.02.29-pm.png"],"src":"","alt":"","caption":"2019, Gosh Semibold","link":"","ratio":"","crop":"false"},"id":"36b45a5e-3d40-44e4-932e-30b17ae4b50b","isHidden":false,"type":"image"},{"content":{"location":"kirby","image":["screenshot-2023-08-09-at-4.03.14-pm.png"],"src":"","alt":"","caption":"2023, Gosh Semibold","link":"","ratio":"","crop":"false"},"id":"667e1d30-5514-448f-bbd0-4a0488d1d9f9","isHidden":false,"type":"image"},{"content":{"text":"<p>By bringing the 45\u00b0 nodes inward, more of the letterform could feel curvacious. This shift took a long time for me to wrap my head around, but it feels so obvious within the context of my original goal. Like I mentioned in the marketing: soft corners and bowed lines give the letters a sense of tangible weight.<\/p>"},"id":"aeffd15e-1ccc-40ab-a1d7-7afc1e02a47e","isHidden":false,"type":"text"}]
+
+----
+
+Cover: 
+
+----
+
+Date: 2023-08-08
+
+----
+
+Author:
+
+- dTEokw59
+
+----
+
+Intro: This article was supposed to be made in conjunction with Gosh’s release on Future Fonts.
+
+----
+
+Footnotes: [{"content":{"text":"<a name=\"mindset\">1.<\/a> It's kind of hard to remember what was in the font milleau, but there's no denying that OHNO's work on [Chee](https:\/\/www.instagram.com\/p\/BiAEyqthGAs\/) and [Eckmannpsych](https:\/\/www.instagram.com\/p\/Bf_fYhPhFIQ\/?img_index=1) were making us all question the standard approach to making type."},"id":"13d7105a-966f-469c-887c-51f783f69a57","isHidden":false,"type":"markdown"}]
+
+----
+
+Tags: Design Information

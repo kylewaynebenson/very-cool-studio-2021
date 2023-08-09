@@ -28,11 +28,26 @@
 html {
   font-family: var(--font-family-serif);
   font-weight: 400;
-  font-size: 18px;
-  line-height: 1.4;
   transition: color 700ms ease-in;
 }
-
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+}
+@media screen and (min-width: 481px) and (max-width: 1000px) {
+  html {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+}
+@media screen and (min-width: 1001px) {
+  html {
+    font-size: 17px;
+    line-height: 1.4;
+  }
+}
 ::selection {
   color: var(--color-black);
   background: var(--color-tan);
@@ -77,18 +92,6 @@ h6 {
   line-height: 1.1;
   font-family: var(--font-family-headline-wide);
   font-weight: 600;
-}
-@media screen and (max-width: 480px) {
-  html {
-    font-size: 16px;
-    line-height: 1.4;
-  }
-}
-@media screen and (min-width: 481px) and (max-width: 1000px) {
-  html {
-    font-size: 17px;
-    line-height: 1.4;
-  }
 }
 p {
   margin-bottom: var(--margin-m);
@@ -264,7 +267,7 @@ small {
 }
 input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"], textarea {
   color:var(--color-black);
-  border: var(--border) var(--color-black);
+  border: 0px;
   padding: var(--padding-xs);
   background: var(--color-white);
   width: 100%;
@@ -277,11 +280,11 @@ input[type="text"], input[type="email"], input[type="url"], input[type="password
   cursor: pointer;
 }
 input[type="text"]:hover, input[type="email"]:hover, input[type="url"]:hover, input[type="password"]:hover, input[type="search"]:hover, input[type="number"]:hover, input[type="tel"]:hover, input[type="date"]:hover, input[type="month"]:hover, input[type="week"]:hover, input[type="time"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="color"]:hover, textarea:hover {
-  border: var(--border) var(--color-grey);
+  border: 0px;
   background: var(--color-blue);
 }
 input[type="text"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="number"]:focus, input[type="tel"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="week"]:focus, input[type="time"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="color"]:focus, textarea:focus {
-  border: var(--border) var(--color-grey);
+  border: 0px;
   background: var(--color-blue);
 }
 input[type="submit"] {
@@ -1128,37 +1131,55 @@ contact .h1 {
   max-height: 100px;
   width: auto;
 }
-/* Glyphs */
+/* Glyphs and In Use */
 @media screen and (max-width: 829px) {
   .glyphs-grid {
     grid-template-columns: 1fr;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     font-size: calc(16px + 1vw);
   }
   .preview {
     display: none;
   }
+  .gallery-container img {
+    width: auto;
+    height: 300px;
+  }
 }
 @media screen and (min-width: 829px) {
   .glyphs-grid {
     grid-template-columns: 1fr;
-    grid-template-columns: repeat(16, 1fr);
-    font-size: 28px;
-  }
-  .preview-glyphs {
-    grid-template-columns: 1fr;
-    grid-template-columns: 325px 1fr;
-    align-items: start;
+    grid-template-columns: repeat(12, 1fr);
+    font-size: 1.4em;
   }
   .preview {
-    align-self: start;
+    align-self: flex-start;
     position: sticky;
     top: 0;
+    width: 300px;
+  }
+  .gallery-container img {
+    width: auto;
+    height: 530px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .glyphs-grid {
+    grid-template-columns: repeat(16, 1fr);
+    font-size: 1.5em;
   }
 }
 .preview .letter {
   font-size: 280px;
   line-height: 1.1;
+}
+.gallery-container {
+  display: grid;
+  gap: 2px;
+  margin-left: 2px;
+  grid-auto-flow: column;
+  overflow-x: auto;
+  height: auto;
 }
 .glyphs-grid {
   align-items: center;

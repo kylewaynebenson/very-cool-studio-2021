@@ -62,7 +62,7 @@ Specimen:
 
 ----
 
-Designinfo: 
+Designinfo: articles/gosh-design-information
 
 ----
 

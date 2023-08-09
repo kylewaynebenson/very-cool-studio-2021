@@ -7108,6 +7108,203 @@
       "oAP" : "\/content\/2_articles\/20220316_henrietta-design-information\/screen-shot-2022-03-16-at-12.09.59-am.png.txt",
       "oF" : 0
     },
+    "\/content\/2_articles\/20230808_gosh-design-information\/1803_inter-women-ls.png" : {
+      "ft" : 32768,
+      "iS" : 17688,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/1803_inter-women-ls.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/1803_inter-women-ls.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/1803_inter-women-ls.png.txt",
+      "oF" : 0
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/1810_vote-ls.jpg" : {
+      "ft" : 16384,
+      "iS" : 406419,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/1810_vote-ls.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/1810_vote-ls.jpg.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/1810_vote-ls.jpg.txt",
+      "oF" : 0
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/14063968_10154349833180119_4062282818120972462_n.jpg" : {
+      "ft" : 16384,
+      "iS" : 25543,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/14063968_10154349833180119_4062282818120972462_n.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/14063968_10154349833180119_4062282818120972462_n.jpg.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/14063968_10154349833180119_4062282818120972462_n.jpg.txt",
+      "oF" : 0
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/article.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/article.txt",
+      "oF" : 0
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/gosh-wide-medium.png" : {
+      "ft" : 32768,
+      "iS" : 36147,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/gosh-wide-medium.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/gosh-wide-medium.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/gosh-wide-medium.png.txt",
+      "oF" : 0
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-08-at-4.55.15-pm.png" : {
+      "ft" : 32768,
+      "iS" : 122308,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-08-at-4.55.15-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-08-at-4.55.15-pm.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-08-at-4.55.15-pm.png.txt",
+      "oF" : 0
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-08-at-4.58.15-pm.png" : {
+      "ft" : 32768,
+      "iS" : 240997,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-08-at-4.58.15-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-08-at-4.58.15-pm.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-08-at-4.58.15-pm.png.txt",
+      "oF" : 0
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-09-at-4.02.29-pm.png" : {
+      "ft" : 32768,
+      "iS" : 133712,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-09-at-4.02.29-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-09-at-4.02.29-pm.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-09-at-4.02.29-pm.png.txt",
+      "oF" : 0
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-09-at-4.03.14-pm.png" : {
+      "ft" : 32768,
+      "iS" : 211180,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-09-at-4.03.14-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-09-at-4.03.14-pm.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-09-at-4.03.14-pm.png.txt",
+      "oF" : 0
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-09-at-12.37.59-pm.png" : {
+      "ft" : 32768,
+      "iS" : 91257,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-09-at-12.37.59-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-09-at-12.37.59-pm.png.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/2_articles\/20230808_gosh-design-information\/screenshot-2023-08-09-at-12.37.59-pm.png.txt",
+      "oF" : 0
+    },
     "\/content\/2_articles\/articles.txt" : {
       "cB" : 0,
       "ft" : 8192,
@@ -21656,6 +21853,939 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/articles\/gosh-design-information\/4a38a5b3bf-1691526931\/.jobs\/gosh-wide-medium-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/4a38a5b3bf-1691526931\/.jobs\/gosh-wide-medium-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/4a38a5b3bf-1691526931\/.jobs\/gosh-wide-medium-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/4a38a5b3bf-1691526931\/.jobs\/gosh-wide-medium-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/4a38a5b3bf-1691526931\/.jobs\/gosh-wide-medium-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/4a38a5b3bf-1691526931\/.jobs\/gosh-wide-medium-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/4a38a5b3bf-1691526931\/.jobs\/gosh-wide-medium-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/4a38a5b3bf-1691526931\/.jobs\/gosh-wide-medium-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/4a38a5b3bf-1691526931\/gosh-wide-medium-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 3080,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/4a38a5b3bf-1691526931\/gosh-wide-medium-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/4a38a5b3bf-1691526931\/gosh-wide-medium.png" : {
+      "ft" : 32768,
+      "iS" : 36147,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/4a38a5b3bf-1691526931\/gosh-wide-medium.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/4cf17998c2-1691526931\/.jobs\/gosh-wide-medium-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/4cf17998c2-1691526931\/.jobs\/gosh-wide-medium-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/4cf17998c2-1691526931\/.jobs\/gosh-wide-medium-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/4cf17998c2-1691526931\/.jobs\/gosh-wide-medium-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/4cf17998c2-1691526931\/.jobs\/gosh-wide-medium-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/4cf17998c2-1691526931\/.jobs\/gosh-wide-medium-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/4cf17998c2-1691526931\/.jobs\/gosh-wide-medium-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/4cf17998c2-1691526931\/.jobs\/gosh-wide-medium-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/4cf17998c2-1691526931\/gosh-wide-medium-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 3080,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/4cf17998c2-1691526931\/gosh-wide-medium-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/4cf17998c2-1691526931\/gosh-wide-medium.png" : {
+      "ft" : 32768,
+      "iS" : 36147,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/4cf17998c2-1691526931\/gosh-wide-medium.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/7d86f6ab41-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-38x38.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/7d86f6ab41-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-38x38.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/7d86f6ab41-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-352x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/7d86f6ab41-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-352x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/7d86f6ab41-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-864x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/7d86f6ab41-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-864x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/7d86f6ab41-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-1408x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/7d86f6ab41-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-1408x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/7d86f6ab41-1691528321\/14063968_10154349833180119_4062282818120972462_n.jpg" : {
+      "ft" : 16384,
+      "iS" : 25543,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/7d86f6ab41-1691528321\/14063968_10154349833180119_4062282818120972462_n.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/7d86f6ab41-1691528321\/14063968-10154349833180119-4062282818120972462-n-76x76.jpg" : {
+      "ft" : 16384,
+      "iS" : 2993,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/7d86f6ab41-1691528321\/14063968-10154349833180119-4062282818120972462-n-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/15efca2ec5-1691527879\/.jobs\/1810-vote-ls-38x38.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/15efca2ec5-1691527879\/.jobs\/1810-vote-ls-38x38.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/15efca2ec5-1691527879\/.jobs\/1810-vote-ls-352x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/15efca2ec5-1691527879\/.jobs\/1810-vote-ls-352x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/15efca2ec5-1691527879\/.jobs\/1810-vote-ls-864x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/15efca2ec5-1691527879\/.jobs\/1810-vote-ls-864x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/15efca2ec5-1691527879\/.jobs\/1810-vote-ls-1408x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/15efca2ec5-1691527879\/.jobs\/1810-vote-ls-1408x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/15efca2ec5-1691527879\/1810_vote-ls.jpg" : {
+      "ft" : 16384,
+      "iS" : 406419,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/15efca2ec5-1691527879\/1810_vote-ls.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/15efca2ec5-1691527879\/1810-vote-ls-76x76.jpg" : {
+      "ft" : 16384,
+      "iS" : 6110,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/15efca2ec5-1691527879\/1810-vote-ls-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/36e50f4004-1691527879\/.jobs\/1810-vote-ls-38x38.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/36e50f4004-1691527879\/.jobs\/1810-vote-ls-38x38.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/36e50f4004-1691527879\/.jobs\/1810-vote-ls-352x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/36e50f4004-1691527879\/.jobs\/1810-vote-ls-352x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/36e50f4004-1691527879\/.jobs\/1810-vote-ls-864x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/36e50f4004-1691527879\/.jobs\/1810-vote-ls-864x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/36e50f4004-1691527879\/.jobs\/1810-vote-ls-1408x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/36e50f4004-1691527879\/.jobs\/1810-vote-ls-1408x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/36e50f4004-1691527879\/1810_vote-ls.jpg" : {
+      "ft" : 16384,
+      "iS" : 406419,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/36e50f4004-1691527879\/1810_vote-ls.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/36e50f4004-1691527879\/1810-vote-ls-76x76.jpg" : {
+      "ft" : 16384,
+      "iS" : 6110,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/36e50f4004-1691527879\/1810-vote-ls-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/48be27302b-1691527823\/.jobs\/1803-inter-women-ls-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/48be27302b-1691527823\/.jobs\/1803-inter-women-ls-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/48be27302b-1691527823\/.jobs\/1803-inter-women-ls-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/48be27302b-1691527823\/.jobs\/1803-inter-women-ls-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/48be27302b-1691527823\/.jobs\/1803-inter-women-ls-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/48be27302b-1691527823\/.jobs\/1803-inter-women-ls-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/48be27302b-1691527823\/1803_inter-women-ls.png" : {
+      "ft" : 32768,
+      "iS" : 17688,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/48be27302b-1691527823\/1803_inter-women-ls.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/48be27302b-1691527823\/1803-inter-women-ls-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 4379,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/48be27302b-1691527823\/1803-inter-women-ls-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/48be27302b-1691527823\/1803-inter-women-ls-864x.png" : {
+      "ft" : 32768,
+      "iS" : 52780,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/48be27302b-1691527823\/1803-inter-women-ls-864x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/58c60dbbbc-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/58c60dbbbc-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/58c60dbbbc-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/58c60dbbbc-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/58c60dbbbc-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/58c60dbbbc-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/58c60dbbbc-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/58c60dbbbc-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/58c60dbbbc-1691538940\/screenshot-2023-08-08-at-4-55-15-pm-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 2055,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/58c60dbbbc-1691538940\/screenshot-2023-08-08-at-4-55-15-pm-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/58c60dbbbc-1691538940\/screenshot-2023-08-08-at-4.55.15-pm.png" : {
+      "ft" : 32768,
+      "iS" : 122308,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/58c60dbbbc-1691538940\/screenshot-2023-08-08-at-4.55.15-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/85e91f373c-1691622260\/.jobs\/screenshot-2023-08-09-at-4-02-29-pm-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/85e91f373c-1691622260\/.jobs\/screenshot-2023-08-09-at-4-02-29-pm-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/85e91f373c-1691622260\/.jobs\/screenshot-2023-08-09-at-4-02-29-pm-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/85e91f373c-1691622260\/.jobs\/screenshot-2023-08-09-at-4-02-29-pm-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/85e91f373c-1691622260\/.jobs\/screenshot-2023-08-09-at-4-02-29-pm-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/85e91f373c-1691622260\/.jobs\/screenshot-2023-08-09-at-4-02-29-pm-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/85e91f373c-1691622260\/.jobs\/screenshot-2023-08-09-at-4-02-29-pm-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/85e91f373c-1691622260\/.jobs\/screenshot-2023-08-09-at-4-02-29-pm-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/85e91f373c-1691622260\/screenshot-2023-08-09-at-4-02-29-pm-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 1850,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/85e91f373c-1691622260\/screenshot-2023-08-09-at-4-02-29-pm-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/85e91f373c-1691622260\/screenshot-2023-08-09-at-4.02.29-pm.png" : {
+      "ft" : 32768,
+      "iS" : 133712,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/85e91f373c-1691622260\/screenshot-2023-08-09-at-4.02.29-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/957a64cc10-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/957a64cc10-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/957a64cc10-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/957a64cc10-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/957a64cc10-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/957a64cc10-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/957a64cc10-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/957a64cc10-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/957a64cc10-1691539109\/screenshot-2023-08-08-at-4-58-15-pm-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 2836,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/957a64cc10-1691539109\/screenshot-2023-08-08-at-4-58-15-pm-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/957a64cc10-1691539109\/screenshot-2023-08-08-at-4.58.15-pm.png" : {
+      "ft" : 32768,
+      "iS" : 240997,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/957a64cc10-1691539109\/screenshot-2023-08-08-at-4.58.15-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/3752a56681-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-38x38.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/3752a56681-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-38x38.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/3752a56681-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-352x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/3752a56681-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-352x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/3752a56681-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-864x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/3752a56681-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-864x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/3752a56681-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-1408x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/3752a56681-1691528321\/.jobs\/14063968-10154349833180119-4062282818120972462-n-1408x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/3752a56681-1691528321\/14063968_10154349833180119_4062282818120972462_n.jpg" : {
+      "ft" : 16384,
+      "iS" : 25543,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/3752a56681-1691528321\/14063968_10154349833180119_4062282818120972462_n.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/3752a56681-1691528321\/14063968-10154349833180119-4062282818120972462-n-76x76.jpg" : {
+      "ft" : 16384,
+      "iS" : 2993,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/3752a56681-1691528321\/14063968-10154349833180119-4062282818120972462-n-76x76.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/548267f186-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/548267f186-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/548267f186-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/548267f186-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/548267f186-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/548267f186-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/548267f186-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/548267f186-1691539109\/.jobs\/screenshot-2023-08-08-at-4-58-15-pm-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/548267f186-1691539109\/screenshot-2023-08-08-at-4-58-15-pm-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 2836,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/548267f186-1691539109\/screenshot-2023-08-08-at-4-58-15-pm-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/548267f186-1691539109\/screenshot-2023-08-08-at-4.58.15-pm.png" : {
+      "ft" : 32768,
+      "iS" : 240997,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/548267f186-1691539109\/screenshot-2023-08-08-at-4.58.15-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/ae67ff4442-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/ae67ff4442-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/ae67ff4442-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/ae67ff4442-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/ae67ff4442-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/ae67ff4442-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/ae67ff4442-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/ae67ff4442-1691538940\/.jobs\/screenshot-2023-08-08-at-4-55-15-pm-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/ae67ff4442-1691538940\/screenshot-2023-08-08-at-4-55-15-pm-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 2055,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/ae67ff4442-1691538940\/screenshot-2023-08-08-at-4-55-15-pm-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/ae67ff4442-1691538940\/screenshot-2023-08-08-at-4.55.15-pm.png" : {
+      "ft" : 32768,
+      "iS" : 122308,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/ae67ff4442-1691538940\/screenshot-2023-08-08-at-4.55.15-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/bb255af719-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/bb255af719-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/bb255af719-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/bb255af719-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/bb255af719-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/bb255af719-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/bb255af719-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/bb255af719-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/bb255af719-1691609899\/screenshot-2023-08-09-at-12-37-59-pm-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 2518,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/bb255af719-1691609899\/screenshot-2023-08-09-at-12-37-59-pm-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/bb255af719-1691609899\/screenshot-2023-08-09-at-12.37.59-pm.png" : {
+      "ft" : 32768,
+      "iS" : 91257,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/bb255af719-1691609899\/screenshot-2023-08-09-at-12.37.59-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/c9e987e7d0-1691527823\/.jobs\/1803-inter-women-ls-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/c9e987e7d0-1691527823\/.jobs\/1803-inter-women-ls-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/c9e987e7d0-1691527823\/.jobs\/1803-inter-women-ls-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/c9e987e7d0-1691527823\/.jobs\/1803-inter-women-ls-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/c9e987e7d0-1691527823\/.jobs\/1803-inter-women-ls-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/c9e987e7d0-1691527823\/.jobs\/1803-inter-women-ls-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/c9e987e7d0-1691527823\/.jobs\/1803-inter-women-ls-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/c9e987e7d0-1691527823\/.jobs\/1803-inter-women-ls-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/c9e987e7d0-1691527823\/1803_inter-women-ls.png" : {
+      "ft" : 32768,
+      "iS" : 17688,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/c9e987e7d0-1691527823\/1803_inter-women-ls.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/c9e987e7d0-1691527823\/1803-inter-women-ls-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 4379,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/c9e987e7d0-1691527823\/1803-inter-women-ls-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/d1ef2adfb7-1691622308\/.jobs\/screenshot-2023-08-09-at-4-03-14-pm-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/d1ef2adfb7-1691622308\/.jobs\/screenshot-2023-08-09-at-4-03-14-pm-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/d1ef2adfb7-1691622308\/.jobs\/screenshot-2023-08-09-at-4-03-14-pm-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/d1ef2adfb7-1691622308\/.jobs\/screenshot-2023-08-09-at-4-03-14-pm-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/d1ef2adfb7-1691622308\/.jobs\/screenshot-2023-08-09-at-4-03-14-pm-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/d1ef2adfb7-1691622308\/.jobs\/screenshot-2023-08-09-at-4-03-14-pm-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/d1ef2adfb7-1691622308\/.jobs\/screenshot-2023-08-09-at-4-03-14-pm-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/d1ef2adfb7-1691622308\/.jobs\/screenshot-2023-08-09-at-4-03-14-pm-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/d1ef2adfb7-1691622308\/screenshot-2023-08-09-at-4-03-14-pm-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 1726,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/d1ef2adfb7-1691622308\/screenshot-2023-08-09-at-4-03-14-pm-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/d1ef2adfb7-1691622308\/screenshot-2023-08-09-at-4.03.14-pm.png" : {
+      "ft" : 32768,
+      "iS" : 211180,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/d1ef2adfb7-1691622308\/screenshot-2023-08-09-at-4.03.14-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/ec925db033-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-38x38.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/ec925db033-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-38x38.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/ec925db033-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/ec925db033-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/ec925db033-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/ec925db033-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-864x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/ec925db033-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-1408x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/ec925db033-1691609899\/.jobs\/screenshot-2023-08-09-at-12-37-59-pm-1408x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/ec925db033-1691609899\/screenshot-2023-08-09-at-12-37-59-pm-76x76.png" : {
+      "ft" : 32768,
+      "iS" : 2518,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/ec925db033-1691609899\/screenshot-2023-08-09-at-12-37-59-pm-76x76.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/ec925db033-1691609899\/screenshot-2023-08-09-at-12.37.59-pm.png" : {
+      "ft" : 32768,
+      "iS" : 91257,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/ec925db033-1691609899\/screenshot-2023-08-09-at-12.37.59-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/articles\/henrietta-design-information\/0a1515c76b-1647414874\/.jobs\/screen-shot-2022-03-16-at-12-09-11-am-38x38.png.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -28376,52 +29506,20 @@
       "oAP" : "\/site\/plugins\/meta-tags\/vendor\/pedroborges\/meta-tags\/src\/MetaTags.php",
       "oF" : 0
     },
-    "\/site\/sessions\/1691470176.3272e1b2ec861fe7ca2f.sess" : {
+    "\/site\/sessions\/1692736018.7e5488cccaa54f761a99.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1691470176.3272e1b2ec861fe7ca2f.sess",
+      "oAP" : "\/site\/sessions\/1692736018.7e5488cccaa54f761a99.sess",
       "oF" : 0
     },
-    "\/site\/sessions\/1691470176.ba602fa2557bc8efbd15.sess" : {
+    "\/site\/sessions\/1692736018.f46143baf87aef9b4eef.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1691470176.ba602fa2557bc8efbd15.sess",
-      "oF" : 0
-    },
-    "\/site\/sessions\/1691474030.dec29303a1a7bbcf6d10.sess" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/site\/sessions\/1691474030.dec29303a1a7bbcf6d10.sess",
-      "oF" : 0
-    },
-    "\/site\/sessions\/1691477642.e9a7427dcc05fde3f01e.sess" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/site\/sessions\/1691477642.e9a7427dcc05fde3f01e.sess",
-      "oF" : 0
-    },
-    "\/site\/sessions\/1691481254.e6eec8bd97aba25b61ce.sess" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/site\/sessions\/1691481254.e6eec8bd97aba25b61ce.sess",
-      "oF" : 0
-    },
-    "\/site\/sessions\/1691484866.356fa434f0e2df54f139.sess" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/site\/sessions\/1691484866.356fa434f0e2df54f139.sess",
+      "oAP" : "\/site\/sessions\/1692736018.f46143baf87aef9b4eef.sess",
       "oF" : 0
     },
     "\/site\/snippets\/article.php" : {

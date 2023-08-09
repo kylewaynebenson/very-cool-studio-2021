@@ -57,7 +57,7 @@
       </dl>
     <?php endif ?>
     <?php if ($page->charset()->isNotEmpty()): ?>
-      <a href="#Glyphs"><dl>
+      <a href="#glyphs"><dl>
         <dt><h5 class="color-grey">Char set</h5></dt>
         <dd><h6><?= $page->charset() ?></h6></dd>
       </dl></a>
@@ -254,7 +254,7 @@
           $items = $page->features()->toStructure();
           // we can then loop through the entries and render the individual fields
           foreach ($items as $item): ?>
-            <div class="column bb-soft-blue" style="--columns:4;">
+            <div class="column margin-m" style="--columns:4;">
               <div class="grid-locked margin-s" style="--gutter:1vw;--columns:12; align-items: center;">
                 <input class="tgl tgl-light" id="toggle-'<?= $item->feature() ?>'" onchange="featureOn(this, '<?= $item->feature() ?>');" type="checkbox" checked/>
                 <label class="tgl-btn" for="toggle-'<?= $item->feature() ?>'"></label>
@@ -274,76 +274,79 @@
     <?php endif ?>
     <?php if ($page->glyphs()->isNotEmpty()): ?>
     <aside class="bt-blue bg-blue-gradient glyphs">
-      <div class="padding grid preview-glyphs">
-        <div id="enlarged-character-container" class="preview">
-        <h5 id="enlarged-character-name" class="name inline-block bg-blue rounded-corners-full padding-xxs">A</h5>
-          <h5 id="enlarged-unicode-point" class="unicode inline-block bg-blue rounded-corners-full padding-xxs">U+0041</h5>
-          <div id="enlarged-character" class="letter" style="font-family:'<?= $item->font() ?>';">A</div>
-        </div>
-        <div id="Glyphs" class="grid glyphs-grid margin-s" style="font-family:'<?= $item->font() ?>';"></div>
-        <!-- Include OpenType.js library -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/opentype.js/0.6.5/opentype.min.js"></script>
-        <script>
-          // Initialize OpenType.js when the font is loaded
-          opentype.load('../../assets/webfonts/<?= $page->slug() ?>/<?= $page->glyphs() ?>.woff', function (err, font) {
-            if (err) {
-              console.error('Error loading font:', err);
-              return;
-            }
+      <div class="padding">
+        <h2>Glyphs</h2>
+        <div class="preview-glyphs flex">
+          <div id="enlarged-character-container" class="preview">
+            <h5 id="enlarged-character-name" class="name inline-block bg-blue color-grey rounded-corners-full padding-xxs">A</h5>
+            <h5 id="enlarged-unicode-point" class="unicode inline-block bg-blue color-grey rounded-corners-full padding-xxs">U+0041</h5>
+            <div id="enlarged-character" class="letter" style="font-family:'<?= $item->font() ?>';">A</div>
+          </div>
+          <div id="glyphs" class="grid glyphs-grid margin-s flex-grow" style="font-family:'<?= $item->font() ?>';"></div>
+          <!-- Include OpenType.js library -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/opentype.js/0.6.5/opentype.min.js"></script>
+          <script>
+            // Initialize OpenType.js when the font is loaded
+            opentype.load('../../assets/webfonts/<?= $page->slug() ?>/<?= $page->glyphs() ?>.woff', function (err, font) {
+              if (err) {
+                console.error('Error loading font:', err);
+                return;
+              }
 
-            // Get the character set from the font
-            var characterSet = getCharacterSet(font);
+              // Get the character set from the font
+              var characterSet = getCharacterSet(font);
 
-            // Create the grid elements
-            var gridContainer = document.getElementById('Glyphs');
+              // Create the grid elements
+              var gridContainer = document.getElementById('glyphs');
 
-            for (var i = 0; i < characterSet.length; i++) {
-              var character = characterSet[i];
-              var glyph = font.charToGlyph(character);
+              for (var i = 0; i < characterSet.length; i++) {
+                var character = characterSet[i];
+                var glyph = font.charToGlyph(character);
 
-              // Create a grid item for each character
-              var gridItem = document.createElement('div');
-              gridItem.className = 'grid-item color-black';
-              gridItem.style = '--aspect-ratio: 1 / 1';
+                // Create a grid item for each character
+                var gridItem = document.createElement('div');
+                gridItem.className = 'grid-item color-black';
+                gridItem.style = '--aspect-ratio: 1 / 1';
 
-              // Create a <span> element to wrap the character
-              var characterSpan = document.createElement('span');
-              characterSpan.textContent = character;
+                // Create a <span> element to wrap the character
+                var characterSpan = document.createElement('span');
+                characterSpan.textContent = character;
 
-              // Append the <span> to the grid item
-              gridItem.appendChild(characterSpan);
+                // Append the <span> to the grid item
+                gridItem.appendChild(characterSpan);
 
-              // Store the glyph data in a data attribute
-              gridItem.setAttribute('data-glyph', JSON.stringify(glyph));
-              // Store the character name in a data attribute
-              gridItem.setAttribute('data-character-name', glyph.name);
-              // Store the Unicode point in a data attribute
-              gridItem.setAttribute('data-unicode-point', glyph.unicode);
+                // Store the glyph data in a data attribute
+                gridItem.setAttribute('data-glyph', JSON.stringify(glyph));
+                // Store the character name in a data attribute
+                gridItem.setAttribute('data-character-name', glyph.name);
+                // Store the Unicode point in a data attribute
+                gridItem.setAttribute('data-unicode-point', glyph.unicode);
 
-              gridContainer.appendChild(gridItem);
-                  // Add click event listener to the grid item
-              gridItem.addEventListener('click', function () {
-                var glyphData = JSON.parse(this.getAttribute('data-glyph'));
-                var character = String.fromCharCode(glyphData.unicode);
-                var characterName = this.getAttribute('data-character-name');
-                var unicodePoint = this.getAttribute('data-unicode-point');
+                gridContainer.appendChild(gridItem);
+                    // Add click event listener to the grid item
+                gridItem.addEventListener('click', function () {
+                  var glyphData = JSON.parse(this.getAttribute('data-glyph'));
+                  var character = String.fromCharCode(glyphData.unicode);
+                  var characterName = this.getAttribute('data-character-name');
+                  var unicodePoint = this.getAttribute('data-unicode-point');
 
-                showEnlargedCharacter(character, characterName, unicodePoint);
-              });
-            }
-          });
-        </script>
+                  showEnlargedCharacter(character, characterName, unicodePoint);
+                });
+              }
+            });
+          </script>
+      </div>
     </aside>
     <?php endif ?>
     <?php if ($gallery->count() > 1): ?>
     <aside class="bt-blue bg-blue-gradient in-use">
-      <div class="padding container grid" style="--gutter: .5vw;">
-        <h2 id="in-use" class="column" style="--columns:3;"><?= $page->title() ?> in use</h2>
-        <div class="column grid" style="--columns:9;--gutter: 1vw;">
+      <div>
+        <h2 id="in-use" class="padding no-mb"><?= $page->title() ?> in use</h2>
+        <div class="gallery-container">
         <?php foreach ($gallery as $image): ?>
           <?php if ($image->link()->isNotEmpty()): ?>
-            <a class="inline-block column" style="--columns:6;" href="<?= $image->link() ?>" target="_blank">
-              <figure  style="--w:<?= $image->width() ?>;--h:<?= $image->height() ?>;">
+            <a class="inline-block column margin-m" style="max-height: 100%;" href="<?= $image->link() ?>" target="_blank">
+              <figure>
                 <?= $image ?>
                 <figcaption>
                 <?= $image->caption() ?>

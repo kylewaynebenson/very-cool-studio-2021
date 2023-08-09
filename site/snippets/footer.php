@@ -13,13 +13,7 @@
 
   <footer class="footer bt-white">
     <div class="grid bg-tan" style="--gutter: 2px">
-      <div class="column desktop-only" style="--columns: 4">
-        <?= svg('assets/icons/c-logo.svg') ?>
-      </div>
-      <div class="column" style="--columns: 5">
-        <?php snippet('trials') ?>
-      </div>
-      <div class="column bg-yellow" style="--columns: 3; display: flex; flex-direction: column;">
+      <div class="column bg-yellow" style="--columns: 4; display: flex; flex-direction: column;">
         <ul style="flex-grow: 1;">
           <li><h4><a href="<?= $site->url() ?>">Typefaces</a></h4></li>
           <?php foreach ($site->children()->listed()->not("typefaces") as $example): ?>
@@ -27,11 +21,13 @@
           <?php endforeach ?>
           <li><h4><a href="<?= $site->find('Terms')->url() ?>">Terms</a></h4></li>
         </ul>
-        <?php snippet('social') ?>
+      </div>
+      <div class="column" style="--columns: 8;">
+        <?php snippet('trials') ?>
       </div>
     </div>
-    <div class="column bt-white bg-black" style="--columns: 12">
-      <h5 class="no-mb"><span class="color-white">©</span> <span class="color-soft-blue">2021</span> <span class="color-coral">Very</span> <span class="color-yellow">Cool</span> <span class="color-soft-blue">Studio</span></h5>
+    <div class="column bt-white bg-tan" style="--columns: 12">
+      <h5 class="no-mb">©2023 Very Cool Studio</h5>
     </div>
   </footer>
   <?php echo js('assets/js/index-min.js?v='.time().'') ?>
