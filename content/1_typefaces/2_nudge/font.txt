@@ -78,28 +78,76 @@ Samples:
 
 - 
   font: Nudge Ultra
-  sample: Schoolhouse
+  sample: Mini Thunderstorm
 - 
-  font: Nudge Extra Bold
-  sample: Computations
+  font: Nudge Ultra Italic
+  sample: Outflanked Circus
+- 
+  font: Nudge Ultra Very Italic
+  sample: Schoolhouse Rob
+- 
+  font: Nudge Bold
+  sample: Average Delphiniums
+- 
+  font: Nudge Bold Italic
+  sample: Paramilitary Jouster
+- 
+  font: Nudge Bold Very Italic
+  sample: Naturalistic Eardrop
 - 
   font: Nudge Medium
-  sample: Recordbreaking
+  sample: Recordbreaking Clank
+- 
+  font: Nudge Medium Italic
+  sample: Toadstool Philosopher
+- 
+  font: Nudge Medium Very Italic
+  sample: Unpoetic Nondrinkers
 - 
   font: Nudge Thin
-  sample: Acknowledgment
+  sample: Yellow Acknowledgment
 - 
-  font: Nudge Normal Black
-  sample: Herbivore
+  font: Nudge Thin Italic
+  sample: Frothy Disappointments
+- 
+  font: Nudge Thin Very Italic
+  sample: Straightforwardly Whelp
+- 
+  font: Nudge Normal Ultra
+  sample: Neural Hawaii
+- 
+  font: Nudge Normal Ultra Italic
+  sample: Encyclopedia
+- 
+  font: Nudge Normal Ultra Very Italic
+  sample: Fanatic Sizzle
 - 
   font: Nudge Normal Bold
-  sample: Comedian
+  sample: Weird Graphic
+- 
+  font: Nudge Normal Bold Italic
+  sample: Habitual Bean
+- 
+  font: Nudge Normal Bold Very Italic
+  sample: Schoolmaster
 - 
   font: Nudge Normal Regular
-  sample: Sandstone
+  sample: Cheap Haircare
+- 
+  font: Nudge Normal Regular Italic
+  sample: Salesgirl Kisses
+- 
+  font: Nudge Normal Regular Very Italic
+  sample: Godless Goons
 - 
   font: Nudge Normal Thin
-  sample: Gradualism
+  sample: Gawky Marriage
+- 
+  font: Nudge Normal Thin Italic
+  sample: Edging Disparity
+- 
+  font: Nudge Normal Thin Very Italic
+  sample: Airport Baklavas
 - 
   font: Nudge Normal Regular
   sample: >
