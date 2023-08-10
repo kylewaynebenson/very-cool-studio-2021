@@ -15,7 +15,7 @@
 
 <nav class="blog-prevnext bg-white bt-tan">
   <div class="container padding">
-    <h5 class="color-grey">More reading</h5>
+    <h5 class="color-grey">See also</h5>
     <div class="autogrid" style="--gutter:2px;">
         <?php if ($prev = $page->prevListed()): ?>
         <?php snippet('article', ['article' => $prev, 'excerpt' => false])  ?>

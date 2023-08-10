@@ -360,5 +360,6 @@
       </div>
     </aside>
     <?php endif ?>
+    <?php snippet('prevnext') ?>
 </article>
 <?php snippet('footer') ?>
