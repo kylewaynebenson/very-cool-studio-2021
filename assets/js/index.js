@@ -104,7 +104,7 @@
         }
         function ShopifyBuyInit() {
           var client = ShopifyBuy.buildClient({
-            domain: 'very-cool-studio.myshopify.com',
+            domain: 'checkout.verycool.studio',
             storefrontAccessToken: '2d6aeb57e65ac0c8cb1a5396784da177'
           });
           ShopifyBuy.UI.onReady(client).then(function (ui) {
