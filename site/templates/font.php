@@ -144,7 +144,7 @@
   
     // Headline or text sample
     if (strlen($item->sample()) < 50) {
-      $fontSize = 11.75;
+      $fontSize = 11.66;
       $lineHeight = 100;
       $class = "headline";
       $alignment = "center";

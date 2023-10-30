@@ -54,9 +54,9 @@ html {
   text-shadow: 2px 2px 2px var(--color-white);
 }
 h1 { 
-  font-size: 3.875rem;
+  font-size: 3.25rem;
   margin-bottom: var(--margin-s);
-  line-height: .98;
+  line-height: .95;
   font-family: var(--font-family-headline);
   font-weight: 600;
 }
@@ -77,21 +77,34 @@ h4 {
   font-weight: 600;
 }
 h5 { 
-  font-size: .675rem;
+  font-size: .6rem;
   margin-bottom: var(--margin-s);
   line-height: 1;
-  letter-spacing: .05rem;
+  letter-spacing: .06rem;
   text-transform: uppercase;
   font-family: var(--font-family-eyebrow);
   font-weight: 600;
 }
 h6 { 
-  font-size: .875rem;
+  font-size: .750rem;
   margin-bottom: var(--margin-s);
   letter-spacing: .05rem;
   line-height: 1.1;
   font-family: var(--font-family-headline-wide);
   font-weight: 600;
+}
+@media screen and (min-width: 830px) {
+  h5 { 
+    font-size: .675rem;
+    letter-spacing: .05rem;
+  }
+  h6 {
+    font-size: .8rem;
+  }
+  h1 { 
+    font-size: 3.875rem;
+    line-height: .98;
+  }
 }
 p {
   margin-bottom: var(--margin-m);
@@ -457,7 +470,7 @@ input[type="submit"] {
   margin-bottom: 0;
 }
 .article-text > *:not(a) {
-  margin-bottom: calc(4px + .9vw);
+  margin-bottom: var(--margin-m);
   max-width: 100%;
 }
 .article-text ul > li {
@@ -532,10 +545,10 @@ input[type="submit"] {
   filter: grayscale(0);
 }
 .article-text figure+*:not(figure) {
-  margin-top: 2vw;
+  margin-top: var(--margin-m);
 }
 .article-text figure~figure {
-  margin-bottom: calc(2px + 1.3vw);
+  margin-bottom: var(--margin-s);
 }
 .article-text figure figcaption, .article-footnotes, .in-use figure figcaption {
   color: var(--color-grey);
