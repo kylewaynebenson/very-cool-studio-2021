@@ -41,9 +41,9 @@
   endforeach;
 ?>
 <?= js([
-  'assets/js/fontsampler-min.js',
-  'assets/js/fontsampler-skin-min.js',
-  'assets/js/fonts-min.js'
+  'assets/js/fontsampler.js',
+  'assets/js/fontsampler-skin.js',
+  'assets/js/fonts.js'
 ]) ?>
 <header class="grid padding" style="--gutter: 3vw;">
   <div class="column" style="--columns: 4">
