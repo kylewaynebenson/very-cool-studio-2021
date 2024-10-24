@@ -14,9 +14,7 @@ Date: 2021-08-13
 
 ----
 
-Author:
-
-- PDRAP2hP
+Author: - PDRAP2hP
 
 ----
 
@@ -29,3 +27,7 @@ Footnotes: [{"content":{"text":"1. <a name=\"slant\">Some<\/a> of my early relea
 ----
 
 Tags: 
+
+----
+
+Uuid: 0EISwwT7Ih1pAoNF

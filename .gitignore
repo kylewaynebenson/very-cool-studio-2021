@@ -4,6 +4,11 @@
 Icon
 .DS_Store
 
+# NPM
+
+/node_modules
+/node_modules/*
+
 # Temporary files
 # ---------------
 
@@ -48,3 +53,6 @@ Icon
 # ---------------
 
 /site/config/.license
+
+
+

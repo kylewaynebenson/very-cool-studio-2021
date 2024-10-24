@@ -58,9 +58,7 @@ Tags: Gothic, Sans, Condensed
 
 ----
 
-Specimen:
-
-- verycoolstudio_nudgev0.4.pdf
+Specimen: - verycoolstudio_nudgev0.4.pdf
 
 ----
 
@@ -68,9 +66,7 @@ Designinfo: articles/nudge-design-information
 
 ----
 
-Opengraphimage:
-
-- nudgeshareimage.jpg
+Opengraphimage: - nudgeshareimage.jpg
 
 ----
 
@@ -213,3 +209,7 @@ Features:
 ----
 
 Glyphs: VCNudge-Bold
+
+----
+
+Uuid: jaFY9raIEgLr14CP

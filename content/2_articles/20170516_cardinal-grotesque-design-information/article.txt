@@ -14,9 +14,7 @@ Date: 2017-05-16
 
 ----
 
-Author:
-
-- PDRAP2hP
+Author: - PDRAP2hP
 
 ----
 
@@ -29,3 +27,7 @@ Footnotes: [{"content":{"text":"1. <a name=\"grotesques\">If<\/a> you want more 
 ----
 
 Tags: cardinal, design information
+
+----
+
+Uuid: I9V7PRNdmtKS4StG

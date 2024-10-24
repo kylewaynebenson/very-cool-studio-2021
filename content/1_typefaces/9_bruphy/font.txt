@@ -58,9 +58,7 @@ Tags:
 
 ----
 
-Specimen:
-
-- verycoolstudio-bruphy-v3.pdf
+Specimen: - verycoolstudio-bruphy-v3.pdf
 
 ----
 
@@ -68,9 +66,7 @@ Designinfo: articles/bruphy-design-information
 
 ----
 
-Opengraphimage:
-
-- 2201_verycool_shareimages_bruphy.jpg
+Opengraphimage: - 2201_verycool_shareimages_bruphy.jpg
 
 ----
 
@@ -144,3 +140,7 @@ Features:
 ----
 
 Glyphs: VCBruphyText-SemiBold
+
+----
+
+Uuid: eloUf2fjpCqwmVxV

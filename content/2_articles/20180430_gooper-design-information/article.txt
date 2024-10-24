@@ -14,9 +14,7 @@ Date: 2018-04-30
 
 ----
 
-Author:
-
-- PDRAP2hP
+Author: - PDRAP2hP
 
 ----
 
@@ -29,3 +27,7 @@ Footnotes: [{"content":{"text":"<ol class=\"footnotes\">\n      <li id=\"wikiped
 ----
 
 Tags: design information, gooper
+
+----
+
+Uuid: LGEmz7hFah9ovFw2

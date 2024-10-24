@@ -14,9 +14,7 @@ Date: 2023-08-08
 
 ----
 
-Author:
-
-- dTEokw59
+Author: - dTEokw59
 
 ----
 
@@ -29,3 +27,7 @@ Footnotes: [{"content":{"text":"<a name=\"mindset\">1.<\/a> It's kind of hard to
 ----
 
 Tags: Design Information
+
+----
+
+Uuid: dMEPTlXy4hUIEhaM

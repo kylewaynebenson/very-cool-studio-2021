@@ -66,9 +66,7 @@ Designinfo: articles/henrietta-design-information
 
 ----
 
-Opengraphimage:
-
-- 2201_verycool_shareimages_henrietta.jpg
+Opengraphimage: - 2201_verycool_shareimages_henrietta.jpg
 
 ----
 
@@ -139,3 +137,7 @@ Features:
 ----
 
 Glyphs: VCHenrietta-SemiBold
+
+----
+
+Uuid: TcdlEHcchohEwEE5

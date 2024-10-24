@@ -6,9 +6,7 @@ Text: [{"content":{"level":"h2","text":"1. Definitions"},"id":"74ac88e3-3e4d-426
 
 ----
 
-Pdf:
-
-- verycool_triallicenseagreement-1.0.pdf
+Pdf: - verycool_triallicenseagreement-1.0.pdf
 
 ----
 
@@ -25,3 +23,7 @@ Footnotes:
 ----
 
 Tags: 
+
+----
+
+Uuid: Q3xTywhgz1m2E7Oq

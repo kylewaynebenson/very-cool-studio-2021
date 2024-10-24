@@ -10,7 +10,7 @@ Font: Gosh-Bold
 
 ----
 
-Sample: 3 Fab Maoists
+Sample: 3 Fab Bumpkin
 
 ----
 
@@ -26,11 +26,11 @@ Designer:
 
 ----
 
-Styles: 1
+Styles: 6
 
 ----
 
-Widths: 1
+Widths: 6
 
 ----
 
@@ -38,7 +38,7 @@ Optical:
 
 ----
 
-Version: 0.1
+Version: 0.2
 
 ----
 
@@ -50,7 +50,7 @@ Futurefonts: https://www.futurefonts.xyz/very-cool-studio/gosh
 
 ----
 
-Text: <p>Well shucks, folks, we made somethin’ special here. It's like a wedg’a lemon for your weekend beer, and all your favorite friends are there and they’re goin on about what a lovely person you are. We didn’t have much to work with, but we scraped together what leftovers we had and came up with a real winner.</p><p>We named it Gosh, because, sheesh, there’s just somethin’ so darn obvious about it.</p>
+Text: <p>Gosh is a soft, square sans. It feels like you swear you've seen it before. Inspired by Microgramma or Eurostile when printed and tightly spaced. Everything about Gosh is boxy, but nothing about it is sharp.</p><p>It's called Gosh, because, sheesh, there’s somethin’ so darn obvious about it.</p>
 
 ----
 
@@ -62,36 +62,34 @@ Specimen:
 
 ----
 
-Designinfo: articles/gosh-design-information
+Designinfo: 
 
 ----
 
-Opengraphimage:
-
-- 2201_verycool_shareimages-gosh.jpg
+Opengraphimage: - file://DBbhY4T7rsf2s3gT
 
 ----
 
 Samples:
 
 - 
-  font: Gosh Bold
-  sample: Kingsized Win
+  font: Gosh Extra Wide Bold
+  sample: Leisure
+- 
+  font: Gosh Wide Bold
+  sample: Cableway
 - 
   font: Gosh Bold
-  sample: Shined Onions
+  sample: Thrive Onions
 - 
-  font: Gosh Bold
-  sample: Joyful Blazing
+  font: Gosh Semi Condensed Bold
+  sample: Extraterrestrial
 - 
-  font: Gosh Bold
-  sample: International
+  font: Gosh Condensed Bold
+  sample: Dreamier Orthopaedics
 - 
-  font: Gosh Bold
-  sample: 3 Fab Maoists
-- 
-  font: Gosh Bold
-  sample: Railroads Guy
+  font: Gosh Extra Condensed Bold
+  sample: 'Sleepwalking and Clemency Denial Trial '
 - 
   font: Gosh Bold
   sample: >
@@ -117,10 +115,15 @@ Features:
   sample: Eggs
   description: Single story g
 - 
+  feature: ss02
+  font: VCGoshBold
+  sample: Granite
+  description: Flat r
+- 
   feature: ss03
   font: VCGoshBold
   sample: Later
-  description: Flat t, r
+  description: Flat t
 - 
   feature: ss04
   font: VCGoshBold
@@ -141,7 +144,16 @@ Features:
   font: VCGoshBold
   sample: Risky
   description: R with kick
+- 
+  feature: frac
+  font: VCGoshBold
+  sample: 123/456
+  description: Fractions
 
 ----
 
 Glyphs: VCGosh-Bold
+
+----
+
+Uuid: 7IfFXKz8bvbcq8Bj

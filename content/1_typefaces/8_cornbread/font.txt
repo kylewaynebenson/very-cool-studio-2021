@@ -66,9 +66,7 @@ Designinfo:
 
 ----
 
-Opengraphimage:
-
-- 2201_verycool_shareimages_cornbread.jpg
+Opengraphimage: - 2201_verycool_shareimages_cornbread.jpg
 
 ----
 
@@ -136,3 +134,7 @@ Cover:
 ----
 
 Subheadline: Teaparty Muggers
+
+----
+
+Uuid: h3j5NawKCTDQG8q5

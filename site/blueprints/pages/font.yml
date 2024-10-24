@@ -83,7 +83,7 @@ tabs:
           designinfo:
             label: Design info
             type: select
-            options: pages
+            options: site.find('articles').children
           opengraphimage:
             label: Graph Image
             type: files

@@ -66,9 +66,7 @@ Designinfo: articles/cardinal-grotesque-design-information
 
 ----
 
-Opengraphimage:
-
-- 2201_verycool_shareimages_cardinal.jpg
+Opengraphimage: - 2201_verycool_shareimages_cardinal.jpg
 
 ----
 
@@ -166,3 +164,7 @@ Cover:
 ----
 
 Subheadline: Temperance Handshakes
+
+----
+
+Uuid: UCcgDc4nkxn5DD4k

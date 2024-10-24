@@ -58,9 +58,7 @@ Tags: serif, old style
 
 ----
 
-Specimen:
-
-- 2103_verycoolstudio_gooper.pdf
+Specimen: - 2103_verycoolstudio_gooper.pdf
 
 ----
 
@@ -68,9 +66,7 @@ Designinfo: articles/gooper-design-information
 
 ----
 
-Opengraphimage:
-
-- goopershareimage.jpg
+Opengraphimage: - goopershareimage.jpg
 
 ----
 
@@ -181,3 +177,7 @@ Cover:
 ----
 
 Subheadline: Categorizing Glaciologists
+
+----
+
+Uuid: AY44OrNu22v98iEM

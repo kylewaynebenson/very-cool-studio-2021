@@ -14,9 +14,7 @@ Date: 2019-06-11
 
 ----
 
-Author:
-
-- PDRAP2hP
+Author: - PDRAP2hP
 
 ----
 
@@ -29,3 +27,7 @@ Footnotes: [{"content":{"text":"1. <a name=\"#my-gods\">I<\/a> would be remiss n
 ----
 
 Tags: Design Information, Bruphy
+
+----
+
+Uuid: efRCEqc65QxQzBew

@@ -14,9 +14,7 @@ Date: 2017-04-17
 
 ----
 
-Author:
-
-- PDRAP2hP
+Author: - PDRAP2hP
 
 ----
 
@@ -29,3 +27,7 @@ Footnotes: [{"content":{"text":"1. <a name=\"sign-painter-fonts\">At<\/a> that t
 ----
 
 Tags: kansas casual, design information
+
+----
+
+Uuid: IMDrfNi3vJFegyzS
