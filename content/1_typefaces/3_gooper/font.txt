@@ -6,7 +6,7 @@ Headline:
 
 ----
 
-Font: Gooper-Black
+Font: Gooper Black
 
 ----
 
@@ -42,11 +42,11 @@ Version:
 
 ----
 
-Shopify: 7014458491087
+Futurefonts: https://www.futurefonts.xyz/very-cool-studio/gooper
 
 ----
 
-Futurefonts: 
+Fontdueembed: <link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTgxNjMwMjIwNDEwNjY1OTg0NA%3D%3D.css" rel="stylesheet">
 
 ----
 
@@ -54,11 +54,15 @@ Text: <p>Gooper is a lively, loveable, sticky typeface made for the use of squis
 
 ----
 
+Metadescription: Gooper is a loveable, soft serif oldstyle font.
+
+----
+
 Tags: serif, old style
 
 ----
 
-Specimen: - 2103_verycoolstudio_gooper.pdf
+Specimen: - file://pMD2Miio0VUkcMCj
 
 ----
 
@@ -66,7 +70,65 @@ Designinfo: articles/gooper-design-information
 
 ----
 
-Opengraphimage: - goopershareimage.jpg
+Opengraphimage: - file://o0tQ59e4mk2JG3wK
+
+----
+
+Features:
+
+- 
+  feature: swsh
+  sample: Oranges
+  description: Swash
+  font: VCGooperBold
+- 
+  feature: ss01
+  sample: Absolve
+  description: Super swash
+  font: VCGooperBold
+- 
+  feature: ss02
+  sample: Bagels
+  description: Single story a, g
+  font: VCGooperBold
+- 
+  feature: dlig
+  sample: Groovy
+  description: ""
+  font: VCGooperBold
+- 
+  feature: ss03
+  sample: Addition
+  description: Flat topped d, i
+  font: VCGooperBold
+- 
+  feature: ss04
+  sample: Cocoa
+  description: Ball terminals
+  font: VCGooperBold
+- 
+  feature: ss05
+  sample: Ready
+  description: Swash R
+  font: VCGooperBold
+- 
+  feature: frac
+  sample: 1234/56789
+  description: Fractions
+  font: VCGooperBold
+- 
+  feature: onum
+  sample: "1234567"
+  description: Oldstyle figures
+  font: VCGooperBold
+
+----
+
+Glyphs: GooperDeck Bold
+
+----
+
+Shopify: 7014458491087
 
 ----
 
@@ -115,60 +177,6 @@ Samples:
     speculated on. The lesser laws got a lot
     of talk. Maybe the saints would be
     allowed to drink coffee?
-
-----
-
-Features:
-
-- 
-  feature: swsh
-  font: VCGooperBold
-  sample: Oranges
-  description: Swash
-- 
-  feature: ss01
-  font: VCGooperBold
-  sample: Absolve
-  description: Super swash
-- 
-  feature: ss02
-  font: VCGooperBold
-  sample: Bagels
-  description: Single story a, g
-- 
-  feature: dlig
-  font: VCGooperBold
-  sample: Groovy
-  description: ""
-- 
-  feature: ss03
-  font: VCGooperBold
-  sample: Addition
-  description: Flat topped d, i
-- 
-  feature: ss04
-  font: VCGooperBold
-  sample: Cocoa
-  description: Ball terminals
-- 
-  feature: ss05
-  font: VCGooperBold
-  sample: Ready
-  description: Swash R
-- 
-  feature: frac
-  font: VCGooperBold
-  sample: 1234/56789
-  description: Fractions
-- 
-  feature: onum
-  font: VCGooperBold
-  sample: "1234567"
-  description: Oldstyle figures
-
-----
-
-Glyphs: VCGooperDeck-Bold
 
 ----
 

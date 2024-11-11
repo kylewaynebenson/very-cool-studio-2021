@@ -36,8 +36,8 @@ tabs:
             help: Leave empty to use the title as headline
           font:
             type: text
-            help: FamilyName-StyleName
-            placeholder: FamilyName-StyleName
+            help: Family Name StyleName
+            placeholder: Family Name StyleName
           sample:
             type: text
           charset:
@@ -57,12 +57,12 @@ tabs:
           version:
             type: text
             placeholder: 0.1
-          shopify:
-            type: text
-            placeholder: 0000000000000
           futurefonts:
             type: text
             placeholder: https://www.futurefonts.xyz/very-cool-studio/nudge
+          fontdueembed:
+            type: textarea
+            placeholder: <link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTgxNjMwMjIwNDEwNjY1OTg0NA%3D%3D.css" rel="stylesheet">
 
       - width: 1/3
         # The first column contains a set of fields to store
@@ -75,6 +75,9 @@ tabs:
           # Here we use a files field defined in `/site/blueprints/field/cover.yml`
           text:
             type: writer
+          metadescription:
+            type: text
+            help: Used for SEO and social media
           tags: true
           specimen:
             label: Select specimen...
@@ -111,21 +114,6 @@ tabs:
     columns:
       - width: 1/2
         fields:
-          samples:
-            label: Text previews
-            type: structure
-            fields:
-              font:
-                label: Font
-                help: Family Name Style Name
-                type: text
-                width: 1/2
-              sample:
-                label: Sample text
-                type: text
-                width: 1/2
-      - width: 1/2
-        fields:
           features:
             label: Feature previews
             type: structure
@@ -133,11 +121,6 @@ tabs:
               feature:
                 label: Feature
                 placeholder: swsh, ss01
-                type: text
-                width: 1/4
-              font:
-                label: Font
-                help: VCFamilyNameStyleName
                 type: text
                 width: 1/4
               sample:
@@ -149,13 +132,13 @@ tabs:
                 help: Single story a
                 type: text
                 width: 1/4
-      - width: 1/1
+      - width: 1/2
         fields:
           glyphs:
             label: Glyphs
             type: text
-            help: VCFamilyName-StyleName
-            placeholder: VCFamilyName-StyleName
+            help: FamilyName Style Name
+            placeholder: FamilyName StyleName
 
 options: 
   changeTemplate: 

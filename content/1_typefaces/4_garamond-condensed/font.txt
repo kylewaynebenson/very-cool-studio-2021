@@ -6,7 +6,7 @@ Headline: Garamond Condensed
 
 ----
 
-Font: GaramondCondensed-Bold
+Font: Garamond Condensed Bold
 
 ----
 
@@ -42,15 +42,19 @@ Version: 0.3
 
 ----
 
-Shopify: 6992038789327
-
-----
-
 Futurefonts: 
 
 ----
 
-Text: <p>VC Garamond Condensed is a font family with a very limited character set, drawn from memory.</p>
+Fontdueembed: <link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTg3NDM3NTM0Njc2MjYzNTUyMQ%3D%3D.css" rel="stylesheet">
+
+----
+
+Text: <p>VC Garamond Condensed is a soft serif with a tall x-height and tight letter spacing. It started as a limited character set drawn from memory.</p>
+
+----
+
+Metadescription: VC Garamond Condensed is a soft serif with a tall x-height and tight letter spacing.
 
 ----
 
@@ -66,10 +70,45 @@ Designinfo:
 
 ----
 
-Opengraphimage:
+Opengraphimage: - file://RG3xeBXrQiWkP1lN
 
-- >
-  2201_verycool_shareimages_garamond-condensed.jpg
+----
+
+Features:
+
+- 
+  feature: onum
+  sample: "0123456789"
+  description: Oldstyle numerals
+  font: VCGaramondCondensedLight
+- 
+  feature: lnum
+  sample: "0123456789"
+  description: Lining numerals
+  font: VCGaramondCondensedLight
+- 
+  feature: liga
+  sample: finish
+  description: Ligatures
+  font: VCGaramondCondensedLight
+- 
+  feature: ss01
+  sample: fluff
+  description: Short f
+  font: VCGaramondCondensedLight
+- 
+  feature: ss02
+  sample: Quicker
+  description: Stylized k
+  font: VCGaramondCondensedLight
+
+----
+
+Glyphs: Garamond Condensed SemiBold
+
+----
+
+Shopify: 6992038789327
 
 ----
 
@@ -116,40 +155,6 @@ Samples:
     bird song. I remember his snorting—he
     had some sinus infection, or perhaps
     chronic phlegm.
-
-----
-
-Features:
-
-- 
-  feature: onum
-  font: VCGaramondCondensedLight
-  sample: "0123456789"
-  description: Oldstyle numerals
-- 
-  feature: lnum
-  font: VCGaramondCondensedLight
-  sample: "0123456789"
-  description: Lining numerals
-- 
-  feature: liga
-  font: VCGaramondCondensedLight
-  sample: finish
-  description: Ligatures
-- 
-  feature: ss01
-  font: VCGaramondCondensedLight
-  sample: fluff
-  description: Short f
-- 
-  feature: ss02
-  font: VCGaramondCondensedLight
-  sample: Quicker
-  description: Stylized k
-
-----
-
-Glyphs: VCGaramondCondensed-SemiBold
 
 ----
 

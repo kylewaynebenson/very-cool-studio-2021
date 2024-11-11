@@ -6,7 +6,7 @@ Headline:
 
 ----
 
-Font: CardinalCondensed-SemiBoldItalic
+Font: Cardinal Condensed SemiBold Italic
 
 ----
 
@@ -42,15 +42,19 @@ Version: 1.1
 
 ----
 
-Shopify: 6795725177039
-
-----
-
 Futurefonts: 
 
 ----
 
-Text: <p>For as long as there have been poster grotesques there have been sign painter’s titling. As sung in the old Scottish folk ballad, “An’ a grotesque sans there hae e’er been/ an’ a sign painter’s titling, sweet/ but the two don’t ‘bide together, my son/ an ne’er the twain shall meet.” And yet—it appears that with the drawing of Cardinal Grotesque, star-crossed lovers from either camp have come together! This type family is in fact, a combination of the two—sleek and clean wed to vernacular zest. If you use Cardinal Grotesque, you too will be celebrating that union and contributing to the Neue Sachlichkeit of the genre. Help put this longstanding feud to bed! “For never was a tale so full of desk than that of the paintbrush and Cardinal Grotesque.”</p>
+Fontdueembed: <link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTg3NDM5MzIyNDU1NTYxNjY5OQ%3D%3D.css" rel="stylesheet">
+
+----
+
+Text: <p>For as long as there have been poster grotesques there have been sign painter’s titling. As sung in the old Scottish folk ballad, “An’ a grotesque sans there hae e’er been/ an’ a sign painter’s titling, sweet/ but the two don’t ‘bide together, my son/ an ne’er the twain shall meet.” And yet—it appears that with the drawing of Cardinal Grotesque, star-crossed lovers from either camp have come together! This type family is in fact, a combination of the two—sleek and clean wed to vernacular zest.</p>
+
+----
+
+Metadescription: Cardinal is a sleek but vernacular sans serif super family.
 
 ----
 
@@ -66,7 +70,80 @@ Designinfo: articles/cardinal-grotesque-design-information
 
 ----
 
-Opengraphimage: - 2201_verycool_shareimages_cardinal.jpg
+Opengraphimage: - file://6OEkx9XTRr03SYPD
+
+----
+
+Features:
+
+- 
+  feature: frac
+  sample: 1234/5678
+  description: Fractions
+  font: VCCardinalSemiBold
+- 
+  feature: ss01
+  sample: Goggles
+  description: Alternate Gs
+  font: VCCardinalSemiBold
+- 
+  feature: ss02
+  sample: Adaptable
+  description: Single story a
+  font: VCCardinalSemiBold
+- 
+  feature: ss03
+  sample: MONOLINE
+  description: Non calligraphici contrast
+  font: VCCardinalSemiBold
+- 
+  feature: ss04
+  sample: Quilters
+  description: Fancy Q
+  font: VCCardinalSemiBold
+- 
+  feature: ss05
+  sample: Krusty
+  description: Fancy K
+  font: VCCardinalSemiBold
+- 
+  feature: ss06
+  sample: Raspberry
+  description: No tail on R, a
+  font: VCCardinalSemiBold
+- 
+  feature: ss07
+  sample: '“1% on-line”'
+  description: Thin furniture
+  font: VCCardinalSemiBold
+- 
+  feature: ss08
+  sample: 100 Ways
+  description: Simplified one
+  font: VCCardinalSemiBold
+- 
+  feature: ss09
+  sample: @©®
+  description: Thick outline symbols
+  font: VCCardinalSemiBold
+- 
+  feature: ss10
+  sample: 'Bee & Co'
+  description: 'Alternate &'
+  font: VCCardinalSemiBold
+- 
+  feature: ss11
+  sample: Not©Reg®
+  description: Small symbols
+  font: VCCardinalSemiBold
+
+----
+
+Glyphs: VCCardinalWide-SemiBold
+
+----
+
+Shopify: 6795725177039
 
 ----
 
@@ -87,75 +164,6 @@ Samples:
 - 
   font: Cardinal Extra Condensed Extra Bold
   sample: Manifesting Greenhouse Gas Alternatives
-
-----
-
-Features:
-
-- 
-  feature: frac
-  font: VCCardinalSemiBold
-  sample: 1234/5678
-  description: Fractions
-- 
-  feature: ss01
-  font: VCCardinalSemiBold
-  sample: Goggles
-  description: Alternate Gs
-- 
-  feature: ss02
-  font: VCCardinalSemiBold
-  sample: Adaptable
-  description: Single story a
-- 
-  feature: ss03
-  font: VCCardinalSemiBold
-  sample: MONOLINE
-  description: Non calligraphici contrast
-- 
-  feature: ss04
-  font: VCCardinalSemiBold
-  sample: Quilters
-  description: Fancy Q
-- 
-  feature: ss05
-  font: VCCardinalSemiBold
-  sample: Krusty
-  description: Fancy K
-- 
-  feature: ss06
-  font: VCCardinalSemiBold
-  sample: Raspberry
-  description: No tail on R, a
-- 
-  feature: ss07
-  font: VCCardinalSemiBold
-  sample: '“1% on-line”'
-  description: Thin furniture
-- 
-  feature: ss08
-  font: VCCardinalSemiBold
-  sample: 100 Ways
-  description: Simplified one
-- 
-  feature: ss09
-  font: VCCardinalSemiBold
-  sample: @©®
-  description: Thick outline symbols
-- 
-  feature: ss10
-  font: VCCardinalSemiBold
-  sample: 'Bee & Co'
-  description: 'Alternate &'
-- 
-  feature: ss11
-  font: VCCardinalSemiBold
-  sample: Not©Reg®
-  description: Small symbols
-
-----
-
-Glyphs: VCCardinalWide-SemiBold
 
 ----
 

@@ -6,7 +6,7 @@ Headline: Honey
 
 ----
 
-Font: Honey-BoldBanner
+Font: Honey Bold Banner
 
 ----
 
@@ -42,15 +42,19 @@ Version: 0.15
 
 ----
 
-Shopify: 6999575036111
-
-----
-
 Futurefonts: 
 
 ----
 
-Text: <p>As its name implies, Honey&nbsp;is a natural sweetener&nbsp;with the historicity of soft serifs like Souvenir or ITC Grouch, but&nbsp;with more sternness, more glycemic stability&nbsp;than say ol "corn syrup" Cooper might have.</p>
+Fontdueembed: <link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTg3NDYwMzQ2NzAyMTU3MjY5MQ%3D%3D.css" rel="stylesheet">
+
+----
+
+Text: <p>As its name implies, Honey is a natural sweetener with the historicity of soft serifs like Souvenir or ITC Grouch, but with more sternness, more glycemic stability than say ol “corn syrup” Cooper might have.</p>
+
+----
+
+Metadescription: Honey is a soft serif with the stability of Souvenir and the goofiness ITC Grouch.
 
 ----
 
@@ -66,7 +70,45 @@ Designinfo:
 
 ----
 
-Opengraphimage: - 2201_verycool_shareimages_honey.jpg
+Opengraphimage: - file://KtqB7RNHkW7jRLyx
+
+----
+
+Features:
+
+- 
+  feature: ss01
+  sample: Quickly
+  description: Fancy Q
+  font: VCHoneyBold
+- 
+  feature: ss02
+  sample: Goggles
+  description: Two story g
+  font: VCHoneyBold
+- 
+  feature: frac
+  sample: 12/34
+  description: Fractions
+  font: VCHoneyBold
+- 
+  feature: liga
+  sample: Co. St.
+  description: Ligatures
+  font: VCHoneyBold
+- 
+  feature: onum
+  sample: "1234567"
+  description: Oldstyle figures
+  font: VCHoneyBold
+
+----
+
+Glyphs: Honey Bold Deck
+
+----
+
+Shopify: 6999575036111
 
 ----
 
@@ -87,40 +129,6 @@ Samples:
 - 
   font: Honey Black Banner
   sample: Deltoid Zillions
-
-----
-
-Features:
-
-- 
-  feature: ss01
-  font: VCHoneyBold
-  sample: Quickly
-  description: Fancy Q
-- 
-  feature: ss02
-  font: VCHoneyBold
-  sample: Goggles
-  description: Two story g
-- 
-  feature: frac
-  font: VCHoneyBold
-  sample: 12/34
-  description: Fractions
-- 
-  feature: liga
-  font: VCHoneyBold
-  sample: Co. St.
-  description: Ligatures
-- 
-  feature: onum
-  font: VCHoneyBold
-  sample: "1234567"
-  description: Oldstyle figures
-
-----
-
-Glyphs: VCHoney-BoldDeck
 
 ----
 

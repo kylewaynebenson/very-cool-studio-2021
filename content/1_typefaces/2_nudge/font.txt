@@ -6,7 +6,7 @@ Headline: Nudge
 
 ----
 
-Font: Nudge-Bold
+Font: Nudge Bold
 
 ----
 
@@ -34,7 +34,7 @@ Widths: 2
 
 ----
 
-Optical: 
+Optical: 2
 
 ----
 
@@ -42,11 +42,11 @@ Version: 0.6
 
 ----
 
-Shopify: 
+Futurefonts: https://www.futurefonts.xyz/very-cool-studio/nudge
 
 ----
 
-Futurefonts: https://www.futurefonts.xyz/very-cool-studio/nudge
+Fontdueembed: <link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTg3Mjg1NzI1MDcwOTE5OTI2MA%3D%3D.css" rel="stylesheet">
 
 ----
 
@@ -54,11 +54,15 @@ Text: <p>With an X-Acto blade, a basic memory of Helvetica Condensed, half a Let
 
 ----
 
+Metadescription: Nudge is a neo grotesque, gothic hybrid sans serif.
+
+----
+
 Tags: Gothic, Sans, Condensed
 
 ----
 
-Specimen: - verycoolstudio_nudgev0.4.pdf
+Specimen: - file://oQT6vsiURVSmQXvV
 
 ----
 
@@ -66,7 +70,60 @@ Designinfo: articles/nudge-design-information
 
 ----
 
-Opengraphimage: - nudgeshareimage.jpg
+Opengraphimage: - file://LmlelM49c5Xe95RN
+
+----
+
+Features:
+
+- 
+  feature: frac
+  sample: 1234/56789
+  description: Fractions
+  font: VCNudgeBold
+- 
+  feature: ss01
+  sample: Glistening
+  description: Round G
+  font: VCNudgeBold
+- 
+  feature: ss02
+  sample: REFLECTED
+  description: Straight Leg R
+  font: VCNudgeBold
+- 
+  feature: ss03
+  sample: Redesigns
+  description: Two story g
+  font: VCNudgeBold
+- 
+  feature: ss04
+  sample: 71 + 7 = 78
+  description: Straight seven
+  font: VCNudgeBold
+- 
+  feature: ss05
+  sample: Graveyard
+  description: One story a
+  font: VCNudgeBold
+- 
+  feature: ss06
+  sample: 100 Ways
+  description: Tabular one
+  font: VCNudgeBold
+- 
+  feature: case
+  sample: HI-FI
+  description: Uppercase styles
+  font: VCNudgeBold
+
+----
+
+Glyphs: Nudge Bold
+
+----
+
+Shopify: 
 
 ----
 
@@ -160,55 +217,6 @@ Samples:
     memory of Helvetica, 15 minutes, half a
     Letraset sheet for Avant Garde Medium
     Condensed, you Nudge.
-
-----
-
-Features:
-
-- 
-  feature: frac
-  font: VCNudgeBold
-  sample: 1234/56789
-  description: Fractions
-- 
-  feature: ss01
-  font: VCNudgeBold
-  sample: Glistening
-  description: Round G
-- 
-  feature: ss02
-  font: VCNudgeBold
-  sample: REFLECTED
-  description: Straight Leg R
-- 
-  feature: ss03
-  font: VCNudgeBold
-  sample: Redesigns
-  description: Two story g
-- 
-  feature: ss04
-  font: VCNudgeBold
-  sample: 71 + 7 = 78
-  description: Straight seven
-- 
-  feature: ss05
-  font: VCNudgeBold
-  sample: Graveyard
-  description: One story a
-- 
-  feature: ss06
-  font: VCNudgeBold
-  sample: 100 Ways
-  description: Tabular one
-- 
-  feature: case
-  font: VCNudgeBold
-  sample: HI-FI
-  description: Uppercase styles
-
-----
-
-Glyphs: VCNudge-Bold
 
 ----
 

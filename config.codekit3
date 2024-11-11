@@ -7476,12 +7476,50 @@
       "oAP" : "\/content\/2_articles\/articles.txt",
       "oF" : 0
     },
+    "\/content\/3_about\/about-2.webp" : {
+      "ft" : 8388608,
+      "iS" : 316164,
+      "oA" : 0,
+      "oAP" : "\/content\/3_about\/about-2.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
+      "rq" : 75
+    },
+    "\/content\/3_about\/about-2.webp.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/3_about\/about-2.webp.txt",
+      "oF" : 0
+    },
     "\/content\/3_about\/about.txt" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/content\/3_about\/about.txt",
+      "oF" : 0
+    },
+    "\/content\/3_about\/about.webp" : {
+      "ft" : 8388608,
+      "iS" : 123206,
+      "oA" : 0,
+      "oAP" : "\/content\/3_about\/about.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
+      "rq" : 75
+    },
+    "\/content\/3_about\/about.webp.txt" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/content\/3_about\/about.webp.txt",
       "oF" : 0
     },
     "\/content\/3_about\/futurefonts.png" : {
@@ -14146,10 +14184,53 @@
       "oAP" : "\/kirby\/views\/snippets\/header.php",
       "oF" : 0
     },
+    "\/media\/pages\/about\/1b184d4b21-1730491206\/.jobs\/about-2-38x.webp.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/about\/1b184d4b21-1730491206\/.jobs\/about-2-38x.webp-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/about\/1b184d4b21-1730491206\/.jobs\/about-2-76x.webp.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/about\/1b184d4b21-1730491206\/.jobs\/about-2-76x.webp-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/about\/1b184d4b21-1730491206\/about-2.webp" : {
+      "ft" : 8388608,
+      "iS" : 316164,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/about\/1b184d4b21-1730491206\/about-2.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
+      "rq" : 75
+    },
     "\/media\/pages\/about\/7ee9564c75-1718263812\/.jobs\/futurefonts-38x.png.json" : {
       "ft" : 524288,
       "oA" : 1,
       "oAP" : "\/media\/pages\/about\/7ee9564c75-1718263812\/.jobs\/futurefonts-38x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/about\/7ee9564c75-1718263812\/.jobs\/futurefonts-352x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/about\/7ee9564c75-1718263812\/.jobs\/futurefonts-352x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/about\/7ee9564c75-1718263812\/.jobs\/futurefonts-864x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/about\/7ee9564c75-1718263812\/.jobs\/futurefonts-864x.png-min.json",
       "oF" : 0,
       "oO" : 1,
       "oS" : 1
@@ -14167,11 +14248,72 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/about\/7ee9564c75-1718263812\/futurefonts-1408x.png" : {
+      "ft" : 32768,
+      "iS" : 20757,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/about\/7ee9564c75-1718263812\/futurefonts-1408x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/about\/7ee9564c75-1718263812\/futurefonts.png" : {
       "ft" : 32768,
       "iS" : 20435,
       "oA" : 0,
       "oAP" : "\/media\/pages\/about\/7ee9564c75-1718263812\/futurefonts.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/about\/481286a4c1-1730490786\/.jobs\/about-38x.webp.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/about\/481286a4c1-1730490786\/.jobs\/about-38x.webp-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/about\/481286a4c1-1730490786\/.jobs\/about-76x.webp.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/about\/481286a4c1-1730490786\/.jobs\/about-76x.webp-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/about\/481286a4c1-1730490786\/about.webp" : {
+      "ft" : 8388608,
+      "iS" : 123206,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/about\/481286a4c1-1730490786\/about.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
+      "rq" : 75
+    },
+    "\/media\/pages\/about\/8511431f67-1718263812\/.jobs\/verycool-38x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/about\/8511431f67-1718263812\/.jobs\/verycool-38x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/about\/8511431f67-1718263812\/verycool-76x.png" : {
+      "ft" : 32768,
+      "iS" : 5225,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/about\/8511431f67-1718263812\/verycool-76x.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -14229,6 +14371,32 @@
       "ou" : "lpckwebp-none",
       "rq" : 75
     },
+    "\/media\/pages\/articles\/cardinal-grotesque-design-information\/0cb1a5fe12-1718263812\/1704_cardinalmakingof-condensed.png" : {
+      "ft" : 32768,
+      "iS" : 54561,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/0cb1a5fe12-1718263812\/1704_cardinalmakingof-condensed.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/cardinal-grotesque-design-information\/1cb136f325-1718263812\/1704_cardinalmakingof-02.png" : {
+      "ft" : 32768,
+      "iS" : 9842,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/1cb136f325-1718263812\/1704_cardinalmakingof-02.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/articles\/cardinal-grotesque-design-information\/2ebbb65c24-1718263812\/.jobs\/1-losgal-38x38-crop.png.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -14242,6 +14410,97 @@
       "iS" : 13073,
       "oA" : 0,
       "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/2ebbb65c24-1718263812\/1-losgal-76x76-crop.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/cardinal-grotesque-design-information\/2ebbb65c24-1718263812\/1-losgal.png" : {
+      "ft" : 32768,
+      "iS" : 538947,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/2ebbb65c24-1718263812\/1-losgal.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/cardinal-grotesque-design-information\/6dcbb9371d-1718263812\/foundersgrotesque.png" : {
+      "ft" : 32768,
+      "iS" : 15287,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/6dcbb9371d-1718263812\/foundersgrotesque.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/cardinal-grotesque-design-information\/44be904d5b-1718263812\/1704_cardinalmakingof-optical.png" : {
+      "ft" : 32768,
+      "iS" : 44035,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/44be904d5b-1718263812\/1704_cardinalmakingof-optical.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/cardinal-grotesque-design-information\/2061d890de-1718263812\/menudo.png" : {
+      "ft" : 32768,
+      "iS" : 761082,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/2061d890de-1718263812\/menudo.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/cardinal-grotesque-design-information\/a3060a7401-1718263812\/screen-shot-2017-04-05-at-5-08-26-pm.png" : {
+      "ft" : 32768,
+      "iS" : 10635,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/a3060a7401-1718263812\/screen-shot-2017-04-05-at-5-08-26-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/cardinal-grotesque-design-information\/da28147a58-1718263812\/t5617_06.jpg" : {
+      "ft" : 16384,
+      "iS" : 105330,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/da28147a58-1718263812\/t5617_06.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/cardinal-grotesque-design-information\/e8109c9b4e-1718263812\/1704_cardinalmakingof-01.png" : {
+      "ft" : 32768,
+      "iS" : 3846,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/cardinal-grotesque-design-information\/e8109c9b4e-1718263812\/1704_cardinalmakingof-01.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -14271,19 +14530,136 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/media\/pages\/articles\/gosh-design-information\/228332f62d-1718263812\/.jobs\/1803_inter-women-ls-38x38-crop.png.json" : {
+    "\/media\/pages\/articles\/gosh-design-information\/37290d6c99-1718263812\/screenshot-2023-08-08-at-4.58.15-pm.png" : {
+      "ft" : 32768,
+      "iS" : 40039,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/37290d6c99-1718263812\/screenshot-2023-08-08-at-4.58.15-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/228332f62d-1729808871\/.jobs\/1803_inter-women-ls-38x38-crop.png.json" : {
       "ft" : 524288,
       "oA" : 1,
-      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/228332f62d-1718263812\/.jobs\/1803_inter-women-ls-38x38-crop.png-min.json",
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/228332f62d-1729808871\/.jobs\/1803_inter-women-ls-38x38-crop.png-min.json",
       "oF" : 0,
       "oO" : 1,
       "oS" : 1
     },
-    "\/media\/pages\/articles\/gosh-design-information\/228332f62d-1718263812\/1803_inter-women-ls-76x76-crop.png" : {
+    "\/media\/pages\/articles\/gosh-design-information\/228332f62d-1729808871\/1803_inter-women-ls-76x76-crop.png" : {
       "ft" : 32768,
       "iS" : 4439,
       "oA" : 0,
-      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/228332f62d-1718263812\/1803_inter-women-ls-76x76-crop.png",
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/228332f62d-1729808871\/1803_inter-women-ls-76x76-crop.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/228332f62d-1729808871\/1803_inter-women-ls.png" : {
+      "ft" : 32768,
+      "iS" : 17439,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/228332f62d-1729808871\/1803_inter-women-ls.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/21731738bc-1718263812\/14063968_10154349833180119_4062282818120972462_n.jpg" : {
+      "ft" : 16384,
+      "iS" : 23667,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/21731738bc-1718263812\/14063968_10154349833180119_4062282818120972462_n.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/5718686279-1718263812\/1810_vote-ls.jpg" : {
+      "ft" : 16384,
+      "iS" : 379008,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/5718686279-1718263812\/1810_vote-ls.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/b7ea23ee4c-1718263812\/gosh-wide-medium.png" : {
+      "ft" : 32768,
+      "iS" : 11827,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/b7ea23ee4c-1718263812\/gosh-wide-medium.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/c5a12bd801-1729808860\/screenshot-2023-08-09-at-4.02.29-pm.png" : {
+      "ft" : 32768,
+      "iS" : 26428,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/c5a12bd801-1729808860\/screenshot-2023-08-09-at-4.02.29-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/cab0233ed9-1729808861\/screenshot-2023-08-09-at-12.37.59-pm.png" : {
+      "ft" : 32768,
+      "iS" : 25382,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/cab0233ed9-1729808861\/screenshot-2023-08-09-at-12.37.59-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/d8b0c54ac0-1729808873\/screenshot-2023-08-09-at-4.03.14-pm.png" : {
+      "ft" : 32768,
+      "iS" : 32692,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/d8b0c54ac0-1729808873\/screenshot-2023-08-09-at-4.03.14-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/articles\/gosh-design-information\/f3e14bacef-1729808876\/screenshot-2023-08-08-at-4.55.15-pm.png" : {
+      "ft" : 32768,
+      "iS" : 28885,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/articles\/gosh-design-information\/f3e14bacef-1729808876\/screenshot-2023-08-08-at-4.55.15-pm.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -14355,6 +14731,27 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/typefaces\/bruphy\/110b899016-1718263812\/.jobs\/2201_verycool_shareimages_bruphy-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/bruphy\/110b899016-1718263812\/.jobs\/2201_verycool_shareimages_bruphy-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/bruphy\/110b899016-1718263812\/2201_verycool_shareimages_bruphy-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 2859,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/bruphy\/110b899016-1718263812\/2201_verycool_shareimages_bruphy-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/typefaces\/c5db868ada-1718263812\/.jobs\/screen-shot-2017-04-05-at-5-08-26-pm-38x.png.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -14376,6 +14773,922 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/typefaces\/cardinal\/4b634c42c6-1718263812\/.jobs\/cardinal-banzai-38x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/4b634c42c6-1718263812\/.jobs\/cardinal-banzai-38x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/4b634c42c6-1718263812\/.jobs\/cardinal-banzai-352x282-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/4b634c42c6-1718263812\/.jobs\/cardinal-banzai-352x282-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/4b634c42c6-1718263812\/.jobs\/cardinal-banzai-864x691-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/4b634c42c6-1718263812\/.jobs\/cardinal-banzai-864x691-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/4b634c42c6-1718263812\/cardinal-banzai-76x.png" : {
+      "ft" : 32768,
+      "iS" : 3010,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/4b634c42c6-1718263812\/cardinal-banzai-76x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/4b634c42c6-1718263812\/cardinal-banzai-1408x1126-crop.png" : {
+      "ft" : 32768,
+      "iS" : 346283,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/4b634c42c6-1718263812\/cardinal-banzai-1408x1126-crop.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/4b634c42c6-1718263812\/cardinal-banzai.png" : {
+      "ft" : 32768,
+      "iS" : 167430,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/4b634c42c6-1718263812\/cardinal-banzai.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/17458e9faa-1718263812\/.jobs\/cardinal-jeff-wiggins-38x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/17458e9faa-1718263812\/.jobs\/cardinal-jeff-wiggins-38x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/17458e9faa-1718263812\/.jobs\/cardinal-jeff-wiggins-352x282-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/17458e9faa-1718263812\/.jobs\/cardinal-jeff-wiggins-352x282-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/17458e9faa-1718263812\/.jobs\/cardinal-jeff-wiggins-864x691-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/17458e9faa-1718263812\/.jobs\/cardinal-jeff-wiggins-864x691-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/17458e9faa-1718263812\/cardinal-jeff-wiggins-76x.png" : {
+      "ft" : 32768,
+      "iS" : 3606,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/17458e9faa-1718263812\/cardinal-jeff-wiggins-76x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/17458e9faa-1718263812\/cardinal-jeff-wiggins-1408x1126-crop.png" : {
+      "ft" : 32768,
+      "iS" : 528019,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/17458e9faa-1718263812\/cardinal-jeff-wiggins-1408x1126-crop.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/17458e9faa-1718263812\/cardinal-jeff-wiggins.png" : {
+      "ft" : 32768,
+      "iS" : 192031,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/17458e9faa-1718263812\/cardinal-jeff-wiggins.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cardinal\/d3b03339b5-1718263812\/.jobs\/2201_verycool_shareimages_cardinal-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/d3b03339b5-1718263812\/.jobs\/2201_verycool_shareimages_cardinal-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cardinal\/d3b03339b5-1718263812\/2201_verycool_shareimages_cardinal-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 2750,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cardinal\/d3b03339b5-1718263812\/2201_verycool_shareimages_cardinal-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/cornbread\/cb2c2facaf-1718263812\/.jobs\/2201_verycool_shareimages_cornbread-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/cornbread\/cb2c2facaf-1718263812\/.jobs\/2201_verycool_shareimages_cornbread-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/cornbread\/cb2c2facaf-1718263812\/2201_verycool_shareimages_cornbread-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 2904,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/cornbread\/cb2c2facaf-1718263812\/2201_verycool_shareimages_cornbread-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/0dbbff08f6-1718263812\/.jobs\/fqfitpbwyay8zc7-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/0dbbff08f6-1718263812\/.jobs\/fqfitpbwyay8zc7-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/0dbbff08f6-1718263812\/.jobs\/fqfitpbwyay8zc7-352x282-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/0dbbff08f6-1718263812\/.jobs\/fqfitpbwyay8zc7-352x282-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/0dbbff08f6-1718263812\/.jobs\/fqfitpbwyay8zc7-864x691-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/0dbbff08f6-1718263812\/.jobs\/fqfitpbwyay8zc7-864x691-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/0dbbff08f6-1718263812\/fqfitpbwyay8zc7-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 2947,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/0dbbff08f6-1718263812\/fqfitpbwyay8zc7-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/0dbbff08f6-1718263812\/fqfitpbwyay8zc7-1408x1126-crop.jpg" : {
+      "ft" : 16384,
+      "iS" : 380014,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/0dbbff08f6-1718263812\/fqfitpbwyay8zc7-1408x1126-crop.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/0dbbff08f6-1718263812\/fqfitpbwyay8zc7.jpeg" : {
+      "ft" : 16384,
+      "iS" : 160992,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/0dbbff08f6-1718263812\/fqfitpbwyay8zc7.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/8d239397b2-1718263812\/.jobs\/fu0hguoxwaiwp_e-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/8d239397b2-1718263812\/.jobs\/fu0hguoxwaiwp_e-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/8d239397b2-1718263812\/.jobs\/fu0hguoxwaiwp_e-352x282-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/8d239397b2-1718263812\/.jobs\/fu0hguoxwaiwp_e-352x282-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/8d239397b2-1718263812\/.jobs\/fu0hguoxwaiwp_e-864x691-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/8d239397b2-1718263812\/.jobs\/fu0hguoxwaiwp_e-864x691-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/8d239397b2-1718263812\/fu0hguoxwaiwp_e-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 1753,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/8d239397b2-1718263812\/fu0hguoxwaiwp_e-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/8d239397b2-1718263812\/fu0hguoxwaiwp_e-1408x1126-crop.jpg" : {
+      "ft" : 16384,
+      "iS" : 146679,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/8d239397b2-1718263812\/fu0hguoxwaiwp_e-1408x1126-crop.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/8d239397b2-1718263812\/fu0hguoxwaiwp_e.jpeg" : {
+      "ft" : 16384,
+      "iS" : 317286,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/8d239397b2-1718263812\/fu0hguoxwaiwp_e.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/f45e750e86-1718263812\/.jobs\/2201_verycool_shareimages_garamond-condensed-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/f45e750e86-1718263812\/.jobs\/2201_verycool_shareimages_garamond-condensed-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/garamond-condensed\/f45e750e86-1718263812\/2201_verycool_shareimages_garamond-condensed-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 2879,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/garamond-condensed\/f45e750e86-1718263812\/2201_verycool_shareimages_garamond-condensed-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/2cd4aa7375-1718263812\/.jobs\/screen-shot-2021-08-19-at-7.22.55-pm-38x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/2cd4aa7375-1718263812\/.jobs\/screen-shot-2021-08-19-at-7.22.55-pm-38x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/2cd4aa7375-1718263812\/.jobs\/screen-shot-2021-08-19-at-7.22.55-pm-352x282-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/2cd4aa7375-1718263812\/.jobs\/screen-shot-2021-08-19-at-7.22.55-pm-352x282-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/2cd4aa7375-1718263812\/.jobs\/screen-shot-2021-08-19-at-7.22.55-pm-864x691-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/2cd4aa7375-1718263812\/.jobs\/screen-shot-2021-08-19-at-7.22.55-pm-864x691-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/2cd4aa7375-1718263812\/screen-shot-2021-08-19-at-7.22.55-pm-76x.png" : {
+      "ft" : 32768,
+      "iS" : 4553,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/2cd4aa7375-1718263812\/screen-shot-2021-08-19-at-7.22.55-pm-76x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/2cd4aa7375-1718263812\/screen-shot-2021-08-19-at-7.22.55-pm-1408x1126-crop.png" : {
+      "ft" : 32768,
+      "iS" : 465696,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/2cd4aa7375-1718263812\/screen-shot-2021-08-19-at-7.22.55-pm-1408x1126-crop.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/2cd4aa7375-1718263812\/screen-shot-2021-08-19-at-7.22.55-pm.png" : {
+      "ft" : 32768,
+      "iS" : 121925,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/2cd4aa7375-1718263812\/screen-shot-2021-08-19-at-7.22.55-pm.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/4acf3a00e8-1718263812\/.jobs\/goopershareimage-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/4acf3a00e8-1718263812\/.jobs\/goopershareimage-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/4acf3a00e8-1718263812\/goopershareimage-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 2847,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/4acf3a00e8-1718263812\/goopershareimage-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/4acf3a00e8-1718263812\/goopershareimage.jpg" : {
+      "ft" : 16384,
+      "iS" : 93106,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/4acf3a00e8-1718263812\/goopershareimage.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/30c0893e77-1718263812\/.jobs\/gooperitalic-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/30c0893e77-1718263812\/.jobs\/gooperitalic-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/30c0893e77-1718263812\/.jobs\/gooperitalic-352x282-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/30c0893e77-1718263812\/.jobs\/gooperitalic-352x282-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/30c0893e77-1718263812\/.jobs\/gooperitalic-864x691-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/30c0893e77-1718263812\/.jobs\/gooperitalic-864x691-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/30c0893e77-1718263812\/gooperitalic-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 3489,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/30c0893e77-1718263812\/gooperitalic-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/30c0893e77-1718263812\/gooperitalic-1408x1126-crop.jpg" : {
+      "ft" : 16384,
+      "iS" : 216538,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/30c0893e77-1718263812\/gooperitalic-1408x1126-crop.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/30c0893e77-1718263812\/gooperitalic.jpeg" : {
+      "ft" : 16384,
+      "iS" : 120860,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/30c0893e77-1718263812\/gooperitalic.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/83fb855608-1718263812\/.jobs\/good-garms-image-1-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/83fb855608-1718263812\/.jobs\/good-garms-image-1-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/83fb855608-1718263812\/.jobs\/good-garms-image-1-352x282-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/83fb855608-1718263812\/.jobs\/good-garms-image-1-352x282-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/83fb855608-1718263812\/.jobs\/good-garms-image-1-864x691-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/83fb855608-1718263812\/.jobs\/good-garms-image-1-864x691-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/83fb855608-1718263812\/good-garms-image-1-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 1799,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/83fb855608-1718263812\/good-garms-image-1-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/83fb855608-1718263812\/good-garms-image-1-1408x1126-crop.jpg" : {
+      "ft" : 16384,
+      "iS" : 132445,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/83fb855608-1718263812\/good-garms-image-1-1408x1126-crop.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/83fb855608-1718263812\/good-garms-image-1.jpeg" : {
+      "ft" : 16384,
+      "iS" : 60495,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/83fb855608-1718263812\/good-garms-image-1.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/397f6b5fb9-1718263812\/.jobs\/bm6-chris-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/397f6b5fb9-1718263812\/.jobs\/bm6-chris-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/397f6b5fb9-1718263812\/.jobs\/bm6-chris-352x282-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/397f6b5fb9-1718263812\/.jobs\/bm6-chris-352x282-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/397f6b5fb9-1718263812\/.jobs\/bm6-chris-864x691-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/397f6b5fb9-1718263812\/.jobs\/bm6-chris-864x691-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/397f6b5fb9-1718263812\/bm6-chris-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 6368,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/397f6b5fb9-1718263812\/bm6-chris-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/397f6b5fb9-1718263812\/bm6-chris-1408x1126-crop.jpg" : {
+      "ft" : 16384,
+      "iS" : 550986,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/397f6b5fb9-1718263812\/bm6-chris-1408x1126-crop.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/397f6b5fb9-1718263812\/bm6-chris.jpeg" : {
+      "ft" : 16384,
+      "iS" : 337735,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/397f6b5fb9-1718263812\/bm6-chris.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/945d7cb032-1718263812\/.jobs\/sonder-38x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/945d7cb032-1718263812\/.jobs\/sonder-38x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/945d7cb032-1718263812\/.jobs\/sonder-352x282-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/945d7cb032-1718263812\/.jobs\/sonder-352x282-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/945d7cb032-1718263812\/.jobs\/sonder-864x691-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/945d7cb032-1718263812\/.jobs\/sonder-864x691-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/945d7cb032-1718263812\/sonder-76x.png" : {
+      "ft" : 32768,
+      "iS" : 7760,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/945d7cb032-1718263812\/sonder-76x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/945d7cb032-1718263812\/sonder-1408x1126-crop.png" : {
+      "ft" : 32768,
+      "iS" : 1736115,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/945d7cb032-1718263812\/sonder-1408x1126-crop.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/945d7cb032-1718263812\/sonder.png" : {
+      "ft" : 32768,
+      "iS" : 471207,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/945d7cb032-1718263812\/sonder.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/05198ded92-1718263812\/.jobs\/meati_truck-scaled-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/05198ded92-1718263812\/.jobs\/meati_truck-scaled-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/05198ded92-1718263812\/.jobs\/meati_truck-scaled-352x282-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/05198ded92-1718263812\/.jobs\/meati_truck-scaled-352x282-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/05198ded92-1718263812\/.jobs\/meati_truck-scaled-864x691-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/05198ded92-1718263812\/.jobs\/meati_truck-scaled-864x691-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/05198ded92-1718263812\/meati_truck-scaled-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 734608,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/05198ded92-1718263812\/meati_truck-scaled-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/05198ded92-1718263812\/meati_truck-scaled-1408x1126-crop.jpg" : {
+      "ft" : 16384,
+      "iS" : 406005,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/05198ded92-1718263812\/meati_truck-scaled-1408x1126-crop.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/05198ded92-1718263812\/meati_truck-scaled.jpg" : {
+      "ft" : 16384,
+      "iS" : 734608,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/05198ded92-1718263812\/meati_truck-scaled.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/ad91cf9259-1718263812\/.jobs\/42619074_2155350121453392_5144387511747861958_n-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/ad91cf9259-1718263812\/.jobs\/42619074_2155350121453392_5144387511747861958_n-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/ad91cf9259-1718263812\/.jobs\/42619074_2155350121453392_5144387511747861958_n-352x282-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/ad91cf9259-1718263812\/.jobs\/42619074_2155350121453392_5144387511747861958_n-352x282-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/ad91cf9259-1718263812\/.jobs\/42619074_2155350121453392_5144387511747861958_n-864x691-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/ad91cf9259-1718263812\/.jobs\/42619074_2155350121453392_5144387511747861958_n-864x691-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/ad91cf9259-1718263812\/42619074_2155350121453392_5144387511747861958_n-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 3543,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/ad91cf9259-1718263812\/42619074_2155350121453392_5144387511747861958_n-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/ad91cf9259-1718263812\/42619074_2155350121453392_5144387511747861958_n-1408x1126-crop.jpg" : {
+      "ft" : 16384,
+      "iS" : 162073,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/ad91cf9259-1718263812\/42619074_2155350121453392_5144387511747861958_n-1408x1126-crop.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/ad91cf9259-1718263812\/42619074_2155350121453392_5144387511747861958_n.jpg" : {
+      "ft" : 16384,
+      "iS" : 45248,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/ad91cf9259-1718263812\/42619074_2155350121453392_5144387511747861958_n.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/c28f28c496-1718263812\/.jobs\/robertas-pizza-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/c28f28c496-1718263812\/.jobs\/robertas-pizza-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/c28f28c496-1718263812\/.jobs\/robertas-pizza-352x282-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/c28f28c496-1718263812\/.jobs\/robertas-pizza-352x282-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/c28f28c496-1718263812\/.jobs\/robertas-pizza-864x691-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/c28f28c496-1718263812\/.jobs\/robertas-pizza-864x691-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/c28f28c496-1718263812\/robertas-pizza-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 4684,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/c28f28c496-1718263812\/robertas-pizza-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/c28f28c496-1718263812\/robertas-pizza-1408x1126-crop.jpg" : {
+      "ft" : 16384,
+      "iS" : 81514,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/c28f28c496-1718263812\/robertas-pizza-1408x1126-crop.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/c28f28c496-1718263812\/robertas-pizza.jpg" : {
+      "ft" : 16384,
+      "iS" : 81514,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/c28f28c496-1718263812\/robertas-pizza.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/eed1ea5a25-1718263812\/.jobs\/fygi4xmaqaapzvf-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/eed1ea5a25-1718263812\/.jobs\/fygi4xmaqaapzvf-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/eed1ea5a25-1718263812\/.jobs\/fygi4xmaqaapzvf-352x282-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/eed1ea5a25-1718263812\/.jobs\/fygi4xmaqaapzvf-352x282-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/eed1ea5a25-1718263812\/.jobs\/fygi4xmaqaapzvf-864x691-crop.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/eed1ea5a25-1718263812\/.jobs\/fygi4xmaqaapzvf-864x691-crop.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/gooper\/eed1ea5a25-1718263812\/fygi4xmaqaapzvf-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 5214,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/eed1ea5a25-1718263812\/fygi4xmaqaapzvf-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/eed1ea5a25-1718263812\/fygi4xmaqaapzvf-1408x1126-crop.jpg" : {
+      "ft" : 16384,
+      "iS" : 455864,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/eed1ea5a25-1718263812\/fygi4xmaqaapzvf-1408x1126-crop.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/gooper\/eed1ea5a25-1718263812\/fygi4xmaqaapzvf.jpeg" : {
+      "ft" : 16384,
+      "iS" : 508136,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/gooper\/eed1ea5a25-1718263812\/fygi4xmaqaapzvf.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/typefaces\/gosh\/08718bcdee-1718263812\/.jobs\/2201_verycool_shareimages-gosh-38x.jpg.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -14390,6 +15703,321 @@
       "jF" : 0,
       "oA" : 0,
       "oAP" : "\/media\/pages\/typefaces\/gosh\/08718bcdee-1718263812\/2201_verycool_shareimages-gosh-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/henrietta\/3a8e5988b7-1718263812\/.jobs\/2201_verycool_shareimages_henrietta-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/henrietta\/3a8e5988b7-1718263812\/.jobs\/2201_verycool_shareimages_henrietta-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/henrietta\/3a8e5988b7-1718263812\/2201_verycool_shareimages_henrietta-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 2919,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/henrietta\/3a8e5988b7-1718263812\/2201_verycool_shareimages_henrietta-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/honey\/7cec2e7dcb-1718263812\/.jobs\/intercom-38x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/7cec2e7dcb-1718263812\/.jobs\/intercom-38x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/honey\/7cec2e7dcb-1718263812\/.jobs\/intercom-352x282-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/7cec2e7dcb-1718263812\/.jobs\/intercom-352x282-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/honey\/7cec2e7dcb-1718263812\/.jobs\/intercom-864x691-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/7cec2e7dcb-1718263812\/.jobs\/intercom-864x691-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/honey\/7cec2e7dcb-1718263812\/intercom-76x.png" : {
+      "ft" : 32768,
+      "iS" : 3059,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/7cec2e7dcb-1718263812\/intercom-76x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/honey\/7cec2e7dcb-1718263812\/intercom-1408x1126-crop.png" : {
+      "ft" : 32768,
+      "iS" : 219961,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/7cec2e7dcb-1718263812\/intercom-1408x1126-crop.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/honey\/7cec2e7dcb-1718263812\/intercom.png" : {
+      "ft" : 32768,
+      "iS" : 118040,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/7cec2e7dcb-1718263812\/intercom.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/honey\/18157b2b7c-1718263812\/.jobs\/15five-38x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/18157b2b7c-1718263812\/.jobs\/15five-38x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/honey\/18157b2b7c-1718263812\/.jobs\/15five-352x282-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/18157b2b7c-1718263812\/.jobs\/15five-352x282-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/honey\/18157b2b7c-1718263812\/.jobs\/15five-864x691-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/18157b2b7c-1718263812\/.jobs\/15five-864x691-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/honey\/18157b2b7c-1718263812\/15five-76x.png" : {
+      "ft" : 32768,
+      "iS" : 3112,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/18157b2b7c-1718263812\/15five-76x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/honey\/18157b2b7c-1718263812\/15five-1408x1126-crop.png" : {
+      "ft" : 32768,
+      "iS" : 346369,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/18157b2b7c-1718263812\/15five-1408x1126-crop.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/honey\/18157b2b7c-1718263812\/15five.png" : {
+      "ft" : 32768,
+      "iS" : 218048,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/18157b2b7c-1718263812\/15five.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/honey\/e6137e22c6-1718263812\/.jobs\/2201_verycool_shareimages_honey-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/e6137e22c6-1718263812\/.jobs\/2201_verycool_shareimages_honey-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/honey\/e6137e22c6-1718263812\/2201_verycool_shareimages_honey-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 2672,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/honey\/e6137e22c6-1718263812\/2201_verycool_shareimages_honey-76x.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/822f31d98a-1718263812\/.jobs\/kansas-casual-banzai-38x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/822f31d98a-1718263812\/.jobs\/kansas-casual-banzai-38x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/822f31d98a-1718263812\/.jobs\/kansas-casual-banzai-352x282-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/822f31d98a-1718263812\/.jobs\/kansas-casual-banzai-352x282-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/822f31d98a-1718263812\/.jobs\/kansas-casual-banzai-864x691-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/822f31d98a-1718263812\/.jobs\/kansas-casual-banzai-864x691-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/822f31d98a-1718263812\/kansas-casual-banzai-76x.png" : {
+      "ft" : 32768,
+      "iS" : 2636,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/822f31d98a-1718263812\/kansas-casual-banzai-76x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/822f31d98a-1718263812\/kansas-casual-banzai-1408x1126-crop.png" : {
+      "ft" : 32768,
+      "iS" : 343257,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/822f31d98a-1718263812\/kansas-casual-banzai-1408x1126-crop.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/822f31d98a-1718263812\/kansas-casual-banzai.png" : {
+      "ft" : 32768,
+      "iS" : 147014,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/822f31d98a-1718263812\/kansas-casual-banzai.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/d3cbfaf1b9-1718263812\/.jobs\/kansas-casual-camp-38x.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/d3cbfaf1b9-1718263812\/.jobs\/kansas-casual-camp-38x.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/d3cbfaf1b9-1718263812\/.jobs\/kansas-casual-camp-352x282-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/d3cbfaf1b9-1718263812\/.jobs\/kansas-casual-camp-352x282-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/d3cbfaf1b9-1718263812\/.jobs\/kansas-casual-camp-864x691-crop.png.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/d3cbfaf1b9-1718263812\/.jobs\/kansas-casual-camp-864x691-crop.png-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/d3cbfaf1b9-1718263812\/kansas-casual-camp-76x.png" : {
+      "ft" : 32768,
+      "iS" : 11196,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/d3cbfaf1b9-1718263812\/kansas-casual-camp-76x.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/d3cbfaf1b9-1718263812\/kansas-casual-camp-1408x1126-crop.png" : {
+      "ft" : 32768,
+      "iS" : 409756,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/d3cbfaf1b9-1718263812\/kansas-casual-camp-1408x1126-crop.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/d3cbfaf1b9-1718263812\/kansas-casual-camp.png" : {
+      "ft" : 32768,
+      "iS" : 409756,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/d3cbfaf1b9-1718263812\/kansas-casual-camp.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/f91df6d50e-1718263812\/.jobs\/2201_verycool_shareimages_kansas-casual-38x.jpg.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/f91df6d50e-1718263812\/.jobs\/2201_verycool_shareimages_kansas-casual-38x.jpg-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/media\/pages\/typefaces\/kansas-casual\/f91df6d50e-1718263812\/2201_verycool_shareimages_kansas-casual-76x.jpg" : {
+      "ft" : 16384,
+      "iS" : 3024,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/kansas-casual\/f91df6d50e-1718263812\/2201_verycool_shareimages_kansas-casual-76x.jpg",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -14468,6 +16096,19 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/typefaces\/nudge\/90da6c39b7-1718263812\/e6xm2iaucaixxem.jpeg" : {
+      "ft" : 16384,
+      "iS" : 685752,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/90da6c39b7-1718263812\/e6xm2iaucaixxem.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/typefaces\/nudge\/95f64a753a-1718263812\/.jobs\/screenshot-2023-08-09-at-11.35.04-pm-38x.jpg.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -14518,6 +16159,19 @@
       "q" : 100,
       "rq" : 75
     },
+    "\/media\/pages\/typefaces\/nudge\/95f64a753a-1718263812\/screenshot-2023-08-09-at-11.35.04-pm.jpeg" : {
+      "ft" : 16384,
+      "iS" : 400229,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/95f64a753a-1718263812\/screenshot-2023-08-09-at-11.35.04-pm.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/media\/pages\/typefaces\/nudge\/e35633bc18-1718263812\/.jobs\/nem-makers-38x.png.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -14560,6 +16214,19 @@
       "iS" : 480573,
       "oA" : 0,
       "oAP" : "\/media\/pages\/typefaces\/nudge\/e35633bc18-1718263812\/nem-makers-1408x1126-crop.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/media\/pages\/typefaces\/nudge\/e35633bc18-1718263812\/nem-makers.png" : {
+      "ft" : 32768,
+      "iS" : 198061,
+      "oA" : 0,
+      "oAP" : "\/media\/pages\/typefaces\/nudge\/e35633bc18-1718263812\/nem-makers.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -17719,36 +19386,44 @@
       "oAP" : "\/site\/plugins\/meta-tags\/vendor\/pedroborges\/meta-tags\/src\/MetaTags.php",
       "oF" : 0
     },
-    "\/site\/sessions\/1729803837.89d9a9973363c60da303.sess" : {
+    "\/site\/sessions\/1731398573.0949cba342cec2f8cd81.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1729803837.89d9a9973363c60da303.sess",
+      "oAP" : "\/site\/sessions\/1731398573.0949cba342cec2f8cd81.sess",
       "oF" : 0
     },
-    "\/site\/sessions\/1729803837.f7b587b0eecee4aa2c08.sess" : {
+    "\/site\/sessions\/1731398573.001057f48bc5de05d0f6.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1729803837.f7b587b0eecee4aa2c08.sess",
+      "oAP" : "\/site\/sessions\/1731398573.001057f48bc5de05d0f6.sess",
       "oF" : 0
     },
-    "\/site\/sessions\/1729803987.06ff18cbebae11f8d329.sess" : {
+    "\/site\/sessions\/1731620187.15d556cff6d534a0ba0c.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1729803987.06ff18cbebae11f8d329.sess",
+      "oAP" : "\/site\/sessions\/1731620187.15d556cff6d534a0ba0c.sess",
       "oF" : 0
     },
-    "\/site\/sessions\/1729803987.b17aa2d2f72f7a3dace1.sess" : {
+    "\/site\/sessions\/1731620187.831175240769493e4bc3.sess" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/site\/sessions\/1729803987.b17aa2d2f72f7a3dace1.sess",
+      "oAP" : "\/site\/sessions\/1731620187.831175240769493e4bc3.sess",
+      "oF" : 0
+    },
+    "\/site\/sessions\/1732225016.44cf2a868290b8af0a49.sess" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/site\/sessions\/1732225016.44cf2a868290b8af0a49.sess",
       "oF" : 0
     },
     "\/site\/snippets\/article.php" : {
@@ -17911,10 +19586,22 @@
       "oAP" : "\/site\/templates\/typefaces.php",
       "oF" : 0
     },
-    "\/source\/css\/index.css" : {
+    "\/source\/css\/index-min.css" : {
       "aP" : 1,
       "bl" : 0,
       "ci" : 0,
+      "co" : 0,
+      "ft" : 16,
+      "ma" : 0,
+      "oA" : 0,
+      "oAP" : "\/source\/css\/index-min-min.css",
+      "oF" : 0,
+      "pg" : 0
+    },
+    "\/source\/css\/index.css" : {
+      "aP" : 1,
+      "bl" : 1,
+      "ci" : 1,
       "co" : 0,
       "ft" : 16,
       "ma" : 0,
@@ -22796,28 +24483,6 @@
       "sC" : 3,
       "tS" : 0
     },
-    "\/source\/js\/fontsampler-skin.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/assets\/js\/fontsampler-skin-min.js",
-      "oF" : 2,
-      "sC" : 3,
-      "tS" : 0
-    },
-    "\/source\/js\/fontsampler.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/assets\/js\/fontsampler-min.js",
-      "oF" : 2,
-      "sC" : 3,
-      "tS" : 0
-    },
     "\/source\/js\/index.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -22825,17 +24490,6 @@
       "mi" : 1,
       "oA" : 0,
       "oAP" : "\/assets\/js\/index-min.js",
-      "oF" : 2,
-      "sC" : 3,
-      "tS" : 0
-    },
-    "\/source\/js\/mailchimp.js" : {
-      "bF" : 0,
-      "ft" : 64,
-      "ma" : 0,
-      "mi" : 1,
-      "oA" : 0,
-      "oAP" : "\/assets\/js\/mailchimp-min.js",
       "oF" : 2,
       "sC" : 3,
       "tS" : 0

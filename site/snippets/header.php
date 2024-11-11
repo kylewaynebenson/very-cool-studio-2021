@@ -18,7 +18,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title><?= $site->title() ?> | <?= $page->title() ?></title>
-  <meta name="description" content="Very Cool is a type foundry run by Kyle Benson in Oakland, California."/>
+  <?php
+  $metaDescription = $page->metadescription()->isNotEmpty() 
+    ? $page->metadescription()->value()
+    : "Very Cool is a type foundry run by Kyle Benson in Oakland, California.";
+  ?>
+  <meta name="description" content="<?= $metaDescription ?>"/>
   <meta property="og:title" content="<?= $site->title() . ' | ' . $page->title() ?>">
   <?php
   $graphimage = $page->opengraphimage()->toFile();
@@ -33,77 +38,61 @@
   <?php } ?>
   <meta name="twitter:site" content="@verycoolstudio" />
   <meta name="twitter:title" content="<?= $site->title() . ' | ' . $page->title() ?>" />
-  <meta name="twitter:description" content="Very Cool is a type foundry run by Kyle Benson in Oakland, California." />
+  <meta name="twitter:description" content="<?= $metaDescription ?>" />
   <meta name="twitter:card" content="summary_large_image" />
-  <style>
-    [data-theme="light"] {
-      --color-black: #000;
-      --color-bg-black: #000;
-      --color-white: #fff;
-      --color-grey: #7C8DA6;
-      --color-yellow: #FFD138;
-      --color-coral: #FF7B52;
-      --color-soft-blue: #D7E7FF;
-      --color-soft-blue-solid: #EEF7FFFF;
-      --color-soft-blue-clear: #E8F4FF00;
-      --color-tan: #F9F4F2;
-    }
-    [data-theme="dark"] {
-      --color-black: #ffffff;
-      --color-bg-black: #2b2b2b;
-      --color-white: #000000;
-      --color-grey: #999491;
-      --color-coral: #2b2b2b;
-      --color-soft-blue: #353535;
-      --color-soft-blue-solid: #1E1E1EFF;
-      --color-soft-blue-clear: #00000000;
-      --color-yellow: #000000;
-      --color-tan: #2b2b2b;
-    }
-    html {
-      color: var(--color-black);
-      background: var(--color-white);
-    }
-  </style>
+
+<link rel="stylesheet" href="https://js.fontdue.com/fontdue.css">
+<script type="module">
+  import fontdue from "https://js.fontdue.com/fontdue.esm.js";
+  
+  fontdue.initialize({
+    url: "https://store.verycoolstudio.com",
+    config: {
+      typeTester: {      
+        size: {
+          min: 10,
+          max: 300,
+          label: 'Size',
+        },
+        selectable: true,
+        textInput: false,
+        groupEdit: false,
+        initialMode: 'local',
+        shy: true,
+        buyButton: true,
+        selectButtonLabel: 'Buy',
+        selectButtonStyle: 'outlined',
+      },
+    },
+  });
+</script>
+<!-- Calling fonts from fontdue -->
+<?php foreach ($site->find('typefaces')->children()->listed() as $font): ?>
+    <?php if ($font->fontdueembed()->isNotEmpty()): ?>
+        <?= $font->fontdueembed()->value() ?>
+    <?php endif ?>
+<?php endforeach ?>
+<!-- additional fonts for site -->
+<!-- Gooper Text -->
+<link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTgxNjMwMjIwNjU1NjEzMzQ3Ng%3D%3D.css" rel="stylesheet">
+<!-- Cardinal -->
+<link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTg3NDM5MzIyNjM4NDMzMzM0NQ%3D%3D.css" rel="stylesheet">
+<link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTg3NDM5MzIyMzk5MzU3OTkyOQ%3D%3D.css" rel="stylesheet">
+
+
 <?php echo css('assets/css/index-min.css?v='.time().'') ?>
 <?= css('@auto') ?>
-  <style>
-@font-face {
-  font-family: 'VC Cardinal';
-  font-weight: 600;
-  src: url("<?= kirby()->urls()->assets() . '/webfonts/cardinal/VCCardinal-SemiBold.woff2' ?>") format("woff2"), url("<?= kirby()->urls()->assets() . '/webfonts/cardinal/VCCardinal-SemiBold.woff' ?>") format("woff"); 
-}
-@font-face {
-  font-family: 'VC Cornbread';
-  font-style: normal;
-  font-weight: 400;
-  src: url("<?= kirby()->urls()->assets() . '/webfonts/cornbread/VCCornbread-Regular.woff2' ?>") format("woff2"), url("<?= kirby()->urls()->assets() . '/webfonts/cornbread/VCCornbread-Regular.woff' ?>") format("woff");
-}
-@font-face {
-  font-family: 'VC Cornbread';
-  font-style: normal;
-  font-weight: 600;
-  src: url("<?= kirby()->urls()->assets() . '/webfonts/cornbread/VCCornbread-SemiBold.woff2' ?>") format("woff2"), url("<?= kirby()->urls()->assets() . '/webfonts/cornbread/VCCornbread-SemiBold.woff' ?>") format("woff");
-}
-@font-face {
-  font-family: 'VC Cardinal Wide';
-  font-weight: 600;
-  src: url("<?= kirby()->urls()->assets() . '/webfonts/cardinal/VCCardinalWide-SemiBold.woff2' ?>") format("woff2"), url("<?= kirby()->urls()->assets() . '/webfonts/cardinal/VCCardinalWide-SemiBold.woff' ?>") format("woff"); 
-}
-@font-face {
-  font-family: 'VC Gooper Text';
-  font-style: normal;
-  font-weight: 700;
-  src: url("<?= kirby()->urls()->assets() . '/webfonts/gooper/VCGooperText-Bold.woff2' ?>") format("woff2"), url("<?= kirby()->urls()->assets() . '/webfonts/gooper/VCGooperText-Bold.woff' ?>") format("woff"); }
-</style>
 
 <link rel="shortcut icon" type="image/x-icon" href="<?= kirby()->urls()->assets() .'/images/favicon.png' ?>">
+
 </head>
+
 <?php if ($page->parents()->count()): ?>
   <body class="page-<?= $page->uid(); ?> page-<?= $page->parent()->uid(); ?>">
 <?php else: ?>
   <body class="page-<?= $page->uid(); ?>">
 <?php endif; ?>
+<fontdue-store-modal></fontdue-store-modal>
 
   <nav class="nav">
     <div class="logo">
@@ -137,11 +126,11 @@
           </a>
         </div>
       <?php endforeach ?>
-      <div id="shopify-cart-toggle" class="shopify-cart-toggle">
-        <svg width="29" height="34" viewBox="0 0 29 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path class="fill-black" fill-rule="evenodd" clip-rule="evenodd" d="M14.5 0C10.3579 0 7 3.35786 7 7.5V10H5C2.23858 10 0 12.2386 0 15V29C0 31.7614 2.23858 34 5 34H24C26.7614 34 29 31.7614 29 29V15C29 12.2386 26.7614 10 24 10H22V7.5C22 3.35786 18.6421 0 14.5 0ZM20 12V15H22V12H24C25.6569 12 27 13.3431 27 15V29C27 30.6569 25.6569 32 24 32H5C3.34315 32 2 30.6569 2 29V15C2 13.3431 3.34315 12 5 12H7V15H9V12H20ZM20 10V7.5C20 4.46243 17.5376 2 14.5 2C11.4624 2 9 4.46243 9 7.5V10H20Z" fill="black"/>
+      <fontdue-cart-button class="cart-toggle" button-style="inline" label="Cart">
+      <svg width="29" height="34" viewBox="0 0 29 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="fill-black" fill-rule="evenodd" clip-rule="evenodd" d="M14.5 0C10.3579 0 7 3.35786 7 7.5V10H5C2.23858 10 0 12.2386 0 15V29C0 31.7614 2.23858 34 5 34H24C26.7614 34 29 31.7614 29 29V15C29 12.2386 26.7614 10 24 10H22V7.5C22 3.35786 18.6421 0 14.5 0ZM20 12V15H22V12H24C25.6569 12 27 13.3431 27 15V29C27 30.6569 25.6569 32 24 32H5C3.34315 32 2 30.6569 2 29V15C2 13.3431 3.34315 12 5 12H7V15H9V12H20ZM20 10V7.5C20 4.46243 17.5376 2 14.5 2C11.4624 2 9 4.46243 9 7.5V10H20Z" fill="black"/>
         </svg>
-      </div>
+      </fontdue-cart-button>
       <div class="theme-switch-wrapper">
           <label class="theme-switch" for="checkbox">
               <input type="checkbox" id="checkbox" />
@@ -155,4 +144,5 @@
   <?= js([
     'assets/js/theme-min.js',
   ]) ?>
+
   <main class="main">

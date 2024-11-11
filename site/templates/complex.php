@@ -81,7 +81,7 @@
             </a>
         </div>
     </aside>
-<? endif; ?>
+<?php endif ?>
 <?php if ($page->footnotes()->isNotEmpty()): ?>
 <footer class="article-footer bg-white bt-tan" >
   <div class="grid container padding" style="--gutter: 1.5vw">

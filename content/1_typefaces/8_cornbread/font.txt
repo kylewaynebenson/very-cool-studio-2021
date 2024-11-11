@@ -6,7 +6,7 @@ Headline:
 
 ----
 
-Font: Cornbread-Regular
+Font: Cornbread Regular
 
 ----
 
@@ -42,15 +42,19 @@ Version: 1.07
 
 ----
 
-Shopify: 7061278752975
-
-----
-
 Futurefonts: 
 
 ----
 
+Fontdueembed: <link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTg3NDYwNzIyMTkyMTg5NzA5NA%3D%3D.css" rel="stylesheet">
+
+----
+
 Text: <p>In the war on texts, readability is one of the most sacred battlefields. Many make bold claims about the readability of their fonts. Cornbread will make no such claim. Its soft, thick stems are plenty legible and have better things to do than to brag in vagaries. These letters are soldiers, dammit, and if readability was under any sort of question they wouldn’t even be here, now would they? Cornbread is nib-weighted, the way God intended serifs to be. It carries the musk of a book passed down from your grandfather, and the class of a time when a man and his printing press were comrade-in-arms, celebrating each other’s strength over a hefty text font.</p>
+
+----
+
+Metadescription: Cornbread is nib-weighted old style serif.
 
 ----
 
@@ -66,7 +70,50 @@ Designinfo:
 
 ----
 
-Opengraphimage: - 2201_verycool_shareimages_cornbread.jpg
+Opengraphimage: - file://B8eyVK5t4cR3bvpR
+
+----
+
+Features:
+
+- 
+  feature: ss01
+  sample: Quickly
+  description: Fancy Q
+  font: VCCornbreadSemiBold
+- 
+  feature: ss02
+  sample: Goggles
+  description: Two story g
+  font: VCCornbreadSemiBold
+- 
+  feature: frac
+  sample: 12/34
+  description: Fractions
+  font: VCCornbreadSemiBold
+- 
+  feature: smcp
+  sample: Howdy
+  description: Small-caps
+  font: VCCornbreadSemiBold
+- 
+  feature: liga
+  sample: Co. St.
+  description: Ligatures
+  font: VCCornbreadSemiBold
+- 
+  feature: onum
+  sample: "1234567"
+  description: Oldstyle figures
+  font: VCCornbreadSemiBold
+
+----
+
+Glyphs: Cornbread SemiBold
+
+----
+
+Shopify: 7061278752975
 
 ----
 
@@ -87,45 +134,6 @@ Samples:
 - 
   font: Cornbread Thin
   sample: Ecstatic Cosiness
-
-----
-
-Features:
-
-- 
-  feature: ss01
-  font: VCCornbreadSemiBold
-  sample: Quickly
-  description: Fancy Q
-- 
-  feature: ss02
-  font: VCCornbreadSemiBold
-  sample: Goggles
-  description: Two story g
-- 
-  feature: frac
-  font: VCCornbreadSemiBold
-  sample: 12/34
-  description: Fractions
-- 
-  feature: smcp
-  font: VCCornbreadSemiBold
-  sample: Howdy
-  description: Small-caps
-- 
-  feature: liga
-  font: VCCornbreadSemiBold
-  sample: Co. St.
-  description: Ligatures
-- 
-  feature: onum
-  font: VCCornbreadSemiBold
-  sample: "1234567"
-  description: Oldstyle figures
-
-----
-
-Glyphs: VCCornbread-SemiBold
 
 ----
 

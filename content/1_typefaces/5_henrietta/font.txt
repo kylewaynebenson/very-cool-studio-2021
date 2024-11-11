@@ -6,7 +6,7 @@ Headline: Henrietta
 
 ----
 
-Font: Henrietta-Bold
+Font: Henrietta Bold
 
 ----
 
@@ -42,15 +42,19 @@ Version: 0.5
 
 ----
 
-Shopify: 
-
-----
-
 Futurefonts: https://www.futurefonts.xyz/very-cool-studio/henrietta
 
 ----
 
-Text: <p>Henrietta is a revival of a font by the same name that was (probably) designed in the 1980s. It’s a Souvenir rip-off. But a rip-off with its own underlying logic. One with defined departures from that ubiquitous soft serif queen. It has a flatness that keeps it from being an oldstyle, a warble that feels more Art Nouveau than it does Arts and Crafts, a tall x-height, thick terminals, low contrast, with a lot of the diagonality of Windsor. I think it's really beautiful. I'm hoping by reviving it, I can learn who drew it in the first place.</p>
+Fontdueembed: <link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTg3NDM4MjM2MTUyNjM2MDM2Mg%3D%3D.css" rel="stylesheet">
+
+----
+
+Text: <p>Henrietta is soft serif that was (probably) designed in the 1980s. It’s a Souvenir rip-off. But a rip-off with its own underlying logic. One with defined departures from that ubiquitous soft serif queen. It has a flatness that keeps it from being an oldstyle, a warble that feels more Art Nouveau than it does Arts and Crafts, a tall x-height, thick terminals, low contrast, with a lot of the diagonality of Windsor. I think it's really beautiful. I'm hoping by reviving it, I can learn who drew it in the first place.</p>
+
+----
+
+Metadescription: Henrietta is a soft serif (probably) from the 1980s.
 
 ----
 
@@ -66,7 +70,55 @@ Designinfo: articles/henrietta-design-information
 
 ----
 
-Opengraphimage: - 2201_verycool_shareimages_henrietta.jpg
+Opengraphimage: - file://Yk9dNrQk8mUoCcVr
+
+----
+
+Features:
+
+- 
+  feature: ss01
+  sample: 'Q&A'
+  description: 'Detailed Q, &, $'
+  font: VCHenriettaSemiBold
+- 
+  feature: ss02
+  sample: Knifes
+  description: Straight leg n, m, h
+  font: VCHenriettaSemiBold
+- 
+  feature: ss03
+  sample: True!
+  description: Half moon punctuation
+  font: VCHenriettaSemiBold
+- 
+  feature: ss04
+  sample: Priestly
+  description: Upright e, P, B
+  font: VCHenriettaSemiBold
+- 
+  feature: ss05
+  sample: jiggly
+  description: Circle tiddle
+  font: VCHenriettaSemiBold
+- 
+  feature: ss06
+  sample: Sappho
+  description: Single story a
+  font: VCHenriettaSemiBold
+- 
+  feature: ss07
+  sample: Gogol
+  description: Two story g
+  font: VCHenriettaSemiBold
+
+----
+
+Glyphs: Henrietta SemiBold
+
+----
+
+Shopify: 
 
 ----
 
@@ -93,50 +145,6 @@ Samples:
 - 
   font: Henrietta Condensed Semi Bold
   sample: Chipmunk Nunnery
-
-----
-
-Features:
-
-- 
-  feature: ss01
-  font: VCHenriettaSemiBold
-  sample: 'Q&A'
-  description: 'Detailed Q, &, $'
-- 
-  feature: ss02
-  font: VCHenriettaSemiBold
-  sample: Knifes
-  description: Straight leg n, m, h
-- 
-  feature: ss03
-  font: VCHenriettaSemiBold
-  sample: True!
-  description: Half moon punctuation
-- 
-  feature: ss04
-  font: VCHenriettaSemiBold
-  sample: Priestly
-  description: Upright e, P, B
-- 
-  feature: ss05
-  font: VCHenriettaSemiBold
-  sample: jiggly
-  description: Circle tiddle
-- 
-  feature: ss06
-  font: VCHenriettaSemiBold
-  sample: Sappho
-  description: Single story a
-- 
-  feature: ss07
-  font: VCHenriettaSemiBold
-  sample: Gogol
-  description: Two story g
-
-----
-
-Glyphs: VCHenrietta-SemiBold
 
 ----
 

@@ -6,7 +6,7 @@ Headline: Bruphy
 
 ----
 
-Font: Bruphy-Bold
+Font: Bruphy Bold
 
 ----
 
@@ -42,11 +42,11 @@ Version:
 
 ----
 
-Shopify: 
+Futurefonts: https://www.futurefonts.xyz/very-cool-studio/bruphy
 
 ----
 
-Futurefonts: https://www.futurefonts.xyz/very-cool-studio/bruphy
+Fontdueembed: <link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTg3NDk1OTYxMjM4NzA4OTIwNg%3D%3D.css" rel="stylesheet">
 
 ----
 
@@ -54,11 +54,15 @@ Text: <p>An anfractuous venture of Very Cool Studios, Bruphy is the result of ta
 
 ----
 
+Metadescription: Bruphy is a brush influenced sans serif.
+
+----
+
 Tags: 
 
 ----
 
-Specimen: - verycoolstudio-bruphy-v3.pdf
+Specimen: - file://vqCDM9oKVWeowDH9
 
 ----
 
@@ -66,7 +70,50 @@ Designinfo: articles/bruphy-design-information
 
 ----
 
-Opengraphimage: - 2201_verycool_shareimages_bruphy.jpg
+Opengraphimage: - file://6Pb40VbZch4ceD59
+
+----
+
+Features:
+
+- 
+  feature: ss01
+  sample: probably
+  description: Connected rounds
+  font: VCBruphySemiBold
+- 
+  feature: ss02
+  sample: KEEPERS
+  description: Stylized caps
+  font: VCBruphySemiBold
+- 
+  feature: ss03
+  sample: Illiad
+  description: Cap I, straight l
+  font: VCBruphySemiBold
+- 
+  feature: ss04
+  sample: Avocado
+  description: Diagonal v,w,y
+  font: VCBruphySemiBold
+- 
+  feature: ss05
+  sample: Brazen
+  description: Calligraphic styles
+  font: VCBruphySemiBold
+- 
+  feature: tnum
+  sample: "1234567"
+  description: Tabular figures
+  font: VCBruphyTextSemiBold
+
+----
+
+Glyphs: Bruphy SemiBold
+
+----
+
+Shopify: 
 
 ----
 
@@ -101,45 +148,6 @@ Samples:
     in their varying abilities to stay
     still, decent on camera. They are a pile
     of puppies.
-
-----
-
-Features:
-
-- 
-  feature: ss01
-  font: VCBruphySemiBold
-  sample: probably
-  description: Connected rounds
-- 
-  feature: ss02
-  font: VCBruphySemiBold
-  sample: KEEPERS
-  description: Stylized caps
-- 
-  feature: ss03
-  font: VCBruphySemiBold
-  sample: Illiad
-  description: Cap I, straight l
-- 
-  feature: ss04
-  font: VCBruphySemiBold
-  sample: Avocado
-  description: Diagonal v,w,y
-- 
-  feature: ss05
-  font: VCBruphySemiBold
-  sample: Brazen
-  description: Calligraphic styles
-- 
-  feature: tnum
-  font: VCBruphyTextSemiBold
-  sample: "1234567"
-  description: Tabular figures
-
-----
-
-Glyphs: VCBruphyText-SemiBold
 
 ----
 

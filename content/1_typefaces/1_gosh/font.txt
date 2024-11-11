@@ -6,7 +6,7 @@ Headline: Gosh
 
 ----
 
-Font: Gosh-Bold
+Font: Gosh Bold
 
 ----
 
@@ -42,15 +42,19 @@ Version: 0.2
 
 ----
 
-Shopify: 
-
-----
-
 Futurefonts: https://www.futurefonts.xyz/very-cool-studio/gosh
 
 ----
 
+Fontdueembed: <link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udENvbGxlY3Rpb246MTg3NDM3MTQ0MDMxMzcxOTAxOA%3D%3D.css" rel="stylesheet">
+
+----
+
 Text: <p>Gosh is a soft, square sans. It feels like you swear you've seen it before. Inspired by Microgramma or Eurostile when printed and tightly spaced. Everything about Gosh is boxy, but nothing about it is sharp.</p><p>It's called Gosh, because, sheesh, there’s somethin’ so darn obvious about it.</p>
+
+----
+
+Metadescription: Gosh is a soft, square sans inspired by Microgramma or Eurostile.
 
 ----
 
@@ -67,6 +71,59 @@ Designinfo:
 ----
 
 Opengraphimage: - file://DBbhY4T7rsf2s3gT
+
+----
+
+Features:
+
+- 
+  feature: ss01
+  sample: Eggs
+  description: Single story g
+  font: VCGoshBold
+- 
+  feature: ss02
+  sample: Granite
+  description: Flat r
+  font: VCGoshBold
+- 
+  feature: ss03
+  sample: Later
+  description: Flat t
+  font: VCGoshBold
+- 
+  feature: ss04
+  sample: Sauce
+  description: Single story a
+  font: VCGoshBold
+- 
+  feature: ss05
+  sample: Quack
+  description: Q bottom tail
+  font: VCGoshBold
+- 
+  feature: ss06
+  sample: Quilt
+  description: Q angled tail
+  font: VCGoshBold
+- 
+  feature: ss07
+  sample: Risky
+  description: R with kick
+  font: VCGoshBold
+- 
+  feature: frac
+  sample: 123/456
+  description: Fractions
+  font: VCGoshBold
+
+----
+
+Glyphs: VCGosh-Bold
+
+----
+
+Shopify: 
 
 ----
 
@@ -104,55 +161,6 @@ Samples:
     notice. After some silence he pointed at
     my journal and pen and commented “very
     trad”.
-
-----
-
-Features:
-
-- 
-  feature: ss01
-  font: VCGoshBold
-  sample: Eggs
-  description: Single story g
-- 
-  feature: ss02
-  font: VCGoshBold
-  sample: Granite
-  description: Flat r
-- 
-  feature: ss03
-  font: VCGoshBold
-  sample: Later
-  description: Flat t
-- 
-  feature: ss04
-  font: VCGoshBold
-  sample: Sauce
-  description: Single story a
-- 
-  feature: ss05
-  font: VCGoshBold
-  sample: Quack
-  description: Q bottom tail
-- 
-  feature: ss06
-  font: VCGoshBold
-  sample: Quilt
-  description: Q angled tail
-- 
-  feature: ss07
-  font: VCGoshBold
-  sample: Risky
-  description: R with kick
-- 
-  feature: frac
-  font: VCGoshBold
-  sample: 123/456
-  description: Fractions
-
-----
-
-Glyphs: VCGosh-Bold
 
 ----
 

@@ -19,3 +19,7 @@ Link: https://www.futurefonts.xyz/very-cool-studio/
 ----
 
 Template: blocks/image
+
+----
+
+Uuid: jyzOntBwmK6bGw1w

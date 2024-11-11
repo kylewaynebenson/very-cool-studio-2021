@@ -30,14 +30,7 @@
   <ul>
     <?php foreach ($typePage->children()->listed() as $font): ?>
     <a class="hover-blue type-preview bb-soft-blue padding" href="<?= $font->url() ?>" style="display:block;">
-      <style>
-      @font-face {
-        font-family: '<?= $font->font() ?> Home';
-        font-weight: 100;
-        src: url("<?= kirby()->urls()->assets() . '/webfonts/' . $font->slug() . '/VC' . $font->font() . '.woff2' ?>") format("woff2"), url("<?= kirby()->urls()->assets() . '/webfonts/' . $font->slug() . '/VC' . $font->font() . '.woff' ?>") format("woff"); 
-      }
-      </style>
-        <div class="full-width-text" style="font-family: <?= $font->font() ?> Home; font-weight: 100; line-height: .9; letter-spacing: 0px;">
+        <div class="full-width-text" style="font-family: '<?= $font->font() ?>'; line-height: .9; letter-spacing: 0px;">
           <?= $font->sample() ?>
         </div>
         <div class="flex font-details" style="justify-content: space-between; align-items: baseline;">
