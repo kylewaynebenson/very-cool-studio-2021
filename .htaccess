@@ -10,6 +10,7 @@ RewriteEngine on
 
 # force https
 RewriteCond %{HTTP_HOST} !=localhost
+RewriteCond %{HTTP_HOST} !=staging.verycoolstudio.com
 RewriteCond %{HTTP_HOST} ^www\. [NC,OR]
 RewriteCond %{HTTPS} off
 RewriteCond %{HTTP_HOST} ^(?:www\.)?(.+)$ [NC]
