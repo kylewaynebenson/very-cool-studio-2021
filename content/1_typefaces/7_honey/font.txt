@@ -14,7 +14,7 @@ Sample: Crumby Bagpipes
 
 ----
 
-Charset: Basic Latin
+Charset: Extended Latin, Cyrillic, Greek
 
 ----
 
@@ -22,7 +22,11 @@ Released: 2022
 
 ----
 
-Designer: 
+Designer:
+
+- page://RvZsJdlFszDElafO
+- page://hl3uEdCZA8dL6aKQ
+- page://gp3aqFo4IahWkgOc
 
 ----
 
@@ -54,11 +58,11 @@ Text: <p>As its name implies, Honey is a natural sweetener with the historicity 
 
 ----
 
-Metadescription: Honey is a soft serif with the stability of Souvenir and the goofiness ITC Grouch.
+Metadescription: A stabile but goofy soft serif.
 
 ----
 
-Tags: Oldstyle, Soft
+Tags: oldstyle, serif, soft, cyrillic, greek
 
 ----
 

@@ -14,7 +14,7 @@ Sample: Cursing Analogy
 
 ----
 
-Charset: Wider Latin
+Charset: Extended Latin
 
 ----
 
@@ -22,7 +22,7 @@ Released: 2018
 
 ----
 
-Designer: Kyle Benson
+Designer: - page://RvZsJdlFszDElafO
 
 ----
 
@@ -54,11 +54,11 @@ Text: <p>Gooper is a lively, loveable, sticky typeface made for the use of squis
 
 ----
 
-Metadescription: Gooper is a loveable, soft serif oldstyle font.
+Metadescription: A loveable, soft, oldstyle serif.
 
 ----
 
-Tags: serif, old style
+Tags: serif, old style, soft, condensed, italic
 
 ----
 
@@ -124,7 +124,7 @@ Features:
 
 ----
 
-Glyphs: GooperDeck Bold
+Glyphs: Gooper Deck Bold
 
 ----
 

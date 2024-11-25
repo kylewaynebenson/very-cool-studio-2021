@@ -25,8 +25,17 @@
     <?php endif ?>
     <?php if ($page->designer()->isNotEmpty()): ?>
       <dl>
-        <dt><h5 class="color-grey">Designer</h5></dt>
-        <dd><h6><?= $page->designer() ?></h6></dd>
+        <dt><h5 class="color-grey">Designer<?= $page->designer()->toPages()->count() > 1 ? 's' : '' ?></h5></dt>
+        <dd><h6>
+          <?php 
+            $designers = $page->designer()->toPages();
+            $links = [];
+            foreach($designers as $designer) {
+              $links[] = '<a href="' . $designer->url() . '">' . $designer->name() . '</a>';
+            }
+            echo implode(', ', $links);
+          ?>
+        </h6></dd>
       </dl>
     <?php endif ?>
     <dl class="margin-l">

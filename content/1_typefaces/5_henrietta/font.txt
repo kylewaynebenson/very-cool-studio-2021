@@ -14,7 +14,7 @@ Sample: Fungi Wranglers
 
 ----
 
-Charset: 
+Charset: Extended Latin
 
 ----
 
@@ -22,7 +22,7 @@ Released: 2022
 
 ----
 
-Designer: 
+Designer: - page://RvZsJdlFszDElafO
 
 ----
 
@@ -54,11 +54,11 @@ Text: <p>Henrietta is soft serif that was (probably) designed in the 1980s. Itâ€
 
 ----
 
-Metadescription: Henrietta is a soft serif (probably) from the 1980s.
+Metadescription: A soft serif (probably) from the â€™80s.
 
 ----
 
-Tags: Oldstyle, Soft
+Tags: soft, serif, oldstyle, display, condensed, italic
 
 ----
 

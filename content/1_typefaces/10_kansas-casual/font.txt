@@ -14,7 +14,7 @@ Sample: Jazziest Skincare
 
 ----
 
-Charset: 
+Charset: Extended Latin
 
 ----
 
@@ -54,11 +54,11 @@ Text: <p>Want to say something very loud, but also very friendly? One way you co
 
 ----
 
-Metadescription: Kansas Casual is a sign painter's one stroke style font.
+Metadescription: A sign painter's one stroke.
 
 ----
 
-Tags: 
+Tags: sans, brush
 
 ----
 

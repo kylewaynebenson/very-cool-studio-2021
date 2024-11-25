@@ -46,8 +46,11 @@ tabs:
           released:
             type: text
           designer:
-            type: text
-            placeholder: Kyle Benson
+            type: pages
+            label: Designer(s)
+            multiple: true
+            query: kirby.page("designers").children.listed
+            max: 3  # Optional: set a maximum number of designers per font
           styles:
             type: text
           widths:

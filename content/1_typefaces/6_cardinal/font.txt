@@ -22,7 +22,7 @@ Released: 2017
 
 ----
 
-Designer: Kyle Benson
+Designer: - page://RvZsJdlFszDElafO
 
 ----
 
@@ -54,11 +54,11 @@ Text: <p>For as long as there have been poster grotesques there have been sign p
 
 ----
 
-Metadescription: Cardinal is a sleek but vernacular sans serif super family.
+Metadescription: A sleek but vernacular sans serif super family.
 
 ----
 
-Tags: sans
+Tags: sans, grotesque, neo, condensed, wide
 
 ----
 
@@ -139,7 +139,7 @@ Features:
 
 ----
 
-Glyphs: VCCardinalWide-SemiBold
+Glyphs: Cardinal Wide SemiBold
 
 ----
 

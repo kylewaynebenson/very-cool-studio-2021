@@ -23,7 +23,7 @@
 ?>
 <?php snippet('header') ?>
 
-<article class="article grid container padding" style="--gutter: 1.5vw">
+<article class="article grid padding" style="--gutter: 1.5vw">
   <header class="article-header column" style="--columns: 5">
     <h1 class="article-title margin-l"><?= $page->title()->html() ?></h1>
     <dl>
@@ -75,9 +75,15 @@
         <div class="grid container padding" style="--gutter: 1.5vw">
             <h5 class="column color-grey" style="--columns: 5">Downloads</h5>
             <div class="article-footnotes column" style="--columns: 7">
-            <a class="padding-sm text-center rounded-corners bg-blue" href="<?= $download->url() ?>" download="<?= $page->download()->itemtitle() ?>">
-                <h5 class="no-mb inline color-black">↓ </h5>
-                <h6 class="no-mb inline color-black"><?php echo $page->title() ?> </h6>
+            <a class="btn" href="<?= $download->url() ?>" download="<?= $page->download()->itemtitle() ?>">
+                <span class="icon">
+                <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M32 29.875H2" stroke="currentColor" stroke-width="2"/>
+                <path d="M27.499 14.9817L16.8924 25.5883L6.28577 14.9817" stroke="currentColor" fill="none" stroke-width="2"/>
+                <path d="M17 1L17 26" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                </span> 
+                <span class="no-mb"><?php echo $page->title() ?> </span>
             </a>
         </div>
     </aside>

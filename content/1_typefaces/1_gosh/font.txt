@@ -14,7 +14,7 @@ Sample: 3 Fab Bumpkin
 
 ----
 
-Charset: Basic
+Charset: Extended Latin
 
 ----
 
@@ -22,7 +22,7 @@ Released: 2023
 
 ----
 
-Designer: 
+Designer: - page://RvZsJdlFszDElafO
 
 ----
 
@@ -50,15 +50,15 @@ Fontdueembed: <link href="https://fonts.fontdue.com/very-cool-studio/css/Rm9udEN
 
 ----
 
-Text: <p>Gosh is a soft, square sans. It feels like you swear you've seen it before. Inspired by Microgramma or Eurostile when printed and tightly spaced. Everything about Gosh is boxy, but nothing about it is sharp.</p><p>It's called Gosh, because, sheesh, there’s somethin’ so darn obvious about it.</p>
+Text: <p>Gosh is a soft, square sans. It feels like you swear you’ve seen it before. Inspired by Microgramma or Eurostile when printed and tightly spaced. Everything about Gosh is boxy, but nothing about it is sharp.</p><p>It’s called Gosh, because, sheesh, there’s somethin’ so darn obvious about it.</p>
 
 ----
 
-Metadescription: Gosh is a soft, square sans inspired by Microgramma or Eurostile.
+Metadescription: A gol darn soft, square sans.
 
 ----
 
-Tags: Sans, Condensed, Square
+Tags: sans, condensed, wide, soft
 
 ----
 
@@ -66,7 +66,7 @@ Specimen:
 
 ----
 
-Designinfo: 
+Designinfo: articles/gosh-design-information
 
 ----
 
@@ -119,7 +119,7 @@ Features:
 
 ----
 
-Glyphs: VCGosh-Bold
+Glyphs: VC Gosh Bold
 
 ----
 

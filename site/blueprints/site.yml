@@ -18,6 +18,14 @@ columns:
         status: listed
         size: tiny
         layout: cards
+      designers:
+        extends: sections/designers
+        headline: Designers
+        status: listed
+        size: tiny
+        layout: cards
+        create: designer
+
 
   # The second column has two sections, `articles` and `pages`
   - width: 1/2

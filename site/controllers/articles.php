@@ -28,7 +28,7 @@ return function ($page) {
 
     return [
         'tag'   => $tag,
-        'articles' => $articles->paginate(6)
+        'articles' => $articles->paginate(12)
     ];
 
 };

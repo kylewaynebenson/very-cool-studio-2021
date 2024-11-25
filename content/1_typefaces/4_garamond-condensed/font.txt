@@ -14,7 +14,7 @@ Sample: Horsey Cowgirl Reunion
 
 ----
 
-Charset: Basic Latin
+Charset: Extended Latin
 
 ----
 
@@ -22,7 +22,7 @@ Released: 2022
 
 ----
 
-Designer: 
+Designer: - page://RvZsJdlFszDElafO
 
 ----
 
@@ -54,11 +54,11 @@ Text: <p>VC Garamond Condensed is a soft serif with a tall x-height and tight le
 
 ----
 
-Metadescription: VC Garamond Condensed is a soft serif with a tall x-height and tight letter spacing.
+Metadescription: A soft serif with a tall x-height and tight letter spacing.
 
 ----
 
-Tags: Soft, Serif
+Tags: soft, serif, condensed, italic
 
 ----
 

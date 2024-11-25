@@ -23,7 +23,7 @@
 ?>
 <?php snippet('header') ?>
 
-<article class="article grid container padding" style="--gutter: 3vw">
+<article class="article grid padding" style="--gutter: 3vw">
   <header class="article-header column" style="--columns: 5">
     <h1 class="article-title margin-l"><?= $page->title()->html() ?></h1>
     <dl>
@@ -66,7 +66,7 @@
 </article>
 <?php if ($page->footnotes()->isNotEmpty()): ?>
 <footer class="article-footer bg-white bt-tan" >
-  <div class="grid container padding" style="--gutter: 3vw">
+  <div class="grid padding" style="--gutter: 3vw">
     <h5 class="column color-grey" style="--columns: 5">Footnotes</h5>
     <div class="article-footnotes column color-grey" style="--columns: 7">
       <?= $page->footnotes()->toBlocks() ?>

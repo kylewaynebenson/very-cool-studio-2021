@@ -14,7 +14,7 @@ Sample: Cardiovascular Tonalities
 
 ----
 
-Charset: 
+Charset: Extended Latin
 
 ----
 
@@ -22,7 +22,7 @@ Released: 2021
 
 ----
 
-Designer: 
+Designer: - page://RvZsJdlFszDElafO
 
 ----
 
@@ -54,11 +54,11 @@ Text: <p>With an X-Acto blade, a basic memory of Helvetica Condensed, half a Let
 
 ----
 
-Metadescription: Nudge is a neo grotesque, gothic hybrid sans serif.
+Metadescription: A neo grotesque, gothic sans.
 
 ----
 
-Tags: Gothic, Sans, Condensed
+Tags: gothic, sans, condensed, wide, italic
 
 ----
 

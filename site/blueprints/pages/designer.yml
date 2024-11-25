@@ -1,0 +1,35 @@
+# Each page blueprint must have a title, the title may be different from the file name
+title: Designer
+
+# Each page can have an icon that is shown in page listings when no preview image is available.
+icon: 🧑
+
+# Define the form layout with two columns
+# More about columns: https://getkirby.com/docs/guide/blueprints/layout#defining-columns
+columns:
+  - width: 1/2
+    # In the first column, we reuse the `articles` section
+    # (defined in `/site/blueprints/sections/articles.yml` twice with different page status and headline
+    fields:
+      # If you need the same field in multiple locations, you can define them once and reuse whereever needed.
+      # Here we use a files field defined in `/site/blueprints/field/cover.yml`
+      name:
+        type: text
+        title: Name
+        placeholder: "First Last"
+      bio:
+        type: textarea
+        title: Bio
+        buttons: false
+      website:
+        type: text
+        title: Website
+        placeholder: https://example.com
+  - width: 1/2
+    fields:
+      photo:
+        type: files
+        title: Photo
+        layout: cards
+
+  # More about pages sections: https://getkirby.com/docs/reference/panel/sections/pages

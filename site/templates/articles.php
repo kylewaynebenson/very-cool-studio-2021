@@ -22,22 +22,21 @@
 */
 ?>
 <?php snippet('header') ?>
-<div class="container padding">
-  <div class="grid " style="--gutter: 1.5vw">
+  <div class="grid">
     <?php if (empty($tag) === false): ?>
-    <header class="column" style="--columns: 4">
-      <h1>
+    <header class="column padding" style="--columns: 4">
+      <h1 class="h1">
         <small>Tag:</small> <?= html($tag) ?>
         <a href="<?= $page->url() ?>">&times;</a>
-      </h1>
+        </h1>
     </header>
     <?php else: ?>
-      <header class="column" style="--columns: 4">
+      <header class="column padding" style="--columns: 4">
         <?php snippet('intro') ?>
       </header>
     <?php endif ?>
 
-    <ul class="column" style="--columns: 8">
+    <ul class="column bt-white flex flex-wrap gap-xxs" style="--columns: 8">
       <?php foreach ($articles as $article): ?>
       <li>
           <?php snippet('article', ['article' => $article]) ?>
@@ -46,6 +45,5 @@
       <?php snippet('pagination', ['pagination' => $articles->pagination()]) ?>
     </ul>
   </div>
-</div>
 
 <?php snippet('footer') ?>

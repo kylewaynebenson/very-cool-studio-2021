@@ -1,0 +1,11 @@
+type: pages
+headline: Designers
+parent: kirby.page("designers")
+template: designer
+create: designer
+empty: No designers yet
+sortBy: name asc
+image:
+  query: page.photo
+  cover: true
+  ratio: 1/1 

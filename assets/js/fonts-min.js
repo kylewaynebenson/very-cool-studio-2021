@@ -1,1 +1,0 @@
-function featureOn(e,t){var n="font-feature-settings: '"+t+"' 1;",u=t+"-sample";1==e.checked?document.getElementById(u).setAttribute("style",n):document.getElementById(u).removeAttribute("style",n)}

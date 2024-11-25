@@ -14,15 +14,52 @@
 ?>
 
 <nav class="blog-prevnext bg-white bt-tan">
-  <div class="container padding">
+  <div class="padding">
     <h5 class="color-grey">See also</h5>
-    <div class="autogrid" style="--gutter:2px;">
-        <?php if ($prev = $page->prevListed()): ?>
-        <?php snippet('article', ['article' => $prev, 'excerpt' => false])  ?>
-        <?php endif ?>
+    <div class="flex flex-wrap gap-xxs">
+        <?php if ($page->intendedTemplate() == 'font'): ?>
+            <?php 
+            // Get current font's tags
+            $currentTags = $page->tags()->split();
+            
+            // Find related fonts that share tags
+            $related = $page->siblings(false)
+                           ->filter(function($font) use ($currentTags) {
+                                return count(array_intersect($font->tags()->split(), $currentTags)) > 0;
+                            })
+                           ->not($page)
+                           ->shuffle()
+                           ->limit(2);
 
-        <?php if ($next = $page->nextListed()): ?>
-        <?php snippet('article', ['article' => $next, 'excerpt' => false])  ?>
+            // If we found related fonts, show them
+            if ($related->count() > 0):
+                foreach($related as $font): ?>
+                    <?php snippet('article', ['article' => $font, 'excerpt' => false]) ?>
+                <?php endforeach;
+            
+            // Otherwise, fall back to prev/next logic
+            else: ?>
+                <?php if ($prev = $page->prevListed()): ?>
+                    <?php snippet('article', ['article' => $prev, 'excerpt' => false]) ?>
+                <?php else: ?>
+                    <?php snippet('article', ['article' => $page->siblings(false)->last(), 'excerpt' => false]) ?>
+                <?php endif ?>
+
+                <?php if ($next = $page->nextListed()): ?>
+                    <?php snippet('article', ['article' => $next, 'excerpt' => false]) ?>
+                <?php endif ?>
+            <?php endif ?>
+            
+        <?php else: ?>
+            <?php if ($prev = $page->prevListed()): ?>
+                <?php snippet('article', ['article' => $prev, 'excerpt' => false]) ?>
+            <?php else: ?>
+                <?php snippet('article', ['article' => $page->siblings(false)->last(), 'excerpt' => false]) ?>
+            <?php endif ?>
+
+            <?php if ($next = $page->nextListed()): ?>
+                <?php snippet('article', ['article' => $next, 'excerpt' => false]) ?>
+            <?php endif ?>
         <?php endif ?>
     </div>
   </div>
