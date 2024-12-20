@@ -1,9 +1,6 @@
 [submodule "kirby"]
 	path = kirby
 	url = git@github.com:getkirby/kirby.git
-[submodule "site/plugins/merx"]
-	path = site/plugins/merx
-	url = git@github.com:wagnerwagner/merx.git
 [submodule "site/plugins/meta-tags"]
 	path = site/plugins/meta-tags
 	url = git@github.com:pedroborges/kirby-meta-tags.git
