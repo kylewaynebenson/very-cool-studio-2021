@@ -9,13 +9,10 @@ namespace Whoops;
 use InvalidArgumentException;
 use Throwable;
 use Whoops\Exception\ErrorException;
+use Whoops\Exception\Inspector;
 use Whoops\Handler\CallbackHandler;
 use Whoops\Handler\Handler;
 use Whoops\Handler\HandlerInterface;
-use Whoops\Inspector\CallableInspectorFactory;
-use Whoops\Inspector\InspectorFactory;
-use Whoops\Inspector\InspectorFactoryInterface;
-use Whoops\Inspector\InspectorInterface;
 use Whoops\Util\Misc;
 use Whoops\Util\SystemFacade;
 
@@ -69,28 +66,15 @@ final class Run implements RunInterface
      */
     private $canThrowExceptions = true;
 
-    /**
-     * The inspector factory to create inspectors.
-     *
-     * @var InspectorFactoryInterface
-     */
-    private $inspectorFactory;
-
-    /**
-     * @var array<callable>
-     */
-    private $frameFilters = [];
-
     public function __construct(SystemFacade $system = null)
     {
         $this->system = $system ?: new SystemFacade;
-        $this->inspectorFactory = new InspectorFactory();
     }
 
     /**
      * Explicitly request your handler runs as the last of all currently registered handlers.
      *
-     * @param callable|HandlerInterface $handler
+     * @param HandlerInterface $handler
      *
      * @return Run
      */
@@ -103,7 +87,7 @@ final class Run implements RunInterface
     /**
      * Explicitly request your handler runs as the first of all currently registered handlers.
      *
-     * @param callable|HandlerInterface $handler
+     * @param HandlerInterface $handler
      *
      * @return Run
      */
@@ -116,7 +100,7 @@ final class Run implements RunInterface
      * Register your handler as the last of all currently registered handlers (to be executed first).
      * Prefer using appendHandler and prependHandler for clarity.
      *
-     * @param callable|HandlerInterface $handler
+     * @param Callable|HandlerInterface $handler
      *
      * @return Run
      *
@@ -181,17 +165,6 @@ final class Run implements RunInterface
         return $this;
     }
 
-    public function getFrameFilters()
-    {
-        return $this->frameFilters;
-    }
-
-    public function clearFrameFilters()
-    {
-        $this->frameFilters = [];
-        return $this;
-    }
-
     /**
      * Registers this instance as an error handler.
      *
@@ -206,7 +179,6 @@ final class Run implements RunInterface
             class_exists("\\Whoops\\Exception\\FrameCollection");
             class_exists("\\Whoops\\Exception\\Frame");
             class_exists("\\Whoops\\Exception\\Inspector");
-            class_exists("\\Whoops\\Inspector\\InspectorFactory");
 
             $this->system->setErrorHandler([$this, self::ERROR_HANDLER]);
             $this->system->setExceptionHandler([$this, self::EXCEPTION_HANDLER]);
@@ -516,44 +488,20 @@ final class Run implements RunInterface
         }
     }
 
-
-    /**
-     * @param InspectorFactoryInterface $factory
-     *
-     * @return void
-     */
-    public function setInspectorFactory(InspectorFactoryInterface $factory)
-    {
-        $this->inspectorFactory = $factory;
-    }
-
-    public function addFrameFilter($filterCallback)
-    {
-        if (!is_callable($filterCallback)) {
-            throw new \InvalidArgumentException(sprintf(
-                "A frame filter must be of type callable, %s type given.", 
-                gettype($filterCallback)
-            ));
-        }
-
-        $this->frameFilters[] = $filterCallback;
-        return $this;
-    }
-
     /**
      * @param Throwable $exception
      *
-     * @return InspectorInterface
+     * @return Inspector
      */
     private function getInspector($exception)
     {
-        return $this->inspectorFactory->create($exception);
+        return new Inspector($exception);
     }
 
     /**
      * Resolves the giving handler.
      *
-     * @param callable|HandlerInterface $handler
+     * @param HandlerInterface $handler
      *
      * @return HandlerInterface
      *

@@ -2,8 +2,6 @@
 
 namespace Kirby\Cms;
 
-use Kirby\Content\Content;
-use Kirby\Content\Field;
 use Kirby\Exception\InvalidArgumentException;
 use Kirby\Toolkit\Str;
 use Throwable;
@@ -17,229 +15,226 @@ use Throwable;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier
+ * @copyright Bastian Allgeier GmbH
  * @license   https://getkirby.com/license
  */
 class Block extends Item
 {
-	use HasMethods;
+    const ITEMS_CLASS = '\Kirby\Cms\Blocks';
 
-	public const ITEMS_CLASS = Blocks::class;
+    /**
+     * @var \Kirby\Cms\Content
+     */
+    protected $content;
 
-	/**
-	 * Registry with all block models
-	 */
-	public static array $models = [];
+    /**
+     * @var bool
+     */
+    protected $isHidden;
 
-	protected Content $content;
-	protected bool $isHidden;
-	protected string $type;
+    /**
+     * @var string
+     */
+    protected $type;
 
-	/**
-	 * Proxy for content fields
-	 */
-	public function __call(string $method, array $args = []): mixed
-	{
-		// block methods
-		if ($this->hasMethod($method)) {
-			return $this->callMethod($method, $args);
-		}
+    /**
+     * Proxy for content fields
+     *
+     * @param string $method
+     * @param array $args
+     * @return \Kirby\Cms\Field
+     */
+    public function __call(string $method, array $args = [])
+    {
+        return $this->content()->get($method);
+    }
 
-		return $this->content()->get($method);
-	}
+    /**
+     * Creates a new block object
+     *
+     * @param array $params
+     * @param \Kirby\Cms\Blocks $siblings
+     */
+    public function __construct(array $params)
+    {
+        parent::__construct($params);
 
-	/**
-	 * Creates a new block object
-	 *
-	 * @throws \Kirby\Exception\InvalidArgumentException
-	 */
-	public function __construct(array $params)
-	{
-		parent::__construct($params);
+        // import old builder format
+        $params = BlockConverter::builderBlock($params);
+        $params = BlockConverter::editorBlock($params);
 
-		// @deprecated import old builder format
-		// @todo block.converter remove eventually
-		// @codeCoverageIgnoreStart
-		$params = BlockConverter::builderBlock($params);
-		$params = BlockConverter::editorBlock($params);
-		// @codeCoverageIgnoreEnd
+        if (isset($params['type']) === false) {
+            throw new InvalidArgumentException('The block type is missing');
+        }
 
-		if (isset($params['type']) === false) {
-			throw new InvalidArgumentException('The block type is missing');
-		}
+        $this->content  = $params['content']  ?? [];
+        $this->isHidden = $params['isHidden'] ?? false;
+        $this->type     = $params['type']     ?? null;
 
-		// make sure the content is always defined as array to keep
-		// at least a bit of backward compatibility with older fields
-		if (is_array($params['content'] ?? null) === false) {
-			$params['content'] = [];
-		}
+        // create the content object
+        $this->content = new Content($this->content, $this->parent);
+    }
 
-		$this->isHidden = $params['isHidden'] ?? false;
-		$this->type     = $params['type'];
+    /**
+     * Converts the object to a string
+     *
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return $this->toHtml();
+    }
 
-		// create the content object
-		$this->content = new Content($params['content'], $this->parent);
-	}
+    /**
+     * Deprecated method to return the block type
+     *
+     * @deprecated 3.5.0 Use `\Kirby\Cms\Block::type()` instead
+     * @todo Add deprecated() helper warning in 3.6.0
+     * @todo Remove in 3.7.0
+     *
+     * @return string
+     */
+    public function _key(): string
+    {
+        return $this->type();
+    }
 
-	/**
-	 * Converts the object to a string
-	 */
-	public function __toString(): string
-	{
-		return $this->toHtml();
-	}
+    /**
+     * Deprecated method to return the block id
+     *
+     * @deprecated 3.5.0 Use `\Kirby\Cms\Block::id()` instead
+     * @todo Add deprecated() helper warning in 3.6.0
+     * @todo Remove in 3.7.0
+     *
+     * @return string
+     */
+    public function _uid(): string
+    {
+        return $this->id();
+    }
 
-	/**
-	 * Returns the content object
-	 */
-	public function content(): Content
-	{
-		return $this->content;
-	}
+    /**
+     * Returns the content object
+     *
+     * @return \Kirby\Cms\Content
+     */
+    public function content()
+    {
+        return $this->content;
+    }
 
-	/**
-	 * Controller for the block snippet
-	 */
-	public function controller(): array
-	{
-		return [
-			'block'   => $this,
-			'content' => $this->content(),
-			// deprecated block data
-			'data'    => $this,
-			'id'      => $this->id(),
-			'prev'    => $this->prev(),
-			'next'    => $this->next()
-		];
-	}
+    /**
+     * Controller for the block snippet
+     *
+     * @return array
+     */
+    public function controller(): array
+    {
+        return [
+            'block'   => $this,
+            'content' => $this->content(),
+            // deprecated block data
+            'data'    => $this,
+            'id'      => $this->id(),
+            'prev'    => $this->prev(),
+            'next'    => $this->next()
+        ];
+    }
 
-	/**
-	 * Converts the block to HTML and then
-	 * uses the Str::excerpt method to create
-	 * a non-formatted, shortened excerpt from it
-	 */
-	public function excerpt(mixed ...$args): string
-	{
-		return Str::excerpt($this->toHtml(), ...$args);
-	}
+    /**
+     * Converts the block to HTML and then
+     * uses the Str::excerpt method to create
+     * a non-formatted, shortened excerpt from it
+     *
+     * @param mixed ...$args
+     * @return string
+     */
+    public function excerpt(...$args)
+    {
+        return Str::excerpt($this->toHtml(), ...$args);
+    }
 
-	/**
-	 * Constructs a block object with registering blocks models
-	 * @internal
-	 *
-	 * @throws \Kirby\Exception\InvalidArgumentException
-	 */
-	public static function factory(array $params): static
-	{
-		$type = $params['type'] ?? null;
+    /**
+     * Checks if the block is empty
+     *
+     * @return bool
+     */
+    public function isEmpty(): bool
+    {
+        return empty($this->content()->toArray());
+    }
 
-		if (
-			empty($type) === false &&
-			$class = (static::$models[$type] ?? null)
-		) {
-			$object = new $class($params);
+    /**
+     * Checks if the block is hidden
+     * from being rendered in the frontend
+     *
+     * @return bool
+     */
+    public function isHidden(): bool
+    {
+        return $this->isHidden;
+    }
 
-			if ($object instanceof self) {
-				return $object;
-			}
-		}
+    /**
+     * Checks if the block is not empty
+     *
+     * @return bool
+     */
+    public function isNotEmpty(): bool
+    {
+        return $this->isEmpty() === false;
+    }
 
-		// default model for blocks
-		if ($class = (static::$models['default'] ?? null)) {
-			$object = new $class($params);
+    /**
+     * Returns the block type
+     *
+     * @return string
+     */
+    public function type(): string
+    {
+        return $this->type;
+    }
 
-			if ($object instanceof self) {
-				return $object;
-			}
-		}
+    /**
+     * The result is being sent to the editor
+     * via the API in the panel
+     *
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            'content'  => $this->content()->toArray(),
+            'id'       => $this->id(),
+            'isHidden' => $this->isHidden(),
+            'type'     => $this->type(),
+        ];
+    }
 
-		return new static($params);
-	}
+    /**
+     * Converts the block to html first
+     * and then places that inside a field
+     * object. This can be used further
+     * with all available field methods
+     *
+     * @return \Kirby\Cms\Field
+     */
+    public function toField()
+    {
+        return new Field($this->parent(), $this->id(), $this->toHtml());
+    }
 
-	/**
-	 * Checks if the block is empty
-	 */
-	public function isEmpty(): bool
-	{
-		return empty($this->content()->toArray());
-	}
-
-	/**
-	 * Checks if the block is hidden
-	 * from being rendered in the frontend
-	 */
-	public function isHidden(): bool
-	{
-		return $this->isHidden;
-	}
-
-	/**
-	 * Checks if the block is not empty
-	 */
-	public function isNotEmpty(): bool
-	{
-		return $this->isEmpty() === false;
-	}
-
-	/**
-	 * Returns the sibling collection that filtered by block status
-	 */
-	protected function siblingsCollection(): Blocks
-	{
-		return $this->siblings->filter('isHidden', $this->isHidden());
-	}
-
-	/**
-	 * Returns the block type
-	 */
-	public function type(): string
-	{
-		return $this->type;
-	}
-
-	/**
-	 * The result is being sent to the editor
-	 * via the API in the panel
-	 */
-	public function toArray(): array
-	{
-		return [
-			'content'  => $this->content()->toArray(),
-			'id'       => $this->id(),
-			'isHidden' => $this->isHidden(),
-			'type'     => $this->type(),
-		];
-	}
-
-	/**
-	 * Converts the block to html first
-	 * and then places that inside a field
-	 * object. This can be used further
-	 * with all available field methods
-	 */
-	public function toField(): Field
-	{
-		return new Field($this->parent(), $this->id(), $this->toHtml());
-	}
-
-	/**
-	 * Converts the block to HTML
-	 */
-	public function toHtml(): string
-	{
-		try {
-			$kirby = $this->parent()->kirby();
-			return (string)$kirby->snippet(
-				'blocks/' . $this->type(),
-				$this->controller(),
-				true
-			);
-		} catch (Throwable $e) {
-			if ($kirby->option('debug') === true) {
-				return '<p>Block error: "' . $e->getMessage() . '" in block type: "' . $this->type() . '"</p>';
-			}
-
-			return '';
-		}
-	}
+    /**
+     * Converts the block to HTML
+     *
+     * @return string
+     */
+    public function toHtml(): string
+    {
+        try {
+            return (string)snippet('blocks/' . $this->type(), $this->controller(), true);
+        } catch (Throwable $e) {
+            return '<p>Block error: "' . $e->getMessage() . '" in block type: "' . $this->type() . '"</p>';
+        }
+    }
 }

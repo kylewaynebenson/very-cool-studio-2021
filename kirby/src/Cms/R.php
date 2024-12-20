@@ -2,7 +2,6 @@
 
 namespace Kirby\Cms;
 
-use Kirby\Http\Request;
 use Kirby\Toolkit\Facade;
 
 /**
@@ -11,13 +10,16 @@ use Kirby\Toolkit\Facade;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier
+ * @copyright Bastian Allgeier GmbH
  * @license   https://getkirby.com/license
  */
 class R extends Facade
 {
-	public static function instance(): Request
-	{
-		return App::instance()->request();
-	}
+    /**
+     * @return \Kirby\Http\Request
+     */
+    public static function instance()
+    {
+        return App::instance()->request();
+    }
 }

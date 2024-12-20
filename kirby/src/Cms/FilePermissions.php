@@ -8,19 +8,10 @@ namespace Kirby\Cms;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier
+ * @copyright Bastian Allgeier GmbH
  * @license   https://getkirby.com/license
  */
 class FilePermissions extends ModelPermissions
 {
-	protected string $category = 'files';
-
-	protected function canChangeTemplate(): bool
-	{
-		if (count($this->model->blueprints()) <= 1) {
-			return false;
-		}
-
-		return true;
-	}
+    protected $category = 'files';
 }

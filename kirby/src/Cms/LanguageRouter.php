@@ -7,7 +7,6 @@ use Kirby\Exception\NotFoundException;
 use Kirby\Http\Router;
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\Str;
-use Kirby\Uuid\Uuid;
 
 /**
  * The language router is used internally
@@ -16,132 +15,121 @@ use Kirby\Uuid\Uuid;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier
+ * @copyright Bastian Allgeier GmbH
  * @license   https://getkirby.com/license
  */
 class LanguageRouter
 {
-	protected Router $router;
+    /**
+     * The parent language
+     *
+     * @var Language
+     */
+    protected $language;
 
-	/**
-	 * Creates a new language router instance
-	 * for the given language
-	 */
-	public function __construct(
-		protected Language $language
-	) {
-	}
+    /**
+     * The router instance
+     *
+     * @var Router
+     */
+    protected $router;
 
-	/**
-	 * Fetches all scoped routes for the
-	 * current language from the Kirby instance
-	 *
-	 * @throws \Kirby\Exception\NotFoundException
-	 */
-	public function routes(): array
-	{
-		$language = $this->language;
-		$kirby    = $language->kirby();
-		$routes   = $kirby->routes();
+    /**
+     * Creates a new language router instance
+     * for the given language
+     *
+     * @param \Kirby\Cms\Language $language
+     */
+    public function __construct(Language $language)
+    {
+        $this->language = $language;
+    }
 
-		// only keep the scoped language routes
-		$routes = array_values(array_filter($routes, function ($route) use ($language) {
-			// no language scope
-			if (empty($route['language']) === true) {
-				return false;
-			}
+    /**
+     * Fetches all scoped routes for the
+     * current language from the Kirby instance
+     *
+     * @return array
+     * @throws \Kirby\Exception\NotFoundException
+     */
+    public function routes(): array
+    {
+        $language = $this->language;
+        $kirby    = $language->kirby();
+        $routes   = $kirby->routes();
 
-			// wildcard
-			if ($route['language'] === '*') {
-				return true;
-			}
+        // only keep the scoped language routes
+        $routes = array_values(array_filter($routes, function ($route) use ($language) {
 
-			// get all applicable languages
-			$languages = Str::split(strtolower($route['language']), '|');
+            // no language scope
+            if (empty($route['language']) === true) {
+                return false;
+            }
 
-			// validate the language
-			return in_array($language->code(), $languages) === true;
-		}));
+            // wildcard
+            if ($route['language'] === '*') {
+                return true;
+            }
 
-		// add the page-scope if necessary
-		foreach ($routes as $index => $route) {
-			if ($pageId = ($route['page'] ?? null)) {
-				if ($page = $kirby->page($pageId)) {
-					// convert string patterns to arrays
-					$patterns = A::wrap($route['pattern']);
+            // get all applicable languages
+            $languages = Str::split(strtolower($route['language']), '|');
 
-					// prefix all patterns with the page slug
-					$patterns = A::map(
-						$patterns,
-						fn ($pattern) => $page->uri($language) . '/' . $pattern
-					);
+            // validate the language
+            return in_array($language->code(), $languages) === true;
+        }));
 
-					// re-inject the pattern and the full page object
-					$routes[$index]['pattern'] = $patterns;
-					$routes[$index]['page']    = $page;
-				} else {
-					throw new NotFoundException('The page "' . $pageId . '" does not exist');
-				}
-			}
-		}
+        // add the page-scope if necessary
+        foreach ($routes as $index => $route) {
+            if ($pageId = ($route['page'] ?? null)) {
+                if ($page = $kirby->page($pageId)) {
 
-		// Language-specific UUID URLs
-		$routes[] = [
-			'pattern' => '@/(page|file)/(:all)',
-			'method'  => 'ALL',
-			'env'     => 'site',
-			'action'  => function (string $languageCode, string $type, string $id) use ($kirby, $language) {
-				// try to resolve to model, but only from UUID cache;
-				// this ensures that only existing UUIDs can be queried
-				// and attackers can't force Kirby to go through the whole
-				// site index with a non-existing UUID
-				if ($model = Uuid::for($type . '://' . $id)?->model(true)) {
-					return $kirby
-						->response()
-						->redirect($model->url($language->code()));
-				}
+                    // convert string patterns to arrays
+                    $patterns = A::wrap($route['pattern']);
 
-				// render the error page
-				return false;
-			}
-		];
+                    // prefix all patterns with the page slug
+                    $patterns = array_map(function ($pattern) use ($page, $language) {
+                        return $page->uri($language) . '/' . $pattern;
+                    }, $patterns);
 
-		return $routes;
-	}
+                    // reinject the pattern and the full page object
+                    $routes[$index]['pattern'] = $patterns;
+                    $routes[$index]['page']    = $page;
+                } else {
+                    throw new NotFoundException('The page "' . $pageId . '" does not exist');
+                }
+            }
+        }
 
-	/**
-	 * Wrapper around the Router::call method
-	 * that injects the Language instance and
-	 * if needed also the Page as arguments.
-	 */
-	public function call(string|null $path = null): mixed
-	{
-		$language       = $this->language;
-		$kirby          = $language->kirby();
-		$this->router ??= new Router($this->routes());
+        return $routes;
+    }
 
-		try {
-			return $this->router->call($path, $kirby->request()->method(), function ($route) use ($kirby, $language) {
-				$kirby->setCurrentTranslation($language);
-				$kirby->setCurrentLanguage($language);
+    /**
+     * Wrapper around the Router::call method
+     * that injects the Language instance and
+     * if needed also the Page as arguments.
+     *
+     * @param string|null $path
+     * @return mixed
+     */
+    public function call(string $path = null)
+    {
+        $language = $this->language;
+        $kirby    = $language->kirby();
+        $router   = new Router($this->routes());
 
-				if ($page = $route->page()) {
-					return $route->action()->call(
-						$route,
-						$language,
-						$page,
-						...$route->arguments()
-					);
-				}
+        try {
+            return $router->call($path, $kirby->request()->method(), function ($route) use ($kirby, $language) {
+                $kirby->setCurrentTranslation($language);
+                $kirby->setCurrentLanguage($language);
 
-				return $route->action()->call(
-					$route,
-					$language,
-					...$route->arguments()
-				);
-			});
-		} catch (Exception) {
-			return $kirby->resolve($path, $language->code());
-		}
-	}
+                if ($page = $route->page()) {
+                    return $route->action()->call($route, $language, $page, ...$route->arguments());
+                } else {
+                    return $route->action()->call($route, $language, ...$route->arguments());
+                }
+            });
+        } catch (Exception $e) {
+            return $kirby->resolve($path, $language->code());
+        }
+    }
 }

@@ -3,157 +3,98 @@
 namespace Kirby\Parsley;
 
 use DOMElement;
-use DOMNodeList;
 use DOMXPath;
 use Kirby\Toolkit\Str;
 
-/**
- * Represents a block level element
- * in an HTML document
- *
- * @since 3.5.0
- *
- * @package   Kirby Parsley
- * @author    Bastian Allgeier <bastian@getkirby.com>,
- * @link      https://getkirby.com
- * @copyright Bastian Allgeier
- * @license   https://getkirby.com/license
- */
 class Element
 {
-	public function __construct(
-		protected DOMElement $node,
-		protected array $marks = []
-	) {
-	}
+    protected $marks;
+    protected $node;
 
-	/**
-	 * The returns the attribute value or
-	 * the given fallback if the attribute does not exist
-	 */
-	public function attr(
-		string $attr,
-		string|null $fallback = null
-	): string|null {
-		if ($this->node->hasAttribute($attr) === true) {
-			return $this->node->getAttribute($attr) ?? $fallback;
-		}
+    public function __construct(DOMElement $node, array $marks = [])
+    {
+        $this->marks = $marks;
+        $this->node  = $node;
+    }
 
-		return $fallback;
-	}
+    public function attr(string $attr, $fallback = null)
+    {
+        if ($this->node->hasAttribute($attr)) {
+            return $this->node->getAttribute($attr) ?? $fallback;
+        }
 
-	/**
-	 * Returns a list of all child elements
-	 */
-	public function children(): DOMNodeList
-	{
-		return $this->node->childNodes;
-	}
+        return $fallback;
+    }
 
-	/**
-	 * Returns an array with all class names
-	 */
-	public function classList(): array
-	{
-		return Str::split($this->className(), ' ');
-	}
+    public function children()
+    {
+        return $this->node->childNodes;
+    }
 
-	/**
-	 * Returns the value of the class attribute
-	 */
-	public function className(): string|null
-	{
-		return $this->attr('class');
-	}
+    public function classList(): array
+    {
+        return Str::split($this->className(), ' ');
+    }
 
-	/**
-	 * Returns the original dom element
-	 */
-	public function element(): DOMElement
-	{
-		return $this->node;
-	}
+    public function className()
+    {
+        return $this->node->getAttribute('class');
+    }
 
-	/**
-	 * Returns an array with all nested elements
-	 * that could be found for the given query
-	 */
-	public function filter(string $query): array
-	{
-		$result = [];
+    public function element()
+    {
+        return $this->node;
+    }
 
-		if ($queryResult = $this->query($query)) {
-			foreach ($queryResult as $node) {
-				$result[] = new static($node);
-			}
-		}
+    public function filter(string $query)
+    {
+        $result = [];
 
-		return $result;
-	}
+        if ($queryResult = $this->query($query)) {
+            foreach ($queryResult as $node) {
+                $result[] = new static($node);
+            }
+        }
 
-	/**
-	 * Tries to find a single nested element by
-	 * query and otherwise returns null
-	 */
-	public function find(string $query): static|null
-	{
-		if ($result = $this->query($query)[0]) {
-			return new static($result);
-		}
+        return $result;
+    }
 
-		return null;
-	}
+    public function find(string $query)
+    {
+        if ($result = $this->query($query)[0]) {
+            return new static($result);
+        }
 
-	/**
-	 * Returns the inner HTML of the element
-	 *
-	 * @param array|null $marks List of allowed marks
-	 */
-	public function innerHtml(array|null $marks = null): string
-	{
-		$marks ??= $this->marks;
-		$inline  = new Inline($this->node, $marks);
-		return $inline->innerHtml();
-	}
+        return false;
+    }
 
-	/**
-	 * Returns the contents as plain text
-	 */
-	public function innerText(): string
-	{
-		return trim($this->node->textContent);
-	}
+    public function innerHtml(array $marks = null): string
+    {
+        return (new Inline($this->node, $marks ?? $this->marks))->innerHtml();
+    }
 
-	/**
-	 * Returns the full HTML for the element
-	 */
-	public function outerHtml(array|null $marks = null): string
-	{
-		return $this->node->ownerDocument->saveHtml($this->node);
-	}
+    public function innerText()
+    {
+        return trim($this->node->textContent);
+    }
 
-	/**
-	 * Searches nested elements
-	 */
-	public function query(string $query): DOMNodeList|null
-	{
-		$path = new DOMXPath($this->node->ownerDocument);
-		return $path->query($query, $this->node);
-	}
+    public function outerHtml(array $marks = null): string
+    {
+        return $this->node->ownerDocument->saveHtml($this->node);
+    }
 
-	/**
-	 * Removes the element from the DOM
-	 */
-	public function remove(): void
-	{
-		$this->node->parentNode->removeChild($this->node);
-	}
+    public function query($query)
+    {
+        return (new DOMXPath($this->node->ownerDocument))->query($query, $this->node);
+    }
 
-	/**
-	 * Returns the name of the element
-	 */
-	public function tagName(): string
-	{
-		return $this->node->tagName;
-	}
+    public function remove()
+    {
+        $this->node->parentNode->removeChild($this->node);
+    }
+
+    public function tagName(): string
+    {
+        return $this->node->tagName;
+    }
 }

@@ -2,9 +2,9 @@
 
 namespace Kirby\Cms;
 
-use Kirby\Exception\AuthException;
 use Kirby\Exception\DuplicateException;
 use Kirby\Exception\LogicException;
+use Kirby\Exception\PermissionException;
 
 /**
  * Takes care of content lock and unlock information
@@ -12,211 +12,221 @@ use Kirby\Exception\LogicException;
  * @package   Kirby Cms
  * @author    Nico Hoffmann <nico@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier
+ * @copyright Bastian Allgeier GmbH
  * @license   https://getkirby.com/license
  */
 class ContentLock
 {
-	protected array $data;
+    /**
+     * Lock data
+     *
+     * @var array
+     */
+    protected $data;
 
-	public function __construct(
-		protected ModelWithContent $model
-	) {
-		$this->data = $this->kirby()->locks()->get($model);
-	}
+    /**
+     * The model to manage locking/unlocking for
+     *
+     * @var ModelWithContent
+     */
+    protected $model;
 
-	/**
-	 * Clears the lock unconditionally
-	 */
-	protected function clearLock(): bool
-	{
-		// if no lock exists, skip
-		if (isset($this->data['lock']) === false) {
-			return true;
-		}
+    /**
+     * @param \Kirby\Cms\ModelWithContent $model
+     */
+    public function __construct(ModelWithContent $model)
+    {
+        $this->model = $model;
+        $this->data  = $this->kirby()->locks()->get($model);
+    }
 
-		// remove lock
-		unset($this->data['lock']);
+    /**
+     * Clears the lock unconditionally
+     *
+     * @return bool
+     */
+    protected function clearLock(): bool
+    {
+        // if no lock exists, skip
+        if (isset($this->data['lock']) === false) {
+            return true;
+        }
 
-		return $this->kirby()->locks()->set($this->model, $this->data);
-	}
+        // remove lock
+        unset($this->data['lock']);
 
-	/**
-	 * Sets lock with the current user
-	 *
-	 * @throws \Kirby\Exception\DuplicateException
-	 */
-	public function create(): bool
-	{
-		// check if model is already locked by another user
-		if (
-			isset($this->data['lock']) === true &&
-			$this->data['lock']['user'] !== $this->user()->id()
-		) {
-			$id = ContentLocks::id($this->model);
-			throw new DuplicateException($id . ' is already locked');
-		}
+        return $this->kirby()->locks()->set($this->model, $this->data);
+    }
 
-		$this->data['lock'] = [
-			'user' => $this->user()->id(),
-			'time' => time()
-		];
+    /**
+     * Sets lock with the current user
+     *
+     * @return bool
+     * @throws \Kirby\Exception\DuplicateException
+     */
+    public function create(): bool
+    {
+        // check if model is already locked by another user
+        if (
+            isset($this->data['lock']) === true &&
+            $this->data['lock']['user'] !== $this->user()->id()
+        ) {
+            $id = ContentLocks::id($this->model);
+            throw new DuplicateException($id . ' is already locked');
+        }
 
-		return $this->kirby()->locks()->set($this->model, $this->data);
-	}
+        $this->data['lock'] = [
+            'user' => $this->user()->id(),
+            'time' => time()
+        ];
 
-	/**
-	 * Returns either `false` or array  with `user`, `email`,
-	 * `time` and `unlockable` keys
-	 */
-	public function get(): array|bool
-	{
-		$data = $this->data['lock'] ?? [];
+        return $this->kirby()->locks()->set($this->model, $this->data);
+    }
 
-		if (empty($data) === false && $data['user'] !== $this->user()->id()) {
-			if ($user = $this->kirby()->user($data['user'])) {
-				$time = (int)($data['time']);
+    /**
+     * Returns either `false` or array  with `user`, `email`,
+     * `time` and `unlockable` keys
+     *
+     * @return array|bool
+     */
+    public function get()
+    {
+        $data = $this->data['lock'] ?? [];
 
-				return [
-					'user'       => $user->id(),
-					'email'      => $user->email(),
-					'time'       => $time,
-					'unlockable' => ($time + 60) <= time()
-				];
-			}
+        if (empty($data) === false && $data['user'] !== $this->user()->id()) {
+            if ($user = $this->kirby()->user($data['user'])) {
+                $time = (int)($data['time']);
 
-			// clear lock if user not found
-			$this->clearLock();
-		}
+                return [
+                    'user'       => $user->id(),
+                    'email'      => $user->email(),
+                    'time'       => $time,
+                    'unlockable' => ($time + 60) <= time()
+                ];
+            }
 
-		return false;
-	}
+            // clear lock if user not found
+            $this->clearLock();
+        }
 
-	/**
-	 * Returns if the model is locked by another user
-	 */
-	public function isLocked(): bool
-	{
-		$lock = $this->get();
+        return false;
+    }
 
-		if ($lock !== false && $lock['user'] !== $this->user()->id()) {
-			return true;
-		}
+    /**
+     * Returns if the model is locked by another user
+     *
+     * @return bool
+     */
+    public function isLocked(): bool
+    {
+        $lock = $this->get();
 
-		return false;
-	}
+        if ($lock !== false && $lock['user'] !== $this->user()->id()) {
+            return true;
+        }
 
-	/**
-	 * Returns if the current user's lock has been removed by another user
-	 */
-	public function isUnlocked(): bool
-	{
-		$data = $this->data['unlock'] ?? [];
+        return false;
+    }
 
-		return in_array($this->user()->id(), $data) === true;
-	}
+    /**
+     * Returns if the current user's lock has been removed by another user
+     *
+     * @return bool
+     */
+    public function isUnlocked(): bool
+    {
+        $data = $this->data['unlock'] ?? [];
 
-	/**
-	 * Returns the app instance
-	 */
-	protected function kirby(): App
-	{
-		return $this->model->kirby();
-	}
+        return in_array($this->user()->id(), $data) === true;
+    }
 
-	/**
-	 * Removes lock of current user
-	 *
-	 * @throws \Kirby\Exception\LogicException
-	 */
-	public function remove(): bool
-	{
-		// if no lock exists, skip
-		if (isset($this->data['lock']) === false) {
-			return true;
-		}
+    /**
+     * Returns the app instance
+     *
+     * @return \Kirby\Cms\App
+     */
+    protected function kirby(): App
+    {
+        return $this->model->kirby();
+    }
 
-		// check if lock was set by another user
-		if ($this->data['lock']['user'] !== $this->user()->id()) {
-			throw new LogicException([
-				'fallback' => 'The content lock can only be removed by the user who created it. Use unlock instead.',
-				'httpCode' => 409
-			]);
-		}
+    /**
+     * Removes lock of current user
+     *
+     * @return bool
+     * @throws \Kirby\Exception\LogicException
+     */
+    public function remove(): bool
+    {
+        // if no lock exists, skip
+        if (isset($this->data['lock']) === false) {
+            return true;
+        }
 
-		return $this->clearLock();
-	}
+        // check if lock was set by another user
+        if ($this->data['lock']['user'] !== $this->user()->id()) {
+            throw new LogicException([
+                'fallback' => 'The content lock can only be removed by the user who created it. Use unlock instead.',
+                'httpCode' => 409
+            ]);
+        }
 
-	/**
-	 * Removes unlock information for current user
-	 */
-	public function resolve(): bool
-	{
-		// if no unlocks exist, skip
-		if (isset($this->data['unlock']) === false) {
-			return true;
-		}
+        return $this->clearLock();
+    }
 
-		// remove user from unlock array
-		$this->data['unlock'] = array_diff(
-			$this->data['unlock'],
-			[$this->user()->id()]
-		);
+    /**
+     * Removes unlock information for current user
+     *
+     * @return bool
+     */
+    public function resolve(): bool
+    {
+        // if no unlocks exist, skip
+        if (isset($this->data['unlock']) === false) {
+            return true;
+        }
 
-		return $this->kirby()->locks()->set($this->model, $this->data);
-	}
+        // remove user from unlock array
+        $this->data['unlock'] = array_diff(
+            $this->data['unlock'],
+            [$this->user()->id()]
+        );
 
-	/**
-	 * Returns the state for the
-	 * form buttons in the frontend
-	 */
-	public function state(): string|null
-	{
-		return match (true) {
-			$this->isUnlocked() => 'unlock',
-			$this->isLocked()   => 'lock',
-			default => null
-		};
-	}
+        return $this->kirby()->locks()->set($this->model, $this->data);
+    }
 
-	/**
-	 * Returns a usable lock array
-	 * for the frontend
-	 */
-	public function toArray(): array
-	{
-		return [
-			'state' => $this->state(),
-			'data'  => $this->get()
-		];
-	}
+    /**
+     * Removes current lock and adds lock user to unlock data
+     *
+     * @return bool
+     */
+    public function unlock(): bool
+    {
+        // if no lock exists, skip
+        if (isset($this->data['lock']) === false) {
+            return true;
+        }
 
-	/**
-	 * Removes current lock and adds lock user to unlock data
-	 */
-	public function unlock(): bool
-	{
-		// if no lock exists, skip
-		if (isset($this->data['lock']) === false) {
-			return true;
-		}
+        // add lock user to unlocked data
+        $this->data['unlock']   = $this->data['unlock'] ?? [];
+        $this->data['unlock'][] = $this->data['lock']['user'];
 
-		// add lock user to unlocked data
-		$this->data['unlock'] ??= [];
-		$this->data['unlock'][] = $this->data['lock']['user'];
+        return $this->clearLock();
+    }
 
-		return $this->clearLock();
-	}
+    /**
+     * Returns currently authenticated user;
+     * throws exception if none is authenticated
+     *
+     * @return \Kirby\Cms\User
+     * @throws \Kirby\Exception\PermissionException
+     */
+    protected function user(): User
+    {
+        if ($user = $this->kirby()->user()) {
+            return $user;
+        }
 
-	/**
-	 * Returns currently authenticated user;
-	 * throws exception if none is authenticated
-	 *
-	 * @throws \Kirby\Exception\PermissionException
-	 */
-	protected function user(): User
-	{
-		return $this->kirby()->user() ??
-			throw new AuthException('No user authenticated.');
-	}
+        throw new PermissionException('No user authenticated.');
+    }
 }

@@ -8,44 +8,60 @@ namespace Kirby\Cms;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier
+ * @copyright Bastian Allgeier GmbH
  * @license   https://getkirby.com/license
  */
 class UserPermissions extends ModelPermissions
 {
-	protected string $category = 'users';
+    /**
+     * @var string
+     */
+    protected $category = 'users';
 
-	public function __construct(User $model)
-	{
-		parent::__construct($model);
+    /**
+     * UserPermissions constructor
+     *
+     * @param \Kirby\Cms\Model $model
+     */
+    public function __construct(Model $model)
+    {
+        parent::__construct($model);
 
-		// change the scope of the permissions,
-		// when the current user is this user
-		$this->category = $this->user?->is($model) ? 'user' : 'users';
-	}
+        // change the scope of the permissions, when the current user is this user
+        $this->category = $this->user && $this->user->is($model) ? 'user' : 'users';
+    }
 
-	protected function canChangeRole(): bool
-	{
-		return $this->model->roles()->count() > 1;
-	}
+    /**
+     * @return bool
+     */
+    protected function canChangeRole(): bool
+    {
+        return $this->model->roles()->count() > 1;
+    }
 
-	protected function canCreate(): bool
-	{
-		// the admin can always create new users
-		if ($this->user->isAdmin() === true) {
-			return true;
-		}
+    /**
+     * @return bool
+     */
+    protected function canCreate(): bool
+    {
+        // the admin can always create new users
+        if ($this->user->isAdmin() === true) {
+            return true;
+        }
 
-		// users who are not admins cannot create admins
-		if ($this->model->isAdmin() === true) {
-			return false;
-		}
+        // users who are not admins cannot create admins
+        if ($this->model->isAdmin() === true) {
+            return false;
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	protected function canDelete(): bool
-	{
-		return $this->model->isLastAdmin() !== true;
-	}
+    /**
+     * @return bool
+     */
+    protected function canDelete(): bool
+    {
+        return $this->model->isLastAdmin() !== true;
+    }
 }

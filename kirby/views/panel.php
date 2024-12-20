@@ -1,14 +1,15 @@
 <?php
-
-use Kirby\Toolkit\Html;
-
 /**
  * @var \Kirby\Cms\App $kirby
+ * @var array<string, mixed> $config
+ * @var string $assetUrl
+ * @var string|false $customCss
  * @var string $icons
- * @var array<string, mixed> $assets
- * @var array<string, mixed> $fiber
+ * @var string $pluginCss
+ * @var string $pluginJs
  * @var string $panelUrl
  * @var string $nonce
+ * @var array<string, mixed> $options
  */ ?>
 <!DOCTYPE html>
 <html>
@@ -20,33 +21,24 @@ use Kirby\Toolkit\Html;
 
   <title>Kirby Panel</title>
 
-  <script nonce="<?= $nonce ?>">
-    if (
-        !window.CSS ||
-        window.CSS.supports("display", "grid") === false ||
-        !window.fetch
-    ) {
-      window.location.href = "<?= $panelUrl ?>browser";
-    }
-  </script>
+  <link nonce="<?= $nonce ?>" rel="stylesheet" href="<?= $assetUrl ?>/css/app.css">
+  <link nonce="<?= $nonce ?>" rel="stylesheet" href="<?= $pluginCss ?>">
 
-  <?php foreach ($assets['css'] as $css): ?>
-  <link nonce="<?= $nonce ?>" rel="stylesheet" href="<?= $css ?>">
-  <?php endforeach ?>
-
-  <?php foreach ($assets['icons'] as $icon): ?>
-  <?= Html::tag('link', null, $icon) ?>
-  <?php endforeach ?>
-
-  <?php foreach ($assets['js'] as $js): ?>
-  <?php if (($js['type'] ?? null) === 'module'): ?>
-  <link rel="modulepreload" href="<?= $js['src'] ?>">
+  <?php if ($customCss) : ?>
+  <link nonce="<?= $nonce ?>" rel="stylesheet" href="<?= $customCss ?>">
   <?php endif ?>
-  <?php endforeach ?>
+
+  <link nonce="<?= $nonce ?>" rel="apple-touch-icon" href="<?= $assetUrl ?>/apple-touch-icon.png" />
+  <link nonce="<?= $nonce ?>" rel="icon" href="<?= $assetUrl ?>/favicon.svg" type="image/svg+xml">
+  <link nonce="<?= $nonce ?>" rel="alternate icon" href="<?= $assetUrl ?>/favicon.png" type="image/png">
 
   <base href="<?= $panelUrl ?>">
 </head>
 <body>
+  <svg aria-hidden="true" class="k-icons" xmlns="http://www.w3.org/2000/svg" overflow="hidden" nonce="<?= $nonce ?>">
+    <defs />
+  </svg>
+
   <div id="app"></div>
 
   <noscript>
@@ -55,21 +47,14 @@ use Kirby\Toolkit\Html;
 
   <?= $icons ?>
 
-  <script nonce="<?= $nonce ?>">
-    // Fiber setup
-    window.fiber = <?= json_encode($fiber) ?>;
-  </script>
-
-  <?php foreach ($assets['js'] as $key => $js): ?>
-  <?php if ($key === 'index'): ?>
-  <script type="module" nonce="<?= $nonce ?>">
-    <?= $assets['plugin-imports'] ?>
-    import('<?= $js['src'] ?>')
-  </script>
-  <?php else: ?>
-  <?= Html::tag('script', '', $js) . PHP_EOL ?>
+  <script nonce="<?= $nonce ?>">window.panel = <?= json_encode($options, JSON_UNESCAPED_SLASHES) ?></script>
+  <script nonce="<?= $nonce ?>" src="<?= $assetUrl ?>/js/plugins.js" defer></script>
+  <script nonce="<?= $nonce ?>" src="<?= $assetUrl ?>/js/vendor.js" defer></script>
+  <script nonce="<?= $nonce ?>" src="<?= $pluginJs ?>" defer></script>
+  <?php if (isset($config['js'])) : ?>
+    <script nonce="<?= $nonce ?>" src="<?= Url::to($config['js']) ?>" defer></script>
   <?php endif ?>
-  <?php endforeach ?>
+  <script nonce="<?= $nonce ?>" src="<?= $assetUrl ?>/js/app.js" defer></script>
 
 </body>
 </html>

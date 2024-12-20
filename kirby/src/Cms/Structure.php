@@ -2,6 +2,8 @@
 
 namespace Kirby\Cms;
 
+use Kirby\Exception\InvalidArgumentException;
+
 /**
  * The Structure class wraps
  * array data into a nicely chainable
@@ -13,41 +15,50 @@ namespace Kirby\Cms;
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
  * @link      https://getkirby.com
- * @copyright Bastian Allgeier
+ * @copyright Bastian Allgeier GmbH
  * @license   https://getkirby.com/license
  */
-class Structure extends Items
+class Structure extends Collection
 {
-	public const ITEM_CLASS = StructureObject::class;
+    /**
+     * Creates a new Collection with the given objects
+     *
+     * @param array $objects Kirby\Cms\StructureObject` objects or props arrays
+     * @param object|null $parent
+     */
+    public function __construct($objects = [], $parent = null)
+    {
+        $this->parent = $parent;
+        $this->set($objects);
+    }
 
-	/**
-	 * All registered structure methods
-	 */
-	public static array $methods = [];
+    /**
+     * The internal setter for collection items.
+     * This makes sure that nothing unexpected ends
+     * up in the collection. You can pass arrays or
+     * StructureObjects
+     *
+     * @param string $id
+     * @param array|StructureObject $props
+     * @throws \Kirby\Exception\InvalidArgumentException
+     */
+    public function __set(string $id, $props)
+    {
+        if (is_a($props, 'Kirby\Cms\StructureObject') === true) {
+            $object = $props;
+        } else {
+            if (is_array($props) === false) {
+                throw new InvalidArgumentException('Invalid structure data');
+            }
 
-	/**
-	 * Creates a new structure collection from a
-	 * an array of item props
-	 */
-	public static function factory(
-		array $items = null,
-		array $params = []
-	): static {
-		if (is_array($items) === true) {
-			$items = array_map(function ($item, $index) {
-				if (is_array($item) === true) {
-					// pass a clean content array without special `Item` keys
-					$item['content'] = $item;
+            $object = new StructureObject([
+                'content'    => $props,
+                'id'         => $props['id'] ?? $id,
+                'parent'     => $this->parent,
+                'structure'  => $this
+            ]);
+        }
 
-					// bake-in index as ID for all items
-					// TODO: remove when adding UUID supports to Structures
-					$item['id'] ??= $index;
-				}
-
-				return $item;
-			}, $items, array_keys($items));
-		}
-
-		return parent::factory($items, $params);
-	}
+        return parent::__set($object->id(), $object);
+    }
 }
