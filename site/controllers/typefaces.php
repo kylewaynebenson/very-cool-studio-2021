@@ -11,7 +11,7 @@
  */
 return function ($page) {
 
-    $tag   = urldecode(param('tag'));
+    $tag   = $page->param('tag') !== null ? urldecode($page->param('tag')) : '';
     /**
      * We use the collection helper to fetch the notes collection defined in `/site/collections/notes.php`
      * 
