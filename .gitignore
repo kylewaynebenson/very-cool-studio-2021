@@ -9,6 +9,12 @@ Icon
 /node_modules
 /node_modules/*
 
+# Environment
+# ------------
+.env
+.env.*
+!.env.example
+
 # Temporary files
 # ---------------
 

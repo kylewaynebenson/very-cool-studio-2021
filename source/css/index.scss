@@ -198,6 +198,9 @@ p {
 img {
   width: 100%;
 }
+video {
+  width: 100%;
+}
 li {
   list-style: none;
 }
@@ -1249,7 +1252,7 @@ input:checked + svg {
 contact .h1 {
   margin-bottom: 1.5rem;
 }
-.page-about .main section {
+.page-about .main section:not(:first-of-type) {
   background-image: var(--color-blue-gradient);
 }
 .page-about .main section:last-of-type {

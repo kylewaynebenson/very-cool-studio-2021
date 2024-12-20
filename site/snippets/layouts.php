@@ -45,6 +45,12 @@
               <?php endif ?>
             <?php endforeach ?>
         </figure>
+        <?php elseif ($block->type() == "video"): ?>
+          <?php if ($video = $block->video()->toFile()): ?>
+            <video autoplay loop muted playsinline>
+              <source src="<?= $video->url() ?>" type="<?= $video->mime() ?>">
+            </video>
+          <?php endif ?>
         <?php else: ?>
           <?= $block ?>
         <?php endif ?>
