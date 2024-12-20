@@ -19,8 +19,7 @@
     },
     "require": {
         "php": ">=7.3.0 <8.1.0",
-        "getkirby/cms": "^3.5",
-        "wagnerwagner/merx": "1.9.1"
+        "getkirby/cms": "^3.5"
     },
     "scripts": {
         "start": [
