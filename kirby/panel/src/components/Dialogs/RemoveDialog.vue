@@ -1,30 +1,32 @@
 <template>
-  <k-text-dialog ref="dialog" v-bind="$props" v-on="$listeners">
-    <slot />
-  </k-text-dialog>
+	<k-text-dialog
+		ref="dialog"
+		v-bind="$props"
+		@cancel="$emit('cancel')"
+		@submit="$emit('submit')"
+	>
+		<slot />
+	</k-text-dialog>
 </template>
 
 <script>
-import DialogMixin from "@/mixins/dialog.js";
+import TextDialog from "./TextDialog.vue";
 
 export default {
-  mixins: [DialogMixin],
-  props: {
-    icon: {
-      type: String,
-      default: "trash"
-    },
-    submitButton: {
-      type: [String, Boolean],
-      default() {
-        return this.$t("delete");
-      }
-    },
-    text: String,
-    theme: {
-      type: String,
-      default: "negative"
-    },
-  }
-}
+	mixins: [TextDialog],
+	props: {
+		// eslint-disable-next-line vue/require-prop-types
+		icon: {
+			default: "trash"
+		},
+		// eslint-disable-next-line vue/require-prop-types
+		submitButton: {
+			default: () => window.panel.$t("delete")
+		},
+		// eslint-disable-next-line vue/require-prop-types
+		theme: {
+			default: "negative"
+		}
+	}
+};
 </script>

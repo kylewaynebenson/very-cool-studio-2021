@@ -2,79 +2,83 @@
 
 namespace Kirby\Data;
 
-use Kirby\Toolkit\F;
-use PHPUnit\Framework\TestCase;
+use Kirby\Exception\BadMethodCallException;
+use Kirby\Filesystem\F;
+use Kirby\TestCase;
 
 /**
- * @coversDefaultClass Kirby\Data\PHP
+ * @coversDefaultClass \Kirby\Data\PHP
  */
 class PHPTest extends TestCase
 {
-    /**
-     * @covers ::encode
-     */
-    public function testEncode()
-    {
-        $input    = __DIR__ . '/fixtures/php/input.php';
-        $expected = __DIR__ . '/fixtures/php/expected.php';
-        $result   = PHP::encode(include $input);
+	public const FIXTURES = __DIR__ . '/fixtures/php';
+	public const TMP      = KIRBY_TMP_DIR . '/Data.PHP';
 
-        $this->assertSame(trim(file_get_contents($expected)), $result);
+	/**
+	 * @covers ::encode
+	 */
+	public function testEncode()
+	{
+		$input    = static::FIXTURES . '/input.php';
+		$expected = static::FIXTURES . '/expected.php';
+		$result   = PHP::encode(include $input);
 
-        // scalar values
-        $this->assertSame("'test'", PHP::encode('test'));
-        $this->assertSame('123', PHP::encode(123));
-    }
+		$this->assertSame(trim(file_get_contents($expected)), $result);
 
-    /**
-     * @covers ::decode
-     */
-    public function testDecode()
-    {
-        $this->expectException('Kirby\Exception\BadMethodCallException');
-        $this->expectExceptionMessage('The PHP::decode() method is not implemented');
+		// scalar values
+		$this->assertSame("'test'", PHP::encode('test'));
+		$this->assertSame('123', PHP::encode(123));
+	}
 
-        $input  = include __DIR__ . '/fixtures/php/input.php';
-        $result = PHP::decode($input);
-    }
+	/**
+	 * @covers ::decode
+	 */
+	public function testDecode()
+	{
+		$this->expectException(BadMethodCallException::class);
+		$this->expectExceptionMessage('The PHP::decode() method is not implemented');
 
-    /**
-     * @covers ::read
-     */
-    public function testRead()
-    {
-        $input  = __DIR__ . '/fixtures/php/input.php';
-        $result = PHP::read($input);
+		$input  = include static::FIXTURES . '/input.php';
+		$result = PHP::decode($input);
+	}
 
-        $this->assertSame($result, include $input);
-    }
+	/**
+	 * @covers ::read
+	 */
+	public function testRead()
+	{
+		$input  = static::FIXTURES . '/input.php';
+		$result = PHP::read($input);
 
-    /**
-     * @covers ::read
-     */
-    public function testReadFileMissing()
-    {
-        $file = __DIR__ . '/tmp/does-not-exist.php';
+		$this->assertSame($result, include $input);
+	}
 
-        $this->expectException('Exception');
-        $this->expectExceptionMessage('The file "' . $file . '" does not exist');
+	/**
+	 * @covers ::read
+	 */
+	public function testReadFileMissing()
+	{
+		$file = static::TMP . '/does-not-exist.php';
 
-        PHP::read($file);
-    }
+		$this->expectException('Exception');
+		$this->expectExceptionMessage('The file "' . $file . '" does not exist');
 
-    /**
-     * @covers ::write
-     */
-    public function testWrite()
-    {
-        $input = include __DIR__ . '/fixtures/php/input.php';
-        $file  = __DIR__ . '/fixtures/php/tmp.php';
+		PHP::read($file);
+	}
 
-        $this->assertTrue(PHP::write($file, $input));
+	/**
+	 * @covers ::write
+	 */
+	public function testWrite()
+	{
+		$input = include static::FIXTURES . '/input.php';
+		$file  = static::TMP . '/tmp.php';
 
-        $this->assertSame($input, include $file);
-        $this->assertSame($input, PHP::read($file));
+		$this->assertTrue(PHP::write($file, $input));
 
-        F::remove($file);
-    }
+		$this->assertSame($input, include $file);
+		$this->assertSame($input, PHP::read($file));
+
+		F::remove($file);
+	}
 }

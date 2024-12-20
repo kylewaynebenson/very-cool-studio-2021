@@ -2,40 +2,40 @@
 
 namespace Kirby\Cms;
 
-use PHPUnit\Framework\TestCase;
+use Kirby\TestCase;
 
 class TranslationsRoutesTest extends TestCase
 {
-    protected $app;
+	protected $app;
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ]
-        ]);
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => '/dev/null'
+			]
+		]);
 
-        $this->app->impersonate('kirby');
-    }
+		$this->app->impersonate('kirby');
+	}
 
-    public function testList()
-    {
-        $app      = $this->app;
-        $response = $app->api()->call('translations');
-        $files    = glob($app->root('kirby') . '/i18n/translations/*.json');
+	public function testList()
+	{
+		$app      = $this->app;
+		$response = $app->api()->call('translations');
+		$files    = glob($app->root('kirby') . '/i18n/translations/*.json');
 
-        $this->assertCount(count($files), $response['data']);
-    }
+		$this->assertCount(count($files), $response['data']);
+	}
 
-    public function testGet()
-    {
-        $app = $this->app;
+	public function testGet()
+	{
+		$app = $this->app;
 
-        $response = $app->api()->call('translations/de');
+		$response = $app->api()->call('translations/de');
 
-        $this->assertEquals('de', $response['data']['id']);
-        $this->assertEquals('Deutsch', $response['data']['name']);
-        $this->assertEquals('ltr', $response['data']['direction']);
-    }
+		$this->assertSame('de', $response['data']['id']);
+		$this->assertSame('Deutsch', $response['data']['name']);
+		$this->assertSame('ltr', $response['data']['direction']);
+	}
 }

@@ -4,120 +4,179 @@ namespace Kirby\Form\Fields;
 
 class DateFieldTest extends TestCase
 {
-    public function testDefaultProps()
-    {
-        $field = $this->field('date');
+	public function testDefaultProps()
+	{
+		$field = $this->field('date');
 
-        $this->assertEquals('date', $field->type());
-        $this->assertEquals('date', $field->name());
-        $this->assertEquals(null, $field->value());
-        $this->assertEquals(null, $field->min());
-        $this->assertEquals(null, $field->max());
-        $this->assertEquals(false, $field->time());
-        $this->assertTrue($field->save());
-    }
+		$this->assertSame('date', $field->type());
+		$this->assertSame('date', $field->name());
+		$this->assertSame('', $field->value());
+		$this->assertNull($field->min());
+		$this->assertNull($field->max());
+		$this->assertFalse($field->time());
+		$this->assertTrue($field->save());
+	}
 
-    public function testEmptyDate()
-    {
-        $field = $this->field('date', [
-            'value' => null
-        ]);
+	public function testEmptyDate()
+	{
+		$field = $this->field('date', [
+			'value' => null
+		]);
 
-        $this->assertNull($field->value());
-        $this->assertEquals('', $field->toString());
-    }
+		$this->assertSame('', $field->value());
+		$this->assertNull($field->toString());
+	}
 
-    public function testMinMax()
-    {
-        // no limits
-        $field = $this->field('date', [
-            'value' => '2020-10-10'
-        ]);
+	public function testMinMax()
+	{
+		// empty
+		$field = $this->field('date', [
+			'min'   => '2020-10-01',
+			'max'   => '2020-10-31'
+		]);
 
-        $field->validate();
-        $this->assertTrue($field->isValid());
-        $this->assertFalse($field->isInvalid());
+		$field->validate();
+		$this->assertTrue($field->isValid());
+		$this->assertFalse($field->isInvalid());
 
-        // valid
-        $field = $this->field('date', [
-            'min'   => '2020-10-01',
-            'value' => '2020-10-10',
-            'max'   => '2020-10-31'
-        ]);
+		// no limits
+		$field = $this->field('date', [
+			'value' => '2020-10-10'
+		]);
 
-        $field->validate();
-        $this->assertTrue($field->isValid());
-        $this->assertFalse($field->isInvalid());
+		$field->validate();
+		$this->assertTrue($field->isValid());
+		$this->assertFalse($field->isInvalid());
 
-        // same day valid
-        $field = $this->field('date', [
-            'min'   => '2020-10-10',
-            'value' => '2020-10-10',
-            'max'   => '2020-10-10'
-        ]);
+		// valid
+		$field = $this->field('date', [
+			'min'   => '2020-10-01',
+			'value' => '2020-10-10',
+			'max'   => '2020-10-31'
+		]);
 
-        $field->validate();
-        $this->assertTrue($field->isValid());
-        $this->assertFalse($field->isInvalid());
+		$field->validate();
+		$this->assertTrue($field->isValid());
+		$this->assertFalse($field->isInvalid());
 
-        // min failed
-        $field = $this->field('date', [
-            'min'   => '2020-10-01',
-            'value' => '2020-09-10'
-        ]);
+		// same day valid
+		$field = $this->field('date', [
+			'min'   => '2020-10-10',
+			'value' => '2020-10-10',
+			'max'   => '2020-10-10'
+		]);
 
-        $field->validate();
-        $this->assertFalse($field->isValid());
-        $this->assertTrue($field->isInvalid());
+		$field->validate();
+		$this->assertTrue($field->isValid());
+		$this->assertFalse($field->isInvalid());
 
-        // max failed
-        $field = $this->field('date', [
-            'value' => '2020-11-10',
-            'max'   => '2020-10-31'
-        ]);
+		// min & max failed
+		$field = $this->field('date', [
+			'min'   => '2020-10-01',
+			'max'   => '2020-10-02',
+			'value' => '2020-10-03'
+		]);
 
-        $field->validate();
-        $this->assertFalse($field->isValid());
-        $this->assertTrue($field->isInvalid());
-    }
+		$field->validate();
+		$this->assertFalse($field->isValid());
+		$this->assertTrue($field->isInvalid());
+		$this->assertSame([
+			'minMax' => 'Please enter a date between 01.10.2020 and 02.10.2020',
+		], $field->errors());
 
-    public function valueProvider()
-    {
-        return [
-            ['12.12.2012', date('Y-m-d H:i:s', strtotime('2012-12-12'))],
-            ['2016-11-21', date('Y-m-d H:i:s', strtotime('2016-11-21'))],
-            ['2016-11-21 12:12:12', date('Y-m-d H:i:s', strtotime('2016-11-21 12:10:00')), 5],
-            ['something', null],
-        ];
-    }
+		// min & max failed (with time)
+		$field = $this->field('date', [
+			'time'  => true,
+			'min'   => '2020-10-01 10:04',
+			'max'   => '2020-10-02 08:15',
+			'value' => '2020-10-03 12:34'
+		]);
 
-    public function testSave()
-    {
-        // default value
-        $field = $this->field('date', [
-            'value' => '12.12.2012',
-        ]);
+		$field->validate();
+		$this->assertFalse($field->isValid());
+		$this->assertTrue($field->isInvalid());
+		$this->assertSame([
+			'minMax' => 'Please enter a date between 01.10.2020 10:04 and 02.10.2020 08:15',
+		], $field->errors());
 
-        $this->assertEquals('2012-12-12', $field->data());
+		// min failed
+		$field = $this->field('date', [
+			'min'   => '2020-10-01',
+			'value' => '2020-09-10'
+		]);
 
-        // empty value
-        $field = $this->field('date', [
-            'value'  => null,
-        ]);
+		$field->validate();
+		$this->assertFalse($field->isValid());
+		$this->assertTrue($field->isInvalid());
+		$this->assertSame([
+			'minMax' => 'Please enter a date after 01.10.2020',
+		], $field->errors());
 
-        $this->assertEquals('', $field->data());
-    }
+		// max failed
+		$field = $this->field('date', [
+			'max'   => '2020-10-31',
+			'value' => '2020-11-10'
+		]);
 
-    /**
-     * @dataProvider valueProvider
-     */
-    public function testValue($input, $expected, $step = null)
-    {
-        $field = $this->field('date', [
-            'value' => $input,
-            'time'  => ['step' => $step]
-        ]);
+		$field->validate();
+		$this->assertFalse($field->isValid());
+		$this->assertTrue($field->isInvalid());
+		$this->assertSame([
+			'minMax' => 'Please enter a date before 31.10.2020',
+		], $field->errors());
+	}
 
-        $this->assertEquals($expected, $field->value());
-    }
+	public static function valueProvider(): array
+	{
+		return [
+			['12.12.2012', date('Y-m-d H:i:s', strtotime('2012-12-12'))],
+			['2016-11-21', date('Y-m-d H:i:s', strtotime('2016-11-21'))],
+			['2016-11-21 12:12:12', date('Y-m-d H:i:s', strtotime('2016-11-21 12:10:00')), 5],
+			['something', ''],
+		];
+	}
+
+	public function testSave()
+	{
+		// default value
+		$field = $this->field('date', [
+			'value' => '12.12.2012',
+		]);
+
+		$this->assertSame('2012-12-12', $field->data());
+
+		// empty value
+		$field = $this->field('date', [
+			'value'  => null,
+		]);
+
+		$this->assertSame('', $field->data());
+	}
+
+	/**
+	 * @link https://github.com/getkirby/kirby/issues/3642
+	 */
+	public function testTimeWithDefaultNow()
+	{
+		$field = $this->field('date', [
+			'time'    => true,
+			'default' => 'now',
+		]);
+
+		$now = date('Y-m-d H:i:s', strtotime('now'));
+		$this->assertSame($now, $field->default());
+	}
+
+	/**
+	 * @dataProvider valueProvider
+	 */
+	public function testValue($input, $expected, $step = null)
+	{
+		$field = $this->field('date', [
+			'value' => $input,
+			'time'  => ['step' => $step]
+		]);
+
+		$this->assertSame($expected, $field->value());
+	}
 }

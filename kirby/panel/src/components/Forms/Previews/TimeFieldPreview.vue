@@ -1,30 +1,19 @@
-<template>
-  <div>
-    <p class="k-time-field-preview">
-      {{ text }}
-    </p>
-  </div>
-</template>
-
 <script>
-import TimeInput from "../Input/TimeInput.vue";
+import DateFieldPreview from "./DateFieldPreview.vue";
 
 export default {
-  props: {
-    field: Object,
-    value: String
-  },
-  computed: {
-    text() {
-      const dt = TimeInput.methods.toDatetime.call(this, this.value);
-      return dt.format(this.field.display);
-    }
-  }
-}
+	extends: DateFieldPreview,
+	class: "k-time-field-preview",
+	computed: {
+		format() {
+			return this.display ?? "HH:mm";
+		},
+		parsed() {
+			return this.$library.dayjs.iso(this.value, "time");
+		},
+		text() {
+			return this.parsed?.format(this.format);
+		}
+	}
+};
 </script>
-
-<style lang="scss">
-.k-time-field-preview {
-  padding: 0 .75rem;
-}
-</style>

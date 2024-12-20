@@ -1,19 +1,25 @@
 <template>
-  <k-dialog ref="dialog" v-bind="$props" v-on="$listeners">
-    <slot>
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <k-text v-html="text" />
-    </slot>
-  </k-dialog>
+	<k-dialog
+		ref="dialog"
+		v-bind="$props"
+		@cancel="$emit('cancel')"
+		@submit="$emit('submit')"
+	>
+		<slot>
+			<k-dialog-text :text="text" />
+		</slot>
+	</k-dialog>
 </template>
 
 <script>
-import DialogMixin from "@/mixins/dialog.js";
+import Dialog from "@/mixins/dialog.js";
+import { props as TextProps } from "./Elements/Text.vue";
+
+export const props = {
+	mixins: [Dialog, TextProps]
+};
 
 export default {
-  mixins: [DialogMixin],
-  props: {
-    text: String
-  }
-}
+	mixins: [props]
+};
 </script>

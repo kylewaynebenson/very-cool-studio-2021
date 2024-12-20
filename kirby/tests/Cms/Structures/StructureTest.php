@@ -2,112 +2,122 @@
 
 namespace Kirby\Cms;
 
+use Kirby\Exception\InvalidArgumentException;
+
 class StructureTest extends TestCase
 {
-    public function testCreate()
-    {
-        $structure = new Structure([
-            ['test' => 'Test']
-        ]);
+	public function testCreate()
+	{
+		$structure = Structure::factory([
+			['test' => 'Test']
+		]);
 
-        $this->assertInstanceOf(StructureObject::class, $structure->first());
-        $this->assertEquals('0', $structure->first()->id());
-    }
+		$this->assertInstanceOf(StructureObject::class, $structure->first());
+		$this->assertSame(1, $structure->count());
+	}
 
-    public function testParent()
-    {
-        $parent    = new Page(['slug' => 'test']);
-        $structure = new Structure([
-            ['test' => 'Test']
-        ], $parent);
+	public function testParent()
+	{
+		$parent    = new Page(['slug' => 'test']);
+		$structure = Structure::factory([
+			['test' => 'Test']
+		], ['parent' => $parent]);
 
-        $this->assertEquals($parent, $structure->first()->parent());
-    }
+		$this->assertSame($parent, $structure->first()->parent());
+	}
 
-    public function testToArray()
-    {
-        $data = [
-            ['name' => 'A'],
-            ['name' => 'B']
-        ];
+	public function testToArray()
+	{
+		$data = [
+			['name' => 'A', 'field' => 'C'],
+			['name' => 'B', 'field' => 'D']
+		];
+		$structure = Structure::factory($data)->toArray();
 
-        $expected = [
-            ['id' => 0, 'name' => 'A'],
-            ['id' => 1, 'name' => 'B'],
-        ];
+		$this->assertSame('A', $structure[0]['name']);
+		$this->assertSame('C', $structure[0]['field']);
+		$this->assertArrayHasKey('id', $structure[0]);
+		$this->assertSame('B', $structure[1]['name']);
+		$this->assertSame('D', $structure[1]['field']);
+		$this->assertArrayHasKey('id', $structure[1]);
+	}
 
-        $structure = new Structure($data);
+	public function testGroup()
+	{
+		$structure = Structure::factory([
+			[
+				'name' => 'A',
+				'category' => 'cat-a'
+			],
+			[
+				'name' => 'B',
+				'category' => 'cat-b'
+			],
+			[
+				'name' => 'C',
+				'category' => 'cat-a'
+			]
+		]);
 
-        $this->assertEquals($expected, $structure->toArray());
-    }
+		$grouped = $structure->group('category');
 
-    public function testGroup()
-    {
-        $structure = new Structure([
-            [
-                'name' => 'A',
-                'category' => 'cat-a'
-            ],
-            [
-                'name' => 'B',
-                'category' => 'cat-b'
-            ],
-            [
-                'name' => 'C',
-                'category' => 'cat-a'
-            ]
-        ]);
+		$this->assertCount(2, $grouped);
+		$this->assertCount(2, $grouped->first());
+		$this->assertCount(1, $grouped->last());
 
-        $grouped = $structure->group('category');
+		$this->assertInstanceOf(Field::class, $grouped->first()->first()->name());
+		$this->assertInstanceOf(Field::class, $grouped->first()->last()->name());
+		$this->assertSame('A', $grouped->first()->first()->name()->value());
+		$this->assertSame('C', $grouped->first()->last()->name()->value());
 
-        $this->assertCount(2, $grouped);
-        $this->assertCount(2, $grouped->first());
-        $this->assertCount(1, $grouped->last());
+		$this->assertInstanceOf(Field::class, $grouped->last()->first()->name());
+		$this->assertSame('B', $grouped->last()->first()->name()->value());
+	}
 
-        $this->assertEquals('A', $grouped->first()->first()->name());
-        $this->assertEquals('C', $grouped->first()->last()->name());
+	public function testSiblings()
+	{
+		$structure = Structure::factory([
+			['name' => 'A'],
+			['name' => 'B'],
+			['name' => 'C']
+		]);
 
-        $this->assertEquals('B', $grouped->last()->first()->name());
-    }
+		$this->assertInstanceOf(Field::class, $structure->first()->name());
+		$this->assertInstanceOf(Field::class, $structure->first()->next()->name());
+		$this->assertInstanceOf(Field::class, $structure->last()->name());
+		$this->assertInstanceOf(Field::class, $structure->last()->prev()->name());
+		$this->assertSame('A', $structure->first()->name()->value());
+		$this->assertSame('0', $structure->first()->id());
+		$this->assertSame('B', $structure->first()->next()->name()->value());
+		$this->assertSame('1', $structure->first()->next()->id());
+		$this->assertSame('C', $structure->last()->name()->value());
+		$this->assertSame('2', $structure->last()->id());
+		$this->assertSame('B', $structure->last()->prev()->name()->value());
 
-    public function testSiblings()
-    {
-        $structure = new Structure([
-            ['name' => 'A'],
-            ['name' => 'B'],
-            ['name' => 'C']
-        ]);
+		$this->assertSame(2, $structure->last()->indexOf());
 
+		$this->assertTrue($structure->first()->isFirst());
+		$this->assertTrue($structure->last()->isLast());
+		$this->assertFalse($structure->last()->isFirst());
+		$this->assertFalse($structure->first()->isLast());
+	}
 
-        $this->assertEquals('A', $structure->first()->name());
-        $this->assertEquals('B', $structure->first()->next()->name());
-        $this->assertEquals('C', $structure->last()->name());
-        $this->assertEquals('B', $structure->last()->prev()->name());
+	public function testWithInvalidData()
+	{
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('Invalid data for Kirby\Cms\StructureObject');
 
-        $this->assertEquals(2, $structure->last()->indexOf());
-
-        $this->assertTrue($structure->first()->isFirst());
-        $this->assertTrue($structure->last()->isLast());
-        $this->assertFalse($structure->last()->isFirst());
-        $this->assertFalse($structure->first()->isLast());
-    }
-
-    public function testWithInvalidData()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('Invalid structure data');
-
-        $structure = new Structure([
-            [
-                'name' => 'A',
-                'category' => 'cat-a'
-            ],
-            [
-                'name' => 'B',
-                'category' => 'cat-b'
-            ],
-            'name',
-            'category'
-        ]);
-    }
+		Structure::factory([
+			[
+				'name' => 'A',
+				'category' => 'cat-a'
+			],
+			[
+				'name' => 'B',
+				'category' => 'cat-b'
+			],
+			'name',
+			'category'
+		]);
+	}
 }

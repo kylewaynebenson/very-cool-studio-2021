@@ -2,205 +2,185 @@
 
 namespace Kirby\Cms;
 
-class PageApiModelTest extends TestCase
+use Kirby\Cms\Api\ApiModelTestCase;
+
+class PageApiModelTest extends ApiModelTestCase
 {
-    protected $api;
-    protected $app;
+	public const TMP = KIRBY_TMP_DIR . '/Cms.PageApiModel';
 
-    public function attr($object, $attr)
-    {
-        return $this->api->resolve($object)->select($attr)->toArray()[$attr];
-    }
+	public function testChildren()
+	{
+		$page = new Page([
+			'slug' => 'test',
+			'children' => [
+				['slug' => 'a'],
+				['slug' => 'b'],
+			]
+		]);
 
-    public function assertAttr($object, $attr, $value)
-    {
-        $this->assertEquals($this->attr($object, $attr), $value);
-    }
+		$model = $this->api->resolve($page)->select('children')->toArray();
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ],
-        ]);
+		$this->assertSame('test/a', $model['children'][0]['id']);
+		$this->assertSame('test/b', $model['children'][1]['id']);
+	}
 
-        $this->api = $this->app->api();
-    }
+	public function testContent()
+	{
+		$page = new Page([
+			'slug' => 'test',
+			'content' => $content = [
+				'a' => 'A',
+				'b' => 'B',
+			]
+		]);
 
-    public function testChildren()
-    {
-        $page = new Page([
-            'slug' => 'test',
-            'children' => [
-                ['slug' => 'a'],
-                ['slug' => 'b'],
-            ]
-        ]);
+		$this->assertAttr($page, 'content', $content);
+	}
 
-        $model = $this->api->resolve($page)->select('children')->toArray();
+	public function testDrafts()
+	{
+		$page = new Page([
+			'slug' => 'test',
+			'drafts' => [
+				['slug' => 'a'],
+				['slug' => 'b'],
+			]
+		]);
 
-        $this->assertEquals('test/a', $model['children'][0]['id']);
-        $this->assertEquals('test/b', $model['children'][1]['id']);
-    }
+		$model = $this->api->resolve($page)->select('drafts')->toArray();
 
-    public function testContent()
-    {
-        $page = new Page([
-            'slug' => 'test',
-            'content' => $content = [
-                'a' => 'A',
-                'b' => 'B',
-            ]
-        ]);
+		$this->assertSame('test/a', $model['drafts'][0]['id']);
+		$this->assertSame('test/b', $model['drafts'][1]['id']);
+	}
 
-        $this->assertAttr($page, 'content', $content);
-    }
+	public function testFiles()
+	{
+		$page = new Page([
+			'slug' => 'test',
+			'files' => [
+				['filename' => 'a.jpg'],
+				['filename' => 'b.jpg'],
+			]
+		]);
 
-    public function testDrafts()
-    {
-        $page = new Page([
-            'slug' => 'test',
-            'drafts' => [
-                ['slug' => 'a'],
-                ['slug' => 'b'],
-            ]
-        ]);
+		$model = $this->api->resolve($page)->select('files')->toArray();
 
-        $model = $this->api->resolve($page)->select('drafts')->toArray();
+		$this->assertSame('a.jpg', $model['files'][0]['filename']);
+		$this->assertSame('b.jpg', $model['files'][1]['filename']);
+	}
 
-        $this->assertEquals('test/a', $model['drafts'][0]['id']);
-        $this->assertEquals('test/b', $model['drafts'][1]['id']);
-    }
+	public function testHasDrafts()
+	{
+		$page = new Page([
+			'slug' => 'test'
+		]);
 
-    public function testFiles()
-    {
-        $page = new Page([
-            'slug' => 'test',
-            'files' => [
-                ['filename' => 'a.jpg'],
-                ['filename' => 'b.jpg'],
-            ]
-        ]);
+		$this->assertAttr($page, 'hasDrafts', false);
 
-        $model = $this->api->resolve($page)->select('files')->toArray();
+		$page = new Page([
+			'slug' => 'test',
+			'drafts' => [
+				['slug' => 'a'],
+				['slug' => 'b'],
+			]
+		]);
 
-        $this->assertEquals('a.jpg', $model['files'][0]['filename']);
-        $this->assertEquals('b.jpg', $model['files'][1]['filename']);
-    }
+		$this->assertAttr($page, 'hasDrafts', true);
+	}
 
-    public function testHasDrafts()
-    {
-        $page = new Page([
-            'slug' => 'test'
-        ]);
+	public function testHasChildren()
+	{
+		$page = new Page([
+			'slug' => 'test'
+		]);
 
-        $this->assertAttr($page, 'hasDrafts', false);
+		$this->assertAttr($page, 'hasChildren', false);
 
-        $page = new Page([
-            'slug' => 'test',
-            'drafts' => [
-                ['slug' => 'a'],
-                ['slug' => 'b'],
-            ]
-        ]);
+		$page = new Page([
+			'slug' => 'test',
+			'children' => [
+				['slug' => 'a'],
+				['slug' => 'b'],
+			]
+		]);
 
-        $this->assertAttr($page, 'hasDrafts', true);
-    }
+		$this->assertAttr($page, 'hasChildren', true);
+	}
 
-    public function testHasChildren()
-    {
-        $page = new Page([
-            'slug' => 'test'
-        ]);
+	public function testId()
+	{
+		$page = new Page([
+			'slug' => 'test',
+		]);
 
-        $this->assertAttr($page, 'hasChildren', false);
+		$this->assertAttr($page, 'id', 'test');
+	}
 
-        $page = new Page([
-            'slug' => 'test',
-            'children' => [
-                ['slug' => 'a'],
-                ['slug' => 'b'],
-            ]
-        ]);
+	public function testIsSortable()
+	{
+		$page = new Page([
+			'slug' => 'test',
+		]);
 
-        $this->assertAttr($page, 'hasChildren', true);
-    }
+		$this->assertAttr($page, 'isSortable', $page->isSortable());
+	}
 
-    public function testId()
-    {
-        $page = new Page([
-            'slug' => 'test',
-        ]);
+	public function testNum()
+	{
+		$page = new Page([
+			'slug' => 'test',
+			'num'  => 2
+		]);
 
-        $this->assertAttr($page, 'id', 'test');
-    }
+		$this->assertAttr($page, 'num', 2);
+	}
 
-    public function testIsSortable()
-    {
-        $page = new Page([
-            'slug' => 'test',
-        ]);
+	public function testSlug()
+	{
+		$page = new Page([
+			'slug' => 'test',
+		]);
 
-        $this->assertAttr($page, 'isSortable', $page->isSortable());
-    }
+		$this->assertAttr($page, 'slug', 'test');
+	}
 
-    public function testNum()
-    {
-        $page = new Page([
-            'slug' => 'test',
-            'num'  => 2
-        ]);
+	public function testStatus()
+	{
+		$page = new Page([
+			'slug' => 'test',
+		]);
 
-        $this->assertAttr($page, 'num', 2);
-    }
+		$this->assertAttr($page, 'status', 'unlisted');
+	}
 
-    public function testSlug()
-    {
-        $page = new Page([
-            'slug' => 'test',
-        ]);
+	public function testTemplate()
+	{
+		$page = new Page([
+			'slug'     => 'test',
+			'template' => 'test'
+		]);
 
-        $this->assertAttr($page, 'slug', 'test');
-    }
+		$this->assertAttr($page, 'template', 'test');
+	}
 
-    public function testStatus()
-    {
-        $page = new Page([
-            'slug' => 'test',
-        ]);
+	public function testTitle()
+	{
+		$page = new Page([
+			'slug'    => 'test',
+			'content' => [
+				'title' => 'Test'
+			]
+		]);
 
-        $this->assertAttr($page, 'status', 'unlisted');
-    }
+		$this->assertAttr($page, 'title', 'Test');
+	}
 
-    public function testTemplate()
-    {
-        $page = new Page([
-            'slug'     => 'test',
-            'template' => 'test'
-        ]);
+	public function testUrl()
+	{
+		$page = new Page([
+			'slug' => 'test',
+		]);
 
-        $this->assertAttr($page, 'template', 'test');
-    }
-
-    public function testTitle()
-    {
-        $page = new Page([
-            'slug'    => 'test',
-            'content' => [
-                'title' => 'Test'
-            ]
-        ]);
-
-        $this->assertAttr($page, 'title', 'Test');
-    }
-
-    public function testUrl()
-    {
-        $page = new Page([
-            'slug' => 'test',
-        ]);
-
-        $this->assertAttr($page, 'url', '/test');
-    }
+		$this->assertAttr($page, 'url', '/test');
+	}
 }

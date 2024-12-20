@@ -1,129 +1,89 @@
 <template>
-  <ul :style="'--columns:' + columns" class="k-radio-input">
-    <li v-for="(option, index) in options" :key="index">
-      <input
-        :id="id + '-' + index"
-        :value="option.value"
-        :name="id"
-        :checked="value === option.value"
-        type="radio"
-        class="k-radio-input-native"
-        @change="onInput(option.value)"
-      >
-
-      <!-- eslint-disable vue/no-v-html -->
-      <label v-if="option.info" :for="id + '-' + index">
-        <span class="k-radio-input-text" v-html="option.text" />
-        <!-- @todo support (escaped) HTML in the info prop in 3.6.0 -->
-        <span class="k-radio-input-info">{{ option.info }}</span>
-      </label>
-      <label v-else :for="id + '-' + index" v-html="option.text" />
-      <!-- eslint-enable vue/no-v-html -->
-
-      <k-icon v-if="option.icon" :type="option.icon" />
-    </li>
-  </ul>
+	<ul
+		:style="{ '--columns': columns }"
+		class="k-radio-input k-grid"
+		data-variant="choices"
+	>
+		<li v-for="(choice, index) in choices" :key="index">
+			<k-choice-input
+				v-bind="choice"
+				@click.native.stop="toggle(choice.value)"
+				@input="$emit('input', choice.value)"
+			/>
+		</li>
+	</ul>
 </template>
 
 <script>
-import { required } from "vuelidate/lib/validators";
+import Input, { props as InputProps } from "@/mixins/input.js";
+import { options } from "@/mixins/props.js";
+import { required as validateRequired } from "vuelidate/lib/validators";
+
+export const props = {
+	mixins: [InputProps, options],
+	props: {
+		columns: {
+			default: 1,
+			type: Number
+		},
+		reset: {
+			default: true,
+			type: Boolean
+		},
+		theme: String,
+		value: [String, Number, Boolean]
+	}
+};
 
 export default {
-  inheritAttrs: false,
-  props: {
-    autofocus: Boolean,
-    columns: Number,
-    disabled: Boolean,
-    id: {
-      type: [Number, String],
-      default() {
-        return this._uid;
-      }
-    },
-    options: Array,
-    required: Boolean,
-    value: [String, Number, Boolean]
-  },
-  watch: {
-    value() {
-      this.onInvalid();
-    }
-  },
-  mounted() {
-    this.onInvalid();
-
-    if (this.$props.autofocus) {
-      this.focus();
-    }
-  },
-  methods: {
-    focus() {
-      this.$el.querySelector("input").focus();
-    },
-    onInput(value) {
-      this.$emit("input", value);
-    },
-    onInvalid() {
-      this.$emit("invalid", this.$v.$invalid, this.$v);
-    },
-    select() {
-      this.focus();
-    }
-  },
-  validations() {
-    return {
-      value: {
-        required: this.required ? required : true
-      }
-    };
-  }
-}
+	mixins: [Input, props],
+	computed: {
+		choices() {
+			return this.options.map((option, index) => {
+				return {
+					autofocus: this.autofocus && index === 0,
+					checked: this.value === option.value,
+					disabled: this.disabled || option.disabled,
+					id: `${this.id}-${index}`,
+					info: option.info,
+					label: option.text,
+					name: this.name ?? this.id,
+					type: "radio",
+					value: option.value
+				};
+			});
+		}
+	},
+	watch: {
+		value: {
+			handler() {
+				this.validate();
+			},
+			immediate: true
+		}
+	},
+	methods: {
+		focus() {
+			this.$el.querySelector("input")?.focus();
+		},
+		select() {
+			this.focus();
+		},
+		toggle(value) {
+			if (value === this.value && this.reset && !this.required) {
+				this.$emit("input", "");
+			}
+		},
+		validate() {
+			this.$emit("invalid", this.$v.$invalid, this.$v);
+		}
+	},
+	validations() {
+		return {
+			value: {
+				required: this.required ? validateRequired : true
+			}
+		};
+	}
+};
 </script>
-
-<style lang="scss">
-.k-radio-input li {
-  position: relative;
-  line-height: 1.5rem;
-  padding-left: 1.75rem;
-}
-.k-radio-input input {
-  position: absolute;
-  width: 0;
-  height: 0;
-  appearance: none;
-  opacity: 0;
-}
-.k-radio-input label {
-  cursor: pointer;
-  align-items: center;
-}
-.k-radio-input label::before {
-  position: absolute;
-  top: .175em;
-  left: 0;
-  content: "";
-  width: 1rem;
-  height: 1rem;
-  border-radius: 50%;
-  border: 2px solid $color-light-grey;
-  box-shadow: $color-white 0 0 0 2px inset;
-}
-.k-radio-input input:checked + label::before {
-  border-color: $color-gray-900;
-  background: $color-gray-900;
-}
-[data-disabled] .k-radio-input input:checked + label::before {
-  border-color: $color-gray-600;
-  background: $color-gray-600;
-}
-.k-radio-input input:focus + label::before {
-  border-color: $color-blue-600;
-}
-.k-radio-input input:focus:checked + label::before {
-  background: $color-focus;
-}
-
-.k-radio-input-text {
-  display: block;
-}
-</style>

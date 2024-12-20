@@ -5,65 +5,66 @@ namespace Kirby\Cms\Auth;
 use Kirby\Cms\App;
 use Kirby\Cms\TestCase;
 use Kirby\Cms\User;
-use Kirby\Toolkit\Dir;
+use Kirby\Filesystem\Dir;
 
 class MockChallenge extends Challenge
 {
-    public static function isAvailable(User $user, string $mode): bool
-    {
-    }
+	public static function isAvailable(User $user, string $mode): bool
+	{
+	}
 
-    public static function create(User $user, array $options): ?string
-    {
-    }
+	public static function create(User $user, array $options): string|null
+	{
+	}
 }
 
 /**
- * @coversDefaultClass Kirby\Cms\Auth\Challenge
+ * @coversDefaultClass \Kirby\Cms\Auth\Challenge
  */
 class ChallengeTest extends TestCase
 {
-    protected $app;
-    protected $fixtures;
-    protected $session;
+	public const TMP = KIRBY_TMP_DIR . '/Cms.Auth.Challenge';
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => $this->fixtures = dirname(__DIR__) . '/fixtures/AuthChallengeTest'
-            ],
-            'users' => [
-                [
-                    'email' => 'homer@simpsons.com'
-                ]
-            ]
-        ]);
+	protected $app;
+	protected $session;
 
-        $this->session = $this->app->session();
-    }
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => static::TMP
+			],
+			'users' => [
+				[
+					'email' => 'homer@simpsons.com'
+				]
+			]
+		]);
 
-    public function tearDown(): void
-    {
-        $this->session->destroy();
-        Dir::remove($this->fixtures);
-    }
+		$this->session = $this->app->session();
+	}
 
-    /**
-     * @covers ::verify
-     */
-    public function testVerify()
-    {
-        $user = $this->app->user('homer@simpsons.com');
+	public function tearDown(): void
+	{
+		$this->session->destroy();
+		Dir::remove(static::TMP);
+	}
 
-        $this->assertFalse(MockChallenge::verify($user, '123 456'));
+	/**
+	 * @covers ::verify
+	 */
+	public function testVerify()
+	{
+		$user = $this->app->user('homer@simpsons.com');
 
-        $this->session->set('kirby.challenge.code', 'test');
-        $this->assertFalse(MockChallenge::verify($user, '123 456'));
+		$this->assertFalse(MockChallenge::verify($user, '123 456'));
 
-        $this->session->set('kirby.challenge.code', password_hash('123456', PASSWORD_DEFAULT));
-        $this->assertTrue(MockChallenge::verify($user, '123456'));
-        $this->assertTrue(MockChallenge::verify($user, '12 34 56'));
-        $this->assertFalse(MockChallenge::verify($user, '654321'));
-    }
+		$this->session->set('kirby.challenge.code', 'test');
+		$this->assertFalse(MockChallenge::verify($user, '123 456'));
+
+		$this->session->set('kirby.challenge.code', password_hash('123456', PASSWORD_DEFAULT));
+		$this->assertTrue(MockChallenge::verify($user, '123456'));
+		$this->assertTrue(MockChallenge::verify($user, '12 34 56'));
+		$this->assertFalse(MockChallenge::verify($user, '654321'));
+	}
 }

@@ -2,7 +2,7 @@
 
 namespace Kirby\Image;
 
-class TestCase extends \PHPUnit\Framework\TestCase
+class TestCase extends \Kirby\TestCase
 {
-    const FIXTURES = __DIR__ . '/fixtures';
+	public const FIXTURES = __DIR__ . '/fixtures';
 }

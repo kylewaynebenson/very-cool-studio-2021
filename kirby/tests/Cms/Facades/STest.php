@@ -2,29 +2,32 @@
 
 namespace Kirby\Cms;
 
+use Kirby\Filesystem\Dir;
+
 class STest extends TestCase
 {
-    protected $app;
-    protected $fixtures;
+	public const TMP = KIRBY_TMP_DIR . '/Cms.STest';
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => $this->fixtures = __DIR__ . '/fixtures/STest'
-            ]
-        ]);
+	protected $app;
 
-        Dir::make($this->fixtures);
-    }
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => static::TMP
+			]
+		]);
 
-    public function tearDown(): void
-    {
-        Dir::remove($this->fixtures);
-    }
+		Dir::make(static::TMP);
+	}
 
-    public function testInstance()
-    {
-        $this->assertEquals($this->app->session(), S::instance());
-    }
+	public function tearDown(): void
+	{
+		Dir::remove(static::TMP);
+	}
+
+	public function testInstance()
+	{
+		$this->assertSame($this->app->session(), S::instance());
+	}
 }

@@ -1,30 +1,38 @@
-<template>
-  <div>
-    <p class="k-date-field-preview">
-      {{ text }}
-    </p>
-  </div>
-</template>
-
 <script>
-import DateInput from "../Input/DateInput.vue";
+import TextFieldPreview from "./TextFieldPreview.vue";
 
 export default {
-  props: {
-    field: Object,
-    value: String
-  },
-  computed: {
-    text() {
-      const dt = DateInput.methods.toDatetime.call(this, this.value);
-      return dt.format(this.field.display);
-    }
-  }
-}
-</script>
+	extends: TextFieldPreview,
+	props: {
+		value: String
+	},
+	class: "k-date-field-preview",
+	computed: {
+		display() {
+			return this.column.display ?? this.field.display;
+		},
+		format() {
+			let format = this.display ?? "YYYY-MM-DD";
 
-<style lang="scss">
-.k-date-field-preview {
-  padding: 0 .75rem;
-}
-</style>
+			if (this.time?.display) {
+				format += " " + this.time.display;
+			}
+
+			return format;
+		},
+		parsed() {
+			return this.$library.dayjs(this.value);
+		},
+		text() {
+			if (this.parsed.isValid() === false) {
+				return this.value;
+			}
+
+			return this.parsed?.format(this.format);
+		},
+		time() {
+			return this.column.time ?? this.field.time;
+		}
+	}
+};
+</script>

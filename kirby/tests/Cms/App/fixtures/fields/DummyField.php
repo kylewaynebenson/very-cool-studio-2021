@@ -1,12 +1,8 @@
 <?php
 
 return [
-    'props' => [
-        'homer' => function ($homer = 'simpson') {
-            return $homer;
-        },
-        'peter' => function ($peter = 'pan') {
-            return $peter;
-        }
-    ]
+	'props' => [
+		'homer' => fn ($homer = 'simpson') => $homer,
+		'peter' => fn ($peter = 'pan') => $peter
+	]
 ];

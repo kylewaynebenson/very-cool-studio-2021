@@ -1,11 +1,28 @@
 <?php
 
-error_reporting(E_ALL);
+use Kirby\PhpUnitExtension;
 
-ini_set('memory_limit', '512M');
+// enable all error handling as early as possible to
+// make debugging of issues in the test setup easier
+error_reporting(E_ALL);
 ini_set('display_errors', 'on');
 ini_set('display_startup_errors', 'on');
 
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/PhpUnitExtension.php';
 
-define('KIRBY_TESTING', true);
+// ensure that all mocks are loaded before tests start running
+// to avoid issues when running via ParaTest
+require_once __DIR__ . '/Cache/mocks.php';
+require_once __DIR__ . '/Cms/mocks.php';
+require_once __DIR__ . '/Cms/Auth/mocks.php';
+require_once __DIR__ . '/Cms/System/mocks.php';
+require_once __DIR__ . '/Data/mocks.php';
+require_once __DIR__ . '/Database/mocks.php';
+require_once __DIR__ . '/Filesystem/mocks.php';
+require_once __DIR__ . '/Http/mocks.php';
+require_once __DIR__ . '/Sane/mocks.php';
+require_once __DIR__ . '/Session/mocks.php';
+require_once __DIR__ . '/Toolkit/mocks.php';
+
+PhpUnitExtension::init();

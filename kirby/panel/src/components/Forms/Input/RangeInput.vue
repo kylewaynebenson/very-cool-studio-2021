@@ -1,329 +1,224 @@
 <template>
-  <label class="k-range-input">
-    <input
-      ref="input"
-      v-bind="{
-        autofocus,
-        disabled,
-        id,
-        max,
-        min,
-        name,
-        required,
-        step
-      }"
-      :value="position"
-      :style="`--min: ${min}; --max: ${max}; --value: ${position}`"
-      type="range"
-      class="k-range-input-native"
-      v-on="listeners"
-    >
-    <span v-if="tooltip" class="k-range-input-tooltip">
-      <span v-if="tooltip.before" class="k-range-input-tooltip-before">{{ tooltip.before }}</span>
-      <span class="k-range-input-tooltip-text">{{ label }}</span>
-      <span v-if="tooltip.after" class="k-range-input-tooltip-after">{{ tooltip.after }}</span>
-    </span>
-  </label>
+	<div :data-disabled="disabled" class="k-range-input">
+		<input
+			ref="range"
+			v-bind="{
+				autofocus,
+				disabled,
+				id,
+				max,
+				min,
+				name,
+				required,
+				step
+			}"
+			:value="position"
+			type="range"
+			@input="$emit('input', $event.target.valueAsNumber)"
+		/>
+		<output v-if="tooltip" :for="id" class="k-range-input-tooltip">
+			<span v-if="tooltip.before" class="k-range-input-tooltip-before">{{
+				tooltip.before
+			}}</span>
+			<span class="k-range-input-tooltip-text">{{ label }}</span>
+			<span v-if="tooltip.after" class="k-range-input-tooltip-after">{{
+				tooltip.after
+			}}</span>
+		</output>
+	</div>
 </template>
 
 <script>
-import { required, minValue, maxValue } from "vuelidate/lib/validators";
+import Input, { props as InputProps } from "@/mixins/input.js";
+
+import {
+	required as validateRequired,
+	minValue as validateMinValue,
+	maxValue as validateMaxValue
+} from "vuelidate/lib/validators";
+
+export const props = {
+	mixins: [InputProps],
+	props: {
+		default: [Number, String],
+		/**
+		 * The highest accepted number
+		 */
+		max: {
+			type: Number,
+			default: 100
+		},
+		/**
+		 * The lowest required number
+		 */
+		min: {
+			type: Number,
+			default: 0
+		},
+		/**
+		 * The amount to increment when dragging the slider. This can be a decimal.
+		 */
+		step: {
+			type: [Number, String],
+			default: 1
+		},
+		/**
+		 * The slider tooltip can have text before and after the value.
+		 */
+		tooltip: {
+			type: [Boolean, Object],
+			default() {
+				return {
+					before: null,
+					after: null
+				};
+			}
+		},
+		value: [Number, String]
+	}
+};
 
 /**
- * @example <k-input v-model="range" name="range" type="range" />
+ * @example <k-input :value="range" @input="range = $event" name="range" type="range" />
+ *
+ * @todo remove vuelidate parts in v5 - until then we keep parrallel validation
  */
 export default {
-  inheritAttrs: false,
-  props: {
-    autofocus: Boolean,
-    disabled: Boolean,
-    id: [String, Number],
-    default: [Number, String],
-    /**
-     * The highest accepted number
-     */
-    max: {
-      type: Number,
-      default: 100
-    },
-    /**
-     * The lowest required number
-     */
-    min: {
-      type: Number,
-      default: 0
-    },
-    name: [String, Number],
-    required: Boolean,
-    /**
-     * The amount to increment when dragging the slider. This can be a decimal.
-     */
-    step: {
-      type: Number,
-      default: 1
-    },
-    /**
-     * The slider tooltip can have text before and after the value.
-     */
-    tooltip: {
-      type: [Boolean, Object],
-      default() {
-        return {
-          before: null,
-          after: null
-        };
-      }
-    },
-    value: [Number, String]
-  },
-  data() {
-    return {
-      listeners: {
-        ...this.$listeners,
-        input: (event) => this.onInput(event.target.value)
-      }
-    };
-  },
-  computed: {
-    baseline() {
-      // If the minimum is below 0, the baseline should be placed at 0.
-      // Otherwise place the baseline at the minimum
-      return this.min < 0 ? 0 : this.min;
-    },
-    label() {
-      return this.required || (this.value || this.value === 0) ? this.format(this.position) : "–";
-    },
-    position() {
-      return (this.value || this.value === 0) ? this.value : this.default || this.baseline;
-    }
-  },
-  watch: {
-    position() {
-      this.onInvalid();
-    }
-  },
-  mounted() {
-    this.onInvalid();
+	mixins: [Input, props],
+	computed: {
+		baseline() {
+			// If the minimum is below 0, the baseline should be placed at .
+			// Otherwise place the baseline at the minimum
+			return this.min < 0 ? 0 : this.min;
+		},
+		isEmpty() {
+			return (
+				this.value === "" || this.value === undefined || this.value === null
+			);
+		},
+		label() {
+			return this.required || this.value || this.value === 0
+				? this.format(this.position)
+				: "–";
+		},
+		position() {
+			return this.value || this.value === 0
+				? this.value
+				: this.default ?? this.baseline;
+		}
+	},
+	watch: {
+		position() {
+			this.onInvalid();
+		},
+		value() {
+			this.validate();
+		}
+	},
+	mounted() {
+		this.onInvalid();
+		this.validate();
 
-    if (this.$props.autofocus) {
-      this.focus();
-    }
-  },
-  methods: {
-    focus() {
-      this.$refs.input.focus();
-    },
-    format(value) {
-      const locale = document.lang ? document.lang.replace("_", "-") : 'en';
-      const parts  = this.step.toString().split(".");
-      const digits = parts.length > 1 ? parts[1].length : 0;
-      return new Intl.NumberFormat(locale, {
-        minimumFractionDigits: digits
-      }).format(value);
-    },
-    onInvalid() {
-      this.$emit("invalid", this.$v.$invalid, this.$v);
-    },
-    onInput(value) {
-      this.$emit("input", value);
-    },
-  },
-  validations() {
-    return {
-      position: {
-        required: this.required ? required : true,
-        min: this.min ? minValue(this.min) : true,
-        max: this.max ? maxValue(this.max) : true
-      }
-    };
-  }
-}
+		if (this.$props.autofocus) {
+			this.focus();
+		}
+	},
+	methods: {
+		focus() {
+			this.$el.querySelector("input")?.focus();
+		},
+		format(value) {
+			const locale = document.lang ? document.lang.replace("_", "-") : "en";
+			const parts = this.step.toString().split(".");
+			const digits = parts.length > 1 ? parts[1].length : 0;
+			return new Intl.NumberFormat(locale, {
+				minimumFractionDigits: digits
+			}).format(value);
+		},
+		onInvalid() {
+			this.$emit("invalid", this.$v.$invalid, this.$v);
+		},
+		onInput(value) {
+			this.$emit("input", value);
+		},
+		validate() {
+			const errors = [];
+
+			if (this.required && this.isEmpty === true) {
+				errors.push(this.$t("error.validation.required"));
+			}
+
+			if (this.isEmpty === false && this.min && this.value < this.min) {
+				errors.push(this.$t("error.validation.min", { min: this.min }));
+			}
+
+			if (this.isEmpty === false && this.max && this.value > this.max) {
+				errors.push(this.$t("error.validation.max", { max: this.max }));
+			}
+
+			this.$refs.range?.setCustomValidity(errors.join(", "));
+		}
+	},
+	validations() {
+		return {
+			position: {
+				required: this.required ? validateRequired : true,
+				min: this.min ? validateMinValue(this.min) : true,
+				max: this.max ? validateMaxValue(this.max) : true
+			}
+		};
+	}
+};
 </script>
 
-<style lang="scss">
-
-$range-thumb-size: 16px;
-$range-thumb-border: 4px solid $color-gray-900;
-$range-thumb-border-disabled: 4px solid $color-gray-600;
-$range-thumb-background: $color-background;
-$range-thumb-focus-border: 4px solid $color-focus;
-$range-thumb-focus-background: $color-background;
-$range-track-height: 4px;
-$range-track-background: $color-border;
-$range-track-color: $color-gray-900;
-$range-track-color-disabled: $color-gray-600;
-$range-track-focus-color: $color-focus;
-
-@mixin track($fill: 0) {
-  border: none;
-  border-radius: $range-track-height;
-  width: 100%;
-  height: $range-track-height;
-  background: $range-track-background;
-}
-
-@mixin track-background($bg) {
-  background: linear-gradient($bg, $bg) 0 / var(--position) 100% no-repeat $range-track-background;
-}
-
-@mixin fill($bg) {
-  height: $range-track-height;
-  background: $bg;
-}
-
-@mixin thumb() {
-  box-sizing: border-box;
-  width: $range-thumb-size;
-  height: $range-thumb-size;
-  background: $range-thumb-background;
-  border: $range-thumb-border;
-  border-radius: 50%;
-  cursor: pointer;
-}
-@mixin thumb-focus() {
-  background: $range-thumb-focus-background;
-  border: $range-thumb-focus-border;
-}
-
+<style>
 .k-range-input {
-  display: flex;
-  align-items: center;
+	--range-track-height: 1px;
+	--range-track-back: var(--color-gray-300);
+	--range-tooltip-back: var(--color-black);
+	display: flex;
+	align-items: center;
+	border-radius: var(--range-track-height);
 }
-
-.k-range-input-native {
-
-  --min: 0;
-  --max: 100;
-  --value: 0;
-  --range: calc(var(--max) - var(--min));
-  --ratio: calc((var(--value) - var(--min)) / var(--range));
-  --position: calc(0.5 * #{$range-thumb-size} + var(--ratio) * (100% - #{$range-thumb-size}));
-
-  appearance: none;
-  width: 100%;
-  height: $range-thumb-size;
-  background: transparent;
-  font-size: $text-sm;
-  line-height: 1;
-
-  &::-webkit-slider-thumb {
-    appearance: none;
-  }
-  &::-webkit-slider-runnable-track {
-    @include track;
-    @include track-background($range-track-color);
-  }
-  &::-moz-range-track {
-    @include track;
-  }
-  &::-ms-track {
-    @include track;
-  }
-  &::-moz-range-progress {
-    @include fill($range-track-color);
-  }
-  &::-ms-fill-lower {
-    @include fill($range-track-color);
-  }
-  &::-webkit-slider-thumb {
-    margin-top: 0.5*($range-track-height - $range-thumb-size);
-    @include thumb;
-  }
-  &::-moz-range-thumb {
-    @include thumb;
-  }
-  &::-ms-thumb {
-    margin-top: 0;
-    @include thumb;
-  }
-  &::-ms-tooltip {
-    display: none;
-  }
+.k-range-input input[type="range"]:focus {
+	outline: 0;
 }
-
-.k-range-input-native:focus {
-  outline: none;
-
-  &::-webkit-slider-runnable-track {
-    @include track;
-    @include track-background($range-track-focus-color);
-  }
-  &::-moz-range-progress {
-    @include fill($range-track-focus-color);
-  }
-  &::-ms-fill-lower {
-    @include fill($range-track-focus-color);
-  }
-  &::-webkit-slider-thumb {
-    @include thumb-focus;
-  }
-  &::-moz-range-thumb {
-    @include thumb-focus;
-  }
-  &::-ms-thumb {
-    @include thumb-focus;
-  }
-}
-
 .k-range-input-tooltip {
-  position: relative;
-  max-width: 20%;
-  display: flex;
-  align-items: center;
-  color: $color-white;
-  font-size: $text-xs;
-  line-height: 1;
-  text-align: center;
-  border-radius: $rounded-xs;
-  background: $color-gray-900;
-  margin-left: 1rem;
-  padding: 0 .25rem;
-  white-space: nowrap;
-
-  &::after {
-    position: absolute;
-    top: 50%;
-    left: -5px;
-    width: 0;
-    height: 0;
-    transform: translateY(-50%);
-    border-top: 5px solid transparent;
-    border-right: 5px solid $color-gray-900;
-    border-bottom: 5px solid transparent;
-    content: "";
-  }
+	position: relative;
+	display: flex;
+	align-items: center;
+	color: var(--color-white);
+	font-size: var(--text-xs);
+	font-variant-numeric: tabular-nums;
+	line-height: 1;
+	text-align: center;
+	border-radius: var(--rounded-sm);
+	background: var(--range-tooltip-back);
+	margin-inline-start: var(--spacing-3);
+	padding: 0 var(--spacing-1);
+	white-space: nowrap;
+}
+.k-range-input-tooltip::after {
+	position: absolute;
+	top: 50%;
+	inset-inline-start: -3px;
+	width: 0;
+	height: 0;
+	transform: translateY(-50%);
+	border-block: 3px solid transparent;
+	border-inline-end: 3px solid var(--range-tooltip-back);
+	content: "";
 }
 .k-range-input-tooltip > * {
-  padding: 4px;
+	padding: var(--spacing-1);
 }
-[data-disabled] {
-  .k-range-input-native {
-    &::-webkit-slider-runnable-track {
-      @include track-background($range-track-color-disabled);
-    }
-    &::-moz-range-progress {
-      @include fill($range-track-color-disabled);
-    }
-    &::-ms-fill-lower {
-      @include fill($range-track-color-disabled);
-    }
-    &::-webkit-slider-thumb {
-      border: $range-thumb-border-disabled;
-    }
-    &::-moz-range-thumb {
-      border: $range-thumb-border-disabled;
-    }
-    &::-ms-thumb {
-      border: $range-thumb-border-disabled;
-    }
-  }
 
-  .k-range-input-tooltip {
-    background: $color-gray-600;
+.k-range-input[data-disabled="true"] {
+	--range-tooltip-back: var(--color-gray-600);
+}
 
-    &::after {
-      border-right: 5px solid $color-gray-600;
-    }
-  }
+/* Input context */
+.k-input[data-type="range"] .k-range-input {
+	padding-inline: var(--input-padding);
 }
 </style>

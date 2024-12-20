@@ -1,41 +1,28 @@
 <template>
-  <section class="k-info-section">
-    <k-headline class="k-info-section-headline">
-      {{ headline }}
-    </k-headline>
-    <k-box :theme="theme">
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <k-text v-html="text" />
-    </k-box>
-  </section>
+	<k-section :headline="label" class="k-info-section">
+		<k-box :html="true" :icon="icon" :text="text" :theme="theme" />
+	</k-section>
 </template>
 
 <script>
-import SectionMixin from "@/mixins/section/section.js";
-
+import SectionMixin from "@/mixins/section.js";
 export default {
-  mixins: [SectionMixin],
-  data() {
-    return {
-      headline: null,
-      text: null,
-      theme: null
-    };
-  },
-  created() {
-    this.load()
-      .then(response => {
-        this.headline = response.options.headline;
-        this.text     = response.options.text;
-        this.theme    = response.options.theme || "info";
-      });
-  }
+	mixins: [SectionMixin],
+	inheritAttrs: false,
+	data() {
+		return {
+			icon: null,
+			label: null,
+			text: null,
+			theme: null
+		};
+	},
+	async mounted() {
+		const response = await this.load();
+		this.icon = response.icon;
+		this.label = response.label;
+		this.text = response.text;
+		this.theme = response.theme ?? "info";
+	}
 };
 </script>
-<style>
-
-.k-info-section-headline {
-  margin-bottom: .5rem;
-}
-
-</style>

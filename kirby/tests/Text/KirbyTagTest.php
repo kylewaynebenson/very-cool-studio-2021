@@ -2,257 +2,583 @@
 
 namespace Kirby\Text;
 
-use PHPUnit\Framework\TestCase;
+use Kirby\Cms\App;
+use Kirby\Exception\BadMethodCallException;
+use Kirby\Exception\InvalidArgumentException;
+use Kirby\TestCase;
 
+/**
+ * @coversDefaultClass \Kirby\Text\KirbyTag
+ */
 class KirbyTagTest extends TestCase
 {
-    public function setUp(): void
-    {
-        KirbyTag::$types = [
-            'test' => [
-                'attr' => ['a', 'b'],
-                'html' => function ($tag) {
-                    return 'test: ' . $tag->value . '-' . $tag->a . '-' . $tag->b;
-                }
-            ],
-            'noHtml' => [
-                'attr' => ['a', 'b']
-            ],
-            'invalidHtml' => [
-                'attr' => ['a', 'b'],
-                'html' => 'some string'
-            ]
-        ];
-    }
+	public const TMP = KIRBY_TMP_DIR . '/Text.KirbyTag';
 
-    public function tearDown(): void
-    {
-        KirbyTag::$types = [];
-    }
+	public function setUp(): void
+	{
+		KirbyTag::$types = [
+			'test' => [
+				'attr' => ['a', 'b'],
+				'html' => fn ($tag) => 'test: ' . $tag->value . '-' . $tag->a . '-' . $tag->b
+			],
+			'noHtml' => [
+				'attr' => ['a', 'b']
+			],
+			'invalidHtml' => [
+				'attr' => ['a', 'b'],
+				'html' => 'some string'
+			],
+			'file' => [
+				'attr' => ['a'],
+				'html' => 'some string'
+			],
+		];
+	}
 
-    public function test__call()
-    {
-        $attr = [
-            'a' => 'attrA',
-            'b' => 'attrB'
-        ];
+	public function tearDown(): void
+	{
+		KirbyTag::$aliases = [];
+		KirbyTag::$types = [];
+		App::destroy();
+	}
 
-        $data = [
-            'a' => 'dataA',
-            'c' => 'dataC'
-        ];
+	/**
+	 * @covers ::__construct
+	 */
+	public function testConstruct()
+	{
+		KirbyTag::$aliases = [];
+		$tag = KirbyTag::parse('test: foo a: attrA b: attrB c: attrC');
+		$this->assertSame('test', $tag->type);
+		$this->assertSame('foo', $tag->test);
+		$this->assertSame(['a' => 'attrA', 'b' => 'attrB c: attrC'], $tag->attrs);
+		$this->assertSame([], $tag->data);
+		$this->assertSame([], $tag->options);
+		$this->assertSame('foo', $tag->value);
+	}
 
-        $tag = new KirbyTag('test', 'test value', $attr, $data);
+	/**
+	 * @covers ::__construct
+	 */
+	public function testConstructAliasedTagType()
+	{
+		KirbyTag::$aliases = ['foo' => 'test'];
+		$tag = KirbyTag::parse('foo: bar');
+		$this->assertSame('test', $tag->type);
+		$this->assertSame('bar', $tag->test);
+	}
 
-        $this->assertSame('dataA', $tag->a());
-        $this->assertSame('attrB', $tag->b());
-        $this->assertSame('dataC', $tag->c());
-    }
 
-    public function test__callStatic()
-    {
-        $attr = [
-            'a' => 'attrA',
-            'b' => 'attrB'
-        ];
+	/**
+	 * @covers ::__construct
+	 */
+	public function testConstructMissingTagType()
+	{
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('Undefined tag type: invalid');
+		KirbyTag::parse('invalid: test');
+	}
 
-        $result = KirbyTag::test('test value', $attr);
+	/**
+	 * @covers ::__call
+	 */
+	public function test__call()
+	{
+		$attr = [
+			'a' => 'attrA',
+			'b' => 'attrB'
+		];
 
-        $this->assertSame('test: test value-attrA-attrB', $result);
-    }
+		$data = [
+			'a' => 'dataA',
+			'c' => 'dataC'
+		];
 
-    public function testAttr()
-    {
-        $tag = new KirbyTag('test', 'test value', [
-            'a' => 'attrA',
-            'b' => 'attrB'
-        ]);
+		$tag = new KirbyTag('test', 'test value', $attr, $data);
 
-        // class properties
-        $this->assertSame('attrA', $tag->a);
-        $this->assertSame('attrB', $tag->b);
+		$this->assertSame('dataA', $tag->a());
+		$this->assertSame('attrB', $tag->b());
+		$this->assertSame('dataC', $tag->c());
+	}
 
-        // attr helper
-        $this->assertSame('attrA', $tag->attr('a', 'fallback'));
-        $this->assertSame('attrB', $tag->attr('b', 'fallback'));
-    }
+	/**
+	 * @covers ::__callStatic
+	 */
+	public function test__callStatic()
+	{
+		$attr = [
+			'a' => 'attrA',
+			'b' => 'attrB'
+		];
 
-    public function testAttrFallback()
-    {
-        $tag = new KirbyTag('test', 'test value', [
-            'a' => 'attrA'
-        ]);
+		$result = KirbyTag::test('test value', $attr);
+		$this->assertSame('test: test value-attrA-attrB', $result);
+	}
 
-        $this->assertNull($tag->b);
-        $this->assertSame('fallback', $tag->attr('b', 'fallback'));
-    }
+	/**
+	 * @covers ::__get
+	 * @covers ::attr
+	 */
+	public function testAttr()
+	{
+		$tag = new KirbyTag('test', 'test value', [
+			'a' => 'attrA',
+			'b' => 'attrB'
+		]);
 
-    public function testFactory()
-    {
-        $attr = [
-            'a' => 'attrA',
-            'b' => 'attrB'
-        ];
+		// class properties
+		$this->assertSame('attrA', $tag->a);
+		$this->assertSame('attrB', $tag->b);
 
-        $result = KirbyTag::factory('test', 'test value', $attr);
+		// attr helper
+		$this->assertSame('attrA', $tag->attr('a', 'fallback'));
+		$this->assertSame('attrB', $tag->attr('b', 'fallback'));
+	}
 
-        $this->assertSame('test: test value-attrA-attrB', $result);
-    }
+	/**
+	 * @covers ::__get
+	 * @covers ::attr
+	 */
+	public function testAttrFallback()
+	{
+		$tag = new KirbyTag('test', 'test value', [
+			'a' => 'attrA'
+		]);
 
-    public function testOption()
-    {
-        $attr = [
-            'a' => 'attrA',
-            'b' => 'attrB'
-        ];
+		$this->assertNull($tag->b);
+		$this->assertSame('fallback', $tag->attr('b', 'fallback'));
+	}
 
-        $data = [
-            'a' => 'dataA',
-            'b' => 'dataB'
-        ];
+	/**
+	 * @covers ::factory
+	 */
+	public function testFactory()
+	{
+		$attr = [
+			'a' => 'attrA',
+			'b' => 'attrB'
+		];
 
-        $options = [
-            'a' => 'optionA',
-            'b' => 'optionB'
-        ];
+		$result = KirbyTag::factory('test', 'test value', $attr);
+		$this->assertSame('test: test value-attrA-attrB', $result);
+	}
 
-        $tag = new KirbyTag('test', 'test value', $attr, $data, $options);
+	/**
+	 * @covers ::file
+	 */
+	public function testFile()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => static::TMP
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'a',
+						'files' => [
+							[
+								'filename' => 'a.jpg'
+							]
+						]
+					]
+				]
+			]
+		]);
 
-        $this->assertSame('optionA', $tag->option('a'));
-        $this->assertSame('optionB', $tag->option('b'));
-        $this->assertSame('optionC', $tag->option('c', 'optionC'));
-    }
+		$page = $app->page('a');
+		$file = $page->file('a.jpg');
+		$tag  = new KirbyTag('image', 'foo');
+		$this->assertSame($file, $tag->file('a/a.jpg'));
+	}
 
-    public function testParse()
-    {
-        $tag = KirbyTag::parse('(test: test value)', ['some' => 'data'], ['some' => 'options']);
-        $this->assertSame('test', $tag->type);
-        $this->assertSame('test value', $tag->value);
-        $this->assertSame(['some' => 'data'], $tag->data);
-        $this->assertSame(['some' => 'options'], $tag->options);
-        $this->assertSame([], $tag->attrs);
+	/**
+	 * @covers ::file
+	 */
+	public function testFileInParent()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => static::TMP
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'a',
+						'files' => [
+							[
+								'filename' => 'a.jpg'
+							]
+						]
+					]
+				]
+			]
+		]);
 
-        $tag = KirbyTag::parse('test: test value');
-        $this->assertSame('test', $tag->type);
-        $this->assertSame('test value', $tag->value);
-        $this->assertSame([], $tag->attrs);
+		$page = $app->page('a');
+		$file = $page->file('a.jpg');
+		$tag  = new KirbyTag('image', 'foo', [], [
+			'parent' => $page,
+		]);
+		$this->assertSame($file, $tag->file('a.jpg'));
+	}
 
-        $tag = KirbyTag::parse('test:');
-        $this->assertSame('test', $tag->type);
-        $this->assertSame('', $tag->value);
-        $this->assertSame([], $tag->attrs);
+	/**
+	 * @covers ::file
+	 */
+	public function testFileInFileParent()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => static::TMP
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'a',
+						'files' => [
+							[
+								'filename' => 'a.jpg'
+							]
+						]
+					]
+				]
+			]
+		]);
 
-        $tag = KirbyTag::parse('test: ');
-        $this->assertSame('test', $tag->type);
-        $this->assertSame('', $tag->value);
-        $this->assertSame([], $tag->attrs);
+		$page = $app->page('a');
+		$file = $page->file('a.jpg');
+		$tag  = new KirbyTag('image', 'foo', [], [
+			'parent' => $file,
+		]);
+		$this->assertSame($file, $tag->file('a.jpg'));
+	}
 
-        $tag = KirbyTag::parse('test: test value a: attrA b: attrB');
-        $this->assertSame('test', $tag->type);
-        $this->assertSame('test value', $tag->value);
-        $this->assertSame([
-            'a' => 'attrA',
-            'b' => 'attrB'
-        ], $tag->attrs);
+	/**
+	 * @covers ::file
+	 */
+	public function testFileFromUuid()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => static::TMP
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'a',
+						'files' => [
+							[
+								'filename' => 'a.jpg',
+								'content' => ['uuid' => 'image-uuid']
+							]
+						]
+					]
+				]
+			]
+		]);
 
-        $tag = KirbyTag::parse('test:test value a:attrA b:attrB');
-        $this->assertSame('test', $tag->type);
-        $this->assertSame('test value', $tag->value);
-        $this->assertSame([
-            'a' => 'attrA',
-            'b' => 'attrB'
-        ], $tag->attrs);
+		$page = $app->page('a');
+		$file = $page->file('a.jpg');
+		$tag  = new KirbyTag('image', 'foo');
+		$this->assertSame($file, $tag->file('file://image-uuid'));
 
-        $tag = KirbyTag::parse('test: test value a: attrA b:');
-        $this->assertSame('test', $tag->type);
-        $this->assertSame('test value', $tag->value);
-        $this->assertSame([
-            'a' => 'attrA',
-            'b' => ''
-        ], $tag->attrs);
+		// with parent
+		$tag = new KirbyTag('image', 'foo', [], [
+			'parent' => $page,
+		]);
+		$this->assertSame($file, $tag->file('file://image-uuid'));
+	}
 
-        $tag = KirbyTag::parse('test: test value a: attrA b: ');
-        $this->assertSame('test', $tag->type);
-        $this->assertSame('test value', $tag->value);
-        $this->assertSame([
-            'a' => 'attrA',
-            'b' => ''
-        ], $tag->attrs);
+	/**
+	 * @covers ::kirby
+	 */
+	public function testKirby()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null',
+			]
+		]);
 
-        $tag = KirbyTag::parse('test: test value a: attrA b: attrB ');
-        $this->assertSame('test', $tag->type);
-        $this->assertSame('test value', $tag->value);
-        $this->assertSame([
-            'a' => 'attrA',
-            'b' => 'attrB'
-        ], $tag->attrs);
+		$tag = new KirbyTag('image', 'b.jpg');
+		$this->assertSame($app, $tag->kirby());
+	}
 
-        $tag = KirbyTag::parse('test: test value a: attrA c: attrC b: attrB');
-        $this->assertSame('test', $tag->type);
-        $this->assertSame('test value', $tag->value);
-        $this->assertSame([
-            'a' => 'attrA c: attrC',
-            'b' => 'attrB'
-        ], $tag->attrs);
+	/**
+	 * @covers ::option
+	 */
+	public function testOption()
+	{
+		$attr = [
+			'a' => 'attrA',
+			'b' => 'attrB'
+		];
 
-        $tag = KirbyTag::parse('test: test value a: attrA b: attrB c: attrC');
-        $this->assertSame('test', $tag->type);
-        $this->assertSame('test value', $tag->value);
-        $this->assertSame([
-            'a' => 'attrA',
-            'b' => 'attrB c: attrC'
-        ], $tag->attrs);
-    }
+		$data = [
+			'a' => 'dataA',
+			'b' => 'dataB'
+		];
 
-    public function testParseInvalid()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('Undefined tag type: invalid');
+		$options = [
+			'a' => 'optionA',
+			'b' => 'optionB'
+		];
 
-        KirbyTag::parse('invalid: test value a: attrA b: attrB');
-    }
+		$tag = new KirbyTag('test', 'test value', $attr, $data, $options);
 
-    public function testRender()
-    {
-        $tag = new KirbyTag('test', 'test value', [
-            'a' => 'attrA',
-            'b' => 'attrB'
-        ]);
-        $this->assertSame('test: test value-attrA-attrB', $tag->render());
+		$this->assertSame('optionA', $tag->option('a'));
+		$this->assertSame('optionB', $tag->option('b'));
+		$this->assertSame('optionC', $tag->option('c', 'optionC'));
+	}
 
-        $tag = new KirbyTag('test', '', [
-            'a' => 'attrA'
-        ]);
-        $this->assertSame('test: -attrA-', $tag->render());
-    }
+	/**
+	 * @covers ::parent
+	 */
+	public function testParent()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null',
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'a',
+						'files' => [
+							[
+								'filename' => 'a.jpg'
+							]
+						]
+					]
+				]
+			]
+		]);
 
-    public function testRenderNoHtml()
-    {
-        $this->expectException('Kirby\Exception\BadMethodCallException');
-        $this->expectExceptionMessage('Invalid tag render function in tag: noHtml');
+		$page  = $app->page('a');
+		$tag   = new KirbyTag('image', 'b.jpg', [], [
+			'parent' => $page,
+		]);
 
-        $tag = new KirbyTag('noHtml', 'test value', [
-            'a' => 'attrA',
-            'b' => 'attrB'
-        ]);
-        $tag->render();
-    }
+		$this->assertSame($page, $tag->parent());
+	}
 
-    public function testRenderInvalidHtml()
-    {
-        $this->expectException('Kirby\Exception\BadMethodCallException');
-        $this->expectExceptionMessage('Invalid tag render function in tag: invalidHtml');
+	public static function parseProvider(): array
+	{
+		return [
+			[
+				'(test: test value)',
+				['some' => 'data'],
+				['some' => 'options'],
+				[
+					'type'    => 'test',
+					'value'   => 'test value',
+					'data'    => ['some' => 'data'],
+					'options' => ['some' => 'options'],
+					'attrs'   => []
+				]
+			],
+			[
+				'test: test value',
+				[],
+				[],
+				[
+					'type'    => 'test',
+					'value'   => 'test value',
+					'attrs'   => []
+				]
+			],
+			[
+				'test:',
+				[],
+				[],
+				[
+					'type'    => 'test',
+					'value'   => '',
+					'attrs'   => []
+				]
+			],
+			[
+				'test: ',
+				[],
+				[],
+				[
+					'type'    => 'test',
+					'value'   => '',
+					'attrs'   => []
+				]
+			],
+			[
+				'test: test value a: attrA b: attrB',
+				[],
+				[],
+				[
+					'type'    => 'test',
+					'value'   => 'test value',
+					'attrs'   => [
+						'a' => 'attrA',
+						'b' => 'attrB'
+					]
+				]
+			],
+			[
+				'test:test value a:attrA b:attrB',
+				[],
+				[],
+				[
+					'type'    => 'test',
+					'value'   => 'test value',
+					'attrs'   => [
+						'a' => 'attrA',
+						'b' => 'attrB'
+					]
+				]
+			],
+			[
+				'test: test value a: attrA b:',
+				[],
+				[],
+				[
+					'type'    => 'test',
+					'value'   => 'test value',
+					'attrs'   => [
+						'a' => 'attrA',
+						'b' => ''
+					]
+				]
+			],
+			[
+				'test: test value a: attrA b: ',
+				[],
+				[],
+				[
+					'type'    => 'test',
+					'value'   => 'test value',
+					'attrs'   => [
+						'a' => 'attrA',
+						'b' => ''
+					]
+				]
+			],
+			[
+				'test: test value a: attrA b: attrB ',
+				[],
+				[],
+				[
+					'type'    => 'test',
+					'value'   => 'test value',
+					'attrs'   => [
+						'a' => 'attrA',
+						'b' => 'attrB'
+					]
+				]
+			],
+			[
+				'test: test value a: attrA c: attrC b: attrB',
+				[],
+				[],
+				[
+					'type'    => 'test',
+					'value'   => 'test value',
+					'attrs'   => [
+						'a' => 'attrA c: attrC',
+						'b' => 'attrB'
+					]
+				]
+			],
+			[
+				'test: test value a: attrA b: attrB c: attrC',
+				[],
+				[],
+				[
+					'type'    => 'test',
+					'value'   => 'test value',
+					'attrs'   => [
+						'a' => 'attrA',
+						'b' => 'attrB c: attrC'
+					]
+				]
+			],
+			[
+				'file: file://abc a: attrA b: attrB c: attrC',
+				[],
+				[],
+				[
+					'type'    => 'file',
+					'value'   => 'file://abc',
+					'attrs'   => [
+						'a' => 'attrA b: attrB c: attrC'
+					]
+				]
+			],
+		];
+	}
 
-        $tag = new KirbyTag('invalidHtml', 'test value', [
-            'a' => 'attrA',
-            'b' => 'attrB'
-        ]);
-        $tag->render();
-    }
+	/**
+	 * @covers ::parse
+	 * @dataProvider parseProvider
+	 */
+	public function testParse(string $string, array $data, array $options, array $expected)
+	{
+		$tag = KirbyTag::parse($string, $data, $options);
+		foreach ($expected as $key => $value) {
+			$this->assertSame($value, $tag->$key);
+		}
+	}
 
-    public function testType()
-    {
-        $tag = new KirbyTag('test', 'test value');
-        $this->assertSame('test', $tag->type());
-    }
+	/**
+	 * @covers ::render
+	 */
+	public function testRender()
+	{
+		$tag = new KirbyTag('test', 'test value', [
+			'a' => 'attrA',
+			'b' => 'attrB'
+		]);
+		$this->assertSame('test: test value-attrA-attrB', $tag->render());
+
+		$tag = new KirbyTag('test', '', [
+			'a' => 'attrA'
+		]);
+		$this->assertSame('test: -attrA-', $tag->render());
+	}
+
+	/**
+	 * @covers ::render
+	 */
+	public function testRenderNoHtml()
+	{
+		$this->expectException(BadMethodCallException::class);
+		$this->expectExceptionMessage('Invalid tag render function in tag: noHtml');
+
+		$tag = new KirbyTag('noHtml', 'test value', [
+			'a' => 'attrA',
+			'b' => 'attrB'
+		]);
+		$tag->render();
+	}
+
+	/**
+	 * @covers ::render
+	 */
+	public function testRenderInvalidHtml()
+	{
+		$this->expectException(BadMethodCallException::class);
+		$this->expectExceptionMessage('Invalid tag render function in tag: invalidHtml');
+
+		$tag = new KirbyTag('invalidHtml', 'test value', [
+			'a' => 'attrA',
+			'b' => 'attrB'
+		]);
+		$tag->render();
+	}
+
+	/**
+	 * @covers ::type
+	 */
+	public function testType()
+	{
+		$tag = new KirbyTag('test', 'test value');
+		$this->assertSame('test', $tag->type());
+	}
 }

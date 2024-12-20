@@ -2,188 +2,227 @@
 
 namespace Kirby\Cms;
 
-use Kirby\Toolkit\F;
-use PHPUnit\Framework\TestCase;
+use Kirby\Exception\DuplicateException;
+use Kirby\Filesystem\Dir;
+use Kirby\Filesystem\F;
+use Kirby\TestCase;
+use TypeError;
 
 class UncreatablePage extends Page
 {
-    public static function create(array $props)
-    {
-        return 'the model was used';
-    }
+	public static function create(array $props): static
+	{
+		return 'the model was used';
+	}
 }
 
 class PageCreateTest extends TestCase
 {
-    protected $app;
-    protected $fixtures;
+	public const TMP = KIRBY_TMP_DIR . '/Cms.PageCreate';
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => $this->fixtures = __DIR__ . '/fixtures/PageCreateTest'
-            ]
-        ]);
+	protected $app;
 
-        $this->app->impersonate('kirby');
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => static::TMP
+			]
+		]);
 
-        Dir::make($this->fixtures);
+		$this->app->impersonate('kirby');
 
-        Page::$models = [
-            'uncreatable-page' => UncreatablePage::class
-        ];
-    }
+		Dir::make(static::TMP);
 
-    public function tearDown(): void
-    {
-        Dir::remove($this->fixtures);
+		Page::$models = [
+			'uncreatable-page' => UncreatablePage::class
+		];
+	}
 
-        Page::$models = [];
-    }
+	public function tearDown(): void
+	{
+		Dir::remove(static::TMP);
 
-    public function testCreateDraft()
-    {
-        $site = $this->app->site();
-        $page = Page::create([
-            'slug' => 'new-page',
-        ]);
+		Page::$models = [];
+	}
 
-        $this->assertTrue($page->exists());
-        $this->assertInstanceOf(Page::class, $page);
-        $this->assertTrue($page->isDraft());
-        $this->assertTrue($page->parentModel()->drafts()->has($page));
-        $this->assertTrue($site->drafts()->has($page));
-    }
+	public function testCreateDraft()
+	{
+		$site = $this->app->site();
+		$page = Page::create([
+			'slug' => 'new-page',
+		]);
 
-    public function testCreateDraftWithDefaults()
-    {
-        $site = $this->app->site();
-        $page = Page::create([
-            'slug' => 'new-page',
-            'blueprint' => [
-                'name'   => 'test',
-                'fields' => [
-                    'a'  => [
-                        'type'    => 'text',
-                        'default' => 'A'
-                    ],
-                    'b' => [
-                        'type'    => 'textarea',
-                        'default' => 'B'
-                    ]
-                ]
-            ]
-        ]);
+		$this->assertTrue($page->exists());
+		$this->assertIsPage($page);
+		$this->assertTrue($page->isDraft());
+		$this->assertTrue($page->parentModel()->drafts()->has($page));
+		$this->assertTrue($site->drafts()->has($page));
+	}
 
-        $this->assertEquals('A', $page->a()->value());
-        $this->assertEquals('B', $page->b()->value());
-    }
+	public function testCreateDraftWithDefaults()
+	{
+		$site = $this->app->site();
+		$page = Page::create([
+			'slug' => 'new-page',
+			'blueprint' => [
+				'name'   => 'test',
+				'fields' => [
+					'a'  => [
+						'type'    => 'text',
+						'default' => 'A'
+					],
+					'b' => [
+						'type'    => 'textarea',
+						'default' => 'B'
+					]
+				]
+			]
+		]);
 
-    public function testCreateDraftWithDefaultsAndContent()
-    {
-        $site = $this->app->site();
-        $page = Page::create([
-            'content' => [
-                'a' => 'Custom A'
-            ],
-            'slug' => 'new-page',
-            'blueprint' => [
-                'name'   => 'test',
-                'fields' => [
-                    'a'  => [
-                        'type'    => 'text',
-                        'default' => 'A'
-                    ],
-                    'b' => [
-                        'type'    => 'textarea',
-                        'default' => 'B'
-                    ]
-                ]
-            ]
-        ]);
+		$this->assertSame('A', $page->a()->value());
+		$this->assertSame('B', $page->b()->value());
+	}
 
-        $this->assertEquals('Custom A', $page->a()->value());
-        $this->assertEquals('B', $page->b()->value());
-    }
+	public function testCreateDraftWithDefaultsAndContent()
+	{
+		$site = $this->app->site();
+		$page = Page::create([
+			'content' => [
+				'a' => 'Custom A'
+			],
+			'slug' => 'new-page',
+			'blueprint' => [
+				'name'   => 'test',
+				'fields' => [
+					'a'  => [
+						'type'    => 'text',
+						'default' => 'A'
+					],
+					'b' => [
+						'type'    => 'textarea',
+						'default' => 'B'
+					]
+				]
+			]
+		]);
 
-    public function testCreateListedPage()
-    {
-        $site = $this->app->site();
-        $page = Page::create([
-            'slug' => 'new-page',
-            'num'  => 1
-        ]);
+		$this->assertSame('Custom A', $page->a()->value());
+		$this->assertSame('B', $page->b()->value());
+	}
 
-        $this->assertTrue($page->exists());
-        $this->assertInstanceOf(Page::class, $page);
-        $this->assertFalse($page->isDraft());
-        $this->assertTrue($page->parentModel()->children()->has($page));
-        $this->assertTrue($site->children()->has($page));
-    }
+	public function testCreateListedPage()
+	{
+		$site = $this->app->site();
+		$page = Page::create([
+			'slug' => 'new-page',
+			'num'  => 1
+		]);
 
-    public function testCreateDuplicate()
-    {
-        $this->expectException('Kirby\Exception\DuplicateException');
+		$this->assertTrue($page->exists());
+		$this->assertIsPage($page);
+		$this->assertFalse($page->isDraft());
+		$this->assertTrue($page->parentModel()->children()->has($page));
+		$this->assertTrue($site->children()->has($page));
+	}
 
-        $page = Page::create([
-            'slug' => 'new-page',
-        ]);
+	public function testCreateUnlistedPageDraftProp()
+	{
+		$site = $this->app->site();
+		$page = Page::create([
+			'slug'  => 'new-page',
+			'draft' => false,
+		]);
 
-        $page = Page::create([
-            'slug' => 'new-page',
-        ]);
-    }
+		$this->assertTrue($page->exists());
+		$this->assertIsPage($page);
+		$this->assertFalse($page->isDraft());
+		$this->assertFalse($page->isListed());
+		$this->assertTrue($page->parentModel()->children()->has($page));
+		$this->assertTrue($site->children()->has($page));
+	}
 
-    public function testCreateChild()
-    {
-        Dir::make($this->app->root('content'));
+	public function testCreateUnlistedPageIsDraftProp()
+	{
+		$site = $this->app->site();
+		$page = Page::create([
+			'slug'    => 'new-page',
+			'draft'   => true,
+			'isDraft' => false,
+		]);
 
-        $mother = Page::create([
-            'slug' => 'mother'
-        ]);
+		$this->assertTrue($page->exists());
+		$this->assertIsPage($page);
+		$this->assertFalse($page->isDraft());
+		$this->assertFalse($page->isListed());
+		$this->assertTrue($page->parentModel()->children()->has($page));
+		$this->assertTrue($site->children()->has($page));
+	}
 
-        $child = $mother->createChild([
-            'slug'     => 'child',
-            'template' => 'the-template'
-        ]);
+	public function testCreateDuplicate()
+	{
+		$this->expectException(DuplicateException::class);
 
-        $this->assertTrue($child->exists());
-        $this->assertEquals('the-template', $child->intendedTemplate()->name());
-        $this->assertEquals('child', $child->slug());
-        $this->assertEquals('mother/child', $child->id());
-        $this->assertTrue($mother->drafts()->has($child->id()));
-    }
+		$page = Page::create([
+			'slug' => 'new-page',
+		]);
 
-    public function testCreateChildCustomModel()
-    {
-        $mother = Page::create([
-            'slug' => 'mother'
-        ]);
+		$page = Page::create([
+			'slug' => 'new-page',
+		]);
+	}
 
-        $child = $mother->createChild([
-            'slug'     => 'child',
-            'template' => 'uncreatable-page'
-        ]);
+	public function testCreateChild()
+	{
+		Dir::make($this->app->root('content'));
 
-        $this->assertSame('the model was used', $child);
-        $this->assertTrue($mother->drafts()->isEmpty());
-    }
+		$mother = Page::create([
+			'slug' => 'mother'
+		]);
 
-    public function testCreateFile()
-    {
-        F::write($source = $this->fixtures . '/source.md', '');
+		$child = $mother->createChild([
+			'slug'     => 'child',
+			'template' => 'the-template'
+		]);
 
-        $page = Page::create([
-            'slug' => 'test'
-        ]);
+		$this->assertTrue($child->exists());
+		$this->assertSame('the-template', $child->intendedTemplate()->name());
+		$this->assertSame('child', $child->slug());
+		$this->assertSame('mother/child', $child->id());
+		$this->assertTrue($mother->drafts()->has($child->id()));
+	}
 
-        $file = $page->createFile([
-            'filename' => 'test.md',
-            'source'   => $source
-        ]);
+	public function testCreateChildCustomModel()
+	{
+		$mother = Page::create([
+			'slug' => 'mother'
+		]);
 
-        $this->assertEquals('test.md', $file->filename());
-        $this->assertEquals('test/test.md', $file->id());
-    }
+		try {
+			$mother->createChild([
+				'slug'     => 'child',
+				'template' => 'uncreatable-page'
+			]);
+		} catch (TypeError) {
+		}
+
+		$this->assertTrue($mother->drafts()->isEmpty());
+	}
+
+	public function testCreateFile()
+	{
+		F::write($source = static::TMP . '/source.md', '');
+
+		$page = Page::create([
+			'slug' => 'test'
+		]);
+
+		$file = $page->createFile([
+			'filename' => 'test.md',
+			'source'   => $source
+		]);
+
+		$this->assertSame('test.md', $file->filename());
+		$this->assertSame('test/test.md', $file->id());
+	}
 }

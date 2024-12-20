@@ -2,87 +2,89 @@
 
 namespace Kirby\Cms;
 
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\Dir;
+use Kirby\Filesystem\F;
+use Kirby\TestCase;
 use Kirby\Toolkit\Str;
-use PHPUnit\Framework\TestCase;
 
 class ContentLocksTest extends TestCase
 {
-    protected $app;
-    protected $fixtures;
+	public const TMP = KIRBY_TMP_DIR . '/Cms.ContentLocks';
 
-    public function app()
-    {
-        return new App([
-            'roots' => [
-                'index' => $this->fixtures = __DIR__ . '/fixtures/ContentLocksTest'
-            ],
-            'site' => [
-                'children' => [
-                    [
-                        'slug'  => 'test'
-                    ]
-                ]
-            ]
-        ]);
-    }
+	protected $app;
 
-    public function setUp(): void
-    {
-        $this->app = $this->app();
-        Dir::make($this->fixtures);
-    }
+	public function app()
+	{
+		return new App([
+			'roots' => [
+				'index' => static::TMP
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug'  => 'test'
+					]
+				]
+			]
+		]);
+	}
 
-    public function tearDown(): void
-    {
-        Dir::remove($this->fixtures);
-    }
+	public function setUp(): void
+	{
+		$this->app = $this->app();
+		Dir::make(static::TMP);
+	}
 
-    public function testFile()
-    {
-        $app = $this->app;
-        $page = $app->page('test');
-        $this->assertTrue(Str::endsWith($app->locks()->file($page), 'content/test/.lock'));
-    }
+	public function tearDown(): void
+	{
+		Dir::remove(static::TMP);
+	}
 
-    public function testId()
-    {
-        $app = $this->app;
-        $page = $app->page('test');
-        $this->assertEquals('/test', $app->locks()->id($page));
-    }
+	public function testFile()
+	{
+		$app = $this->app;
+		$page = $app->page('test');
+		$this->assertTrue(Str::endsWith($app->locks()->file($page), 'content/test/.lock'));
+	}
 
-    public function testGetSet()
-    {
-        $app = $this->app;
-        $page = $app->page('test');
-        $root = $this->fixtures . '/content/test';
+	public function testId()
+	{
+		$app = $this->app;
+		$page = $app->page('test');
+		$this->assertSame('/test', $app->locks()->id($page));
+	}
 
-        // create fixtures directory
-        $this->assertEquals($root . '/.lock', $app->locks()->file($page));
-        Dir::make($root);
+	public function testGetSet()
+	{
+		$app = $this->app;
+		$page = $app->page('test');
+		$root = static::TMP . '/content/test';
 
-        // check if empty
-        $this->assertEquals([], $app->locks()->get($page));
-        $this->assertFalse(F::exists($app->locks()->file($page)));
+		// create temp directory
+		$this->assertSame($root . '/.lock', $app->locks()->file($page));
+		Dir::make($root);
 
-        // set data
-        $this->assertTrue($app->locks()->set($page, [
-            'lock'   => ['user' => 'homer'],
-            'unlock' => []
-        ]));
+		// check if empty
+		$this->assertSame([], $app->locks()->get($page));
+		$this->assertFalse(F::exists($app->locks()->file($page)));
 
-        // check if exists
-        $this->assertTrue(F::exists($app->locks()->file($page)));
-        $this->assertEquals([
-            'lock' => ['user' => 'homer']
-        ], $app->locks()->get($page));
+		// set data
+		$this->assertTrue($app->locks()->set($page, [
+			'lock'   => ['user' => 'homer'],
+			'unlock' => []
+		]));
 
-        // set null data
-        $this->assertTrue($app->locks()->set($page, []));
+		// check if exists
+		$this->assertTrue(F::exists($app->locks()->file($page)));
+		$this->assertSame([
+			'lock' => ['user' => 'homer']
+		], $app->locks()->get($page));
 
-        // check if empty
-        $this->assertEquals([], $app->locks()->get($page));
-        $this->assertFalse(F::exists($app->locks()->file($page)));
-    }
+		// set null data
+		$this->assertTrue($app->locks()->set($page, []));
+
+		// check if empty
+		$this->assertSame([], $app->locks()->get($page));
+		$this->assertFalse(F::exists($app->locks()->file($page)));
+	}
 }

@@ -4,118 +4,155 @@ namespace Kirby\Cms;
 
 use Kirby\Data\Data;
 use Kirby\Exception\DuplicateException;
-use Kirby\Toolkit\Dir;
-use PHPUnit\Framework\TestCase;
+use Kirby\Filesystem\Dir;
+use Kirby\TestCase;
 
 class LanguagesTest extends TestCase
 {
-    protected $app;
-    protected $languages;
-    protected $fixtures;
+	public const TMP = KIRBY_TMP_DIR . '/Cms.Languages';
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => $this->fixtures = __DIR__ . '/fixtures/LanguagesTest',
-            ],
-            'languages' => [
-                [
-                    'code'    => 'en',
-                    'name'    => 'English',
-                    'default' => true,
-                    'locale'  => 'en_US',
-                    'url'     => '/',
-                ],
-                [
-                    'code'    => 'de',
-                    'name'    => 'Deutsch',
-                    'locale'  => 'de_DE',
-                    'url'     => '/de',
-                ],
-            ]
-        ]);
+	protected $app;
+	protected $languages;
 
-        $this->languages = $this->app->languages();
-    }
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => static::TMP,
+			],
+			'languages' => [
+				[
+					'code'    => 'en',
+					'name'    => 'English',
+					'default' => true,
+					'locale'  => 'en_US',
+					'url'     => '/',
+				],
+				[
+					'code'    => 'de',
+					'name'    => 'Deutsch',
+					'locale'  => 'de_DE',
+					'url'     => '/de',
+				],
+			]
+		]);
 
-    public function tearDown(): void
-    {
-        Dir::remove($this->fixtures);
-    }
+		$this->languages = $this->app->languages();
+	}
 
-    public function testLoad()
-    {
-        $this->assertCount(2, $this->languages);
-        $this->assertEquals(['en', 'de'], $this->languages->codes());
-        $this->assertEquals('en', $this->languages->default()->code());
-    }
+	public function tearDown(): void
+	{
+		Dir::remove(static::TMP);
+	}
 
-    public function testLoadFromFiles()
-    {
-        $this->app->clone([
-            'roots' => [
-                'languages' => $root = __DIR__ . '/fixtures/LanguagesTest'
-            ]
-        ]);
+	public function testCodes()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => static::TMP,
+			],
+			'languages' => [
+				[
+					'code'    => 'en',
+					'name'    => 'English',
+					'default' => true,
+					'locale'  => 'en_US',
+					'url'     => '/',
+				],
+				[
+					'code'    => 'de',
+					'name'    => 'Deutsch',
+					'locale'  => 'de_DE',
+					'url'     => '/de',
+				],
+			]
+		]);
 
-        Data::write($root . '/en.php', [
-            'code' => 'en',
-            'default' => true
-        ]);
+		$this->assertSame(['en', 'de'], $app->languages()->codes());
 
-        Data::write($root . '/de.php', [
-            'code' => 'de'
-        ]);
+		$app = new App([
+			'roots' => [
+				'index' => static::TMP,
+			]
+		]);
 
-        $languages = Languages::load();
+		$this->assertSame(['default'], $app->languages()->codes());
+	}
 
-        $this->assertCount(2, $languages);
-        $this->assertEquals(['de', 'en'], $languages->codes());
-        $this->assertEquals('en', $languages->default()->code());
+	public function testLoad()
+	{
+		$this->assertCount(2, $this->languages);
+		$this->assertSame(['en', 'de'], $this->languages->codes());
+		$this->assertSame('en', $this->languages->default()->code());
+	}
 
-        Dir::remove($root);
-    }
+	public function testLoadFromFiles()
+	{
+		$this->app->clone([
+			'roots' => [
+				'languages' => static::TMP
+			]
+		]);
 
-    public function testDefault()
-    {
-        $this->assertEquals('en', $this->languages->default()->code());
-    }
+		Data::write(static::TMP . '/en.php', [
+			'code' => 'en',
+			'default' => true
+		]);
 
-    public function testMultipleDefault()
-    {
-        $this->expectException(DuplicateException::class);
+		Data::write(static::TMP . '/de.php', [
+			'code' => 'de'
+		]);
 
-        new App([
-            'languages' => [
-                [
-                    'code'    => 'en',
-                    'name'    => 'English',
-                    'default' => true,
-                    'locale'  => 'en_US',
-                    'url'     => '/',
-                ],
-                [
-                    'code'    => 'de',
-                    'name'    => 'Deutsch',
-                    'default' => true,
-                    'locale'  => 'de_DE',
-                    'url'     => '/de',
-                ],
-            ]
-        ]);
-    }
+		$languages = Languages::load();
 
-    public function testCreate()
-    {
-        $language = $this->app->languages()->create([
-            'code' => 'tr'
-        ]);
+		$this->assertCount(2, $languages);
+		$this->assertSame(['de', 'en'], $languages->codes());
+		$this->assertSame('en', $languages->default()->code());
 
-        $this->assertSame('tr', $language->code());
-        $this->assertSame(false, $language->isDefault());
-        $this->assertSame('ltr', $language->direction());
-        $this->assertSame('tr', $language->name());
-        $this->assertSame('/tr', $language->url());
-    }
+		Dir::remove(static::TMP);
+	}
+
+	public function testDefault()
+	{
+		$this->assertSame('en', $this->languages->default()->code());
+	}
+
+	public function testMultipleDefault()
+	{
+		$this->expectException(DuplicateException::class);
+
+		new App([
+			'languages' => [
+				[
+					'code'    => 'en',
+					'name'    => 'English',
+					'default' => true,
+					'locale'  => 'en_US',
+					'url'     => '/',
+				],
+				[
+					'code'    => 'de',
+					'name'    => 'Deutsch',
+					'default' => true,
+					'locale'  => 'de_DE',
+					'url'     => '/de',
+				],
+			]
+		]);
+	}
+
+	public function testCreate()
+	{
+		$this->app->impersonate('kirby');
+
+		$language = $this->app->languages()->create([
+			'code' => 'tr'
+		]);
+
+		$this->assertSame('tr', $language->code());
+		$this->assertFalse($language->isDefault());
+		$this->assertSame('ltr', $language->direction());
+		$this->assertSame('tr', $language->name());
+		$this->assertSame('/tr', $language->url());
+	}
 }

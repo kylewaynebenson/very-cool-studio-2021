@@ -2,210 +2,411 @@
 
 namespace Kirby\Cms;
 
-use PHPUnit\Framework\TestCase;
+use Kirby\Exception\InvalidArgumentException;
+use Kirby\TestCase;
 
 class BlockTest extends TestCase
 {
-    protected $page;
+	public const FIXTURES = __DIR__ . '/fixtures';
+	public const TMP      = KIRBY_TMP_DIR . '/Cms.Block';
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => '/dev/null',
-            ],
-        ]);
+	protected $app;
+	protected $page;
 
-        $this->page = new Page(['slug' => 'test']);
-    }
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => '/dev/null',
+			],
+		]);
 
-    public function testConstruct()
-    {
-        $block = new Block(['type' => 'test']);
+		$this->page = new Page(['slug' => 'test']);
+	}
 
-        $this->assertInstanceOf('Kirby\Cms\Content', $block->content());
-        $this->assertFalse($block->isHidden());
-        $this->assertInstanceOf('Kirby\Cms\Blocks', $block->siblings());
-        $this->assertSame('test', $block->type());
-    }
+	public function testConstruct()
+	{
+		$block = new Block(['type' => 'test']);
 
-    public function testConstructWithoutType()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The block type is missing');
+		$this->assertInstanceOf(Content::class, $block->content());
+		$this->assertFalse($block->isHidden());
+		$this->assertInstanceOf(Blocks::class, $block->siblings());
+		$this->assertSame('test', $block->type());
+	}
 
-        $block = new Block([]);
-    }
+	public function testConstructWithoutType()
+	{
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The block type is missing');
 
-    public function testContent()
-    {
-        $block = new Block([
-            'type'    => 'heading',
-            'content' => $content = [
-                'a' => 'Test Field A',
-                'b' => 'Test Field B'
-            ]
-        ]);
+		$block = new Block([]);
+	}
 
-        $this->assertEquals('Test Field A', $block->content()->a());
-        $this->assertEquals('Test Field A', $block->a());
-        $this->assertEquals('Test Field B', $block->content()->b());
-        $this->assertEquals('Test Field B', $block->b());
-        $this->assertSame($content, $block->content()->toArray());
-    }
+	public function testContent()
+	{
+		$block = new Block([
+			'type'    => 'heading',
+			'content' => $content = [
+				'a' => 'Test Field A',
+				'b' => 'Test Field B'
+			]
+		]);
 
-    public function testController()
-    {
-        $block = new Block([
-            'type' => 'heading',
-            'content' => [
-                'a' => 'Test Content A',
-                'b' => 'Test Content B'
-            ]
-        ]);
+		$this->assertInstanceOf(Field::class, $block->content()->a());
+		$this->assertInstanceOf(Field::class, $block->a());
+		$this->assertInstanceOf(Field::class, $block->content()->b());
+		$this->assertInstanceOf(Field::class, $block->b());
+		$this->assertSame('Test Field A', $block->content()->a()->value());
+		$this->assertSame('Test Field A', $block->a()->value());
+		$this->assertSame('Test Field B', $block->content()->b()->value());
+		$this->assertSame('Test Field B', $block->b()->value());
+		$this->assertSame($content, $block->content()->toArray());
+	}
 
-        $this->assertSame($block->content(), $block->controller()['content']);
-        $this->assertSame($block, $block->controller()['block']);
-        $this->assertSame($block->id(), $block->controller()['id']);
-        $this->assertNull($block->controller()['prev']);
-        $this->assertNull($block->controller()['next']);
-    }
+	/**
+	 * @todo block.converter remove eventually
+	 */
+	public function testContentWhenNotArrayConvertedAsEditorBlock()
+	{
+		$block = new Block([
+			'type'    => 'heading',
+			'content' => $content = 'this is old editor content'
+		]);
 
-    public function testFactory()
-    {
-        $block = Block::factory([
-            'type' => 'heading'
-        ]);
+		$this->assertSame($content, $block->content()->toArray()['text']);
+	}
 
-        $this->assertInstanceOf('Kirby\Cms\Block', $block);
-    }
+	public function testController()
+	{
+		$block = new Block([
+			'type' => 'heading',
+			'content' => [
+				'a' => 'Test Content A',
+				'b' => 'Test Content B'
+			]
+		]);
 
-    public function testIsEmpty()
-    {
-        $block = new Block([
-            'type' => 'heading'
-        ]);
+		$this->assertSame($block->content(), $block->controller()['content']);
+		$this->assertSame($block, $block->controller()['block']);
+		$this->assertSame($block->id(), $block->controller()['id']);
+		$this->assertNull($block->controller()['prev']);
+		$this->assertNull($block->controller()['next']);
+	}
 
-        $this->assertTrue($block->isEmpty());
-        $this->assertFalse($block->isNotEmpty());
+	public function testFactory()
+	{
+		$block = Block::factory([
+			'type' => 'heading'
+		]);
 
-        $block = new Block([
-            'type' => 'heading',
-            'content' => [
-                'text' => 'This is a nice heading'
-            ]
-        ]);
+		$this->assertInstanceOf(Block::class, $block);
+	}
 
-        $this->assertFalse($block->isEmpty());
-        $this->assertTrue($block->isNotEmpty());
-    }
+	public function testIsEmpty()
+	{
+		$block = new Block([
+			'type' => 'heading'
+		]);
 
-    public function testIsHidden()
-    {
-        $block = new Block([
-            'type' => 'heading',
-            'isHidden' => true
-        ]);
+		$this->assertTrue($block->isEmpty());
+		$this->assertFalse($block->isNotEmpty());
 
-        $this->assertTrue($block->isHidden());
-    }
+		$block = new Block([
+			'type' => 'heading',
+			'content' => [
+				'text' => 'This is a nice heading'
+			]
+		]);
 
-    public function testParent()
-    {
-        $block = new Block([
-            'parent' => $page = new Page(['slug' => 'test']),
-            'type'   => 'heading'
-        ]);
+		$this->assertFalse($block->isEmpty());
+		$this->assertTrue($block->isNotEmpty());
+	}
 
-        $this->assertSame($page, $block->content()->parent());
-    }
+	public function testIsHidden()
+	{
+		$block = new Block([
+			'type' => 'heading',
+			'isHidden' => true
+		]);
 
-    public function testToArray()
-    {
-        $block = new Block([
-            'type' => 'heading',
-            'content' => $content = [
-                'a' => 'Test Content A',
-                'b' => 'Test Content B'
-            ]
-        ]);
+		$this->assertTrue($block->isHidden());
+	}
 
-        $this->assertSame([
-            'content'  => $content,
-            'id'       => $block->id(),
-            'isHidden' => false,
-            'type'     => 'heading'
-        ], $block->toArray());
-    }
+	public function testParent()
+	{
+		$block = new Block([
+			'parent' => $page = new Page(['slug' => 'test']),
+			'type'   => 'heading'
+		]);
 
-    public function testToField()
-    {
-        $block = new Block([
-            'content' => [
-                'text' => 'Test'
-            ],
-            'type' => 'heading',
-        ]);
+		$this->assertIsPage($page, $block->content()->parent());
+	}
 
-        $expected = "<h2>Test</h2>\n";
+	public function testToArray()
+	{
+		$block = new Block([
+			'type' => 'heading',
+			'content' => $content = [
+				'a' => 'Test Content A',
+				'b' => 'Test Content B'
+			]
+		]);
 
-        $this->assertInstanceOf('Kirby\Cms\Field', $block->toField());
-        $this->assertSame($block->parent(), $block->toField()->parent());
-        $this->assertSame($block->id(), $block->toField()->key());
-        $this->assertSame($expected, $block->toField()->value());
-    }
+		$this->assertSame([
+			'content'  => $content,
+			'id'       => $block->id(),
+			'isHidden' => false,
+			'type'     => 'heading'
+		], $block->toArray());
+	}
 
-    public function testToHtml()
-    {
-        $block = new Block([
-            'content' => [
-                'text' => 'Test'
-            ],
-            'type' => 'heading',
-        ]);
+	public function testToField()
+	{
+		$block = new Block([
+			'content' => [
+				'text' => 'Test'
+			],
+			'type' => 'heading',
+		]);
 
-        $expected = "<h2>Test</h2>\n";
+		$expected = "<h2>Test</h2>\n";
 
-        $this->assertSame($expected, $block->toHtml());
-        $this->assertSame($expected, $block->__toString());
-        $this->assertSame($expected, (string)$block);
-    }
+		$this->assertInstanceOf(Field::class, $block->toField());
+		$this->assertSame($block->parent(), $block->toField()->parent());
+		$this->assertSame($block->id(), $block->toField()->key());
+		$this->assertSame($expected, $block->toField()->value());
+	}
 
-    public function testToHtmlWithCustomSnippets()
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => '/dev/null',
-                'snippets' => __DIR__ . '/fixtures/snippets'
-            ],
-        ]);
+	public function testToHtml()
+	{
+		$block = new Block([
+			'content' => [
+				'text' => 'Test'
+			],
+			'type' => 'heading',
+		]);
 
-        $block = new Block([
-            'content' => [
-                'text' => 'Test'
-            ],
-            'type' => 'text'
-        ]);
+		$expected = "<h2>Test</h2>\n";
 
-        $expected = "<p class=\"custom-text\">Test</p>\n";
+		$this->assertSame($expected, $block->toHtml());
+		$this->assertSame($expected, $block->__toString());
+		$this->assertSame($expected, (string)$block);
+	}
 
-        $this->assertSame($expected, $block->toHtml());
-        $this->assertSame($expected, $block->__toString());
-        $this->assertSame($expected, (string)$block);
-    }
+	public function testToHtmlInvalid()
+	{
+		new App([
+			'roots' => [
+				'index' => '/dev/null',
+				'snippets' => static::FIXTURES . '/snippets'
+			]
+		]);
 
-    public function testExcerpt()
-    {
-        $block = new Block([
-            'content' => [
-                'text' => $expected = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-            ],
-            'type' => 'text',
-        ]);
+		$block = new Block([
+			'content' => [
+				'text' => 'Test'
+			],
+			'type' => 'debug'
+		]);
 
-        $this->assertSame($expected, $block->toHtml());
-        $this->assertSame($expected, $block->excerpt());
-        $this->assertSame('Lorem ipsum dolor …', $block->excerpt(20));
-        $this->assertSame($expected, (string)$block);
-    }
+		$this->assertSame('', $block->toHtml());
+	}
+
+	public function testToHtmlInvalidWithDebugMode()
+	{
+		new App([
+			'roots' => [
+				'index' => '/dev/null',
+				'snippets' => static::FIXTURES . '/snippets'
+			],
+			'options' => [
+				'debug' => true
+			]
+		]);
+
+		$block = new Block([
+			'content' => [
+				'text' => 'Test'
+			],
+			'type' => 'debug'
+		]);
+
+		$expected = '<p>Block error: "Call to undefined function shouldThrowException()" in block type: "debug"</p>';
+		$this->assertSame($expected, $block->toHtml());
+	}
+
+	public function testToHtmlWithCustomSnippets()
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => '/dev/null',
+				'snippets' => static::FIXTURES . '/snippets'
+			],
+		]);
+
+		$block = new Block([
+			'content' => [
+				'text' => 'Test'
+			],
+			'type' => 'text'
+		]);
+
+		$expected = "<p class=\"custom-text\">Test</p>\n";
+
+		$this->assertSame($expected, $block->toHtml());
+		$this->assertSame($expected, $block->__toString());
+		$this->assertSame($expected, (string)$block);
+	}
+
+	public function testExcerpt()
+	{
+		$block = new Block([
+			'content' => [
+				'text' => $expected = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+			],
+			'type' => 'text',
+		]);
+
+		$this->assertSame($expected, $block->toHtml());
+		$this->assertSame($expected, $block->excerpt());
+		$this->assertSame('Lorem ipsum dolor …', $block->excerpt(20));
+		$this->assertSame($expected, (string)$block);
+	}
+
+	public function samplePrevNextBlocks()
+	{
+		return Blocks::factory([
+			[
+				'type' => 'code',
+				'isHidden' => true
+			],
+			[
+				'type' => 'gallery',
+				'isHidden' => true
+			],
+			[
+				'type' => 'heading',
+				'isHidden' => false
+			],
+			[
+				'type' => 'image',
+				'isHidden' => false
+			],
+			[
+				'type' => 'line',
+				'isHidden' => false
+			],
+			[
+				'type' => 'list',
+				'isHidden' => true
+			],
+			[
+				'type' => 'markdown',
+				'isHidden' => false
+			],
+			[
+				'type' => 'quote',
+				'isHidden' => true
+			],
+			[
+				'type' => 'table',
+				'isHidden' => false
+			],
+			[
+				'type' => 'text',
+				'isHidden' => true
+			],
+			[
+				'type' => 'video',
+				'isHidden' => false
+			],
+		]);
+	}
+
+	public function testHiddenSiblings()
+	{
+		$blocks = $this->samplePrevNextBlocks();
+		$block = $blocks->first();
+
+		$this->assertCount(5, $block->siblings());
+		$this->assertNull($block->prev());
+	}
+
+	public function testVisibleSiblings()
+	{
+		$blocks = $this->samplePrevNextBlocks();
+		$block = $blocks->last();
+
+		$this->assertCount(6, $block->siblings());
+		$this->assertNull($block->next());
+	}
+
+	public function testPrevNextVisible()
+	{
+		$blocks = $this->samplePrevNextBlocks();
+		$block = $blocks->nth(4);
+
+		$this->assertSame('line', $block->type());
+		$this->assertFalse($block->isHidden());
+		$this->assertSame('image', $block->prev()->type());
+		$this->assertSame('markdown', $block->next()->type());
+	}
+
+	public function testPrevNextHidden()
+	{
+		$blocks = $this->samplePrevNextBlocks();
+		$block = $blocks->nth(5);
+
+		$this->assertSame('list', $block->type());
+		$this->assertTrue($block->isHidden());
+		$this->assertSame('gallery', $block->prev()->type());
+		$this->assertSame('quote', $block->next()->type());
+	}
+
+	public function testImageBlock()
+	{
+		$this->app = new App([
+			'roots' => [
+				'index'   => static::TMP,
+				'content' => static::FIXTURES . '/files'
+			]
+		]);
+
+		// no alt
+		$block = new Block([
+			'type'    => 'image',
+			'content' => [
+				'image' => 'foo.jpg'
+			]
+		]);
+
+		$image = $block->image()->toFile();
+		$expected = '<img src="/media/site/' . $image->mediaHash() . '/foo.jpg" alt="">';
+		$this->assertStringContainsString($expected, $block->toHtml());
+
+		// image alt
+		$block = new Block([
+			'type'    => 'image',
+			'content' => [
+				'image' => 'bar.jpg'
+			]
+		]);
+
+		$image = $block->image()->toFile();
+		$expected = '<img src="/media/site/' . $image->mediaHash() . '/bar.jpg" alt="Sample alt text">';
+		$this->assertStringContainsString($expected, $block->toHtml());
+
+		// custom alt
+		$block = new Block([
+			'type'    => 'image',
+			'content' => [
+				'alt'   => 'Custom image alt text',
+				'image' => 'bar.jpg'
+			]
+		]);
+
+		$image = $block->image()->toFile();
+		$expected = '<img src="/media/site/' . $image->mediaHash() . '/bar.jpg" alt="Custom image alt text">';
+		$this->assertStringContainsString($expected, $block->toHtml());
+	}
 }

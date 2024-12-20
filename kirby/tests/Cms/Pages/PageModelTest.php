@@ -2,44 +2,51 @@
 
 namespace Kirby\Cms;
 
-class ArticlePage extends Page
-{
-    public function test()
-    {
-        return $this->id();
-    }
-}
-
 class PageModelTest extends TestCase
 {
-    public function setUp(): void
-    {
-        parent::setUp();
+	public const FIXTURES = __DIR__ . '/fixtures/PageModelTest';
+	public const TMP      = KIRBY_TMP_DIR . '/Cms.PageModel';
 
-        Page::$models = [
-            'article' => ArticlePage::class
-        ];
-    }
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index'  => static::TMP,
+				'models' => static::FIXTURES
+			]
+		]);
+	}
 
-    public function testPageModelWithTemplate()
-    {
-        $page = Page::factory([
-            'slug'  => 'test',
-            'model' => 'article',
-        ]);
+	public function testPageModelWithTemplate()
+	{
+		$page = Page::factory([
+			'slug'  => 'test',
+			'model' => 'article',
+		]);
 
-        $this->assertInstanceOf(ArticlePage::class, $page);
-        $this->assertEquals('test', $page->test());
-    }
+		$this->assertInstanceOf(\ArticlePage::class, $page);
+		$this->assertSame('test', $page->test());
+	}
 
-    public function testMissingPageModel()
-    {
-        $page = Page::factory([
-            'slug'  => 'test',
-            'model' => 'project',
-        ]);
+	public function testDefaultPageModel()
+	{
+		$page = Page::factory([
+			'slug'  => 'test',
+			'model' => 'non-existing',
+		]);
 
-        $this->assertInstanceOf(Page::class, $page);
-        $this->assertFalse(method_exists($page, 'test'));
-    }
+		$this->assertInstanceOf(\DefaultPage::class, $page);
+		$this->assertSame('bar', $page->foo());
+	}
+
+	public function testMissingPageModel()
+	{
+		$page = Page::factory([
+			'slug'  => 'test',
+			'model' => 'project',
+		]);
+
+		$this->assertIsPage($page);
+		$this->assertFalse(method_exists($page, 'test'));
+	}
 }

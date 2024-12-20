@@ -2,38 +2,41 @@
 
 namespace Kirby\Cms;
 
-class LanguagesApiCollectionTest extends TestCase
+use Kirby\Cms\Api\ApiCollectionTestCase;
+use Kirby\Filesystem\Dir;
+
+class LanguagesApiCollectionTest extends ApiCollectionTestCase
 {
-    protected $api;
-    protected $app;
+	public const TMP = KIRBY_TMP_DIR . '/Cms.LanguagesApiCollection';
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ],
-            'languages' => [
-                [
-                    'code' => 'en',
-                    'default' => true
-                ],
-                [
-                    'code' => 'de',
-                ]
-            ]
-        ]);
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => static::TMP
+			],
+			'languages' => [
+				[
+					'code' => 'en',
+					'default' => true
+				],
+				[
+					'code' => 'de',
+				]
+			]
+		]);
 
-        $this->api = $this->app->api();
-    }
+		$this->api = $this->app->api();
+		Dir::make(static::TMP);
+	}
 
-    public function testCollection()
-    {
-        $collection = $this->api->collection('languages', $this->app->languages());
-        $result     = $collection->toArray();
+	public function testCollection()
+	{
+		$collection = $this->api->collection('languages', $this->app->languages());
+		$result     = $collection->toArray();
 
-        $this->assertCount(2, $result);
-        $this->assertEquals('en', $result[0]['code']);
-        $this->assertEquals('de', $result[1]['code']);
-    }
+		$this->assertCount(2, $result);
+		$this->assertSame('en', $result[0]['code']);
+		$this->assertSame('de', $result[1]['code']);
+	}
 }

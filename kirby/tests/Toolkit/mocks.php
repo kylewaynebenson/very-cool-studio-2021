@@ -2,30 +2,23 @@
 
 namespace Kirby\Toolkit;
 
-function blockMethod($method, $args)
+use Exception;
+
+/**
+ * Mock for the PHP time() function to ensure reliable testing
+ *
+ * @return int A fake timestamp
+ */
+function time(): int
 {
-    if (in_array($method, FileTest::$block)) {
-        return false;
-    }
-    return call_user_func_array('\\' . $method, $args);
+	if (defined('KIRBY_TESTING') !== true || KIRBY_TESTING !== true) {
+		throw new Exception('Mock time() function was loaded outside of the test environment. This should never happen.');
+	}
+
+	return MockTime::$time;
 }
 
-function file_put_contents($file, $content)
+class MockTime
 {
-    return blockMethod('file_put_contents', [$file, $content]);
-}
-
-function rename($old, $new)
-{
-    return blockMethod('rename', [$old, $new]);
-}
-
-function copy($old, $new)
-{
-    return blockMethod('copy', [$old, $new]);
-}
-
-function unlink($file)
-{
-    return blockMethod('unlink', [$file]);
+	public static $time = 1337000000;
 }

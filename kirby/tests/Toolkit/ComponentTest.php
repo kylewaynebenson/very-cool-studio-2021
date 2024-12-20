@@ -2,262 +2,365 @@
 
 namespace Kirby\Toolkit;
 
+use ArgumentCountError;
+use Kirby\Exception\Exception;
+use Kirby\Exception\InvalidArgumentException;
+use TypeError;
+
+/**
+ * @coversDefaultClass \Kirby\Toolkit\Component
+ */
 class ComponentTest extends TestCase
 {
-    public function tearDown(): void
-    {
-        Component::$types  = [];
-        Component::$mixins = [];
-    }
+	public function tearDown(): void
+	{
+		Component::$types  = [];
+		Component::$mixins = [];
+	}
 
-    public function testProp()
-    {
-        Component::$types = [
-            'test' => [
-                'props' => [
-                    'prop' => function ($prop) {
-                        return $prop;
-                    }
-                ]
-            ]
-        ];
+	/**
+	 * @covers ::__construct
+	 * @covers ::__call
+	 * @covers ::applyProps
+	 */
+	public function testProp()
+	{
+		Component::$types = [
+			'test' => [
+				'props' => [
+					'prop' => fn ($prop) => $prop
+				]
+			]
+		];
 
-        $component = new Component('test', ['prop' => 'prop value']);
+		$component = new Component('test', ['prop' => 'prop value']);
 
-        $this->assertEquals('prop value', $component->prop());
-        $this->assertEquals('prop value', $component->prop);
-    }
+		$this->assertSame('prop value', $component->prop());
+		$this->assertSame('prop value', $component->prop);
+	}
 
-    public function testPropWithDefaultValue()
-    {
-        Component::$types = [
-            'test' => [
-                'props' => [
-                    'prop' => function ($prop = 'default value') {
-                        return $prop;
-                    }
-                ]
-            ]
-        ];
+	/**
+	 * @covers ::applyProps
+	 */
+	public function testPropWithDefaultValue()
+	{
+		Component::$types = [
+			'test' => [
+				'props' => [
+					'prop' => fn ($prop = 'default value') => $prop
+				]
+			]
+		];
 
-        $component = new Component('test');
+		$component = new Component('test');
 
-        $this->assertEquals('default value', $component->prop());
-        $this->assertEquals('default value', $component->prop);
-    }
+		$this->assertSame('default value', $component->prop());
+		$this->assertSame('default value', $component->prop);
+	}
 
-    public function testPropWithFixedValue()
-    {
-        Component::$types = [
-            'test' => [
-                'props' => [
-                    'prop' => 'test'
-                ]
-            ]
-        ];
+	/**
+	 * @covers ::applyProps
+	 */
+	public function testPropWithFixedValue()
+	{
+		Component::$types = [
+			'test' => [
+				'props' => [
+					'prop' => 'test'
+				]
+			]
+		];
 
-        $component = new Component('test');
+		$component = new Component('test');
 
-        $this->assertEquals('test', $component->prop());
-        $this->assertEquals('test', $component->prop);
-    }
+		$this->assertSame('test', $component->prop());
+		$this->assertSame('test', $component->prop);
+	}
 
-    public function testAttrs()
-    {
-        Component::$types = [
-            'test' => []
-        ];
+	/**
+	 * @covers ::applyProps
+	 */
+	public function testPropWithInvalidValue()
+	{
+		Component::$types = [
+			'test' => [
+				'props' => [
+					'prop' => fn (string $prop) => $prop
+				]
+			]
+		];
 
-        $component = new Component('test', ['foo' => 'bar']);
+		$this->expectException(TypeError::class);
+		$this->expectExceptionMessage('Invalid value for "prop"');
 
-        $this->assertEquals('bar', $component->foo());
-        $this->assertEquals('bar', $component->foo);
-    }
+		new Component('test', ['prop' => [1, 2, 3]]);
+	}
 
-    public function testComputed()
-    {
-        Component::$types = [
-            'test' => [
-                'computed' => [
-                    'prop' => function () {
-                        return 'computed prop';
-                    }
-                ]
-            ]
-        ];
+	/**
+	 * @covers ::applyProps
+	 */
+	public function testPropWithMissingValue()
+	{
+		Component::$types = [
+			'test' => [
+				'props' => [
+					'prop' => fn (string $prop) => $prop
+				]
+			]
+		];
 
-        $component = new Component('test');
+		$this->expectException(ArgumentCountError::class);
+		$this->expectExceptionMessage('Please provide a value for "prop"');
 
-        $this->assertEquals('computed prop', $component->prop());
-        $this->assertEquals('computed prop', $component->prop);
-    }
+		new Component('test');
+	}
 
-    public function testComputedFromProp()
-    {
-        Component::$types = [
-            'test' => [
-                'props' => [
-                    'prop' => function ($prop) {
-                        return $prop;
-                    }
-                ],
-                'computed' => [
-                    'prop' => function () {
-                        return 'computed: ' . $this->prop;
-                    }
-                ]
-            ]
-        ];
+	/**
+	 * @covers ::__construct
+	 */
+	public function testAttrs()
+	{
+		Component::$types = [
+			'test' => []
+		];
 
-        $component = new Component('test', ['prop' => 'prop value']);
+		$component = new Component('test', ['foo' => 'bar']);
 
-        $this->assertEquals('computed: prop value', $component->prop());
-    }
+		$this->assertSame('bar', $component->foo());
+		$this->assertSame('bar', $component->foo);
+	}
 
-    public function testMethod()
-    {
-        Component::$types = [
-            'test' => [
-                'methods' => [
-                    'say' => function () {
-                        return 'hello world';
-                    }
-                ]
-            ]
-        ];
+	/**
+	 * @covers ::__construct
+	 * @covers ::__call
+	 * @covers ::applyComputed
+	 */
+	public function testComputed()
+	{
+		Component::$types = [
+			'test' => [
+				'computed' => [
+					'prop' => fn () => 'computed prop'
+				]
+			]
+		];
 
-        $component = new Component('test');
+		$component = new Component('test');
 
-        $this->assertEquals('hello world', $component->say());
-    }
+		$this->assertSame('computed prop', $component->prop());
+		$this->assertSame('computed prop', $component->prop);
+	}
 
-    public function testPropsInMethods()
-    {
-        Component::$types = [
-            'test' => [
-                'props' => [
-                    'message' => function ($message) {
-                        return $message;
-                    }
-                ],
-                'methods' => [
-                    'say' => function () {
-                        return $this->message;
-                    }
-                ]
-            ]
-        ];
+	/**
+	 * @covers ::__construct
+	 * @covers ::__call
+	 * @covers ::applyComputed
+	 */
+	public function testComputedFromProp()
+	{
+		Component::$types = [
+			'test' => [
+				'props' => [
+					'prop' => fn ($prop) => $prop
+				],
+				'computed' => [
+					'prop' => fn () => 'computed: ' . $this->prop
+				]
+			]
+		];
 
-        $component = new Component('test', ['message' => 'hello world']);
+		$component = new Component('test', ['prop' => 'prop value']);
 
-        $this->assertEquals('hello world', $component->say());
-    }
+		$this->assertSame('computed: prop value', $component->prop());
+	}
 
-    public function testComputedPropsInMethods()
-    {
-        Component::$types = [
-            'test' => [
-                'props' => [
-                    'message' => function ($message) {
-                        return $message;
-                    }
-                ],
-                'computed' => [
-                    'message' => function () {
-                        return strtoupper($this->message);
-                    },
-                ],
-                'methods' => [
-                    'say' => function () {
-                        return $this->message;
-                    }
-                ]
-            ]
-        ];
+	/**
+	 * @covers ::__construct
+	 * @covers ::__call
+	 */
+	public function testMethod()
+	{
+		Component::$types = [
+			'test' => [
+				'methods' => [
+					'say' => fn () => 'hello world'
+				]
+			]
+		];
 
-        $component = new Component('test', ['message' => 'hello world']);
+		$component = new Component('test');
 
-        $this->assertEquals('HELLO WORLD', $component->say());
-    }
+		$this->assertSame('hello world', $component->say());
+	}
 
-    public function testToArray()
-    {
-        Component::$types = [
-            'test' => [
-                'props' => [
-                    'message' => function ($message) {
-                        return $message;
-                    }
-                ],
-                'computed' => [
-                    'message' => function () {
-                        return strtoupper($this->message);
-                    },
-                ],
-                'methods' => [
-                    'say' => function () {
-                        return $this->message;
-                    }
-                ]
-            ]
-        ];
+	/**
+	 * @covers ::__construct
+	 * @covers ::__call
+	 */
+	public function testPropsInMethods()
+	{
+		Component::$types = [
+			'test' => [
+				'props' => [
+					'message' => fn ($message) => $message
+				],
+				'methods' => [
+					'say' => fn () => $this->message
+				]
+			]
+		];
 
-        $component = new Component('test', ['message' => 'hello world']);
+		$component = new Component('test', ['message' => 'hello world']);
 
-        $this->assertEquals(['message' => 'HELLO WORLD'], $component->toArray());
-    }
+		$this->assertSame('hello world', $component->say());
+	}
 
-    public function testCustomToArray()
-    {
-        Component::$types = [
-            'test' => [
-                'toArray' => function () {
-                    return [
-                        'foo' => 'bar'
-                    ];
-                }
-            ]
-        ];
+	/**
+	 * @covers ::__construct
+	 * @covers ::__call
+	 */
+	public function testComputedPropsInMethods()
+	{
+		Component::$types = [
+			'test' => [
+				'props' => [
+					'message' => fn ($message) => $message
+				],
+				'computed' => [
+					'message' => fn () => strtoupper($this->message)
+				],
+				'methods' => [
+					'say' => fn () => $this->message
+				]
+			]
+		];
 
-        $component = new Component('test');
+		$component = new Component('test', ['message' => 'hello world']);
 
-        $this->assertEquals(['foo' => 'bar'], $component->toArray());
-    }
+		$this->assertSame('HELLO WORLD', $component->say());
+	}
 
-    public function testInvalidType()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('Undefined component type: test');
+	/**
+	 * @covers ::toArray
+	 * @covers ::__debugInfo
+	 */
+	public function testToArray()
+	{
+		Component::$types = [
+			'test' => [
+				'props' => [
+					'message' => fn ($message) => $message
+				],
+				'computed' => [
+					'message' => fn () => strtoupper($this->message)
+				],
+				'methods' => [
+					'say' => fn () => $this->message
+				]
+			]
+		];
 
-        $component = new Component('test');
-    }
+		$component = new Component('test', ['message' => 'hello world']);
+		$expected  = ['message' => 'HELLO WORLD'];
 
-    public function testMixins()
-    {
-        Component::$mixins = [
-            'test' => [
-                'computed' => [
-                    'message' => function () {
-                        return strtoupper($this->message);
-                    }
-                ]
-            ]
-        ];
+		$this->assertSame($expected, $component->toArray());
+		$this->assertSame($expected, $component->__debugInfo());
+	}
 
-        Component::$types = [
-            'test' => [
-                'mixins' => ['test'],
-                'props' => [
-                    'message' => function ($message) {
-                        return $message;
-                    }
-                ]
-            ]
-        ];
+	/**
+	 * @covers ::toArray
+	 * @covers ::__debugInfo
+	 */
+	public function testCustomToArray()
+	{
+		Component::$types = [
+			'test' => [
+				'toArray' => fn () => [
+					'foo' => 'bar'
+				]
+			]
+		];
 
-        $component = new Component('test', ['message' => 'hello world']);
+		$component = new Component('test');
 
-        $this->assertEquals('HELLO WORLD', $component->message());
-        $this->assertEquals('HELLO WORLD', $component->message);
-    }
+		$this->assertSame(['foo' => 'bar'], $component->toArray());
+	}
+
+	/**
+	 * @covers ::__construct
+	 */
+	public function testInvalidType()
+	{
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('Undefined component type: test');
+
+		new Component('test');
+	}
+
+	/**
+	 * @covers ::load
+	 */
+	public function testLoadInvalidFile()
+	{
+		Component::$types = ['foo' => 'bar'];
+		$this->expectException(Exception::class);
+		$this->expectExceptionMessage('Component definition bar does not exist');
+
+		Component::load('foo');
+	}
+
+	/**
+	 * @covers ::__construct
+	 * @covers ::setup
+	 */
+	public function testMixins()
+	{
+		Component::$mixins = [
+			'test' => [
+				'computed' => [
+					'message' => fn () => strtoupper($this->message)
+				]
+			]
+		];
+
+		Component::$types = [
+			'test' => [
+				'mixins' => ['test'],
+				'props' => [
+					'message' => fn ($message) => $message
+				]
+			]
+		];
+
+		$component = new Component('test', ['message' => 'hello world']);
+
+		$this->assertSame('HELLO WORLD', $component->message());
+		$this->assertSame('HELLO WORLD', $component->message);
+	}
+
+	/**
+	 * @covers ::__get
+	 */
+	public function testGetInvalidProp()
+	{
+		Component::$types = [
+			'test' => []
+		];
+
+		$component = new Component('test');
+		$this->assertNull($component->foo);
+	}
+
+	/**
+	 * @covers ::defaults
+	 */
+	public function testDefaults()
+	{
+		Component::$types = [
+			'test' => []
+		];
+
+		$component = new Component('test');
+		$this->assertSame([], $component->defaults());
+	}
 }

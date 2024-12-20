@@ -1,56 +1,42 @@
 <template>
-  <k-dialog
-    ref="dialog"
-    v-bind="$props"
-    v-on="$listeners"
-  >
-    <k-form
-      ref="form"
-      v-model="value"
-      :fields="fields"
-      :novalidate="novalidate"
-      @input="$emit('input', $event)"
-      @submit="$emit('submit', $event)"
-    />
-  </k-dialog>
+	<k-dialog
+		ref="dialog"
+		v-bind="$props"
+		@cancel="$emit('cancel')"
+		@submit="$emit('submit', value)"
+	>
+		<slot>
+			<k-dialog-text v-if="text" :text="text" />
+			<k-dialog-fields
+				:fields="fields"
+				:novalidate="novalidate"
+				:value="value"
+				@input="$emit('input', $event)"
+				@submit="$emit('submit', $event)"
+			/>
+		</slot>
+	</k-dialog>
 </template>
 
 <script>
-import DialogMixin from "@/mixins/dialog.js";
+import Dialog from "@/mixins/dialog.js";
+import { props as FieldsProps } from "./Elements/Fields.vue";
 
 export default {
-  mixins: [DialogMixin],
-  props: {
-    fields: {
-      type: [Array, Object],
-      default() {
-        return [];
-      }
-    },
-    novalidate: {
-      type: Boolean,
-      default: true
-    },
-    size: {
-      type: String,
-      default: "medium",
-    },
-    submitButton: {
-      type: [String, Boolean],
-      default() {
-        return this.$t('save');
-      }
-    },
-    theme: {
-      type: String,
-      default: "positive",
-    },
-    value: {
-      type: Object,
-      default() {
-        return {};
-      }
-    }
-  }
-}
+	mixins: [Dialog, FieldsProps],
+	props: {
+		// eslint-disable-next-line vue/require-prop-types
+		size: {
+			default: "medium"
+		},
+		// eslint-disable-next-line vue/require-prop-types
+		submitButton: {
+			default: () => window.panel.$t("save")
+		},
+		text: {
+			type: String
+		}
+	},
+	emits: ["cancel", "input", "submit"]
+};
 </script>

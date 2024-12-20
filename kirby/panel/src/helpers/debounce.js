@@ -1,11 +1,15 @@
-export default (fn, delay) => {
-  var timer = null;
-  return function() {
-    var context = this,
-      args = arguments;
-    clearTimeout(timer);
-    timer = setTimeout(function() {
-      fn.apply(context, args);
-    }, delay);
-  };
+/**
+ * Debounces the callback function
+ *
+ * @param {Function} callback function to debounce
+ * @param {int} delay delay in milliseconds
+ * @returns {Function}
+ */
+export default (callback, delay) => {
+	let timer = null;
+
+	return (...args) => {
+		clearTimeout(timer);
+		timer = setTimeout(() => callback.apply(this, args), delay);
+	};
 };

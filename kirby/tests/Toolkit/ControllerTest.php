@@ -2,64 +2,120 @@
 
 namespace Kirby\Toolkit;
 
+/**
+ * @coversDefaultClass \Kirby\Toolkit\Controller
+ */
 class ControllerTest extends TestCase
 {
-    public function testCall()
-    {
-        $controller = new Controller(function () {
-            return 'test';
-        });
+	public const FIXTURES = __DIR__ . '/fixtures';
 
-        $this->assertEquals('test', $controller->call());
-    }
+	/**
+	 * @covers ::arguments
+	 */
+	public function testArguments()
+	{
+		$controller = new Controller(fn ($a, $b) => $a . $b);
 
-    public function testArguments()
-    {
-        $controller = new Controller(function ($a, $b) {
-            return $a . $b;
-        });
+		$this->assertSame('AB', $controller->call(null, [
+			'a' => 'A',
+			'b' => 'B'
+		]));
+	}
 
-        $this->assertEquals('AB', $controller->call(null, [
-            'a' => 'A',
-            'b' => 'B'
-        ]));
-    }
+	/**
+	 * @covers ::arguments
+	 */
+	public function testArgumentsOrder()
+	{
+		$controller = new Controller(fn ($b, $a) => $b . $a);
 
-    public function testBind()
-    {
-        $model = new Obj(['foo' => 'bar']);
+		$this->assertSame('BA', $controller->call(null, [
+			'a' => 'A',
+			'b' => 'B'
+		]));
+	}
 
-        $controller = new Controller(function () {
-            return $this;
-        });
+	/**
+	 * @covers ::arguments
+	 */
+	public function testArgumentsVariadic()
+	{
+		$controller = new Controller(fn ($c, ...$args) => $c . '/' . implode('', $args));
 
-        $this->assertEquals($model, $controller->call($model));
-    }
+		$this->assertSame('C/AB', $controller->call(null, [
+			'a' => 'A',
+			'b' => 'B',
+			'c' => 'C'
+		]));
+	}
 
-    public function testMissingParameter()
-    {
-        $controller = new Controller(function ($a) {
-            return $a;
-        });
+	/**
+	 * @covers ::arguments
+	 */
+	public function testArgumentsNoDefaultNull()
+	{
+		$controller = new Controller(fn ($a, $b = 'foo') => ($a === null ? 'null' : $a) . ($b === null ? 'null' : $b));
 
-        $this->assertNull($controller->call());
-    }
+		$this->assertSame('nullfoo', $controller->call());
+	}
 
-    public function testLoad()
-    {
-        $controller = Controller::load(__DIR__ . '/fixtures/controller/controller.php');
-        $this->assertEquals('loaded', $controller->call());
-    }
+	/**
+	 * @covers ::__construct
+	 * @covers ::call
+	 */
+	public function testCall()
+	{
+		$controller = new Controller(fn () => 'test');
+		$this->assertSame('test', $controller->call());
+	}
 
-    public function testLoadNonExisting()
-    {
-        $controller = Controller::load(__DIR__ . '/fixtures/controller/does-not-exist.php');
-        $this->assertEquals(null, $controller);
-    }
+	/**
+	 * @covers ::call
+	 */
+	public function testCallBind()
+	{
+		$model = new Obj(['foo' => 'bar']);
 
-    public function testLoadInvalidController()
-    {
-        $controller = Controller::load(__DIR__ . '/fixtures/controller/invalid.php');
-        $this->assertNull($controller);
-    }
+		$controller = new Controller(fn () => $this);
+		$this->assertSame($model, $controller->call($model));
+	}
+
+	/**
+	 * @covers ::call
+	 */
+	public function testCallMissingParameter()
+	{
+		$controller = new Controller(fn ($a) => $a);
+		$this->assertNull($controller->call());
+	}
+
+	/**
+	 * @covers ::load
+	 */
+	public function testLoad()
+	{
+		$root       = static::FIXTURES . '/controller/controller.php';
+		$controller = Controller::load($root);
+		$this->assertSame('loaded', $controller->call());
+	}
+
+	/**
+	 * @covers ::load
+	 */
+	public function testLoadNonExisting()
+	{
+		$root       = static::FIXTURES . '/controller/does-not-exist.php';
+		$controller = Controller::load($root);
+		$this->assertNull($controller);
+	}
+
+	/**
+	 * @covers ::load
+	 */
+	public function testLoadInvalidController()
+	{
+		$root       = static::FIXTURES . '/controller/invalid.php';
+		$controller = Controller::load($root);
+		$this->assertNull($controller);
+	}
 }

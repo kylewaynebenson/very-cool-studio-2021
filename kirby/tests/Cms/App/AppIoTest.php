@@ -4,152 +4,172 @@ namespace Kirby\Cms;
 
 use Kirby\Exception\Exception;
 use Kirby\Http\Response;
-use PHPUnit\Framework\TestCase;
+use Kirby\TestCase;
 
 class AppIoTest extends TestCase
 {
-    public function app()
-    {
-        return new App([
-            'roots' => [
-                'index'     => '/dev/null',
-                'templates' => __DIR__ . '/fixtures/AppIoTest/templates'
-            ]
-        ]);
-    }
+	public const FIXTURES = __DIR__ . '/fixtures';
 
-    public function testException()
-    {
-        $response = $this->app()->io(new Exception([
-            'fallback' => 'Nope',
-            'httpCode' => 501
-        ]));
+	public function app()
+	{
+		return new App([
+			'roots' => [
+				'index'     => '/dev/null',
+				'templates' => static::FIXTURES . '/AppIoTest/templates'
+			]
+		]);
+	}
 
-        $this->assertEquals(501, $response->code());
-        $this->assertEquals('Nope', $response->body());
-    }
+	public function testException()
+	{
+		$response = $this->app()->io(new Exception([
+			'fallback' => 'Nope',
+			'httpCode' => 501
+		]));
 
-    public function testExceptionErrorPage()
-    {
-        $app = $this->app()->clone([
-            'site' => [
-                'children' => [
-                    [
-                        'slug'     => 'error',
-                        'template' => 'error'
-                    ]
-                ]
-            ]
-        ]);
+		$this->assertSame(501, $response->code());
+		$this->assertSame('Nope', $response->body());
+	}
 
-        $response = $app->io(new Exception('Nope'));
+	public function testExceptionErrorPage()
+	{
+		$app = $this->app()->clone([
+			'site' => [
+				'children' => [
+					[
+						'slug'     => 'error',
+						'template' => 'error'
+					]
+				]
+			]
+		]);
 
-        $this->assertEquals(500, $response->code());
-        $this->assertEquals('Error: Nope', $response->body());
-    }
+		$response = $app->io(new Exception('Nope'));
 
-    public function testExceptionWithInvalidHttpCode()
-    {
-        $response = $this->app()->io(new \Exception('Nope', 8000));
+		$this->assertSame(500, $response->code());
+		$this->assertSame('Error: Nope', $response->body());
+	}
 
-        $this->assertEquals(500, $response->code());
-        $this->assertEquals('Nope', $response->body());
-    }
+	public function testExceptionWithInvalidHttpCode()
+	{
+		$response = $this->app()->io(new \Exception('Nope', 8000));
 
-    public function testEmpty()
-    {
-        $response = $this->app()->io('');
+		$this->assertSame(500, $response->code());
+		$this->assertSame('Nope', $response->body());
+	}
 
-        $this->assertEquals(404, $response->code());
-        $this->assertEquals('Not found', $response->body());
-    }
+	public function testEmpty()
+	{
+		$response = $this->app()->io('');
 
-    public function testResponder()
-    {
-        $app   = $this->app();
-        $input = $app->response()->code(201)->body('Test');
+		$this->assertSame(404, $response->code());
+		$this->assertSame('Not found', $response->body());
+	}
 
-        $response = $app->io($input);
+	public function testResponder()
+	{
+		$app   = $this->app();
+		$input = $app->response()->code(201)->body('Test');
 
-        $this->assertEquals(201, $response->code());
-        $this->assertEquals('Test', $response->body());
-    }
+		$response = $app->io($input);
 
-    public function testResponse()
-    {
-        $input = new Response([
-            'code' => 200,
-            'body' => 'Test'
-        ]);
+		$this->assertSame(201, $response->code());
+		$this->assertSame('Test', $response->body());
+	}
 
-        $response = $this->app()->io($input);
+	public function testResponse()
+	{
+		$input = new Response([
+			'code' => 200,
+			'body' => 'Test',
+			'type' => 'text/plain',
+			'headers' => [
+				'X-Foo'  => 'Foobar',
+				'X-Test' => 'Test'
+			]
+		]);
 
-        $this->assertEquals($input, $response);
-    }
+		$app = $this->app();
+		$app->response()->header('Cache-Control', 'no-cache');
+		$app->response()->header('X-Foo', 'Bar');
+		$response = $app->io($input);
 
-    public function testPage()
-    {
-        $input = new Page([
-            'slug'     => 'test',
-            'template' => 'test'
-        ]);
+		$this->assertSame([
+			'type' => 'text/plain',
+			'charset' => 'UTF-8',
+			'code' => 200,
+			'headers' => [
+				'Cache-Control' => 'no-cache',
+				'X-Foo'         => 'Foobar',
+				'X-Test'        => 'Test'
+			],
+			'body' => 'Test',
+		], $response->toArray());
+	}
 
-        $response = $this->app()->io($input);
+	public function testPage()
+	{
+		$input = new Page([
+			'slug'     => 'test',
+			'template' => 'test'
+		]);
 
-        $this->assertEquals(200, $response->code());
-        $this->assertEquals('Test template', $response->body());
-    }
+		$response = $this->app()->io($input);
 
-    public function testPageErrorPageException()
-    {
-        $input = new Page([
-            'slug'     => 'test',
-            'template' => 'errorpage-exception'
-        ]);
+		$this->assertSame(200, $response->code());
+		$this->assertSame('Test template', $response->body());
+	}
 
-        $response = $this->app()->io($input);
+	public function testPageErrorPageException()
+	{
+		$input = new Page([
+			'slug'     => 'test',
+			'template' => 'errorpage-exception'
+		]);
 
-        $this->assertEquals(403, $response->code());
-        $this->assertEquals('Exception message', $response->body());
-    }
+		$response = $this->app()->io($input);
 
-    public function testPageErrorPageExceptionErrorPage()
-    {
-        $app = $this->app()->clone([
-            'site' => [
-                'children' => [
-                    [
-                        'slug'     => 'error',
-                        'template' => 'error'
-                    ]
-                ]
-            ]
-        ]);
+		$this->assertSame(403, $response->code());
+		$this->assertSame('Exception message', $response->body());
+	}
 
-        $input = new Page([
-            'slug'     => 'test',
-            'template' => 'errorpage-exception'
-        ]);
+	public function testPageErrorPageExceptionErrorPage()
+	{
+		$app = $this->app()->clone([
+			'site' => [
+				'children' => [
+					[
+						'slug'     => 'error',
+						'template' => 'error'
+					]
+				]
+			]
+		]);
 
-        $response = $app->io($input);
+		$input = new Page([
+			'slug'     => 'test',
+			'template' => 'errorpage-exception'
+		]);
 
-        $this->assertEquals(403, $response->code());
-        $this->assertEquals('Error: Exception message', $response->body());
-    }
+		$response = $app->io($input);
 
-    public function testString()
-    {
-        $response = $this->app()->io('Test');
+		$this->assertSame(403, $response->code());
+		$this->assertSame('Error: Exception message', $response->body());
+	}
 
-        $this->assertEquals(200, $response->code());
-        $this->assertEquals('Test', $response->body());
-    }
+	public function testString()
+	{
+		$response = $this->app()->io('Test');
 
-    public function testArray()
-    {
-        $response = $this->app()->io($array = ['foo' => 'bar']);
+		$this->assertSame(200, $response->code());
+		$this->assertSame('Test', $response->body());
+	}
 
-        $this->assertEquals(200, $response->code());
-        $this->assertEquals(json_encode($array), $response->body());
-    }
+	public function testArray()
+	{
+		$response = $this->app()->io($array = ['foo' => 'bar']);
+
+		$this->assertSame(200, $response->code());
+		$this->assertSame(json_encode($array), $response->body());
+	}
 }

@@ -4,51 +4,53 @@ namespace Kirby\Cms;
 
 class TranslationTest extends TestCase
 {
-    public function testProps()
-    {
-        $translation = new Translation('en', [
-            'translation.author'    => 'Kirby',
-            'translation.name'      => 'English',
-            'translation.direction' => 'ltr',
-            'translation.locale'    => 'en_GB',
-            'test'                  => 'Test'
-        ]);
+	public const FIXTURES = __DIR__ . '/fixtures';
 
-        $this->assertEquals('Kirby', $translation->author());
-        $this->assertEquals('English', $translation->name());
-        $this->assertEquals('ltr', $translation->direction());
-        $this->assertEquals('en_GB', $translation->locale());
-        $this->assertEquals('Test', $translation->get('test'));
-    }
+	public function testProps()
+	{
+		$translation = new Translation('en', [
+			'translation.author'    => 'Kirby',
+			'translation.name'      => 'English',
+			'translation.direction' => 'ltr',
+			'translation.locale'    => 'en_GB',
+			'test'                  => 'Test'
+		]);
 
-    public function testLoad()
-    {
-        $translation = Translation::load('de', __DIR__ . '/fixtures/translations/de.json');
+		$this->assertSame('Kirby', $translation->author());
+		$this->assertSame('English', $translation->name());
+		$this->assertSame('ltr', $translation->direction());
+		$this->assertSame('en_GB', $translation->locale());
+		$this->assertSame('Test', $translation->get('test'));
+	}
 
-        $this->assertSame('de', $translation->code());
-        $this->assertSame('Deutsch', $translation->name());
+	public function testLoad()
+	{
+		$translation = Translation::load('de', static::FIXTURES . '/translations/de.json');
 
-        // invalid
-        $translation = Translation::load('zz', __DIR__ . '/fixtures/translations/zz.json');
+		$this->assertSame('de', $translation->code());
+		$this->assertSame('Deutsch', $translation->name());
 
-        $this->assertSame('zz', $translation->code());
-        $this->assertSame([], $translation->data());
-    }
+		// invalid
+		$translation = Translation::load('zz', static::FIXTURES . '/translations/zz.json');
 
-    public function testToArray()
-    {
-        $translation = Translation::load('de', __DIR__ . '/fixtures/translations/de.json');
+		$this->assertSame('zz', $translation->code());
+		$this->assertSame([], $translation->data());
+	}
 
-        $this->assertSame([
-            'code' => 'de',
-            'data' => [
-                'translation.direction' => 'ltr',
-                'translation.name' => 'Deutsch',
-                'translation.author' => 'Kirby Team',
-                'error.test' => 'Dies ist ein Testfehler',
-            ],
-            'name' => 'Deutsch',
-            'author' => 'Kirby Team',
-        ], $translation->toArray());
-    }
+	public function testToArray()
+	{
+		$translation = Translation::load('de', static::FIXTURES . '/translations/de.json');
+
+		$this->assertSame([
+			'code' => 'de',
+			'data' => [
+				'translation.direction' => 'ltr',
+				'translation.name' => 'Deutsch',
+				'translation.author' => 'Kirby Team',
+				'error.test' => 'Dies ist ein Testfehler',
+			],
+			'name' => 'Deutsch',
+			'author' => 'Kirby Team',
+		], $translation->toArray());
+	}
 }

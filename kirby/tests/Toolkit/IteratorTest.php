@@ -2,165 +2,219 @@
 
 namespace Kirby\Toolkit;
 
+/**
+ * @coversDefaultClass \Kirby\Toolkit\Iterator
+ */
 class IteratorTest extends TestCase
 {
-    public function testKey()
-    {
-        $iterator = new Iterator([
-            'one' => 'eins',
-            'two' => 'zwei',
-        ]);
+	/**
+	 * @covers ::__construct
+	 */
+	public function testConstruct()
+	{
+		$iterator = new Iterator($expected = [
+			'one' => 'eins',
+			'two' => 'zwei',
+		]);
 
-        $this->assertEquals('one', $iterator->key());
-    }
+		$this->assertSame($expected, $iterator->data);
+	}
 
-    public function testKeys()
-    {
-        $iterator = new Iterator([
-            'one'   => 'eins',
-            'two'   => 'zwei',
-            'three' => 'drei'
-        ]);
+	/**
+	 * @covers ::key
+	 */
+	public function testKey()
+	{
+		$iterator = new Iterator([
+			'one' => 'eins',
+			'two' => 'zwei',
+		]);
 
-        $this->assertEquals([
-            'one',
-            'two',
-            'three'
-        ], $iterator->keys());
-    }
+		$this->assertSame('one', $iterator->key());
+	}
 
-    public function testCurrent()
-    {
-        $iterator = new Iterator([
-            'one' => 'eins',
-            'two' => 'zwei',
-        ]);
+	/**
+	 * @covers ::keys
+	 */
+	public function testKeys()
+	{
+		$iterator = new Iterator([
+			'one'   => 'eins',
+			'two'   => 'zwei',
+			'three' => 'drei'
+		]);
 
-        $this->assertEquals('eins', $iterator->current());
-    }
+		$this->assertSame([
+			'one',
+			'two',
+			'three'
+		], $iterator->keys());
+	}
 
-    public function testPrevNext()
-    {
-        $iterator = new Iterator([
-            'one'   => 'eins',
-            'two'   => 'zwei',
-            'three' => 'drei'
-        ]);
+	/**
+	 * @covers ::current
+	 */
+	public function testCurrent()
+	{
+		$iterator = new Iterator([
+			'one' => 'eins',
+			'two' => 'zwei',
+		]);
 
-        $this->assertEquals('eins', $iterator->current());
+		$this->assertSame('eins', $iterator->current());
+	}
 
-        $iterator->next();
-        $this->assertEquals('zwei', $iterator->current());
+	/**
+	 * @covers ::current
+	 * @covers ::next
+	 * @covers ::prev
+	 */
+	public function testPrevNext()
+	{
+		$iterator = new Iterator([
+			'one'   => 'eins',
+			'two'   => 'zwei',
+			'three' => 'drei'
+		]);
 
-        $iterator->next();
-        $this->assertEquals('drei', $iterator->current());
+		$this->assertSame('eins', $iterator->current());
 
-        $iterator->prev();
-        $this->assertEquals('zwei', $iterator->current());
+		$iterator->next();
+		$this->assertSame('zwei', $iterator->current());
 
-        $iterator->prev();
-        $this->assertEquals('eins', $iterator->current());
-    }
+		$iterator->next();
+		$this->assertSame('drei', $iterator->current());
 
-    public function testRewind()
-    {
-        $iterator = new Iterator([
-            'one'   => 'eins',
-            'two'   => 'zwei',
-            'three' => 'drei'
-        ]);
+		$iterator->prev();
+		$this->assertSame('zwei', $iterator->current());
 
-        $iterator->next();
-        $iterator->next();
-        $this->assertEquals('drei', $iterator->current());
+		$iterator->prev();
+		$this->assertSame('eins', $iterator->current());
+	}
 
-        $iterator->rewind();
-        $this->assertEquals('eins', $iterator->current());
-    }
+	/**
+	 * @covers ::rewind
+	 */
+	public function testRewind()
+	{
+		$iterator = new Iterator([
+			'one'   => 'eins',
+			'two'   => 'zwei',
+			'three' => 'drei'
+		]);
 
-    public function testValid()
-    {
-        $iterator = new Iterator([]);
-        $this->assertFalse($iterator->valid());
+		$iterator->next();
+		$iterator->next();
+		$this->assertSame('drei', $iterator->current());
 
-        $iterator = new Iterator(['one' => 'eins']);
-        $this->assertTrue($iterator->valid());
-    }
+		$iterator->rewind();
+		$this->assertSame('eins', $iterator->current());
+	}
 
-    public function testCount()
-    {
-        $iterator = new Iterator([
-            'one'   => 'eins',
-            'two'   => 'zwei',
-            'three' => 'drei'
-        ]);
-        $this->assertEquals(3, $iterator->count());
+	/**
+	 * @covers ::valid
+	 */
+	public function testValid()
+	{
+		$iterator = new Iterator([]);
+		$this->assertFalse($iterator->valid());
 
-        $iterator = new Iterator(['one' => 'eins']);
-        $this->assertEquals(1, $iterator->count());
+		$iterator = new Iterator(['one' => 'eins']);
+		$this->assertTrue($iterator->valid());
+	}
 
-        $iterator = new Iterator([]);
-        $this->assertEquals(0, $iterator->count());
-    }
+	/**
+	 * @covers ::count
+	 */
+	public function testCount()
+	{
+		$iterator = new Iterator([
+			'one'   => 'eins',
+			'two'   => 'zwei',
+			'three' => 'drei'
+		]);
+		$this->assertSame(3, $iterator->count());
 
-    public function testIndexOf()
-    {
-        $iterator = new Iterator([
-            'one'   => 'eins',
-            'two'   => 'zwei',
-            'three' => 'drei'
-        ]);
+		$iterator = new Iterator(['one' => 'eins']);
+		$this->assertSame(1, $iterator->count());
 
-        $this->assertEquals(0, $iterator->indexOf('eins'));
-        $this->assertEquals(1, $iterator->indexOf('zwei'));
-        $this->assertEquals(2, $iterator->indexOf('drei'));
-    }
+		$iterator = new Iterator([]);
+		$this->assertSame(0, $iterator->count());
+	}
 
-    public function testKeyOf()
-    {
-        $iterator = new Iterator([
-            'one'   => 'eins',
-            'two'   => 'zwei',
-            'three' => 'drei'
-        ]);
+	/**
+	 * @covers ::indexOf
+	 */
+	public function testIndexOf()
+	{
+		$iterator = new Iterator([
+			'one'   => 'eins',
+			'two'   => 'zwei',
+			'three' => 'drei'
+		]);
 
-        $this->assertEquals('one', $iterator->keyOf('eins'));
-        $this->assertEquals('two', $iterator->keyOf('zwei'));
-        $this->assertEquals('three', $iterator->keyOf('drei'));
-    }
+		$this->assertSame(0, $iterator->indexOf('eins'));
+		$this->assertSame(1, $iterator->indexOf('zwei'));
+		$this->assertSame(2, $iterator->indexOf('drei'));
+	}
 
-    public function testHas()
-    {
-        $iterator = new Iterator([
-            'one'   => 'eins',
-            'two'   => 'zwei'
-        ]);
+	/**
+	 * @covers ::keyOf
+	 */
+	public function testKeyOf()
+	{
+		$iterator = new Iterator([
+			'one'   => 'eins',
+			'two'   => 'zwei',
+			'three' => 'drei'
+		]);
 
-        $this->assertTrue($iterator->has('one'));
-        $this->assertTrue($iterator->has('two'));
-        $this->assertFalse($iterator->has('three'));
-    }
+		$this->assertSame('one', $iterator->keyOf('eins'));
+		$this->assertSame('two', $iterator->keyOf('zwei'));
+		$this->assertSame('three', $iterator->keyOf('drei'));
+	}
 
-    public function testIsset()
-    {
-        $iterator = new Iterator([
-            'one'   => 'eins',
-            'two'   => 'zwei'
-        ]);
+	/**
+	 * @covers ::has
+	 */
+	public function testHas()
+	{
+		$iterator = new Iterator([
+			'one'   => 'eins',
+			'two'   => 'zwei'
+		]);
 
-        $this->assertTrue(isset($iterator->one));
-        $this->assertTrue(isset($iterator->two));
-        $this->assertFalse(isset($iterator->three));
-    }
+		$this->assertTrue($iterator->has('one'));
+		$this->assertTrue($iterator->has('two'));
+		$this->assertFalse($iterator->has('three'));
+	}
 
-    public function testDebuginfo()
-    {
-        $array = [
-            'one'   => 'eins',
-            'two'   => 'zwei'
-        ];
+	/**
+	 * @covers ::__isset
+	 */
+	public function testIsset()
+	{
+		$iterator = new Iterator([
+			'one'   => 'eins',
+			'two'   => 'zwei'
+		]);
 
-        $iterator = new Iterator($array);
-        $this->assertEquals($array, $iterator->__debugInfo());
-    }
+		$this->assertTrue(isset($iterator->one));
+		$this->assertTrue(isset($iterator->two));
+		$this->assertFalse(isset($iterator->three));
+	}
+
+	/**
+	 * @covers ::__debugInfo
+	 */
+	public function testDebugInfo()
+	{
+		$array = [
+			'one'   => 'eins',
+			'two'   => 'zwei'
+		];
+
+		$iterator = new Iterator($array);
+		$this->assertSame($array, $iterator->__debugInfo());
+	}
 }

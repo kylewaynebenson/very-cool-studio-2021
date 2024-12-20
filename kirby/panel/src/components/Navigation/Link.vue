@@ -1,125 +1,153 @@
 <template>
-  <a
-    v-if="to && !disabled"
-    ref="link"
-    :href="href"
-    :rel="relAttr"
-    :tabindex="tabindex"
-    :target="target"
-    :title="title"
-    class="k-link"
-    v-on="listeners"
-  >
-    <slot />
-  </a>
-  <span
-    v-else
-    :title="title"
-    class="k-link"
-    data-disabled
-  >
-    <slot />
-  </span>
+	<a
+		v-if="to && !disabled"
+		ref="link"
+		:download="download"
+		:href="href"
+		:rel="relAttr"
+		:tabindex="tabindex"
+		:target="target"
+		:title="title"
+		class="k-link"
+		@click="onClick"
+	>
+		<!-- @slot Visible linked text -->
+		<slot />
+	</a>
+	<span v-else :title="title" class="k-link" aria-disabled>
+		<slot />
+	</span>
 </template>
 
 <script>
-import tab from "@/mixins/tab.js";
+export const props = {
+	props: {
+		/**
+		 * A disabled button/link will have no pointer events and
+		 * the opacity is be reduced.
+		 */
+		disabled: Boolean,
+		/**
+		 * Whether the link should be downloaded directly
+		 */
+		download: Boolean,
+		/**
+		 * `rel` attribute for the link
+		 */
+		rel: String,
+		/**
+		 * Custom tabindex; only use if you really know
+		 * how to adjust the order properly
+		 */
+		tabindex: [String, Number],
+		/**
+		 * Set the target of the link
+		 */
+		target: String,
+		/**
+		 * The title attribute can be used to add additional text
+		 * to the button/link, which is shown on mouseover.
+		 */
+		title: String
+	}
+};
 
 /**
- * Our Link component is a wrapper around a native HTML `a` element, but it is also used to swap this with a Vue `router-link` element in our application whenever it makes sense. It comes with a set of additional useful helpers.
+ * Wapper around a native HTML `<a>` element that ensures the
+ * correct routing behavior for Panel as well as external links.
+ *
  * @example <k-link to="https://getkirby.com">Kirby Website</k-link>
  */
 export default {
-  mixins: [tab],
-  props: {
-    /**
-     * Disabled links will have no pointer events and cannot be clicked or focused.
-     */
-    disabled: Boolean,
-    rel: String,
-    tabindex: [String, Number],
-    target: String,
-    title: String,
-    /**
-     * The path or absolute URL for the link.
-     */
-    to: [String, Function],
-  },
-  data() {
-    return {
-      relAttr: this.target === "_blank" ? "noreferrer noopener" : this.rel,
-      listeners: {
-        ...this.$listeners,
-        click: this.onClick
-      }
-    };
-  },
-  computed: {
-    href() {
-      if (typeof this.to === "function") {
-        return '';
-      }
+	mixins: [props],
+	props: {
+		/**
+		 * The path or absolute URL for the link.
+		 */
+		to: [String, Function]
+	},
+	emits: ["click"],
+	computed: {
+		href() {
+			if (typeof this.to === "function") {
+				return "";
+			}
 
-      if (this.$route !== undefined && this.to[0] === '/' && !this.target) {
-        return (this.$router.options.url || '') + this.to;
-      }
+			if (this.to[0] === "/" && !this.target) {
+				return this.$url(this.to);
+			}
 
-      return this.to;
-    }
-  },
-  methods: {
-    isRoutable(e) {
-      // the router is not installed
-      if (this.$route === undefined) {
-        return false;
-      }
+			if (
+				this.to.includes("@") === true &&
+				this.to.includes("/") === false &&
+				this.to.startsWith("mailto:") === false
+			) {
+				return `mailto:` + this.to;
+			}
 
-      // don't redirect with control keys
-      if (e.metaKey || e.altKey || e.ctrlKey || e.shiftKey) {
-        return false;
-      }
+			return this.to;
+		},
+		relAttr() {
+			return this.target === "_blank" ? "noreferrer noopener" : this.rel;
+		}
+	},
+	methods: {
+		isRoutable(e) {
+			// don't route with control keys
+			if (e.metaKey || e.altKey || e.ctrlKey || e.shiftKey) {
+				return false;
+			}
 
-      // don't redirect when preventDefault called
-      if (e.defaultPrevented) {
-        return false;
-      }
+			// don't route when preventDefault called
+			if (e.defaultPrevented) {
+				return false;
+			}
 
-      // don't redirect on right click
-      if (e.button !== undefined && e.button !== 0) {
-        return false;
-      }
+			// don't route on right click
+			if (e.button !== undefined && e.button !== 0) {
+				return false;
+			}
 
-      // don't redirect if a target is set
-      if (this.target) {
-        return false;
-      }
+			// don't route if a target is set
+			if (this.target) {
+				return false;
+			}
 
-      return true;
-    },
-    onClick(event) {
-      if (this.disabled === true) {
-        event.preventDefault();
-        return false;
-      }
+			if (typeof this.href === "string") {
+				// don't route if it's an absolute link
+				if (this.href.includes("://") || this.href.startsWith("//")) {
+					return false;
+				}
 
-      if (typeof this.to === "function") {
-        event.preventDefault();
-        this.to();
-      }
+				// don't route if it's an email
+				if (this.href.includes("mailto:")) {
+					return false;
+				}
+			}
 
-      if (this.isRoutable(event)) {
-        event.preventDefault();
-        this.$go(this.to);
-      }
+			return true;
+		},
+		onClick(e) {
+			if (this.disabled === true) {
+				e.preventDefault();
+				return false;
+			}
 
-      this.$emit("click", event);
-    }
-  }
+			if (typeof this.to === "function") {
+				e.preventDefault();
+				this.to();
+			}
+
+			if (this.isRoutable(e)) {
+				e.preventDefault();
+				this.$go(this.to);
+			}
+
+			/**
+			 * The link has been clicked
+			 */
+			this.$emit("click", e);
+		}
+	}
 };
 </script>
-
-<style lang="scss">
-.k-link {
-  @include highlight-tabbed;
-}
-</style>

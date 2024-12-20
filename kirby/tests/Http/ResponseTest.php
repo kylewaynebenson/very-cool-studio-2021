@@ -2,306 +2,385 @@
 
 namespace Kirby\Http;
 
-use PHPUnit\Framework\TestCase;
+use Kirby\Exception\LogicException;
+use Kirby\TestCase;
 
+/**
+ * @coversDefaultClass \Kirby\Http\Response
+ */
 class ResponseTest extends TestCase
 {
-    public function testBody()
-    {
-        $response = new Response();
-        $this->assertEquals('', $response->body());
+	public const FIXTURES = __DIR__ . '/fixtures';
 
-        $response = new Response('test');
-        $this->assertEquals('test', $response->body());
+	public function tearDown(): void
+	{
+		HeadersSent::$value = false;
+	}
 
-        $response = new Response([
-            'body' => 'test'
-        ]);
+	public function testBody()
+	{
+		$response = new Response();
+		$this->assertSame('', $response->body());
 
-        $this->assertEquals('test', $response->body());
-    }
+		$response = new Response('test');
+		$this->assertSame('test', $response->body());
 
-    public function testDownload()
-    {
-        $response = Response::download(__FILE__);
+		$response = new Response([
+			'body' => 'test'
+		]);
 
-        $this->assertSame($body = file_get_contents(__FILE__), $response->body());
-        $this->assertSame(200, $response->code());
-        $this->assertSame([
-            'Pragma'                    => 'public',
-            'Cache-Control'             => 'no-cache, no-store, must-revalidate',
-            'Last-Modified'             => gmdate('D, d M Y H:i:s', filemtime(__FILE__)) . ' GMT',
-            'Content-Disposition'       => 'attachment; filename="' . basename(__FILE__) . '"',
-            'Content-Transfer-Encoding' => 'binary',
-            'Content-Length'            => strlen($body),
-            'Connection'                => 'close'
-        ], $response->headers());
+		$this->assertSame('test', $response->body());
+	}
 
-        $response = Response::download(__FILE__, 'test.php');
+	public function testDownload()
+	{
+		$response = Response::download(__FILE__);
 
-        $this->assertSame($body, $response->body());
-        $this->assertSame(200, $response->code());
-        $this->assertSame([
-            'Pragma'                    => 'public',
-            'Cache-Control'             => 'no-cache, no-store, must-revalidate',
-            'Last-Modified'             => gmdate('D, d M Y H:i:s', filemtime(__FILE__)) . ' GMT',
-            'Content-Disposition'       => 'attachment; filename="test.php"',
-            'Content-Transfer-Encoding' => 'binary',
-            'Content-Length'            => strlen($body),
-            'Connection'                => 'close'
-        ], $response->headers());
+		$this->assertSame($body = file_get_contents(__FILE__), $response->body());
+		$this->assertSame(200, $response->code());
+		$this->assertSame([
+			'Pragma'                    => 'public',
+			'Cache-Control'             => 'no-cache, no-store, must-revalidate',
+			'Last-Modified'             => gmdate('D, d M Y H:i:s', filemtime(__FILE__)) . ' GMT',
+			'Content-Disposition'       => 'attachment; filename="' . basename(__FILE__) . '"',
+			'Content-Transfer-Encoding' => 'binary',
+			'Content-Length'            => strlen($body),
+			'Connection'                => 'close'
+		], $response->headers());
 
-        $response = Response::download(__FILE__, 'test.php', [
-            'code'    => '201',
-            'headers' => [
-                'Pragma' => 'no-cache',
-                'X-Test' => 'Test'
-            ]
-        ]);
+		$response = Response::download(__FILE__, 'test.php');
 
-        $this->assertSame($body, $response->body());
-        $this->assertSame(201, $response->code());
-        $this->assertSame([
-            'Pragma'                    => 'no-cache',
-            'Cache-Control'             => 'no-cache, no-store, must-revalidate',
-            'Last-Modified'             => gmdate('D, d M Y H:i:s', filemtime(__FILE__)) . ' GMT',
-            'Content-Disposition'       => 'attachment; filename="test.php"',
-            'Content-Transfer-Encoding' => 'binary',
-            'Content-Length'            => strlen($body),
-            'Connection'                => 'close',
-            'X-Test'                    => 'Test'
-        ], $response->headers());
-    }
+		$this->assertSame($body, $response->body());
+		$this->assertSame(200, $response->code());
+		$this->assertSame([
+			'Pragma'                    => 'public',
+			'Cache-Control'             => 'no-cache, no-store, must-revalidate',
+			'Last-Modified'             => gmdate('D, d M Y H:i:s', filemtime(__FILE__)) . ' GMT',
+			'Content-Disposition'       => 'attachment; filename="test.php"',
+			'Content-Transfer-Encoding' => 'binary',
+			'Content-Length'            => strlen($body),
+			'Connection'                => 'close'
+		], $response->headers());
 
-    public function testDownloadWithMissingFile()
-    {
-        $this->expectException('Exception');
-        $this->expectExceptionMessage('The file could not be found');
+		$response = Response::download(__FILE__, 'test.php', [
+			'code'    => '201',
+			'headers' => [
+				'Pragma' => 'no-cache',
+				'X-Test' => 'Test'
+			]
+		]);
 
-        Response::download('does/not/exist.txt');
-    }
+		$this->assertSame($body, $response->body());
+		$this->assertSame(201, $response->code());
+		$this->assertSame([
+			'Pragma'                    => 'no-cache',
+			'Cache-Control'             => 'no-cache, no-store, must-revalidate',
+			'Last-Modified'             => gmdate('D, d M Y H:i:s', filemtime(__FILE__)) . ' GMT',
+			'Content-Disposition'       => 'attachment; filename="test.php"',
+			'Content-Transfer-Encoding' => 'binary',
+			'Content-Length'            => strlen($body),
+			'Connection'                => 'close',
+			'X-Test'                    => 'Test'
+		], $response->headers());
+	}
 
-    public function testHeaders()
-    {
-        $response = new Response();
-        $this->assertEquals([], $response->headers());
+	public function testDownloadWithMissingFile()
+	{
+		$this->expectException('Exception');
+		$this->expectExceptionMessage('The file could not be found');
 
-        $response = new Response([
-            'headers' => [
-                'test' => 'test'
-            ]
-        ]);
+		Response::download('does/not/exist.txt');
+	}
 
-        $this->assertEquals(['test' => 'test'], $response->headers());
-    }
+	/**
+	 * @covers ::guardAgainstOutput
+	 */
+	public function testGuardAgainstOutput()
+	{
+		$result = Response::guardAgainstOutput(function ($arg1, $arg2) {
+			return $arg1 . '-' . $arg2;
+		}, '12', '34');
 
-    public function testHeader()
-    {
-        $response = new Response();
-        $this->assertNull($response->header('test'));
+		$this->assertSame('12-34', $result);
+	}
 
-        $response = new Response([
-            'headers' => [
-                'test' => 'test'
-            ]
-        ]);
+	/**
+	 * @covers ::guardAgainstOutput
+	 */
+	public function testGuardAgainstOutputWithSubsequentOutput()
+	{
+		HeadersSent::$value = true;
 
-        $this->assertEquals('test', $response->header('test'));
-    }
+		$result = Response::guardAgainstOutput(function ($arg1, $arg2) {
+			return $arg1 . '-' . $arg2;
+		}, '12', '34');
 
-    public function testJson()
-    {
-        $response = Response::json();
+		$this->assertSame('12-34', $result);
+	}
 
-        $this->assertEquals('application/json', $response->type());
-        $this->assertEquals(200, $response->code());
-        $this->assertEquals('', $response->body());
-    }
+	/**
+	 * @covers ::guardAgainstOutput
+	 */
+	public function testGuardAgainstOutputWithFirstOutput()
+	{
+		$this->expectException(LogicException::class);
+		$this->expectExceptionMessage('Disallowed output from file file.php:123, possible accidental whitespace?');
 
-    public function testJsonWithArray()
-    {
-        $data     = ['foo' => 'bar'];
-        $expected = json_encode($data);
-        $response = Response::json($data);
+		Response::guardAgainstOutput(function () {
+			HeadersSent::$value = true;
+		});
+	}
 
-        $this->assertEquals($expected, $response->body());
-    }
+	public function testHeaders()
+	{
+		$response = new Response();
+		$this->assertSame([], $response->headers());
 
-    public function testJsonWithPrettyArray()
-    {
-        $data     = ['foo' => 'bar'];
-        $expected = json_encode($data, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES);
-        $response = Response::json($data, 200, true);
+		$response = new Response([
+			'headers' => [
+				'test' => 'test'
+			]
+		]);
 
-        $this->assertEquals($expected, $response->body());
-    }
+		$this->assertSame(['test' => 'test'], $response->headers());
+	}
 
-    public function testFile()
-    {
-        $file = __DIR__ . '/fixtures/download.txt';
+	public function testHeader()
+	{
+		$response = new Response();
+		$this->assertNull($response->header('test'));
 
-        $response = Response::file($file);
+		$response = new Response([
+			'headers' => [
+				'test' => 'test'
+			]
+		]);
 
-        $this->assertSame('text/plain', $response->type());
-        $this->assertSame(200, $response->code());
-        $this->assertSame('test', $response->body());
+		$this->assertSame('test', $response->header('test'));
+	}
 
-        $response = Response::file($file, [
-            'code'    => '201',
-            'headers' => [
-                'Pragma' => 'no-cache'
-            ]
-        ]);
+	public function testJson()
+	{
+		$response = Response::json();
 
-        $this->assertSame('text/plain', $response->type());
-        $this->assertSame(201, $response->code());
-        $this->assertSame('test', $response->body());
-        $this->assertSame([
-            'Pragma' => 'no-cache'
-        ], $response->headers());
-    }
+		$this->assertSame('application/json', $response->type());
+		$this->assertSame(200, $response->code());
+		$this->assertSame('', $response->body());
+	}
 
-    public function testType()
-    {
-        $response = new Response();
-        $this->assertEquals('text/html', $response->type());
+	public function testJsonWithArray()
+	{
+		$data     = ['foo' => 'bar'];
+		$expected = json_encode($data);
+		$response = Response::json($data);
 
-        $response = new Response('', 'image/jpeg');
-        $this->assertEquals('image/jpeg', $response->type());
+		$this->assertSame($expected, $response->body());
+	}
 
-        $response = new Response([
-            'type' => 'image/jpeg'
-        ]);
+	public function testJsonWithPrettyArray()
+	{
+		$data     = ['foo' => 'bar'];
+		$expected = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+		$response = Response::json($data, 200, true);
 
-        $this->assertEquals('image/jpeg', $response->type());
-    }
+		$this->assertSame($expected, $response->body());
+	}
 
-    public function testCharset()
-    {
-        $response = new Response();
-        $this->assertEquals('UTF-8', $response->charset());
+	public function testFile()
+	{
+		$file = static::FIXTURES . '/download.json';
 
-        $response = new Response('', 'text/html', 200, [], 'test');
-        $this->assertEquals('test', $response->charset());
+		$response = Response::file($file);
 
-        $response = new Response([
-            'charset' => 'test'
-        ]);
+		$this->assertSame('application/json', $response->type());
+		$this->assertSame(200, $response->code());
+		$this->assertSame('{"foo": "bar"}', $response->body());
 
-        $this->assertEquals('test', $response->charset());
-    }
+		$response = Response::file($file, [
+			'code'    => '201',
+			'headers' => [
+				'Pragma' => 'no-cache'
+			]
+		]);
 
-    public function testCode()
-    {
-        $response = new Response();
-        $this->assertEquals(200, $response->code());
+		$this->assertSame('application/json', $response->type());
+		$this->assertSame(201, $response->code());
+		$this->assertSame('{"foo": "bar"}', $response->body());
+		$this->assertSame([
+			'Pragma' => 'no-cache'
+		], $response->headers());
+	}
 
-        $response = new Response('', 'text/html', 404);
-        $this->assertEquals(404, $response->code());
+	public function testFileInvalid()
+	{
+		$file = static::FIXTURES . '/download.xyz';
 
-        $response = new Response([
-            'code' => 404
-        ]);
+		$response = Response::file($file);
 
-        $this->assertEquals(404, $response->code());
-    }
+		$this->assertSame('text/plain', $response->type());
+		$this->assertSame(200, $response->code());
+		$this->assertSame('test', $response->body());
+		$this->assertSame([
+			'X-Content-Type-Options' => 'nosniff',
+		], $response->headers());
 
-    public function testRedirect()
-    {
-        $response = Response::redirect();
-        $this->assertSame('', $response->body());
-        $this->assertSame(302, $response->code());
-        $this->assertEquals(['Location' => '/'], $response->headers());
-    }
+		$response = Response::file($file, [
+			'code'    => '201',
+			'headers' => [
+				'Pragma' => 'no-cache'
+			]
+		]);
 
-    public function testRedirectWithLocation()
-    {
-        $response = Response::redirect('https://getkirby.com');
-        $this->assertSame('', $response->body());
-        $this->assertSame(302, $response->code());
-        $this->assertEquals(['Location' => 'https://getkirby.com'], $response->headers());
-    }
+		$this->assertSame('text/plain', $response->type());
+		$this->assertSame(201, $response->code());
+		$this->assertSame('test', $response->body());
+		$this->assertSame([
+			'Pragma' => 'no-cache',
+			'X-Content-Type-Options' => 'nosniff',
+		], $response->headers());
+	}
 
-    public function testRedirectWithInternationalLocation()
-    {
-        $response = Response::redirect('https://täst.de');
-        $this->assertSame('', $response->body());
-        $this->assertSame(302, $response->code());
-        $this->assertEquals(['Location' => 'https://xn--tst-qla.de'], $response->headers());
-    }
+	public function testType()
+	{
+		$response = new Response();
+		$this->assertSame('text/html', $response->type());
 
-    public function testRedirectWithResponseCode()
-    {
-        $response = Response::redirect('/', 301);
-        $this->assertSame('', $response->body());
-        $this->assertSame(301, $response->code());
-        $this->assertEquals(['Location' => '/'], $response->headers());
-    }
+		$response = new Response('', 'image/jpeg');
+		$this->assertSame('image/jpeg', $response->type());
 
-    /**
-     * @runInSeparateProcess
-     * @preserveGlobalState disabled
-     */
-    public function testSend()
-    {
-        $response = new Response([
-            'body'    => 'test',
-            'headers' => [
-                'foo' => 'bar'
-            ]
-        ]);
+		$response = new Response([
+			'type' => 'image/jpeg'
+		]);
 
-        ob_start();
+		$this->assertSame('image/jpeg', $response->type());
+	}
 
-        echo $response->send();
+	public function testCharset()
+	{
+		$response = new Response();
+		$this->assertSame('UTF-8', $response->charset());
 
-        $code = http_response_code();
-        $body = ob_get_contents();
+		$response = new Response('', 'text/html', 200, [], 'test');
+		$this->assertSame('test', $response->charset());
 
-        ob_end_clean();
+		$response = new Response([
+			'charset' => 'test'
+		]);
 
-        $this->assertEquals($body, 'test');
-        $this->assertEquals($code, 200);
-    }
+		$this->assertSame('test', $response->charset());
+	}
 
-    /**
-     * @runInSeparateProcess
-     * @preserveGlobalState disabled
-     */
-    public function testToString()
-    {
-        $response = new Response([
-            'body'    => 'test',
-            'headers' => [
-                'foo' => 'bar'
-            ]
-        ]);
+	public function testCode()
+	{
+		$response = new Response();
+		$this->assertSame(200, $response->code());
 
-        ob_start();
+		$response = new Response('', 'text/html', 404);
+		$this->assertSame(404, $response->code());
 
-        echo $response;
+		$response = new Response([
+			'code' => 404
+		]);
 
-        $code = http_response_code();
-        $body = ob_get_contents();
+		$this->assertSame(404, $response->code());
+	}
 
-        ob_end_clean();
+	public function testRedirect()
+	{
+		$response = Response::redirect();
+		$this->assertSame('', $response->body());
+		$this->assertSame(302, $response->code());
+		$this->assertEquals(['Location' => '/'], $response->headers()); // cannot use strict assertion (Uri object)
+	}
 
-        $this->assertEquals($body, 'test');
-        $this->assertEquals($code, 200);
-    }
+	public function testRedirectWithLocation()
+	{
+		$response = Response::redirect('https://getkirby.com');
+		$this->assertSame('', $response->body());
+		$this->assertSame(302, $response->code());
+		$this->assertEquals(['Location' => 'https://getkirby.com'], $response->headers()); // cannot use strict assertion (Uri object)
+	}
 
-    public function testToArray()
-    {
-        // default setup
-        $response = new Response();
-        $expected = [
-            'type'    => 'text/html',
-            'charset' => 'UTF-8',
-            'code'    => 200,
-            'headers' => [],
-            'body'    => '',
-        ];
+	public function testRedirectWithInternationalLocation()
+	{
+		$response = Response::redirect('https://täst.de');
+		$this->assertSame('', $response->body());
+		$this->assertSame(302, $response->code());
+		$this->assertEquals(['Location' => 'https://xn--tst-qla.de'], $response->headers()); // cannot use strict assertion (Uri object)
+	}
 
-        $this->assertEquals($expected, $response->toArray());
-    }
+	public function testRedirectWithResponseCode()
+	{
+		$response = Response::redirect('/', 301);
+		$this->assertSame('', $response->body());
+		$this->assertSame(301, $response->code());
+		$this->assertEquals(['Location' => '/'], $response->headers()); // cannot use strict assertion (Uri object)
+	}
+
+	/**
+	 * @runInSeparateProcess
+	 * @preserveGlobalState disabled
+	 */
+	public function testSend()
+	{
+		$response = new Response([
+			'body'    => 'test',
+			'headers' => [
+				'foo' => 'bar'
+			]
+		]);
+
+		ob_start();
+
+		echo $response->send();
+
+		$code = http_response_code();
+		$body = ob_get_contents();
+
+		ob_end_clean();
+
+		$this->assertSame($body, 'test');
+		$this->assertSame($code, 200);
+	}
+
+	/**
+	 * @runInSeparateProcess
+	 * @preserveGlobalState disabled
+	 */
+	public function testToString()
+	{
+		$response = new Response([
+			'body'    => 'test',
+			'headers' => [
+				'foo' => 'bar'
+			]
+		]);
+
+		ob_start();
+
+		echo $response;
+
+		$code = http_response_code();
+		$body = ob_get_contents();
+
+		ob_end_clean();
+
+		$this->assertSame($body, 'test');
+		$this->assertSame($code, 200);
+	}
+
+	public function testToArray()
+	{
+		// default setup
+		$response = new Response();
+		$expected = [
+			'type'    => 'text/html',
+			'charset' => 'UTF-8',
+			'code'    => 200,
+			'headers' => [],
+			'body'    => '',
+		];
+
+		$this->assertSame($expected, $response->toArray());
+	}
 }

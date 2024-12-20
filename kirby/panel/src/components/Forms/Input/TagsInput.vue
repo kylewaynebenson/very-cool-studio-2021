@@ -1,427 +1,253 @@
 <template>
-  <k-draggable
-    ref="box"
-    :list="tags"
-    :data-layout="layout"
-    :options="dragOptions"
-    :dir="direction"
-    class="k-tags-input"
-    @end="onInput"
-  >
-    <k-tag
-      v-for="(tag, tagIndex) in tags"
-      :ref="tag.value"
-      :key="tagIndex"
-      :removable="!disabled"
-      name="tag"
-      @click.native.stop
-      @blur.native="selectTag(null)"
-      @focus.native="selectTag(tag)"
-      @keydown.native.left="navigate('prev')"
-      @keydown.native.right="navigate('next')"
-      @dblclick.native="edit(tag)"
-      @remove="remove(tag)"
-    >
-      <!-- eslint-disable-next-line vue/no-v-html -->
-      <span v-html="tag.text" />
-    </k-tag>
-
-    <span slot="footer" class="k-tags-input-element">
-      <k-autocomplete
-        ref="autocomplete"
-        :html="true"
-        :options="options"
-        :skip="skip"
-        @select="addTag"
-        @leave="$refs.input.focus()"
-      >
-        <input
-          :id="id"
-          ref="input"
-          v-model.trim="newTag"
-          :autofocus="autofocus"
-          :disabled="disabled || (max && tags.length >= max)"
-          :name="name"
-          autocomplete="off"
-          type="text"
-          @input="type($event.target.value)"
-          @blur="blurInput"
-          @keydown.meta.s="blurInput"
-          @keydown.left.exact="leaveInput"
-          @keydown.enter.exact="enter"
-          @keydown.tab.exact="tab"
-          @keydown.backspace.exact="leaveInput"
-        >
-      </k-autocomplete>
-    </span>
-  </k-draggable>
+	<div :data-can-add="canAdd" class="k-tags-input">
+		<k-tags
+			ref="tags"
+			v-bind="$props"
+			@edit="edit"
+			@input="$emit('input', $event)"
+			@click.native.stop="$refs.toggle?.$el?.click()"
+		>
+			<k-button
+				v-if="canAdd"
+				:id="id"
+				ref="toggle"
+				:autofocus="autofocus"
+				:disabled="disabled"
+				class="k-tags-input-toggle k-tags-navigatable input-focus"
+				size="xs"
+				icon="add"
+				@click="$refs.create.open()"
+				@keydown.native.delete="$refs.tags.focus('prev')"
+				@keydown.native="toggle"
+			/>
+		</k-tags>
+		<k-picklist-dropdown
+			ref="replace"
+			v-bind="picklist"
+			:multiple="false"
+			:options="replacableOptions"
+			:value="editing?.tag.value ?? ''"
+			@create="replace"
+			@input="replace"
+		/>
+		<k-picklist-dropdown
+			ref="create"
+			v-bind="picklist"
+			:options="creatableOptions"
+			:value="value"
+			@create="create"
+			@input="pick"
+		/>
+	</div>
 </template>
 
 <script>
-import { required, minLength, maxLength } from "vuelidate/lib/validators";
-import direction from "@/helpers/direction.js";
+import Multiselect, { props as MultiselectProps } from "./MultiselectInput.vue";
+
+export const props = {
+	mixins: [MultiselectProps],
+	props: {
+		/**
+		 * Whether to accept only options or also custom tags
+		 * @values "all", "options"
+		 */
+		accept: {
+			type: String,
+			default: "all"
+		},
+		/**
+		 * Separator which will be used when pasting
+		 * a list of tags to split them into individual tags
+		 */
+		separator: {
+			type: String,
+			default: ","
+		}
+	}
+};
 
 export default {
-  inheritAttrs: false,
-  props: {
-    autofocus: Boolean,
-    accept: {
-      type: String,
-      default: "all"
-    },
-    disabled: Boolean,
-    icon: {
-      type: [String, Boolean],
-      default: "tag"
-    },
-    id: [Number, String],
-    /**
-     * You can set the layout to `list` to extend the width of each tag
-     * to 100% and show them in a list. This is handy in narrow columns
-     * or when a list is a more appropriate design choice for the input
-     * in general.
-     */
-    layout: String,
-    /**
-     * The maximum number of accepted tags
-     */
-    max: Number,
-    /**
-     * The minimum number of required tags
-     */
-    min: Number,
-    name: [Number, String],
-    /**
-     * Options will be shown in the autocomplete dropdown
-     * as soon as you start typing.
-     */
-    options: {
-      type: Array,
-      default() {
-        return [];
-      }
-    },
-    required: Boolean,
-    separator: {
-      type: String,
-      default: ","
-    },
-    value: {
-      type: Array,
-      default() {
-        return [];
-      }
-    }
-  },
-  data() {
-    return {
-      tags: this.prepareTags(this.value),
-      selected: null,
-      newTag: null,
-      tagOptions: this.options.map(tag => {
-        if (this.icon && this.icon.length > 0) {
-          tag.icon = this.icon;
-        }
-        return tag;
-      }, this)
-    };
-  },
-  computed: {
-    direction() {
-      return direction(this);
-    },
-    dragOptions() {
-      return {
-        delay: 1,
-        disabled: !this.draggable,
-        draggable: ".k-tag"
-      };
-    },
-    draggable() {
-      return this.tags.length > 1;
-    },
-    skip() {
-      return this.tags.map(tag => tag.value);
-    }
-  },
-  watch: {
-    value(value) {
-      this.tags = this.prepareTags(value);
-      this.onInvalid();
-    }
-  },
-  mounted() {
-    this.onInvalid();
+	extends: Multiselect,
+	mixins: [props],
+	data() {
+		return {
+			editing: null
+		};
+	},
+	computed: {
+		canAdd() {
+			return !this.max || this.value.length < this.max;
+		},
+		creatableOptions() {
+			// tags should be unique, so when creating,
+			// only show options that are not already selected
+			return this.options.filter(
+				(option) => this.value.includes(option.value) === false
+			);
+		},
+		picklist() {
+			return {
+				disabled: this.disabled,
+				create: this.showCreate,
+				ignore: this.ignore,
+				min: this.min,
+				max: this.max,
+				search: this.showSearch
+			};
+		},
+		replacableOptions() {
+			// when replacing, we want to hide all options
+			// that are already selected (as in `creatableOptions`),
+			// but the one we are replacing should be visible for context
+			return this.options.filter(
+				(option) =>
+					this.value.includes(option.value) === false ||
+					option.value === this.editing?.tag.value
+			);
+		},
+		showCreate() {
+			// never show create when only accepting options
+			if (this.accept === "options") {
+				return false;
+			}
 
-    if (this.$props.autofocus) {
-      this.focus();
-    }
-  },
-  methods: {
-    addString(string) {
-      if (!string) {
-        return;
-      }
+			// when replacing, show custom submit text
+			if (this.editing) {
+				return { submit: this.$t("replace.with") };
+			}
 
-      string = string.trim();
+			return true;
+		},
+		showSearch() {
+			if (this.search === false) {
+				return false;
+			}
 
-      if (string.includes(this.separator)) {
-        string.split(this.separator).forEach(tag => {
-          this.addString(tag);
-        });
+			if (this.editing) {
+				return { placeholder: this.$t("replace.with"), ...this.search };
+			}
 
-        return;
-      }
+			if (this.accept === "options") {
+				return { placeholder: this.$t("filter"), ...this.search };
+			}
 
-      if (string.length === 0) {
-        return;
-      }
+			return this.search;
+		}
+	},
+	methods: {
+		create(input) {
+			const inputs = input.split(this.separator).map((tag) => tag.trim());
+			const tags = structuredClone(this.value);
 
-      if (this.accept === "options") {
-        const option = this.options.filter(
-          option => option.text === string
-        )[0];
+			for (let tag of inputs) {
+				// convert input to tag object
+				tag = this.$refs.tags.tag(tag, this.separator);
 
-        if (!option) {
-          return;
-        }
+				// no new tags if this is full,
+				// check if the tag is accepted
+				if (this.isAllowed(tag) === true) {
+					tags.push(tag.value);
+				}
+			}
 
-        this.addTag(option);
-      } else {
-        this.addTag({ text: string, value: string });
-      }
-    },
-    addTag(tag) {
-      this.addTagToIndex(tag);
-      this.$refs.autocomplete.close();
-      this.$refs.input.focus();
-    },
-    addTagToIndex(tag) {
-      if (this.accept === "options") {
-        const option = this.options.filter(
-          option => option.value === tag.value
-        )[0];
+			this.$emit("input", tags);
+			this.$refs.create.close();
+		},
+		async edit(index, tag) {
+			this.editing = { index, tag };
+			this.$refs.replace.open();
+		},
+		focus() {
+			if (this.canAdd) {
+				this.$refs.create.open();
+			}
+		},
+		isAllowed(tag) {
+			if (typeof tag !== "object" || tag.value.trim().length === 0) {
+				return false;
+			}
 
-        if (!option) {
-          return;
-        }
-      }
+			// if only options are allowed as value
+			if (this.accept === "options" && !this.$refs.tags.option(tag)) {
+				return false;
+			}
 
-      if (
-        this.index(tag) === -1 &&
-        (!this.max || this.tags.length < this.max)
-      ) {
-        this.tags.push(tag);
-        this.onInput();
-      }
+			// don't allow duplicates
+			if (this.value.includes(tag.value) === true) {
+				return false;
+			}
 
-      this.newTag = null;
-    },
-    blurInput(event) {
-      let related = event.relatedTarget || event.explicitOriginalTarget;
+			return true;
+		},
+		pick(tags) {
+			this.$emit("input", tags);
+			this.$refs.create.close();
+		},
+		replace(value) {
+			// get index of tag that is being replaced
+			// and tag object of the new value
+			const { index } = this.editing;
+			const updated = this.$refs.tags.tag(value);
 
-      if (
-        this.$refs.autocomplete.$el &&
-        this.$refs.autocomplete.$el.contains(related)
-      ) {
-        return;
-      }
+			// close the replace dropdown and reset editing
+			this.$refs.replace.close();
+			this.editing = null;
 
-      if (this.$refs.input.value.length) {
-        this.addTagToIndex(this.$refs.input.value);
-        this.$refs.autocomplete.close();
-      }
-    },
-    edit(tag) {
-      this.newTag = tag.text;
-      this.$refs.input.select();
-      this.remove(tag);
-    },
-    enter(event) {
-      if (!this.newTag || this.newTag.length === 0) {
-        return true;
-      }
+			// don't replace if the new value is not allowed
+			if (this.isAllowed(updated) === false) {
+				return false;
+			}
 
-      event.preventDefault();
-      this.addString(this.newTag);
-    },
-    focus() {
-      this.$refs.input.focus();
-    },
-    get(position) {
-      let nextIndex = null;
-      let currIndex = null;
+			// replace the tag at the given index
+			const tags = structuredClone(this.value);
+			tags.splice(index, 1, updated.value);
+			this.$emit("input", tags);
 
-      switch (position) {
-        case "prev":
-          if (!this.selected) return;
+			// focus the tag that was replaced
+			this.$refs.tags.navigate(index);
+		},
+		toggle(event) {
+			if (event.metaKey || event.altKey || event.ctrlKey) {
+				return false;
+			}
 
-          currIndex = this.index(this.selected);
-          nextIndex = currIndex - 1;
+			if (event.key === "ArrowDown") {
+				this.$refs.create.open();
+				event.preventDefault();
+				return;
+			}
 
-          if (nextIndex < 0) return;
-          break;
-
-        case "next":
-          if (!this.selected) return;
-
-          currIndex = this.index(this.selected);
-          nextIndex = currIndex + 1;
-
-          if (nextIndex >= this.tags.length) return;
-          break;
-
-        case "first":
-          nextIndex = 0;
-          break;
-
-        case "last":
-          nextIndex = this.tags.length - 1;
-          break;
-
-        default:
-          nextIndex = position;
-          break;
-      }
-
-      let nextTag = this.tags[nextIndex];
-
-      if (nextTag) {
-        let nextRef = this.$refs[nextTag.value];
-
-        if (nextRef && nextRef[0]) {
-          return {
-            ref: nextRef[0],
-            tag: nextTag,
-            index: nextIndex
-          };
-        }
-      }
-
-      return false;
-    },
-    index(tag) {
-      return this.tags.findIndex(item => item.value === tag.value);
-    },
-    onInput() {
-      this.$emit("input", this.tags);
-    },
-    onInvalid() {
-      this.$emit("invalid", this.$v.$invalid, this.$v);
-    },
-    leaveInput(e) {
-      if (
-        e.target.selectionStart === 0 &&
-        e.target.selectionStart === e.target.selectionEnd &&
-        this.tags.length !== 0
-      ) {
-        this.$refs.autocomplete.close();
-        this.navigate("last");
-        e.preventDefault();
-      }
-    },
-    navigate(position) {
-      var result = this.get(position);
-      if (result) {
-        result.ref.focus();
-        this.selectTag(result.tag);
-      } else if (position === "next") {
-        this.$refs.input.focus();
-        this.selectTag(null);
-      }
-    },
-    prepareTags(value) {
-      if (Array.isArray(value) === false) {
-        return [];
-      }
-
-      return value.map(tag => {
-        if (typeof tag === "string") {
-          return {
-            text: tag,
-            value: tag
-          };
-        } else {
-          return tag;
-        }
-      });
-    },
-    remove(tag) {
-      // get neighboring tags
-      const prev = this.get("prev");
-      const next = this.get("next");
-
-      // remove tag and fire input event
-      this.tags.splice(this.index(tag), 1);
-      this.onInput();
-
-      if (prev) {
-        this.selectTag(prev.tag);
-        prev.ref.focus();
-      } else if (next) {
-        this.selectTag(next.tag);
-      } else {
-        this.selectTag(null);
-        this.$refs.input.focus();
-      }
-    },
-    select() {
-      this.focus();
-    },
-    selectTag(tag) {
-      this.selected = tag;
-    },
-    tab(event) {
-      if (this.newTag && this.newTag.length > 0) {
-        event.preventDefault();
-        this.addString(this.newTag);
-      }
-    },
-    type(value) {
-      this.newTag = value;
-      this.$refs.autocomplete.search(value);
-    }
-  },
-  validations() {
-    return {
-      tags: {
-        required: this.required ? required : true,
-        minLength: this.min ? minLength(this.min) : true,
-        maxLength: this.max ? maxLength(this.max) : true
-      }
-    };
-  }
+			if (String.fromCharCode(event.keyCode).match(/(\w)/g)) {
+				this.$refs.create.open();
+			}
+		}
+	}
 };
 </script>
 
-<style lang="scss">
+<style>
 .k-tags-input {
-  display: flex;
-  flex-wrap: wrap;
+	padding: var(--tags-gap);
 }
-.k-tags-input .k-sortable-ghost {
-  background: $color-focus;
-}
-.k-tags-input-element {
-  flex-grow: 1;
-  flex-basis: 0;
-  min-width: 0;
-}
-.k-tags-input:focus-within .k-tags-input-element {
-  flex-basis: 4rem;
-}
-.k-tags-input-element input {
-  font: inherit;
-  border: 0;
-  width: 100%;
-  background: none;
-}
-.k-tags-input-element input:focus {
-  outline: 0;
+.k-tags-input[data-can-add="true"] {
+	cursor: pointer;
 }
 
-.k-tags-input[data-layout="list"] .k-tag {
-  width: 100%;
-  margin-right: 0 !important;
+.k-tags-input-toggle.k-button {
+	--button-color-text: var(--input-color-placeholder);
+	opacity: 0;
+}
+.k-tags-input-toggle.k-button:focus {
+	--button-color-text: var(--input-color-text);
+}
+.k-tags-input:focus-within .k-tags-input-toggle {
+	opacity: 1;
+}
+
+.k-tags-input .k-picklist-dropdown {
+	margin-top: var(--spacing-1);
+}
+.k-tags-input .k-picklist-dropdown .k-choice-input:focus-within {
+	outline: var(--outline);
 }
 </style>

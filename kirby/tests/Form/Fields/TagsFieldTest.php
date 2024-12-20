@@ -4,160 +4,176 @@ namespace Kirby\Form\Fields;
 
 class TagsFieldTest extends TestCase
 {
-    public function testDefaultProps()
-    {
-        $field = $this->field('tags');
+	public function testDefaultProps()
+	{
+		$field = $this->field('tags');
 
-        $this->assertEquals('tags', $field->type());
-        $this->assertEquals('tags', $field->name());
-        $this->assertEquals('all', $field->accept());
-        $this->assertEquals([], $field->value());
-        $this->assertEquals([], $field->default());
-        $this->assertEquals([], $field->options());
-        $this->assertEquals(null, $field->min());
-        $this->assertEquals(null, $field->max());
-        $this->assertEquals(',', $field->separator());
-        $this->assertEquals('tag', $field->icon());
-        $this->assertEquals(null, $field->counter());
-        $this->assertTrue($field->save());
-    }
+		$this->assertSame('tags', $field->type());
+		$this->assertSame('tags', $field->name());
+		$this->assertSame('all', $field->accept());
+		$this->assertSame([], $field->value());
+		$this->assertSame([], $field->default());
+		$this->assertSame([], $field->options());
+		$this->assertNull($field->min());
+		$this->assertNull($field->max());
+		$this->assertSame(',', $field->separator());
+		$this->assertSame('tag', $field->icon());
+		$this->assertNull($field->counter());
+		$this->assertTrue($field->save());
+	}
 
-    public function testOptionsQuery()
-    {
-        $app = $this->app()->clone([
-            'site' => [
-                'children' => [
-                    [
-                        'slug' => 'a',
-                        'content'  => [
-                            'tags' => 'design'
-                        ],
-                        'files' => [
-                            [
-                                'filename' => 'a.jpg',
-                                'content'  => [
-                                    'tags' => 'design'
-                                ]
-                            ],
-                            [
-                                'filename' => 'b.jpg',
-                                'content'  => [
-                                    'tags' => 'design, photography'
-                                ]
-                            ],
-                            [
-                                'filename' => 'c.jpg',
-                                'content'  => [
-                                    'tags' => 'design, architecture'
-                                ]
-                            ]
-                        ]
-                    ],
-                    [
-                        'slug' => 'b',
-                        'content'  => [
-                            'tags' => 'design, photography'
-                        ],
-                    ],
-                    [
-                        'slug' => 'c',
-                        'content'  => [
-                            'tags' => 'design, architecture'
-                        ],
-                    ]
-                ]
-            ]
-        ]);
+	public function testOptionsQuery()
+	{
+		$app = $this->app()->clone([
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'a',
+						'content'  => [
+							'tags' => 'design'
+						],
+						'files' => [
+							[
+								'filename' => 'a.jpg',
+								'content'  => [
+									'tags' => 'design'
+								]
+							],
+							[
+								'filename' => 'b.jpg',
+								'content'  => [
+									'tags' => 'photography, <script>alert("XSS")</script>'
+								]
+							],
+							[
+								'filename' => 'c.jpg',
+								'content'  => [
+									'tags' => 'design, architecture'
+								]
+							]
+						]
+					],
+					[
+						'slug' => 'b',
+						'content'  => [
+							'tags' => 'photography, <script>alert("XSS")</script>'
+						],
+					],
+					[
+						'slug' => 'c',
+						'content'  => [
+							'tags' => 'design, architecture'
+						],
+					]
+				]
+			]
+		]);
 
-        $expected = [
-            [
-                'value' => 'design',
-                'text'  => 'design'
-            ],
-            [
-                'value' => 'photography',
-                'text'  => 'photography'
-            ],
-            [
-                'value' => 'architecture',
-                'text'  => 'architecture'
-            ]
-        ];
+		$expected = [
+			[
+				'disabled' => false,
+				'icon' => null,
+				'info' => null,
+				'text' => 'design',
+				'value' => 'design'
+			],
+			[
+				'disabled' => false,
+				'icon' => null,
+				'info' => null,
+				'text' => 'photography',
+				'value' => 'photography'
+			],
+			[
+				'disabled' => false,
+				'icon' => null,
+				'info' => null,
+				'text' => '&lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt;',
+				'value' => '<script>alert("XSS")</script>'
+			],
+			[
+				'disabled' => false,
+				'icon' => null,
+				'info' => null,
+				'text' => 'architecture',
+				'value' => 'architecture'
+			]
+		];
 
-        $field = $this->field('tags', [
-            'model'   => $app->page('b'),
-            'options' => 'query',
-            'query'   => 'page.siblings.pluck("tags", ",", true)',
-        ]);
+		$field = $this->field('tags', [
+			'model'   => $app->page('b'),
+			'options' => 'query',
+			'query'   => 'page.siblings.pluck("tags", ",", true)',
+		]);
 
-        $this->assertEquals($expected, $field->options());
+		$this->assertSame($expected, $field->options());
 
-        $field = $this->field('tags', [
-            'model'   => $app->file('a/b.jpg'),
-            'options' => 'query',
-            'query'   => 'file.siblings.pluck("tags", ",", true)',
-        ]);
+		$field = $this->field('tags', [
+			'model'   => $app->file('a/b.jpg'),
+			'options' => 'query',
+			'query'   => 'file.siblings.pluck("tags", ",", true)',
+		]);
 
-        $this->assertEquals($expected, $field->options());
-    }
+		$this->assertSame($expected, $field->options());
+	}
 
-    public function testMin()
-    {
-        $field = $this->field('tags', [
-            'value'   => 'a',
-            'options' => ['a', 'b', 'c'],
-            'min'     => 2
-        ]);
+	public function testMin()
+	{
+		$field = $this->field('tags', [
+			'value'   => 'a',
+			'options' => ['a', 'b', 'c'],
+			'min'     => 2
+		]);
 
-        $this->assertFalse($field->isValid());
-        $this->assertArrayHasKey('min', $field->errors());
-        $this->assertEquals(2, $field->min());
-        $this->assertTrue($field->required());
-    }
+		$this->assertFalse($field->isValid());
+		$this->assertArrayHasKey('min', $field->errors());
+		$this->assertSame(2, $field->min());
+		$this->assertTrue($field->required());
+	}
 
-    public function testMax()
-    {
-        $field = $this->field('tags', [
-            'value'   => 'a, b',
-            'options' => ['a', 'b', 'c'],
-            'max'     => 1
-        ]);
+	public function testMax()
+	{
+		$field = $this->field('tags', [
+			'value'   => 'a, b',
+			'options' => ['a', 'b', 'c'],
+			'max'     => 1
+		]);
 
-        $this->assertFalse($field->isValid());
-        $this->assertEquals(1, $field->max());
-        $this->assertArrayHasKey('max', $field->errors());
-    }
+		$this->assertFalse($field->isValid());
+		$this->assertSame(1, $field->max());
+		$this->assertArrayHasKey('max', $field->errors());
+	}
 
-    public function testRequiredProps()
-    {
-        $field = $this->field('tags', [
-            'options'  => ['a', 'b', 'c'],
-            'required' => true
-        ]);
+	public function testRequiredProps()
+	{
+		$field = $this->field('tags', [
+			'options'  => ['a', 'b', 'c'],
+			'required' => true
+		]);
 
-        $this->assertTrue($field->required());
-        $this->assertEquals(1, $field->min());
-    }
+		$this->assertTrue($field->required());
+		$this->assertSame(1, $field->min());
+	}
 
-    public function testRequiredInvalid()
-    {
-        $field = $this->field('tags', [
-            'options'  => ['a', 'b', 'c'],
-            'value'    => null,
-            'required' => true
-        ]);
+	public function testRequiredInvalid()
+	{
+		$field = $this->field('tags', [
+			'options'  => ['a', 'b', 'c'],
+			'value'    => null,
+			'required' => true
+		]);
 
-        $this->assertFalse($field->isValid());
-    }
+		$this->assertFalse($field->isValid());
+	}
 
-    public function testRequiredValid()
-    {
-        $field = $this->field('tags', [
-            'options'  => ['a', 'b', 'c'],
-            'required' => true,
-            'value'    => 'a'
-        ]);
+	public function testRequiredValid()
+	{
+		$field = $this->field('tags', [
+			'options'  => ['a', 'b', 'c'],
+			'required' => true,
+			'value'    => 'a'
+		]);
 
-        $this->assertTrue($field->isValid());
-    }
+		$this->assertTrue($field->isValid());
+	}
 }

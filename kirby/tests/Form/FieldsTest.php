@@ -3,39 +3,39 @@
 namespace Kirby\Form;
 
 use Kirby\Cms\Page;
-use PHPUnit\Framework\TestCase;
+use Kirby\TestCase;
 
 class FieldsTest extends TestCase
 {
-    public function setUp(): void
-    {
-        Field::$types = [];
-    }
+	public function setUp(): void
+	{
+		Field::$types = [];
+	}
 
-    public function tearDown(): void
-    {
-        Field::$types = [];
-    }
+	public function tearDown(): void
+	{
+		Field::$types = [];
+	}
 
-    public function testConstruct()
-    {
-        Field::$types = [
-            'test' => []
-        ];
+	public function testConstruct()
+	{
+		Field::$types = [
+			'test' => []
+		];
 
-        $page   = new Page(['slug' => 'test']);
-        $fields = new Fields([
-            'a' => [
-                'type' => 'test',
-                'model' => $page
-            ],
-            'b' => [
-                'type' => 'test',
-                'model' => $page
-            ],
-        ]);
+		$page   = new Page(['slug' => 'test']);
+		$fields = new Fields([
+			'a' => [
+				'type' => 'test',
+				'model' => $page
+			],
+			'b' => [
+				'type' => 'test',
+				'model' => $page
+			],
+		]);
 
-        $this->assertEquals('a', $fields->first()->name());
-        $this->assertEquals('b', $fields->last()->name());
-    }
+		$this->assertSame('a', $fields->first()->name());
+		$this->assertSame('b', $fields->last()->name());
+	}
 }

@@ -3,451 +3,580 @@
 namespace Kirby\Form\Fields;
 
 use Kirby\Cms\App;
+use Kirby\Cms\Fieldsets;
 use Kirby\Cms\Page;
+use Kirby\Exception\NotFoundException;
 use Kirby\Form\Fields;
 
 class BlocksFieldTest extends TestCase
 {
-    public function testDefaultProps()
-    {
-        $field = $this->field('blocks', []);
+	public function testDefaultProps()
+	{
+		$field = $this->field('blocks', []);
 
-        $this->assertSame('blocks', $field->type());
-        $this->assertSame('blocks', $field->name());
-        $this->assertSame(null, $field->max());
-        $this->assertInstanceOf('Kirby\Cms\Fieldsets', $field->fieldsets());
-        $this->assertSame([], $field->value());
-        $this->assertTrue($field->save());
-    }
+		$this->assertSame('blocks', $field->type());
+		$this->assertSame('blocks', $field->name());
+		$this->assertNull($field->max());
+		$this->assertInstanceOf(Fieldsets::class, $field->fieldsets());
+		$this->assertSame([], $field->value());
+		$this->assertTrue($field->save());
+	}
 
-    public function testGroups()
-    {
-        $field = $this->field('blocks', [
-            'group'     => 'test',
-            'fieldsets' => [
-                'text' => [
-                    'label'     => 'Text',
-                    'type'      => 'group',
-                    'fieldsets' => [
-                        'text'    => true,
-                        'heading' => true
-                    ]
-                ],
-                'media' => [
-                    'label' => 'Media',
-                    'type'  => 'group',
-                    'fieldsets' => [
-                        'image' => true,
-                        'video' => true
-                    ]
-                ]
-            ]
-        ]);
+	public function testGroups()
+	{
+		$field = $this->field('blocks', [
+			'group'     => 'test',
+			'fieldsets' => [
+				'text' => [
+					'label'     => 'Text',
+					'type'      => 'group',
+					'fieldsets' => [
+						'text'    => true,
+						'heading' => true
+					]
+				],
+				'media' => [
+					'label' => 'Media',
+					'type'  => 'group',
+					'fieldsets' => [
+						'image' => true,
+						'video' => true
+					]
+				]
+			]
+		]);
 
-        $group  = $field->group();
-        $groups = $field->fieldsets()->groups();
+		$group  = $field->group();
+		$groups = $field->fieldsets()->groups();
 
-        $this->assertSame('test', $group);
+		$this->assertSame('test', $group);
 
-        $this->assertArrayHasKey('text', $groups);
-        $this->assertArrayHasKey('media', $groups);
+		$this->assertArrayHasKey('text', $groups);
+		$this->assertArrayHasKey('media', $groups);
 
-        $this->assertSame(['text', 'heading'], $groups['text']['sets']);
-        $this->assertSame(['image', 'video'], $groups['media']['sets']);
-    }
+		$this->assertSame(['text', 'heading'], $groups['text']['sets']);
+		$this->assertSame(['image', 'video'], $groups['media']['sets']);
+	}
 
-    public function testMax()
-    {
-        $field = $this->field('blocks', [
-            'value' => [
-                [
-                    'type'    => 'heading',
-                    'content' => [
-                        'text' => 'a'
-                    ]
-                ],
-                [
-                    'type'    => 'heading',
-                    'content' => [
-                        'text' => 'b'
-                    ]
-                ],
-            ],
-            'max' => 1
-        ]);
+	public function testMax()
+	{
+		$field = $this->field('blocks', [
+			'value' => [
+				[
+					'type'    => 'heading',
+					'content' => [
+						'text' => 'a'
+					]
+				],
+				[
+					'type'    => 'heading',
+					'content' => [
+						'text' => 'b'
+					]
+				],
+			],
+			'max' => 1
+		]);
 
-        $this->assertSame(1, $field->max());
-        $this->assertFalse($field->isValid());
-        $this->assertSame($field->errors()['blocks'], 'You must not add more than one block');
-    }
+		$this->assertSame(1, $field->max());
+		$this->assertFalse($field->isValid());
+		$this->assertSame($field->errors()['blocks'], 'You must not add more than one block');
+	}
 
-    public function testMin()
-    {
-        $field = $this->field('blocks', [
-            'value' => [
-                [
-                    'type'    => 'heading',
-                    'content' => ['text' => 'a']
-                ],
-            ],
-            'min' => 2
-        ]);
+	public function testMin()
+	{
+		$field = $this->field('blocks', [
+			'value' => [
+				[
+					'type'    => 'heading',
+					'content' => ['text' => 'a']
+				],
+			],
+			'min' => 2
+		]);
 
-        $this->assertSame(2, $field->min());
-        $this->assertFalse($field->isValid());
-        $this->assertSame($field->errors()['blocks'], 'You must add at least 2 blocks');
-    }
+		$this->assertSame(2, $field->min());
+		$this->assertFalse($field->isValid());
+		$this->assertSame($field->errors()['blocks'], 'You must add at least 2 blocks');
+	}
 
-    public function testPretty()
-    {
-        $value = [
-            [
-                'type'    => 'heading',
-                'content' => [
-                    'text' => 'A nice heading'
-                ]
-            ],
-        ];
+	public function testPretty()
+	{
+		$value = [
+			[
+				'id'	  => 'uuid',
+				'type'    => 'heading',
+				'content' => [
+					'text' => 'A nice block/heäding'
+				]
+			],
+		];
 
-        $expected = [
-            [
-                'type'    => 'heading',
-                'content' => [
-                    'level' => '',
-                    'text'  => 'A nice heading'
-                ]
-            ],
-        ];
+		$expected = [
+			[
+				'id'	  => 'uuid',
+				'type'    => 'heading',
+				'content' => [
+					'level' => '',
+					'text'  => 'A nice block/heäding'
+				]
+			],
+		];
 
-        $field = $this->field('blocks', [
-            'pretty' => true,
-            'value'  => $value
-        ]);
+		$field = $this->field('blocks', [
+			'pretty' => true,
+			'value'  => $value
+		]);
 
-        $pretty = json_encode($expected, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+		$pretty = json_encode($expected, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 
-        $this->assertTrue($field->pretty());
-        $this->assertSame($pretty, $field->store($value));
-    }
+		$this->assertTrue($field->pretty());
+		$this->assertSame($pretty, $field->store($value));
+	}
 
-    public function testProps()
-    {
-        $field = $this->field('blocks');
+	public function testProps()
+	{
+		$field = $this->field('blocks');
 
-        $props     = $field->props();
-        $fieldsets = $props['fieldsets'];
+		$props     = $field->props();
+		$fieldsets = $props['fieldsets'];
 
-        $this->assertIsArray($props);
-        $this->assertNull($props['empty']);
-        $this->assertSame([
-            'code', 'gallery', 'heading', 'image', 'list', 'markdown', 'quote', 'text', 'video'
-        ], array_keys($fieldsets));
-        $this->assertNull($props['fieldsetGroups']);
-        $this->assertSame('blocks', $props['group']);
-        $this->assertNull($props['max']);
-        $this->assertNull($props['min']);
-        $this->assertNull($props['after']);
-        $this->assertFalse($props['autofocus']);
-        $this->assertNull($props['before']);
-        $this->assertNull($props['default']);
-        $this->assertFalse($props['disabled']);
-        $this->assertNull($props['help']);
-        $this->assertNull($props['icon']);
-        $this->assertSame('Blocks', $props['label']);
-        $this->assertSame('blocks', $props['name']);
-        $this->assertNull($props['placeholder']);
-        $this->assertFalse($props['required']);
-        $this->assertTrue($props['saveable']);
-        $this->assertTrue($props['translate']);
-        $this->assertSame('blocks', $props['type']);
-        $this->assertSame('1/1', $props['width']);
-    }
+		$this->assertIsArray($props);
+		$this->assertNull($props['empty']);
+		$this->assertSame([
+			'code', 'gallery', 'heading', 'image', 'line', 'list', 'markdown', 'quote', 'text', 'video'
+		], array_keys($fieldsets));
+		$this->assertNull($props['fieldsetGroups']);
+		$this->assertSame('blocks', $props['group']);
+		$this->assertNull($props['max']);
+		$this->assertNull($props['min']);
+		$this->assertNull($props['after']);
+		$this->assertFalse($props['autofocus']);
+		$this->assertNull($props['before']);
+		$this->assertNull($props['default']);
+		$this->assertFalse($props['disabled']);
+		$this->assertNull($props['help']);
+		$this->assertNull($props['icon']);
+		$this->assertSame('Blocks', $props['label']);
+		$this->assertSame('blocks', $props['name']);
+		$this->assertNull($props['placeholder']);
+		$this->assertFalse($props['required']);
+		$this->assertTrue($props['saveable']);
+		$this->assertTrue($props['translate']);
+		$this->assertSame('blocks', $props['type']);
+		$this->assertSame('1/1', $props['width']);
+	}
 
-    public function testRequired()
-    {
-        $field = $this->field('blocks', [
-            'required' => true
-        ]);
+	public function testRequired()
+	{
+		$field = $this->field('blocks', [
+			'required' => true
+		]);
 
-        $this->assertTrue($field->required());
-    }
+		$this->assertTrue($field->required());
+	}
 
-    public function testRequiredInvalid()
-    {
-        $field = $this->field('blocks', [
-            'required' => true
-        ]);
+	public function testRequiredInvalid()
+	{
+		$field = $this->field('blocks', [
+			'required' => true
+		]);
 
-        $this->assertFalse($field->isValid());
-    }
+		$this->assertFalse($field->isValid());
+	}
 
-    public function testRequiredValid()
-    {
-        $field = $this->field('blocks', [
-            'value' => [
-                [
-                    'type'    => 'heading',
-                    'content' => [
-                        'text' => 'A nice heading'
-                    ]
-                ],
-            ],
-            'required' => true
-        ]);
+	public function testRequiredValid()
+	{
+		$field = $this->field('blocks', [
+			'value' => [
+				[
+					'type'    => 'heading',
+					'content' => [
+						'text' => 'A nice heading'
+					]
+				],
+			],
+			'required' => true
+		]);
 
-        $this->assertTrue($field->isValid());
-    }
+		$this->assertTrue($field->isValid());
+	}
 
-    public function testRoutes()
-    {
-        $field = $this->field('blocks');
+	public function testRoutes()
+	{
+		$field = $this->field('blocks');
 
-        $routes = $field->routes();
+		$routes = $field->routes();
 
-        $this->assertIsArray($routes);
-        $this->assertCount(3, $routes);
-    }
+		$this->assertIsArray($routes);
+		$this->assertCount(4, $routes);
+	}
 
-    public function testStore()
-    {
-        $value = [
-            [
-                'type'    => 'heading',
-                'content' => [
-                    'text' => 'A nice heading'
-                ]
-            ],
-        ];
+	public function testRouteUUID()
+	{
+		$field = $this->field('blocks');
+		$route = $field->routes()[0];
 
-        $expected = [
-            [
-                'type'    => 'heading',
-                'content' => [
-                    'level' => '',
-                    'text'  => 'A nice heading'
-                ]
-            ],
-        ];
+		$response = $route['action']();
 
-        $field = $this->field('blocks', [
-            'value' => $value
-        ]);
+		$this->assertIsArray($response);
+		$this->assertArrayHasKey('uuid', $response);
+	}
 
-        $this->assertSame(json_encode($expected), $field->store($value));
+	public function testRoutePaste()
+	{
+		$this->app = $this->app->clone([
+			'request' => [
+				'query' => [
+					'html' => '<p>Test</p>'
+				]
+			]
+		]);
 
-        // empty tests
-        $this->assertSame('', $field->store(null));
-        $this->assertSame('', $field->store([]));
-    }
+		$field = $this->field('blocks');
+		$route = $field->routes()[1];
 
-    public function testTranslateField()
-    {
-        $app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ],
-            'options' => [
-                'languages' => true
-            ],
-            'languages' => [
-                [
-                    'code'    => 'en',
-                    'default' => true
-                ],
-                [
-                    'code' => 'de',
-                ]
-            ]
-        ]);
+		$response = $route['action']();
 
-        $props = [
-            'fieldsets' => [
-                'heading' => [
-                    'fields' => [
-                        'text' => [
-                            'type' => 'text',
-                            'translate' => false,
-                        ]
-                    ]
-                ]
-            ]
-        ];
+		$this->assertCount(1, $response);
+		$this->assertSame(['text' => '<p>Test</p>'], $response[0]['content']);
+		$this->assertFalse($response[0]['isHidden']);
+		$this->assertSame('text', $response[0]['type']);
+	}
 
-        // default language
-        $app->setCurrentLanguage('en');
-        $field = $this->field('blocks', $props);
+	public function testRoutePasteFieldsets()
+	{
+		$this->app = $this->app->clone([
+			'request' => [
+				'query' => [
+					'html' => '<h1>Hello World</h1><p>Test</p><h6>Sincerely</h6>'
+				]
+			]
+		]);
 
-        $this->assertFalse($field->fields('heading')['text']['translate']);
-        $this->assertFalse($field->fields('heading')['text']['disabled']);
+		$field = $this->field('blocks', ['fieldsets' => ['heading']]);
+		$route = $field->routes()[1];
 
-        // secondary language
-        $app = $app->clone();
-        $app->setCurrentLanguage('de');
+		$response = $route['action']();
 
-        $field = $this->field('blocks', $props);
-        $this->assertFalse($field->fields('heading')['text']['translate']);
-        $this->assertTrue($field->fields('heading')['text']['disabled']);
-    }
+		$this->assertCount(2, $response);
+		$this->assertSame(['level' => 'h1', 'text' => 'Hello World'], $response[0]['content']);
+		$this->assertSame('heading', $response[0]['type']);
+		$this->assertSame(['level' => 'h6', 'text' => 'Sincerely'], $response[1]['content']);
+		$this->assertSame('heading', $response[1]['type']);
+	}
 
-    public function testTranslateFieldset()
-    {
-        $app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ],
-            'options' => [
-                'languages' => true
-            ],
-            'languages' => [
-                [
-                    'code'    => 'en',
-                    'default' => true
-                ],
-                [
-                    'code' => 'de',
-                ]
-            ]
-        ]);
+	public function testRouteFieldset()
+	{
+		$field = $this->field('blocks');
+		$route = $field->routes()[2];
 
-        $props = [
-            'fieldsets' => [
-                'heading' => [
-                    'translate' => false,
-                    'fields'    => [
-                        'text' => [
-                            'type' => 'text'
-                        ]
-                    ]
-                ]
-            ]
-        ];
+		$response = $route['action']('text');
 
-        // default language
-        $app->setCurrentLanguage('en');
-        $field = $this->field('blocks', $props);
+		$this->assertSame(['text' => ''], $response['content']);
+		$this->assertArrayHasKey('id', $response);
+		$this->assertFalse($response['isHidden']);
+		$this->assertSame('text', $response['type']);
+	}
 
-        $this->assertFalse($field->fieldset('heading')->translate());
-        $this->assertFalse($field->fieldset('heading')->disabled());
+	public function testStore()
+	{
+		$value = [
+			[
+				'id'	  => 'uuid',
+				'type'    => 'heading',
+				'content' => [
+					'text' => 'A nice block/heäding'
+				]
+			],
+		];
 
-        // secondary language
-        $app = $app->clone();
-        $app->setCurrentLanguage('de');
+		$expected = [
+			[
+				'id'	  => 'uuid',
+				'type'    => 'heading',
+				'content' => [
+					'level' => '',
+					'text'  => 'A nice block/heäding'
+				]
+			],
+		];
 
-        $field = $this->field('blocks', $props);
-        $this->assertFalse($field->fieldset('heading')->translate());
-        $this->assertTrue($field->fieldset('heading')->disabled());
+		$field = $this->field('blocks', [
+			'value' => $value
+		]);
 
-        // invalid fieldset calling
-        $this->expectException('Kirby\Exception\NotFoundException');
-        $this->expectExceptionMessage('The fieldset not-exists could not be found');
+		$this->assertSame(
+			json_encode($expected, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE),
+			$field->store($value)
+		);
 
-        $field->fieldset('not-exists');
-    }
+		// empty tests
+		$this->assertSame('', $field->store(null));
+		$this->assertSame('', $field->store([]));
+	}
 
-    public function testValidations()
-    {
-        $field = $this->field('blocks', [
-            'value' => [
-                [
-                    'type'    => 'heading',
-                    'content' => [
-                        'text' => 'A nice heading',
-                    ]
-                ],
-                [
-                    'type'    => 'video',
-                    'content' => [
-                        'url' => 'https://www.youtube.com/watch?v=EDVYjxWMecc',
-                    ]
-                ]
-            ],
-            'required' => true
-        ]);
+	public function testTranslateField()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null'
+			],
+			'options' => [
+				'languages' => true
+			],
+			'languages' => [
+				[
+					'code'    => 'en',
+					'default' => true
+				],
+				[
+					'code' => 'de',
+				]
+			]
+		]);
 
-        $this->assertTrue($field->isValid());
-    }
+		$props = [
+			'fieldsets' => [
+				'heading' => [
+					'fields' => [
+						'text' => [
+							'type' => 'text',
+							'translate' => false,
+						]
+					]
+				]
+			]
+		];
 
-    public function testValidationsInvalid()
-    {
-        $field = $this->field('blocks', [
-            'value' => [
-                [
-                    'type'    => 'heading',
-                    'content' => [
-                        'text' => 'A nice heading',
-                    ]
-                ],
-                [
-                    'type'    => 'video',
-                    'content' => [
-                        'url' => 'Invalid URL',
-                    ]
-                ]
-            ],
-            'required' => true
-        ]);
+		// default language
+		$app->setCurrentLanguage('en');
+		$field = $this->field('blocks', $props);
 
-        $this->assertFalse($field->isValid());
-        $this->assertSame(['blocks' => 'There\'s an error in block 2'], $field->errors());
-    }
+		$this->assertFalse($field->fields('heading')['text']['translate']);
+		$this->assertFalse($field->fields('heading')['text']['disabled']);
 
-    public function testEmpty()
-    {
-        $field = $this->field('blocks', [
-            'empty' => $value = 'Custom empty text'
-        ]);
+		// secondary language
+		$app = $app->clone();
+		$app->setCurrentLanguage('de');
 
-        $this->assertSame($value, $field->empty());
-    }
+		$field = $this->field('blocks', $props);
+		$this->assertFalse($field->fields('heading')['text']['translate']);
+		$this->assertTrue($field->fields('heading')['text']['disabled']);
+	}
 
-    public function testWhen()
-    {
-        $page = new Page(['slug' => 'test']);
+	public function testTranslateFieldset()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null'
+			],
+			'options' => [
+				'languages' => true
+			],
+			'languages' => [
+				[
+					'code'    => 'en',
+					'default' => true
+				],
+				[
+					'code' => 'de',
+				]
+			]
+		]);
 
-        $fields = new Fields([
-            'foo' => [
-                'type'  => 'text',
-                'model' => $page,
-                'value' => 'a'
-            ],
-            'bar' => [
-                'type'  => 'blocks',
-                'model' => $page,
-                'value' => []
-            ]
-        ]);
+		$props = [
+			'fieldsets' => [
+				'heading' => [
+					'translate' => false,
+					'fields'    => [
+						'text' => [
+							'type' => 'text'
+						]
+					]
+				]
+			]
+		];
 
-        // default
-        $field = $this->field('blocks', [
-            'model' => $page,
-        ], $fields);
+		// default language
+		$app->setCurrentLanguage('en');
+		$field = $this->field('blocks', $props);
 
-        $this->assertSame([], $field->errors());
+		$this->assertFalse($field->fieldset('heading')->translate());
+		$this->assertFalse($field->fieldset('heading')->disabled());
 
-        // passed
-        $field = $this->field('blocks', [
-            'model' => $page,
-            'required' => true,
-            'when' => [
-                'foo' => 'x'
-            ]
-        ], $fields);
+		// secondary language
+		$app = $app->clone();
+		$app->setCurrentLanguage('de');
 
-        $this->assertSame([], $field->errors());
+		$field = $this->field('blocks', $props);
+		$this->assertFalse($field->fieldset('heading')->translate());
+		$this->assertTrue($field->fieldset('heading')->disabled());
 
-        // failed
-        $field = $this->field('blocks', [
-            'model' => $page,
-            'required' => true,
-            'when' => [
-                'foo' => 'a'
-            ]
-        ], $fields);
+		// invalid fieldset calling
+		$this->expectException(NotFoundException::class);
+		$this->expectExceptionMessage('The fieldset not-exists could not be found');
 
-        $expected = [
-            'required' => 'Please enter something',
-        ];
+		$field->fieldset('not-exists');
+	}
 
-        $this->assertSame($expected, $field->errors());
-    }
+	public function testValidations()
+	{
+		$field = $this->field('blocks', [
+			'value' => [
+				[
+					'type'    => 'heading',
+					'content' => [
+						'text' => 'A nice heading',
+					]
+				],
+				[
+					'type'    => 'video',
+					'content' => [
+						'url' => 'https://www.youtube.com/watch?v=EDVYjxWMecc',
+					]
+				]
+			],
+			'required' => true
+		]);
+
+		$this->assertTrue($field->isValid());
+	}
+
+	public function testValidationsInvalid()
+	{
+		$field = $this->field('blocks', [
+			'value' => [
+				[
+					'type'    => 'heading',
+					'content' => [
+						'text' => 'A nice heading',
+					]
+				],
+				[
+					'type'    => 'video',
+					'content' => [
+						'url' => 'Invalid URL',
+					]
+				]
+			],
+			'required' => true
+		]);
+
+		$this->assertFalse($field->isValid());
+		$this->assertSame([
+			'blocks' => 'There\'s an error on the "Video-URL" field in block 2 using the "Video" block type'
+		], $field->errors());
+	}
+
+	public function testEmpty()
+	{
+		$field = $this->field('blocks', [
+			'empty' => $value = 'Custom empty text'
+		]);
+
+		$this->assertSame($value, $field->empty());
+	}
+
+	public function testWhen()
+	{
+		$page = new Page(['slug' => 'test']);
+
+		$fields = new Fields([
+			'foo' => [
+				'type'  => 'text',
+				'model' => $page,
+				'value' => 'a'
+			],
+			'bar' => [
+				'type'  => 'blocks',
+				'model' => $page,
+				'value' => []
+			]
+		]);
+
+		// default
+		$field = $this->field('blocks', [
+			'model' => $page,
+		], $fields);
+
+		$this->assertSame([], $field->errors());
+
+		// passed
+		$field = $this->field('blocks', [
+			'model' => $page,
+			'required' => true,
+			'when' => [
+				'foo' => 'x'
+			]
+		], $fields);
+
+		$this->assertSame([], $field->errors());
+
+		// failed
+		$field = $this->field('blocks', [
+			'model' => $page,
+			'required' => true,
+			'when' => [
+				'foo' => 'a'
+			]
+		], $fields);
+
+		$expected = [
+			'required' => 'Please enter something',
+		];
+
+		$this->assertSame($expected, $field->errors());
+	}
+
+	public function testDefault()
+	{
+		$field = $this->field('blocks', [
+			'default' => [
+				[
+					'type' => 'heading',
+					'text' => 'Some title'
+				]
+			]
+		]);
+
+		$default = $field->default();
+
+		$this->assertCount(1, $default);
+		$this->assertSame('heading', $default[0]['type']);
+		$this->assertSame('Some title', $default[0]['text']);
+		$this->assertArrayHasKey('id', $default[0]);
+	}
+
+	public function testInvalidType()
+	{
+		$field = $this->field('blocks', [
+			'value' => [
+				[
+					'type'    => 'heading',
+					'content' => [
+						'text' => 'a'
+					]
+				],
+				[
+					'type'    => 'not-exists',
+					'content' => [
+						'text' => 'b'
+					]
+				],
+				[
+					'type'    => 'text',
+					'content' => [
+						'text' => 'c'
+					]
+				],
+			]
+		]);
+
+		$this->assertCount(3, $field->value());
+		$this->assertSame('heading', $field->value()[0]['type']);
+		$this->assertSame('not-exists', $field->value()[1]['type']);
+		$this->assertSame(['text' => 'b'], $field->value()[1]['content']);
+		$this->assertSame('text', $field->value()[2]['type']);
+	}
 }

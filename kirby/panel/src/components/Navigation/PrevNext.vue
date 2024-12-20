@@ -1,39 +1,76 @@
 <template>
-  <k-button-group class="k-prev-next">
-    <k-button v-bind="button(prev)" icon="angle-left" />
-    <k-button v-bind="button(next)" icon="angle-right" />
-  </k-button-group>
+	<k-button-group
+		v-if="!isFullyDisabled"
+		:buttons="buttons"
+		layout="collapsed"
+		size="xs"
+		class="k-prev-next"
+	/>
 </template>
 
 <script>
+/**
+ * Group of buttons with left- and right-pointing arrows
+ * used for navigation between previous and next items
+ * @example <k-prev-next :prev="{ link: 'a' }" :next="false" />
+ */
 export default {
-  props: {
-    prev: {
-      type: [Boolean, Object],
-      default: false
-    },
-    next: {
-      type: [Boolean, Object],
-      default: false
-    }
-  },
-  methods: {
-    button(config) {
-      if (!config) {
-        return {
-          disabled: true,
-          link: "#",
-        };
-      }
+	props: {
+		/**
+		 * Button configuraiton for left-pointing arrow
+		 */
+		prev: {
+			type: [Boolean, Object],
+			default: false
+		},
+		/**
+		 * Button configuraiton for right-pointing arrow
+		 */
+		next: {
+			type: [Boolean, Object],
+			default: false
+		}
+	},
+	computed: {
+		/**
+		 * Array of button configurations to be passed
+		 * to ButtonGroup component
+		 * @returns {array}
+		 */
+		buttons() {
+			return [
+				{ ...this.button(this.prev), icon: "angle-left" },
+				{ ...this.button(this.next), icon: "angle-right" }
+			];
+		},
+		isFullyDisabled() {
+			return this.buttons.filter((button) => !button.disabled).length === 0;
+		}
+	},
+	methods: {
+		/**
+		 * Returns button configuration with
+		 * defaults for disabled button
+		 * @param {bool|Object} config
+		 * @returns {Object}
+		 */
+		button(config) {
+			if (!config) {
+				return {
+					disabled: true,
+					link: "#"
+				};
+			}
 
-      return config;
-    }
-  }
+			return config;
+		}
+	}
 };
 </script>
 
-<style lang="scss">
+<style>
 .k-prev-next {
-  direction: ltr;
+	direction: ltr;
+	flex-shrink: 0;
 }
 </style>

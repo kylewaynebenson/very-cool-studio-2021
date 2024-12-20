@@ -1,59 +1,53 @@
-import clone from "./clone.js";
+import array from "./array.js";
+import clipboard from "./clipboard.js";
+import color from "./color.js";
 import debounce from "./debounce.js";
+import embed from "./embed.js";
+import field from "./field.js";
+import file from "./file.js";
+import focus from "./focus.js";
 import isComponent from "./isComponent.js";
 import isUploadEvent from "./isUploadEvent.js";
-import pad from "./pad.js";
+import keyboard from "./keyboard.js";
+import link from "./link.js";
+import object from "./object.js";
+import page from "./page.js";
 import ratio from "./ratio.js";
-import slug from "./slug.js";
 import sort from "./sort.js";
 import string from "./string.js";
 import upload from "./upload.js";
-import uuid from "./uuid.js";
-import validate from "./validate.js";
+import url from "./url.js";
 
 import "./regex.js";
 
 export default {
-  install(Vue) {
+	install(app) {
+		app.prototype.$helper = {
+			array,
+			clipboard,
+			clone: object.clone,
+			color,
+			embed,
+			focus,
+			isComponent,
+			isUploadEvent,
+			debounce,
+			field,
+			file,
+			keyboard,
+			link,
+			object,
+			page,
+			pad: string.pad,
+			ratio,
+			slug: string.slug,
+			sort,
+			string,
+			upload,
+			url,
+			uuid: string.uuid
+		};
 
-    /**
-     * Array.sortBy()
-     */
-    Array.prototype.sortBy = function (sortBy) {
-      const sort = Vue.prototype.$helper.sort();
-      const options = sortBy.split(" ");
-      const field = options[0];
-      const direction = options[1] || "asc";
-
-      return this.sort((a, b) => {
-        const valueA = String(a[field]).toLowerCase();
-        const valueB = String(b[field]).toLowerCase();
-
-        if (direction === "desc") {
-          return sort(valueB, valueA);
-        } else {
-          return sort(valueA, valueB);
-        }
-      });
-    };
-
-    Vue.prototype.$helper = {
-      clone: clone,
-      isComponent: isComponent,
-      isUploadEvent: isUploadEvent,
-      debounce: debounce,
-      pad: pad,
-      ratio: ratio,
-      slug: slug,
-      sort: sort,
-      string: string,
-      upload: upload,
-      uuid: uuid,
-      validate: validate,
-    };
-
-    Vue.prototype.$esc = string.escapeHTML;
-
-  }
-
+		app.prototype.$esc = string.escapeHTML;
+	}
 };

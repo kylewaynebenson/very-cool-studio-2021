@@ -2,138 +2,135 @@
 
 namespace Kirby\Cms;
 
+use TypeError;
+
 class StructureObjectTest extends TestCase
 {
-    public function testId()
-    {
-        $object = new StructureObject([
-            'id' => 'test'
-        ]);
+	public function testId()
+	{
+		$object = new StructureObject(['id' => 'test']);
+		$this->assertSame('test', $object->id());
+	}
 
-        $this->assertEquals('test', $object->id());
-    }
+	public function testInvalidId()
+	{
+		$this->expectException(TypeError::class);
+		new StructureObject(['id' => []]);
+	}
 
-    public function testInvalidId()
-    {
-        $this->expectException('TypeError');
+	public function testContent()
+	{
+		$content = ['test' => 'Test'];
+		$object  = new StructureObject([
+			'id'      => 'test',
+			'content' => $content
+		]);
 
-        $object = new StructureObject([
-            'id' => []
-        ]);
-    }
+		$this->assertSame($content, $object->content()->toArray());
+	}
 
-    public function testMissingId()
-    {
-        $this->expectException('Exception');
-        $this->expectExceptionMessage('The property "id" is required');
+	public function testToDate()
+	{
+		$object = new StructureObject([
+			'id'      => 'test',
+			'content' => [
+				'date' => '2012-12-12'
+			]
+		]);
 
-        $object = new StructureObject(['foo' => 'bar']);
-    }
+		$this->assertSame('12.12.2012', $object->date()->toDate('d.m.Y'));
+	}
 
-    public function testContent()
-    {
-        $content = ['test' => 'Test'];
-        $object  = new StructureObject([
-            'id'      => 'test',
-            'content' => $content
-        ]);
+	public function testDefaultContent()
+	{
+		$object  = new StructureObject([
+			'id' => 'test',
+		]);
 
-        $this->assertEquals($content, $object->content()->toArray());
-    }
+		$this->assertSame([], $object->content()->toArray());
+	}
 
-    public function testToDate()
-    {
-        $object = new StructureObject([
-            'id'      => 'test',
-            'content' => [
-                'date' => '2012-12-12'
-            ]
-        ]);
+	public function testFields()
+	{
+		$object = new StructureObject([
+			'id'      => 'test',
+			'content' => [
+				'title' => 'Title',
+				'text'  => 'Text'
+			]
+		]);
 
-        $this->assertEquals('12.12.2012', $object->date()->toDate('d.m.Y'));
-    }
+		$this->assertInstanceOf(Field::class, $object->title());
+		$this->assertInstanceOf(Field::class, $object->text());
 
-    public function testDefaultContent()
-    {
-        $object  = new StructureObject([
-            'id' => 'test',
-        ]);
+		$this->assertSame('Title', $object->title()->value());
+		$this->assertSame('Text', $object->text()->value());
+	}
 
-        $this->assertEquals([], $object->content()->toArray());
-    }
+	public function testFieldsParent()
+	{
+		$parent = new Page(['slug' => 'test']);
+		$object = new StructureObject([
+			'id'      => 'test',
+			'content' => [
+				'title' => 'Title',
+				'text'  => 'Text'
+			],
+			'parent' => $parent
+		]);
 
-    public function testFields()
-    {
-        $object = new StructureObject([
-            'id'      => 'test',
-            'content' => [
-                'title' => 'Title',
-                'text'  => 'Text'
-            ]
-        ]);
+		$this->assertSame($parent, $object->title()->parent());
+		$this->assertSame($parent, $object->text()->parent());
+	}
 
-        $this->assertInstanceOf(Field::class, $object->title());
-        $this->assertInstanceOf(Field::class, $object->text());
+	public function testParent()
+	{
+		$parent = new Page(['slug' => 'test']);
+		$object = new StructureObject([
+			'id'     => 'test',
+			'parent' => $parent
+		]);
 
-        $this->assertEquals('Title', $object->title()->value());
-        $this->assertEquals('Text', $object->text()->value());
-    }
+		$this->assertSame($parent, $object->parent());
+	}
 
-    public function testFieldsParent()
-    {
-        $parent = new Page(['slug' => 'test']);
-        $object = new StructureObject([
-            'id'      => 'test',
-            'content' => [
-                'title' => 'Title',
-                'text'  => 'Text'
-            ],
-            'parent' => $parent
-        ]);
+	public function testParentFallback()
+	{
+		$object = new StructureObject([
+			'id'     => 'test',
+		]);
 
-        $this->assertEquals($parent, $object->title()->parent());
-        $this->assertEquals($parent, $object->text()->parent());
-    }
+		$this->assertIsSite($object->parent());
+	}
 
-    public function testParent()
-    {
-        $parent = new Page(['slug' => 'test']);
-        $object = new StructureObject([
-            'id'     => 'test',
-            'parent' => $parent
-        ]);
+	public function testInvalidParent()
+	{
+		$this->expectException(TypeError::class);
 
-        $this->assertEquals($parent, $object->parent());
-    }
+		$object = new StructureObject([
+			'id'     => 'test',
+			'parent' => false
+		]);
+	}
 
-    public function testInvalidParent()
-    {
-        $this->expectException('TypeError');
+	public function testToArray()
+	{
+		$content = [
+			'title' => 'Title',
+			'text'  => 'Text'
+		];
 
-        $object = new StructureObject([
-            'id'     => 'test',
-            'parent' => false
-        ]);
-    }
+		$expected = [
+			'title' => 'Title',
+			'text'  => 'Text',
+			'id'    => 'test',
+		];
 
-    public function testToArray()
-    {
-        $content = [
-            'title' => 'Title',
-            'text'  => 'Text'
-        ];
+		$object = new StructureObject([
+			'id'      => 'test',
+			'content' => $content
+		]);
 
-        $expected = [
-            'id'    => 'test',
-            'text'  => 'Text',
-            'title' => 'Title',
-        ];
-
-        $object = new StructureObject([
-            'id'      => 'test',
-            'content' => $content
-        ]);
-
-        $this->assertEquals($expected, $object->toArray());
-    }
+		$this->assertSame($expected, $object->toArray());
+	}
 }

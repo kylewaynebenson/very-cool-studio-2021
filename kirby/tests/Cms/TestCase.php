@@ -3,124 +3,102 @@
 namespace Kirby\Cms;
 
 use Closure;
+use Kirby\TestCase as BaseTestCase;
 use Kirby\Toolkit\I18n;
 use Kirby\Toolkit\Str;
-use PHPUnit\Framework\TestCase as BaseTestCase;
 
 class TestCase extends BaseTestCase
 {
-    public $page = null;
+	protected $app;
+	protected $page = null;
 
-    public function setUp(): void
-    {
-        App::destroy();
+	public function setUp(): void
+	{
+		App::destroy();
 
-        new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ]
-        ]);
+		$this->app = new App([
+			'roots' => [
+				'index' => $this->hasTmp() ? static::TMP : '/dev/null'
+			]
+		]);
 
-        Blueprint::$loaded = [];
+		Blueprint::$loaded = [];
 
-        I18n::$locale       = null;
-        I18n::$fallback     = 'en';
-        I18n::$translations = [];
-        Str::$language      = [];
-    }
+		I18n::$locale       = null;
+		I18n::$fallback     = 'en';
+		I18n::$translations = [];
+		Str::$language      = [];
+	}
 
-    public function tearDown(): void
-    {
-        App::destroy();
-        Blueprint::$loaded = [];
-    }
+	public function tearDown(): void
+	{
+		App::destroy();
+		Blueprint::$loaded = [];
 
-    public function kirby($props = [])
-    {
-        return new App($props);
-    }
+		$this->tearDownTmp();
 
-    public function site()
-    {
-        return $this->kirby()->site();
-    }
+		// mock class
+		ErrorLog::$log = '';
+	}
 
-    public function pages()
-    {
-        return $this->site()->children();
-    }
+	public function kirby($props = [])
+	{
+		return new App($props);
+	}
 
-    public function page(string $id = null)
-    {
-        if ($id !== null) {
-            return $this->site()->find($id);
-        }
+	public function site()
+	{
+		return $this->kirby()->site();
+	}
 
-        if ($this->page !== null) {
-            return $this->site()->find($this->page);
-        }
+	public function pages()
+	{
+		return $this->site()->children();
+	}
 
-        return $this->site()->homePage();
-    }
+	public function page(string $id = null)
+	{
+		if ($id !== null) {
+			return $this->site()->find($id);
+		}
 
-    public function assertIsSite($input)
-    {
-        $this->assertInstanceOf(Site::class, $input);
-    }
+		if ($this->page !== null) {
+			return $this->site()->find($this->page);
+		}
 
-    public function assertIsPage($input, $id = null)
-    {
-        $this->assertInstanceOf(Page::class, $input);
+		return $this->site()->homePage();
+	}
 
-        if (is_string($id)) {
-            $this->assertEquals($id, $input->id());
-        }
+	public function assertHooks(
+		array $hooks,
+		Closure $action,
+		$appProps = []
+	): void {
+		$phpUnit   = $this;
+		$triggered = 0;
 
-        if (is_a($id, Page::class)) {
-            $this->assertEquals($input, $id);
-        }
-    }
+		foreach ($hooks as $name => $callback) {
+			$hooks[$name] = function (...$arguments) use ($callback, $phpUnit, &$triggered) {
+				$callback->call($phpUnit, ...$arguments);
+				$triggered++;
+			};
+		}
 
-    public function assertIsFile($input, $id = null)
-    {
-        $this->assertInstanceOf(File::class, $input);
+		App::destroy();
 
-        if (is_string($id)) {
-            $this->assertEquals($id, $input->id());
-        }
+		$app = new App(array_merge([
+			'hooks' => $hooks,
+			'roots' => ['index' => '/dev/null'],
+			'user'  => 'test@getkirby.com',
+			'users' => [
+				[
+					'email' => 'test@getkirby.com',
+					'role'  => 'admin'
+				]
+			]
+		], $appProps));
 
-        if (is_a($id, File::class)) {
-            $this->assertEquals($input, $id);
-        }
-    }
-
-    public function assertHooks(array $hooks, Closure $action, $appProps = [])
-    {
-        $phpUnit   = $this;
-        $triggered = 0;
-
-        foreach ($hooks as $name => $callback) {
-            $hooks[$name] = function (...$arguments) use ($callback, $phpUnit, &$triggered) {
-                $callback->call($phpUnit, ...$arguments);
-                $triggered++;
-            };
-        }
-
-        App::destroy();
-
-        $app = new App(array_merge([
-            'hooks' => $hooks,
-            'roots' => ['index' => '/dev/null'],
-            'user'  => 'test@getkirby.com',
-            'users' => [
-                [
-                    'email' => 'test@getkirby.com',
-                    'role'  => 'admin'
-                ]
-            ]
-        ], $appProps));
-
-        $action->call($this, $app);
-        $this->assertEquals(count($hooks), $triggered);
-    }
+		$action->call($this, $app);
+		$this->assertSame(count($hooks), $triggered);
+	}
 }

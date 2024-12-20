@@ -2,90 +2,92 @@
 
 namespace Kirby\Cms;
 
+use Kirby\Filesystem\Dir;
+use Kirby\TestCase;
 use Kirby\Toolkit\Str;
-use PHPUnit\Framework\TestCase;
 
 class PageDeleteTest extends TestCase
 {
-    protected $app;
-    protected $fixtures;
+	public const TMP = KIRBY_TMP_DIR . '/Cms.PageDelete';
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => $this->fixtures = __DIR__ . '/fixtures/PageDeleteTest'
-            ],
-        ]);
+	protected $app;
 
-        $this->app->impersonate('kirby');
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => static::TMP
+			],
+		]);
 
-        Dir::make($this->fixtures);
-    }
+		$this->app->impersonate('kirby');
 
-    public function tearDown(): void
-    {
-        Dir::remove($this->fixtures);
-    }
+		Dir::make(static::TMP);
+	}
 
-    public function site()
-    {
-        return $this->app->site();
-    }
+	public function tearDown(): void
+	{
+		Dir::remove(static::TMP);
+	}
 
-    public function testDeleteDraft()
-    {
-        $page = Page::create([
-            'slug' => 'test'
-        ]);
+	public function site()
+	{
+		return $this->app->site();
+	}
 
-        $this->assertTrue($page->exists());
-        $this->assertTrue($page->parentModel()->drafts()->has($page));
+	public function testDeleteDraft()
+	{
+		$page = Page::create([
+			'slug' => 'test'
+		]);
 
-        $page->delete();
+		$this->assertTrue($page->exists());
+		$this->assertTrue($page->parentModel()->drafts()->has($page));
 
-        $this->assertFalse($page->exists());
-        $this->assertFalse($page->parentModel()->drafts()->has($page));
-    }
+		$page->delete();
 
-    public function testDeletePage()
-    {
-        $page = Page::create([
-            'slug' => 'test',
-            'num'  => 1
-        ]);
+		$this->assertFalse($page->exists());
+		$this->assertFalse($page->parentModel()->drafts()->has($page));
+	}
 
-        $this->assertTrue($page->exists());
-        $this->assertTrue($page->parentModel()->children()->has($page));
+	public function testDeletePage()
+	{
+		$page = Page::create([
+			'slug' => 'test',
+			'num'  => 1
+		]);
 
-        $page->delete();
+		$this->assertTrue($page->exists());
+		$this->assertTrue($page->parentModel()->children()->has($page));
 
-        $this->assertFalse($page->exists());
-        $this->assertFalse($page->parentModel()->children()->has($page));
-    }
+		$page->delete();
 
-    public function testDeleteMultipleSortedPages()
-    {
-        $range = range(1, 10);
-        $site  = $this->site();
+		$this->assertFalse($page->exists());
+		$this->assertFalse($page->parentModel()->children()->has($page));
+	}
 
-        foreach ($range as $num) {
-            $page = Page::create([
-                'slug' => Str::random(),
-                'num'  => $num
-            ]);
+	public function testDeleteMultipleSortedPages()
+	{
+		$range = range(1, 10);
+		$site  = $this->site();
 
-            $this->assertTrue($page->exists());
-            $this->assertTrue($site->children()->has($page));
-        }
+		foreach ($range as $num) {
+			$page = Page::create([
+				'slug' => Str::random(),
+				'num'  => $num
+			]);
 
-        foreach ($site->children() as $page) {
-            $page->delete();
+			$this->assertTrue($page->exists());
+			$this->assertTrue($site->children()->has($page));
+		}
 
-            $this->assertFalse($page->exists());
-            $this->assertFalse($site->children()->has($page));
-        }
+		foreach ($site->children() as $page) {
+			$page->delete();
 
-        $this->assertCount(0, $site->children());
-    }
+			$this->assertFalse($page->exists());
+			$this->assertFalse($site->children()->has($page));
+		}
+
+		$this->assertCount(0, $site->children());
+	}
 }

@@ -2,78 +2,225 @@
 
 namespace Kirby\Cms;
 
+use Kirby\Exception\InvalidArgumentException;
+use Kirby\Filesystem\F;
+use Kirby\Uuid\Uuids;
+
+/**
+ * @coversDefaultClass \Kirby\Cms\Files
+ */
 class FilesTest extends TestCase
 {
-    public function testAddFile()
-    {
-        $parent = new Page(['slug' => 'test']);
+	public const TMP = KIRBY_TMP_DIR . '/Cms.Files';
 
-        $files = Files::factory([
-            ['filename' => 'a.jpg']
-        ], $parent);
+	public function testAddFile()
+	{
+		$parent = new Page(['slug' => 'test']);
 
-        $file = new File([
-            'filename' => 'b.jpg'
-        ]);
+		$files = Files::factory([
+			['filename' => 'a.jpg']
+		], $parent);
 
-        $result = $files->add($file);
+		$file = new File([
+			'filename' => 'b.jpg',
+			'parent'   => $parent
+		]);
 
-        $this->assertCount(2, $result);
-        $this->assertEquals('a.jpg', $result->nth(0)->filename());
-        $this->assertEquals('b.jpg', $result->nth(1)->filename());
-    }
+		$result = $files->add($file);
 
-    public function testAddCollection()
-    {
-        $parent = new Page(['slug' => 'test']);
+		$this->assertCount(2, $result);
+		$this->assertSame('a.jpg', $result->nth(0)->filename());
+		$this->assertSame('b.jpg', $result->nth(1)->filename());
+	}
 
-        $a = Files::factory([
-            ['filename' => 'a.jpg']
-        ], $parent);
+	public function testAddCollection()
+	{
+		$parent = new Page(['slug' => 'test']);
 
-        $b = Files::factory([
-            ['filename' => 'b.jpg'],
-            ['filename' => 'c.jpg']
-        ], $parent);
+		$a = Files::factory([
+			['filename' => 'a.jpg']
+		], $parent);
 
-        $c = $a->add($b);
+		$b = Files::factory([
+			['filename' => 'b.jpg'],
+			['filename' => 'c.jpg']
+		], $parent);
 
-        $this->assertCount(3, $c);
-        $this->assertEquals('a.jpg', $c->nth(0)->filename());
-        $this->assertEquals('b.jpg', $c->nth(1)->filename());
-        $this->assertEquals('c.jpg', $c->nth(2)->filename());
-    }
+		$c = $a->add($b);
 
-    public function testAddById()
-    {
-        $app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ],
-            'site' => [
-                'children' => [
-                    [
-                        'slug' => 'a',
-                        'files' => [
-                            ['filename' => 'a.jpg'],
-                            ['filename' => 'b.jpg'],
-                        ]
-                    ],
-                    [
-                        'slug' => 'b',
-                        'files' => [
-                            ['filename' => 'a.jpg'],
-                        ]
-                    ]
-                ]
-            ]
-        ]);
+		$this->assertCount(3, $c);
+		$this->assertSame('a.jpg', $c->nth(0)->filename());
+		$this->assertSame('b.jpg', $c->nth(1)->filename());
+		$this->assertSame('c.jpg', $c->nth(2)->filename());
+	}
 
-        $files = $app->page('a')->files()->add('b/a.jpg');
+	public function testAddById()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null'
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'a',
+						'files' => [
+							['filename' => 'a.jpg'],
+							['filename' => 'b.jpg'],
+						]
+					],
+					[
+						'slug' => 'b',
+						'files' => [
+							['filename' => 'a.jpg'],
+						]
+					]
+				]
+			]
+		]);
 
-        $this->assertCount(3, $files);
-        $this->assertEquals('a/a.jpg', $files->nth(0)->id());
-        $this->assertEquals('a/b.jpg', $files->nth(1)->id());
-        $this->assertEquals('b/a.jpg', $files->nth(2)->id());
-    }
+		$files = $app->page('a')->files()->add('b/a.jpg');
+
+		$this->assertCount(3, $files);
+		$this->assertSame('a/a.jpg', $files->nth(0)->id());
+		$this->assertSame('a/b.jpg', $files->nth(1)->id());
+		$this->assertSame('b/a.jpg', $files->nth(2)->id());
+	}
+
+	public function testAddNull()
+	{
+		$files = new Files();
+		$this->assertCount(0, $files);
+
+		$files->add(null);
+
+		$this->assertCount(0, $files);
+	}
+
+	public function testAddFalse()
+	{
+		$files = new Files();
+		$this->assertCount(0, $files);
+
+		$files->add(false);
+
+		$this->assertCount(0, $files);
+	}
+
+	public function testAddInvalidObject()
+	{
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('You must pass a Files or File object or an ID of an existing file to the Files collection');
+
+		$site  = new Site();
+		$files = new Files();
+		$files->add($site);
+	}
+
+	/**
+	 * @covers ::findByKey
+	 * @covers ::findByUuid
+	 */
+	public function testFindByUuid()
+	{
+		$app = $this->app->clone([
+			'site' => [
+				'files' => [
+					[
+						'filename' => $a = 'a.jpg',
+						'content' => ['uuid' => 'test-a']
+					],
+					[
+						'filename' => $b = 'b.jpg',
+						'content' => ['uuid' => 'test-b']
+					]
+				]
+			]
+		]);
+
+		$files = $app->site()->files();
+		$this->assertSame($a, $files->find('file://test-a')->filename());
+		$this->assertSame($b, $files->find('file://test-b')->filename());
+
+		$this->assertSame($a, $app->file('file://test-a')->filename());
+		$this->assertSame($b, $app->file('file://test-b')->filename());
+
+		Uuids::cache()->flush();
+	}
+
+	/**
+	 * @covers ::niceSize
+	 * @covers ::size
+	 */
+	public function testSize()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => static::TMP
+			],
+			'site' => [
+				'children' => [
+					['slug' => 'test']
+				]
+			]
+		]);
+
+		F::write($a = static::TMP . '/content/test/a.txt', 'foo');
+		F::write($b = static::TMP . '/content/test/b.txt', 'bar');
+
+		$files = Files::factory([
+			['filename' => 'a.txt', 'root' => $a],
+			['filename' => 'b.txt', 'root' => $b]
+		], $app->page('test'));
+
+
+		$this->assertSame(6, $files->size());
+		$this->assertSame('6 B', $files->niceSize());
+	}
+
+	/**
+	 * @covers ::sorted
+	 */
+	public function testSortedByFilename()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null'
+			],
+			'site' => [
+				'files' => [
+					['filename' => 'b.jpg'],
+					['filename' => 'a.jpg']
+				]
+			]
+		]);
+
+		$files = $app->site()->files()->sorted();
+
+		$this->assertSame('a.jpg', $files->first()->filename());
+		$this->assertSame('b.jpg', $files->last()->filename());
+	}
+
+	/**
+	 * @covers ::sorted
+	 */
+	public function testSortedBySort()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null'
+			],
+			'site' => [
+				'files' => [
+					['filename' => 'a.jpg', 'content' => ['sort' => 2]],
+					['filename' => 'b.jpg', 'content' => ['sort' => 1]]
+				]
+			]
+		]);
+
+		$files = $app->site()->files()->sorted();
+
+		$this->assertSame('b.jpg', $files->first()->filename());
+		$this->assertSame('a.jpg', $files->last()->filename());
+	}
 }

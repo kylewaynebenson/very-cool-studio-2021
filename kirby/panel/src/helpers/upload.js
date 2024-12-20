@@ -1,75 +1,99 @@
-export default (file, params) => {
-  const defaults = {
-    url: "/",
-    field: "file",
-    method: "POST",
-    accept: "text",
-    attributes: {},
-    complete: function() {},
-    error: function() {},
-    success: function() {},
-    progress: function() {}
-  };
+/**
+ * Uploads a file using XMLHttpRequest.
+ *
+ * @param {File} file - file to upload
+ * @param {Object} params - upload options:
+ * @param {string} params.url - URL endpoint to sent the request to
+ * @param {string} params.method - HTTP method (e.g. "POST")
+ * @param {string} params.filename - filename to use for the upload
+ * @param {Object} params.headers - request headers
+ * @param {Object} params.attributes - additional attributes
+ * @param {Function} params.progress - callback whenever the progress changes
+ * @param {Function} params.complete - callback when upload completed
+ * @param {Function} params.success - callback when upload succeeded
+ * @param {Function} params.error - callback when upload failed
+ */
+export default async (file, params) => {
+	return new Promise((resolve, reject) => {
+		const defaults = {
+			url: "/",
+			field: "file",
+			method: "POST",
+			filename: file.name,
+			headers: {},
+			attributes: {},
+			complete: () => {},
+			error: () => {},
+			success: () => {},
+			progress: () => {}
+		};
 
-  const options = Object.assign(defaults, params);
-  const formData = new FormData();
+		const options = Object.assign(defaults, params);
+		const xhr = new XMLHttpRequest();
+		const data = new FormData();
 
-  formData.append(options.field, file, file.name);
+		// add file to form data
+		data.append(options.field, file, options.filename);
 
-  if (options.attributes) {
-    Object.keys(options.attributes).forEach(key => {
-      formData.append(key, options.attributes[key]);
-    });
-  }
+		// add all other attributes to form data
+		for (const attribute in options.attributes) {
+			const value = options.attributes[attribute];
 
-  const xhr = new XMLHttpRequest();
+			if (value !== null && value !== undefined) {
+				data.append(attribute, value);
+			}
+		}
 
-  const progress = event => {
-    if (!event.lengthComputable || !options.progress) {
-      return;
-    }
+		const progress = (event) => {
+			if (event.lengthComputable && options.progress) {
+				const percent = Math.max(
+					0,
+					Math.min(100, Math.ceil((event.loaded / event.total) * 100))
+				);
+				options.progress(xhr, file, percent);
+			}
+		};
 
-    let percent = Math.max(0, Math.min(100, event.loaded / event.total * 100));
+		xhr.upload.addEventListener("loadstart", progress);
+		xhr.upload.addEventListener("progress", progress);
 
-    options.progress(xhr, file, Math.ceil(percent));
-  };
+		xhr.addEventListener("load", (event) => {
+			let response = null;
 
-  xhr.upload.addEventListener("loadstart", progress);
-  xhr.upload.addEventListener("progress", progress);
+			try {
+				response = JSON.parse(event.target.response);
+			} catch {
+				response = {
+					status: "error",
+					message: "The file could not be uploaded"
+				};
+			}
 
-  xhr.addEventListener("load", event => {
-    let json = null;
+			if (response.status === "error") {
+				options.error(xhr, file, response);
+				reject(response);
+			} else {
+				options.progress(xhr, file, 100);
+				options.success(xhr, file, response);
+				resolve(response);
+			}
+		});
 
-    try {
-      json = JSON.parse(event.target.response);
-    } catch (e) {
-      json = {status: "error", message: "The file could not be uploaded"};
-    }
+		xhr.addEventListener("error", (event) => {
+			const response = JSON.parse(event.target.response);
 
-    if (json.status && json.status === "error") {
-      options.error(xhr, file, json);
-    } else {
-      options.success(xhr, file, json);
-      options.progress(xhr, file, 100);
-    }
-  });
+			options.progress(xhr, file, 100);
+			options.error(xhr, file, response);
+			reject(response);
+		});
 
-  xhr.addEventListener("error", event => {
-    const json = JSON.parse(event.target.response);
+		xhr.open(options.method, options.url, true);
 
-    options.error(xhr, file, json);
-    options.progress(xhr, file, 100);
-  });
+		// add all request headers
+		for (const header in options.headers) {
+			xhr.setRequestHeader(header, options.headers[header]);
+		}
 
-  xhr.open("POST", options.url, true);
-
-  // add all request headers
-  if (options.headers) {
-    Object.keys(options.headers).forEach(header => {
-      const value = options.headers[header];
-      xhr.setRequestHeader(header, value);
-    });
-  }
-
-  xhr.send(formData);
+		xhr.send(data);
+	});
 };

@@ -4,13 +4,14 @@ namespace Kirby\Form\Fields;
 
 class HiddenFieldTest extends TestCase
 {
-    public function testDefaultProps()
-    {
-        $field = $this->field('hidden');
+	public function testDefaultProps()
+	{
+		$field = $this->field('hidden');
 
-        $this->assertEquals('hidden', $field->type());
-        $this->assertEquals('hidden', $field->name());
-        $this->assertEquals(null, $field->value());
-        $this->assertTrue($field->save());
-    }
+		$this->assertSame('hidden', $field->type());
+		$this->assertSame('hidden', $field->name());
+		$this->assertNull($field->value());
+		$this->assertTrue($field->isHidden());
+		$this->assertTrue($field->save());
+	}
 }

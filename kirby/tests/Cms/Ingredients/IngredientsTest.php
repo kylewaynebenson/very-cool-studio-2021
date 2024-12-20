@@ -2,42 +2,40 @@
 
 namespace Kirby\Cms;
 
-use PHPUnit\Framework\TestCase;
+use Kirby\TestCase;
 
 class IngredientsTest extends TestCase
 {
-    protected $ingredients;
+	protected $ingredients;
 
-    public function setUp(): void
-    {
-        $this->ingredients = Ingredients::bake([
-            'a' => 'A',
-            'b' => function () {
-                return 'B';
-            }
-        ]);
-    }
+	public function setUp(): void
+	{
+		$this->ingredients = Ingredients::bake([
+			'a' => 'A',
+			'b' => fn () => 'B'
+		]);
+	}
 
-    public function testGet()
-    {
-        $this->assertEquals('A', $this->ingredients->a);
-        $this->assertEquals('B', $this->ingredients->b);
-    }
+	public function testGet()
+	{
+		$this->assertSame('A', $this->ingredients->a);
+		$this->assertSame('B', $this->ingredients->b);
+	}
 
-    public function testCall()
-    {
-        $this->assertEquals('A', $this->ingredients->a());
-        $this->assertEquals('B', $this->ingredients->b());
-    }
+	public function testCall()
+	{
+		$this->assertSame('A', $this->ingredients->a());
+		$this->assertSame('B', $this->ingredients->b());
+	}
 
-    public function testToArray()
-    {
-        $expected = [
-            'a' => 'A',
-            'b' => 'B'
-        ];
+	public function testToArray()
+	{
+		$expected = [
+			'a' => 'A',
+			'b' => 'B'
+		];
 
-        $this->assertEquals($expected, $this->ingredients->toArray());
-        $this->assertEquals($expected, $this->ingredients->__debugInfo());
-    }
+		$this->assertSame($expected, $this->ingredients->toArray());
+		$this->assertSame($expected, $this->ingredients->__debugInfo());
+	}
 }

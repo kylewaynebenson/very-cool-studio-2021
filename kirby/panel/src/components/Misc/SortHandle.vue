@@ -1,46 +1,27 @@
 <template>
-  <k-icon
-    :type="icon"
-    class="k-sort-handle"
-    aria-hidden="true"
-  />
+	<k-button
+		:title="$t('sort.drag')"
+		icon="sort"
+		class="k-sort-handle k-sort-button"
+		aria-hidden="true"
+	/>
 </template>
 
 <script>
-export default {
-  props: {
-    icon: {
-      type: String,
-      default: "sort"
-    }
-  }
-}
+/**
+ * Icon used as handle to drag elements inside the sortable context of `<k-draggable>` with corresponding hover styles.
+ *
+ * @example <k-sort-handle />
+ */
+export default {};
 </script>
 
-<style lang="scss">
+<style>
 .k-sort-handle {
-  cursor: move;
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab;
-  line-height: 0;
-  color: $color-gray-900;
-  justify-content: center;
-  align-items: center;
-  line-height: 0;
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  will-change: opacity, color;
-  transition: opacity 0.3s;
-  z-index: 1;
-}
-.k-sort-handle svg {
-  width: 1rem;
+	cursor: grab;
+	z-index: 1;
 }
 .k-sort-handle:active {
-  cursor: grabbing;
-  cursor: -moz-grabbing;
-  cursor: -webkit-grabbing;
+	cursor: grabbing;
 }
 </style>

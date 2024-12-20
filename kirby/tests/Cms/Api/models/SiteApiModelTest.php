@@ -2,122 +2,102 @@
 
 namespace Kirby\Cms;
 
-class SiteApiModelTest extends TestCase
+use Kirby\Cms\Api\ApiModelTestCase;
+
+class SiteApiModelTest extends ApiModelTestCase
 {
-    protected $api;
-    protected $app;
+	public const TMP = KIRBY_TMP_DIR . '/Cms.SiteApiModel';
 
-    public function attr($object, $attr)
-    {
-        return $this->api->resolve($object)->select($attr)->toArray()[$attr];
-    }
+	public function testBlueprint()
+	{
+		$this->app = $this->app->clone([
+			'blueprints' => [
+				'site' => [
+					'title' => 'Test'
+				]
+			],
+		]);
 
-    public function assertAttr($object, $attr, $value)
-    {
-        $this->assertEquals($this->attr($object, $attr), $value);
-    }
+		$site      = $this->app->site();
+		$blueprint = $this->attr($site, 'blueprint');
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ],
-        ]);
+		$this->assertSame('Test', $blueprint['title']);
+	}
 
-        $this->api = $this->app->api();
-    }
+	public function testChildren()
+	{
+		$site = new Site([
+			'children' => [
+				['slug' => 'a'],
+				['slug' => 'b'],
+			]
+		]);
 
-    public function testBlueprint()
-    {
-        $this->app = $this->app->clone([
-            'blueprints' => [
-                'site' => [
-                    'title' => 'Test'
-                ]
-            ],
-        ]);
+		$children = $this->attr($site, 'children');
 
-        $site      = $this->app->site();
-        $blueprint = $this->attr($site, 'blueprint');
+		$this->assertSame('a', $children[0]['id']);
+		$this->assertSame('b', $children[1]['id']);
+	}
 
-        $this->assertEquals('Test', $blueprint['title']);
-    }
+	public function testContent()
+	{
+		$site = new Site([
+			'content' => $content = [
+				['a' => 'A'],
+				['b' => 'B'],
+			]
+		]);
 
-    public function testChildren()
-    {
-        $site = new Site([
-            'children' => [
-                ['slug' => 'a'],
-                ['slug' => 'b'],
-            ]
-        ]);
+		$this->assertAttr($site, 'content', $content);
+	}
 
-        $children = $this->attr($site, 'children');
+	public function testDrafts()
+	{
+		$site = new Site([
+			'drafts' => [
+				['slug' => 'a'],
+				['slug' => 'b'],
+			]
+		]);
 
-        $this->assertEquals('a', $children[0]['id']);
-        $this->assertEquals('b', $children[1]['id']);
-    }
+		$drafts = $this->attr($site, 'drafts');
 
-    public function testContent()
-    {
-        $site = new Site([
-            'content' => $content = [
-                ['a' => 'A'],
-                ['b' => 'B'],
-            ]
-        ]);
+		$this->assertSame('a', $drafts[0]['id']);
+		$this->assertSame('b', $drafts[1]['id']);
+	}
 
-        $this->assertAttr($site, 'content', $content);
-    }
+	public function testFiles()
+	{
+		$site = new Site([
+			'files' => [
+				['filename' => 'a.jpg'],
+				['filename' => 'b.jpg'],
+			]
+		]);
 
-    public function testDrafts()
-    {
-        $site = new Site([
-            'drafts' => [
-                ['slug' => 'a'],
-                ['slug' => 'b'],
-            ]
-        ]);
+		$files = $this->attr($site, 'files');
 
-        $drafts = $this->attr($site, 'drafts');
+		$this->assertSame('a.jpg', $files[0]['filename']);
+		$this->assertSame('b.jpg', $files[1]['filename']);
+	}
 
-        $this->assertEquals('a', $drafts[0]['id']);
-        $this->assertEquals('b', $drafts[1]['id']);
-    }
+	public function testTitle()
+	{
+		$site = new Site([
+			'content' => [
+				'title' => 'Test',
+			]
+		]);
 
-    public function testFiles()
-    {
-        $site = new Site([
-            'files' => [
-                ['filename' => 'a.jpg'],
-                ['filename' => 'b.jpg'],
-            ]
-        ]);
+		$this->assertAttr($site, 'title', 'Test');
+	}
 
-        $files = $this->attr($site, 'files');
+	public function testUrl()
+	{
+		$site = new Site([
+			'url' => 'https://getkirby.com'
+		]);
 
-        $this->assertEquals('a.jpg', $files[0]['filename']);
-        $this->assertEquals('b.jpg', $files[1]['filename']);
-    }
-
-    public function testTitle()
-    {
-        $site = new Site([
-            'content' => [
-                'title' => 'Test',
-            ]
-        ]);
-
-        $this->assertAttr($site, 'title', 'Test');
-    }
-
-    public function testUrl()
-    {
-        $site = new Site([
-            'url' => 'https://getkirby.com'
-        ]);
-
-        $this->assertAttr($site, 'url', 'https://getkirby.com');
-    }
+		$this->assertAttr($site, 'url', 'https://getkirby.com');
+	}
 }

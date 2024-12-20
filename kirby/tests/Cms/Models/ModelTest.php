@@ -4,70 +4,70 @@ namespace Kirby\Cms;
 
 class MyModel extends Model
 {
-    protected $id;
+	protected $id;
 
-    public function __construct(array $props = [])
-    {
-        $this->setProperties($props);
-        $this->setKirby($props['kirby'] ?? null);
-    }
+	public function __construct(array $props = [])
+	{
+		$this->setProperties($props);
+		$this->setKirby($props['kirby'] ?? null);
+	}
 
-    protected function setId($id = null)
-    {
-        $this->id = $id;
-        return $this;
-    }
+	protected function setId($id = null)
+	{
+		$this->id = $id;
+		return $this;
+	}
 
-    public function id()
-    {
-        return $this->id;
-    }
+	public function id()
+	{
+		return $this->id;
+	}
 }
 
 class ModelTest extends TestCase
 {
-    public function testModel()
-    {
-        $model = new MyModel();
-        $this->assertInstanceOf(Model::class, $model);
-        $this->assertInstanceOf(App::class, $model->kirby());
-        $this->assertInstanceOf(Site::class, $model->site());
-    }
+	public function testModel()
+	{
+		$model = new MyModel();
+		$this->assertInstanceOf(Model::class, $model);
+		$this->assertInstanceOf(App::class, $model->kirby());
+		$this->assertIsSite($model->site());
+	}
 
-    public function testKirby()
-    {
-        $kirby = new App();
-        $model = new MyModel([
-            'kirby' => $kirby
-        ]);
-        $this->assertEquals($kirby, $model->kirby());
-    }
+	public function testKirby()
+	{
+		$kirby = new App();
+		$model = new MyModel([
+			'kirby' => $kirby
+		]);
+		$this->assertSame($kirby, $model->kirby());
+	}
 
-    public function testSite()
-    {
-        $site = new Site();
-        $model = new MyModel([
-            'site' => $site
-        ]);
-        $this->assertEquals($site, $model->site());
-    }
+	public function testSite()
+	{
+		$site = new Site();
+		$model = new MyModel([
+			'site' => $site
+		]);
+		$this->assertIsSite($site, $model->site());
+	}
 
-    public function testToString()
-    {
-        $model = new MyModel([
-            'id' => 'test'
-        ]);
+	public function testToString()
+	{
+		$model = new MyModel([
+			'id' => 'test'
+		]);
 
-        $this->assertEquals('test', $model->__toString());
-        $this->assertEquals('test', (string)$model);
-    }
+		$this->assertSame('test', $model->__toString());
+		$this->assertSame('test', (string)$model);
+	}
 
-    public function testToArray()
-    {
-        $model = new MyModel([
-            'id' => 'test'
-        ]);
+	public function testToArray()
+	{
+		$model = new MyModel([
+			'id' => 'test'
+		]);
 
-        $this->assertEquals(['id' => 'test'], $model->toArray());
-    }
+		$this->assertSame(['id' => 'test'], $model->toArray());
+	}
 }

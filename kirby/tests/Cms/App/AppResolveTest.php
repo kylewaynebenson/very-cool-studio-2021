@@ -2,284 +2,277 @@
 
 namespace Kirby\Cms;
 
-use Kirby\Toolkit\F;
+use Kirby\Filesystem\F;
 
 class AppResolveTest extends TestCase
 {
-    protected $fixtures;
+	public const FIXTURES = __DIR__ . '/fixtures';
+	public const TMP      = KIRBY_TMP_DIR . '/Cms.AppResolve';
 
-    public function setUp(): void
-    {
-        $this->fixtures = __DIR__ . '/fixtures/AppResolveTest';
-    }
+	public function testResolveHomePage()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null'
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'home'
+					]
+				]
+			]
+		]);
 
-    public function tearDown(): void
-    {
-        Dir::remove($this->fixtures);
-    }
+		$result = $app->resolve(null);
 
-    public function testResolveHomePage()
-    {
-        $app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ],
-            'site' => [
-                'children' => [
-                    [
-                        'slug' => 'home'
-                    ]
-                ]
-            ]
-        ]);
+		$this->assertIsPage($result);
+		$this->assertTrue($result->isHomePage());
+	}
 
-        $result = $app->resolve(null);
+	public function testResolveMainPage()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null'
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'test'
+					]
+				]
+			]
+		]);
 
-        $this->assertInstanceOf(Page::class, $result);
-        $this->assertTrue($result->isHomePage());
-    }
+		$result = $app->resolve('test');
 
-    public function testResolveMainPage()
-    {
-        $app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ],
-            'site' => [
-                'children' => [
-                    [
-                        'slug' => 'test'
-                    ]
-                ]
-            ]
-        ]);
+		$this->assertIsPage($result);
+		$this->assertSame('test', $result->id());
+	}
 
-        $result = $app->resolve('test');
+	public function testResolveSubPage()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null'
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'test',
+						'children' => [
+							['slug' => 'subpage']
+						]
+					]
+				]
+			]
+		]);
 
-        $this->assertInstanceOf(Page::class, $result);
-        $this->assertEquals('test', $result->id());
-    }
+		$result = $app->resolve('test/subpage');
 
-    public function testResolveSubPage()
-    {
-        $app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ],
-            'site' => [
-                'children' => [
-                    [
-                        'slug' => 'test',
-                        'children' => [
-                            ['slug' => 'subpage']
-                        ]
-                    ]
-                ]
-            ]
-        ]);
+		$this->assertIsPage($result);
+		$this->assertSame('test/subpage', $result->id());
+	}
 
-        $result = $app->resolve('test/subpage');
+	public function testResolvePageRepresentation()
+	{
+		F::write($template = static::TMP . '/test.php', 'html');
+		F::write($template = static::TMP . '/test.xml.php', 'xml');
+		F::write(
+			$template = static::TMP . '/test.png.php',
+			'<?php $kirby->response()->type("image/jpeg"); ?>png'
+		);
 
-        $this->assertInstanceOf(Page::class, $result);
-        $this->assertEquals('test/subpage', $result->id());
-    }
+		$app = new App([
+			'roots' => [
+				'index'     => '/dev/null',
+				'templates' => static::TMP
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug'     => 'test',
+						'template' => 'test'
+					]
+				],
+			]
+		]);
 
-    public function testResolvePageRepresentation()
-    {
-        F::write($template = $this->fixtures . '/test.php', 'html');
-        F::write($template = $this->fixtures . '/test.xml.php', 'xml');
-        F::write(
-            $template = $this->fixtures . '/test.png.php',
-            '<?php $kirby->response()->type("image/jpeg"); ?>png'
-        );
+		// missing representation
+		$result = $app->resolve('test.json');
+		$this->assertNull($result);
+		$result = $app->resolve('test.');
+		$this->assertNull($result);
 
-        $app = new App([
-            'roots' => [
-                'index'     => '/dev/null',
-                'templates' => $this->fixtures
-            ],
-            'site' => [
-                'children' => [
-                    [
-                        'slug'     => 'test',
-                        'template' => 'test'
-                    ]
-                ],
-            ]
-        ]);
+		// xml representation
+		$result = $app->clone()->resolve('test.xml');
+		$this->assertInstanceOf(Responder::class, $result);
+		$this->assertSame('text/xml', $result->type());
+		$this->assertSame('xml', $result->body());
 
-        // missing representation
-        $result = $app->resolve('test.json');
-        $this->assertNull($result);
+		// representation with custom MIME type
+		$result = $app->clone()->resolve('test.png');
+		$this->assertInstanceOf(Responder::class, $result);
+		$this->assertSame('image/jpeg', $result->type());
+		$this->assertSame('png', $result->body());
+	}
 
-        // xml representation
-        $result = $app->clone()->resolve('test.xml');
-        $this->assertInstanceOf(Responder::class, $result);
-        $this->assertSame('text/xml', $result->type());
-        $this->assertSame('xml', $result->body());
+	public function testResolveSiteFile()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null',
+			],
+			'site' => [
+				'files' => [
+					['filename' => 'test.jpg']
+				],
+			]
+		]);
 
-        // representation with custom MIME type
-        $result = $app->clone()->resolve('test.png');
-        $this->assertInstanceOf(Responder::class, $result);
-        $this->assertSame('image/jpeg', $result->type());
-        $this->assertSame('png', $result->body());
-    }
+		// missing file
+		$result = $app->resolve('test.png');
+		$this->assertNull($result);
 
-    public function testResolveSiteFile()
-    {
-        $app = new App([
-            'roots' => [
-                'index' => '/dev/null',
-            ],
-            'site' => [
-                'files' => [
-                    ['filename' => 'test.jpg']
-                ],
-            ]
-        ]);
+		// existing file
+		$result = $app->resolve('test.jpg');
 
-        // missing file
-        $result = $app->resolve('test.png');
-        $this->assertNull($result);
+		$this->assertIsFile($result);
+		$this->assertSame('test.jpg', $result->id());
+	}
 
-        // existing file
-        $result = $app->resolve('test.jpg');
+	public function testResolvePageFile()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null',
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'test',
+						'files' => [
+							['filename' => 'test.jpg']
+						],
+					]
+				]
+			]
+		]);
 
-        $this->assertInstanceOf(File::class, $result);
-        $this->assertEquals('test.jpg', $result->id());
-    }
+		// missing file
+		$result = $app->resolve('test/test.png');
+		$this->assertNull($result);
 
-    public function testResolvePageFile()
-    {
-        $app = new App([
-            'roots' => [
-                'index' => '/dev/null',
-            ],
-            'site' => [
-                'children' => [
-                    [
-                        'slug' => 'test',
-                        'files' => [
-                            ['filename' => 'test.jpg']
-                        ],
-                    ]
-                ]
-            ]
-        ]);
+		// existing file
+		$result = $app->resolve('test/test.jpg');
 
-        // missing file
-        $result = $app->resolve('test/test.png');
-        $this->assertNull($result);
+		$this->assertIsFile($result);
+		$this->assertSame('test/test.jpg', $result->id());
+	}
 
-        // existing file
-        $result = $app->resolve('test/test.jpg');
+	public function testResolveMultilangPageRepresentation()
+	{
+		F::write($template = static::TMP . '/test.php', 'html');
+		F::write($template = static::TMP . '/test.xml.php', 'xml');
 
-        $this->assertInstanceOf(File::class, $result);
-        $this->assertEquals('test/test.jpg', $result->id());
-    }
+		$app = new App([
+			'roots' => [
+				'index'     => '/dev/null',
+				'templates' => static::TMP
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug'     => 'test',
+						'template' => 'test'
+					]
+				],
+			],
+			'options' => [
+				'languages' => true
+			],
+			'languages' => [
+				[
+					'code'    => 'de',
+					'default' => true,
+					'url'     => '/'
+				],
+				[
+					'code' => 'en',
+				]
+			]
+		]);
 
-    public function testResolveMultilangPageRepresentation()
-    {
-        F::write($template = $this->fixtures . '/test.php', 'html');
-        F::write($template = $this->fixtures . '/test.xml.php', 'xml');
+		/**
+		 * Default language (DE)
+		 */
 
-        $app = new App([
-            'roots' => [
-                'index'     => '/dev/null',
-                'templates' => $this->fixtures
-            ],
-            'site' => [
-                'children' => [
-                    [
-                        'slug'     => 'test',
-                        'template' => 'test'
-                    ]
-                ],
-            ],
-            'options' => [
-                'languages' => true
-            ],
-            'languages' => [
-                [
-                    'code'    => 'de',
-                    'default' => true,
-                    'url'     => '/'
-                ],
-                [
-                    'code' => 'en',
-                ]
-            ]
-        ]);
+		// finding the page
+		$result = $app->resolve('test');
 
-        /**
-         * Default language (DE)
-         */
+		$this->assertIsPage($result);
+		$this->assertSame('test', $result->id());
+		$this->assertSame('de', $app->language()->code());
 
-        // finding the page
-        $result = $app->resolve('test');
+		// missing representation
+		$result = $app->resolve('test.json');
 
-        $this->assertInstanceOf(Page::class, $result);
-        $this->assertEquals('test', $result->id());
-        $this->assertEquals('de', $app->language()->code());
+		$this->assertNull($result);
+		$this->assertSame('de', $app->language()->code());
 
-        // missing representation
-        $result = $app->resolve('test.json');
+		// xml presentation
+		$result = $app->resolve('test.xml');
 
-        $this->assertNull($result);
-        $this->assertEquals('de', $app->language()->code());
+		$this->assertInstanceOf(Responder::class, $result);
+		$this->assertSame('xml', $result->body());
+		$this->assertSame('de', $app->language()->code());
 
-        // xml presentation
-        $result = $app->resolve('test.xml');
+		/**
+		 * Secondary language (EN)
+		 */
 
-        $this->assertInstanceOf(Responder::class, $result);
-        $this->assertEquals('xml', $result->body());
-        $this->assertEquals('de', $app->language()->code());
+		// finding the page
+		$result = $app->resolve('test', 'en');
 
-        /**
-         * Secondary language (EN)
-         */
+		$this->assertIsPage($result);
+		$this->assertSame('test', $result->id());
+		$this->assertSame('en', $app->language()->code());
 
-        // finding the page
-        $result = $app->resolve('test', 'en');
+		// missing representation
+		$result = $app->resolve('test.json', 'en');
 
-        $this->assertInstanceOf(Page::class, $result);
-        $this->assertEquals('test', $result->id());
-        $this->assertEquals('en', $app->language()->code());
+		$this->assertNull($result);
+		$this->assertSame('en', $app->language()->code());
 
-        // missing representation
-        $result = $app->resolve('test.json', 'en');
+		// xml presentation
+		$result = $app->resolve('test.xml', 'en');
 
-        $this->assertNull($result);
-        $this->assertEquals('en', $app->language()->code());
+		$this->assertInstanceOf(Responder::class, $result);
+		$this->assertSame('xml', $result->body());
+		$this->assertSame('en', $app->language()->code());
+	}
 
-        // xml presentation
-        $result = $app->resolve('test.xml', 'en');
+	public function testRepresentationErrorType()
+	{
+		$this->app = new App([
+			'templates' => [
+				'blog' => static::FIXTURES . '/templates/test.php',
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'blog',
+						'template' => 'blog'
+					]
+				]
+			]
+		]);
 
-        $this->assertInstanceOf(Responder::class, $result);
-        $this->assertEquals('xml', $result->body());
-        $this->assertEquals('en', $app->language()->code());
-    }
+		$this->assertNull($this->app->resolve('blog.php'));
 
-    public function testRepresentationErrorType()
-    {
-        $this->app = new App([
-            'templates' => [
-                'blog' => __DIR__ . '/fixtures/templates/test.php',
-            ],
-            'site' => [
-                'children' => [
-                    [
-                        'slug' => 'blog',
-                        'template' => 'blog'
-                    ]
-                ]
-            ]
-        ]);
-
-        $this->assertNull($this->app->resolve('blog.php'));
-
-        // there must be no forced php response type if the
-        // representation cannot be found
-        $this->assertNull($this->app->response()->type());
-    }
+		// there must be no forced php response type if the
+		// representation cannot be found
+		$this->assertNull($this->app->response()->type());
+	}
 }

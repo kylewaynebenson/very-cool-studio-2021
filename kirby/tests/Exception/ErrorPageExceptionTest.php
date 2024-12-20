@@ -2,18 +2,18 @@
 
 namespace Kirby\Exception;
 
-use PHPUnit\Framework\TestCase;
+use Kirby\TestCase;
 
 class ErrorPageExceptionTest extends TestCase
 {
-    /**
-     * @coversNothing
-     */
-    public function testDefaults()
-    {
-        $exception = new ErrorPageException();
-        $this->assertEquals('error.errorPage', $exception->getKey());
-        $this->assertEquals('Triggered error page', $exception->getMessage());
-        $this->assertEquals(404, $exception->getHttpCode());
-    }
+	/**
+	 * @coversNothing
+	 */
+	public function testDefaults()
+	{
+		$exception = new ErrorPageException();
+		$this->assertSame('error.errorPage', $exception->getKey());
+		$this->assertSame('Triggered error page', $exception->getMessage());
+		$this->assertSame(404, $exception->getHttpCode());
+	}
 }

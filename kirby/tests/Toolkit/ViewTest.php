@@ -2,55 +2,98 @@
 
 namespace Kirby\Toolkit;
 
-use PHPUnit\Framework\TestCase;
+use Exception;
+use Kirby\TestCase;
 
+/**
+ * @coversDefaultClass \Kirby\Toolkit\View
+ */
 class ViewTest extends TestCase
 {
-    const FIXTURES = __DIR__ . '/fixtures/view';
+	public const FIXTURES = __DIR__ . '/fixtures/view';
 
-    protected function _view(array $data = [])
-    {
-        return new View(static::FIXTURES . '/view.php', $data);
-    }
+	protected function view(array $data = [])
+	{
+		return new View(static::FIXTURES . '/view.php', $data);
+	}
 
-    public function testFile()
-    {
-        $view = $this->_view();
-        $this->assertEquals(static::FIXTURES . '/view.php', $view->file());
-    }
+	/**
+	 * @covers ::__construct
+	 * @covers ::data
+	 */
+	public function testData()
+	{
+		$view = $this->view();
+		$this->assertSame([], $view->data());
 
-    public function testWithMissingFile()
-    {
-        $this->expectException('Exception');
-        $this->expectExceptionMessage('The view does not exist: invalid-file.php');
+		$view = $this->view(['test']);
+		$this->assertSame(['test'], $view->data());
+	}
 
-        $view = new View('invalid-file.php');
-        $view->render();
-    }
+	/**
+	 * @covers ::exists
+	 */
+	public function testExists()
+	{
+		$view = $this->view();
+		$this->assertTrue($view->exists());
 
-    public function testData()
-    {
-        $view = $this->_view();
-        $this->assertEquals([], $view->data());
+		$view = new View(static::FIXTURES . '/foo.php');
+		$this->assertFalse($view->exists());
+	}
 
-        $view = $this->_view(['test']);
-        $this->assertEquals(['test'], $view->data());
-    }
+	/**
+	 * @covers ::__construct
+	 * @covers ::file
+	 */
+	public function testFile()
+	{
+		$view = $this->view();
+		$this->assertSame(static::FIXTURES . '/view.php', $view->file());
+	}
 
-    public function testToString()
-    {
-        $view = $this->_view(['name' => 'Tester']);
-        $this->assertEquals('Hello Tester', $view->toString());
-        $this->assertEquals('Hello Tester', $view->__toString());
-        $this->assertEquals('Hello Tester', (string)$view);
-    }
+	/**
+	 * @covers ::render
+	 */
+	public function testRender()
+	{
+		$view = $this->view(['name' => 'Homer']);
+		$this->assertSame('Hello Homer', $view->render());
+	}
 
-    public function testWithException()
-    {
-        $this->expectException('Exception');
-        $this->expectExceptionMessage('View exception');
+	/**
+	 * @covers ::render
+	 */
+	public function testRenderWithMissingFile()
+	{
+		$this->expectException(Exception::class);
+		$this->expectExceptionMessage('The view does not exist: invalid-file.php');
 
-        $view = new View(static::FIXTURES . '/view-with-exception.php');
-        $view->render();
-    }
+		$view = new View('invalid-file.php');
+		$view->render();
+	}
+
+	/**
+	 * @covers ::render
+	 */
+	public function testRenderWithException()
+	{
+		$this->expectException(Exception::class);
+		$this->expectExceptionMessage('View exception');
+
+		$view = new View(static::FIXTURES . '/view-with-exception.php');
+		$view->render();
+	}
+
+	/**
+	 * @covers ::toString
+	 * @covers ::__toString
+	 */
+	public function testToString()
+	{
+		$view = $this->view(['name' => 'Tester']);
+		$this->assertSame('Hello Tester', $view->toString());
+		$this->assertSame('Hello Tester', $view->__toString());
+		$this->assertSame('Hello Tester', (string)$view);
+	}
 }

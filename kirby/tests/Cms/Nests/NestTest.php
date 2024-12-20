@@ -2,36 +2,43 @@
 
 namespace Kirby\Cms;
 
-use PHPUnit\Framework\TestCase;
+use Kirby\TestCase;
 
 class NestTest extends TestCase
 {
-    public function testCreateScalar()
-    {
-        $n = Nest::create($expected = 'a');
+	public function testCreateScalar()
+	{
+		$n = Nest::create($expected = 'a');
 
-        $this->assertInstanceOf(Field::class, $n);
-        $this->assertEquals($expected, $n);
-    }
+		$this->assertInstanceOf(Field::class, $n);
+		$this->assertEquals($expected, $n); // cannot use strict assertion (string conversion)
+	}
 
-    public function testCreateObject()
-    {
-        $n = Nest::create($expected = [
-            'a' => 'A',
-            'b' => 2,
-            'c' => false
-        ]);
+	public function testCreateEmptyCollection()
+	{
+		$n = Nest::create([]);
+		$this->assertInstanceOf(NestCollection::class, $n);
+		$this->assertCount(0, $n);
+	}
 
-        $this->assertInstanceOf(NestObject::class, $n);
-        $this->assertEquals($expected, $n->toArray());
-    }
+	public function testCreateObject()
+	{
+		$n = Nest::create($expected = [
+			'a' => 'A',
+			'b' => 2,
+			'c' => false
+		]);
 
-    public function testCreateCollection()
-    {
-        $n = Nest::create($expected = ['A', 2, false]);
+		$this->assertInstanceOf(NestObject::class, $n);
+		$this->assertSame($expected, $n->toArray());
+	}
 
-        $this->assertInstanceOf(NestCollection::class, $n);
-        $this->assertEquals('A', $n->first()->value());
-        $this->assertEquals(false, $n->last()->value());
-    }
+	public function testCreateCollection()
+	{
+		$n = Nest::create($expected = ['A', 2, false]);
+
+		$this->assertInstanceOf(NestCollection::class, $n);
+		$this->assertSame('A', $n->first()->value());
+		$this->assertFalse($n->last()->value());
+	}
 }

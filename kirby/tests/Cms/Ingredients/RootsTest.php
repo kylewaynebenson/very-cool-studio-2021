@@ -4,107 +4,125 @@ namespace Kirby\Cms;
 
 class RootsTest extends TestCase
 {
-    public function defaultRootProvider(): array
-    {
-        $index = realpath(__DIR__ . '/../../../../');
+	protected $indexRoot;
 
-        return [
-            [$index, 'index'],
-            [$index . '/kirby', 'kirby'],
-            [$index . '/media', 'media'],
-            [$index . '/content', 'content'],
-            [$site = $index . '/site', 'site'],
-            [$site . '/accounts', 'accounts'],
-            [$site . '/blueprints', 'blueprints'],
-            [$site . '/collections', 'collections'],
-            [$site . '/controllers', 'controllers'],
-            [$site . '/logs', 'logs'],
-            [$site . '/plugins', 'plugins'],
-            [$site . '/snippets', 'snippets'],
-            [$site . '/templates', 'templates'],
-        ];
-    }
+	public function setUp(): void
+	{
+		$this->indexRoot = Core::$indexRoot;
+	}
 
-    /**
-     * @dataProvider defaultRootProvider
-     */
-    public function testDefaulRoot($root, $method)
-    {
-        $roots = (new App())->roots();
+	public function tearDown(): void
+	{
+		// ensure that the index root used for testing is reset
+		Core::$indexRoot = $this->indexRoot;
+	}
 
-        $this->assertEquals($root, $roots->$method());
-    }
+	protected static function rootProvider(string $index): array
+	{
+		$kirby = realpath(__DIR__ . '/../../..');
 
-    public function customIndexRootProvider(): array
-    {
-        $index = '/var/www/getkirby.com';
+		return [
+			[$kirby, 'kirby'],
+			[$kirby . '/i18n', 'i18n'],
+			[$kirby . '/i18n/translations', 'i18n:translations'],
+			[$kirby . '/i18n/rules', 'i18n:rules'],
+			[$index, 'index'],
+			[$index . '/assets', 'assets'],
+			[$index . '/content', 'content'],
+			[$index . '/media', 'media'],
+			[$kirby . '/panel', 'panel'],
+			[$site = $index . '/site', 'site'],
+			[$site . '/accounts', 'accounts'],
+			[$site . '/blueprints', 'blueprints'],
+			[$site . '/cache', 'cache'],
+			[$site . '/collections', 'collections'],
+			[$site . '/config', 'config'],
+			[$site . '/config/.license', 'license'],
+			[$site . '/controllers', 'controllers'],
+			[$site . '/languages', 'languages'],
+			[$site . '/logs', 'logs'],
+			[$site . '/models', 'models'],
+			[$site . '/plugins', 'plugins'],
+			[$site . '/sessions', 'sessions'],
+			[$site . '/snippets', 'snippets'],
+			[$site . '/templates', 'templates'],
+			[$site . '/blueprints/users', 'roles'],
+		];
+	}
 
-        return [
-            [$index, 'index'],
-            [$index . '/media', 'media'],
-            [$index . '/content', 'content'],
-            [$site = $index . '/site', 'site'],
-            [$site . '/accounts', 'accounts'],
-            [$site . '/blueprints', 'blueprints'],
-            [$site . '/collections', 'collections'],
-            [$site . '/controllers', 'controllers'],
-            [$site . '/logs', 'logs'],
-            [$site . '/plugins', 'plugins'],
-            [$site . '/snippets', 'snippets'],
-            [$site . '/templates', 'templates'],
-        ];
-    }
+	public static function defaultRootProvider(): array
+	{
+		return static::rootProvider(realpath(__DIR__ . '/../../../../'));
+	}
 
-    /**
-     * @dataProvider customIndexRootProvider
-     */
-    public function testCustomIndexRoot($root, $method)
-    {
-        $app = new App([
-            'roots' => [
-                'index' => '/var/www/getkirby.com'
-            ]
-        ]);
+	/**
+	 * @dataProvider defaultRootProvider
+	 */
+	public function testDefaultRoot($root, $method)
+	{
+		// fake the default behavior for this test
+		Core::$indexRoot = null;
 
-        $roots = $app->roots();
+		$roots = (new App())->roots();
 
-        $this->assertEquals($root, $roots->$method());
-    }
+		$this->assertSame($root, $roots->$method());
+	}
 
-    public function customRootProvider(): array
-    {
-        $base    = '/var/www/getkirby.com';
-        $public  = $base . '/public';
+	public static function customIndexRootProvider(): array
+	{
+		return static::rootProvider('/var/www/getkirby.com');
+	}
 
-        return [
-            [$public, 'index'],
-            [$public . '/media', 'media'],
-            [$base . '/content', 'content'],
-            [$base . '/site', 'site'],
-        ];
-    }
+	/**
+	 * @dataProvider customIndexRootProvider
+	 */
+	public function testCustomIndexRoot($root, $method)
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/var/www/getkirby.com'
+			]
+		]);
 
-    /**
-     * @dataProvider customRootProvider
-     */
-    public function testCustomRoot($root, $method)
-    {
+		$roots = $app->roots();
 
-        // public directory setup
-        $base   = '/var/www/getkirby.com';
-        $public = $base . '/public';
+		$this->assertSame($root, $roots->$method());
+	}
 
-        $app = new App([
-            'roots' => [
-                'index'   => $public,
-                'media'   => $public . '/media',
-                'content' => $base . '/content',
-                'site'    => $base . '/site'
-            ]
-        ]);
+	public static function customRootProvider(): array
+	{
+		$base    = '/var/www/getkirby.com';
+		$public  = $base . '/public';
 
-        $roots = $app->roots();
+		return [
+			[$public, 'index'],
+			[$public . '/media', 'media'],
+			[$base . '/content', 'content'],
+			[$base . '/site', 'site'],
+			[$base . '/site/config', 'config'],
+		];
+	}
 
-        $this->assertEquals($root, $roots->$method());
-    }
+	/**
+	 * @dataProvider customRootProvider
+	 */
+	public function testCustomRoot($root, $method)
+	{
+		// public directory setup
+		$base   = '/var/www/getkirby.com';
+		$public = $base . '/public';
+
+		$app = new App([
+			'roots' => [
+				'index'   => $public,
+				'media'   => $public . '/media',
+				'content' => $base . '/content',
+				'site'    => $base . '/site'
+			]
+		]);
+
+		$roots = $app->roots();
+
+		$this->assertSame($root, $roots->$method());
+	}
 }

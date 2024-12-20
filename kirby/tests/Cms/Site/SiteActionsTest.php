@@ -2,187 +2,267 @@
 
 namespace Kirby\Cms;
 
-use Kirby\Toolkit\F;
-use PHPUnit\Framework\TestCase;
+use Kirby\Filesystem\Dir;
+use Kirby\Filesystem\F;
+use Kirby\TestCase;
 
 class SiteActionsTest extends TestCase
 {
-    protected $app;
-    protected $fixtures = __DIR__ . '/fixtures/SiteActionsTest';
+	public const TMP = KIRBY_TMP_DIR . '/Cms.SiteActions';
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => $this->fixtures
-            ],
-            'users' => [
-                [
-                    'email' => 'admin@domain.com',
-                    'role'  => 'admin'
-                ]
-            ],
-            'user' => 'admin@domain.com',
-            'blueprints' => [
-                'site' => [
-                    'name'   => 'site',
-                    'title'  => 'Site',
-                    'fields' => [
-                        'copyright' => [
-                            'type' => 'text'
-                        ]
-                    ]
-                ]
-            ]
-        ]);
+	protected $app;
 
-        Dir::make($this->fixtures);
-    }
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => static::TMP
+			],
+			'users' => [
+				[
+					'email' => 'admin@domain.com',
+					'role'  => 'admin'
+				]
+			],
+			'user' => 'admin@domain.com',
+			'blueprints' => [
+				'site' => [
+					'name'   => 'site',
+					'title'  => 'Site',
+					'fields' => [
+						'copyright' => [
+							'type' => 'text'
+						]
+					]
+				]
+			]
+		]);
 
-    public function tearDown(): void
-    {
-        Dir::remove($this->fixtures);
-    }
+		Dir::make(static::TMP);
+	}
 
-    public function site()
-    {
-        return $this->app->site();
-    }
+	public function tearDown(): void
+	{
+		Dir::remove(static::TMP);
+	}
 
-    public function testChangeTitle()
-    {
-        $site = $this->site()->changeTitle('Test');
-        $this->assertEquals('Test', $site->title()->value());
-    }
+	public function site()
+	{
+		return $this->app->site();
+	}
 
-    public function testCreateChild()
-    {
-        $page = $this->site()->createChild([
-            'slug'     => 'test',
-            'template' => 'test',
-        ]);
+	public function testChangeTitle()
+	{
+		$site = $this->site()->changeTitle('Test');
+		$this->assertSame('Test', $site->title()->value());
+	}
 
-        $this->assertEquals('test', $page->slug());
-        $this->assertEquals('test', $page->intendedTemplate()->name());
-    }
+	public function testCreateChild()
+	{
+		$page = $this->site()->createChild([
+			'slug'     => 'test',
+			'template' => 'test',
+		]);
 
-    public function testCreateFile()
-    {
-        F::write($source = $this->fixtures . '/source.md', '');
+		$this->assertSame('test', $page->slug());
+		$this->assertSame('test', $page->intendedTemplate()->name());
+	}
 
-        $file = $this->site()->createFile([
-            'filename' => 'test.md',
-            'source'   => $source
-        ]);
+	public function testCreateFile()
+	{
+		F::write($source = static::TMP . '/source.md', '');
 
-        $this->assertEquals('test.md', $file->filename());
-    }
+		$file = $this->site()->createFile([
+			'filename' => 'test.md',
+			'source'   => $source
+		]);
 
-    public function testSave()
-    {
-        $site = $this->site()->clone(['content' => ['copyright' => 2012]])->save();
-        $this->assertEquals(2012, $site->copyright()->value());
-    }
+		$this->assertSame('test.md', $file->filename());
+	}
 
-    public function testUpdate()
-    {
-        $site = $this->site()->update([
-            'copyright' => 2018
-        ]);
+	public function testSave()
+	{
+		$site = $this->site()->clone(['content' => ['copyright' => 2012]])->save();
+		$this->assertSame(2012, $site->copyright()->value());
+	}
 
-        $this->assertEquals(2018, $site->copyright()->value());
-    }
+	public function testUpdate()
+	{
+		$site = $this->site()->update([
+			'copyright' => '2018'
+		]);
 
-    public function testChangeTitleHooks()
-    {
-        $calls = 0;
-        $phpunit = $this;
+		$this->assertSame('2018', $site->copyright()->value());
+	}
 
-        $app = $this->app->clone([
-            'hooks' => [
-                'site.changeTitle:before' => function (Site $site, $title, $languageCode) use ($phpunit, &$calls) {
-                    $phpunit->assertNull($site->title()->value());
-                    $phpunit->assertSame('New Title', $title);
-                    $phpunit->assertNull($languageCode);
-                    $calls++;
-                },
-                'site.changeTitle:after' => function (Site $newSite, Site $oldSite) use ($phpunit, &$calls) {
-                    $phpunit->assertSame('New Title', $newSite->title()->value());
-                    $phpunit->assertNull($oldSite->title()->value());
-                    $calls++;
-                }
-            ]
-        ]);
+	public function testChangeTitleHooks()
+	{
+		$calls = 0;
+		$phpunit = $this;
 
-        $app->site()->changeTitle('New Title');
+		$app = $this->app->clone([
+			'hooks' => [
+				'site.changeTitle:before' => function (Site $site, $title, $languageCode) use ($phpunit, &$calls) {
+					$phpunit->assertNull($site->title()->value());
+					$phpunit->assertSame('New Title', $title);
+					$phpunit->assertNull($languageCode);
+					$calls++;
+				},
+				'site.changeTitle:after' => function (Site $newSite, Site $oldSite) use ($phpunit, &$calls) {
+					$phpunit->assertSame('New Title', $newSite->title()->value());
+					$phpunit->assertNull($oldSite->title()->value());
+					$calls++;
+				}
+			]
+		]);
 
-        $this->assertSame(2, $calls);
-    }
+		$app->site()->changeTitle('New Title');
 
-    public function testUpdateHooks()
-    {
-        $calls = 0;
-        $phpunit = $this;
-        $input = [
-            'copyright' => 'Kirby'
-        ];
+		$this->assertSame(2, $calls);
+	}
 
-        $app = $this->app->clone([
-            'hooks' => [
-                'site.update:before' => function (Site $site, $values, $strings) use ($phpunit, $input, &$calls) {
-                    $phpunit->assertNull($site->copyright()->value());
-                    $phpunit->assertSame($input, $values);
-                    $phpunit->assertSame($input, $strings);
-                    $calls++;
-                },
-                'site.update:after' => function (Site $newSite, Site $oldSite) use ($phpunit, &$calls) {
-                    $phpunit->assertSame('Kirby', $newSite->copyright()->value());
-                    $phpunit->assertNull($oldSite->copyright()->value());
-                    $calls++;
-                }
-            ]
-        ]);
+	public function testChangeTitleHookBeforeHookDefaultLanguage()
+	{
+		$calls = 0;
+		$phpunit = $this;
 
-        $app->site()->update($input);
+		$app = $this->app->clone([
+			'languages' => [
+				[
+					'code' => 'en',
+					'name' => 'English',
+					'default' => true
+				],
+				[
+					'code' => 'de',
+					'name' => 'Deutsch',
+				]
+			],
+			'hooks' => [
+				'site.changeTitle:before' => function (Site $site, $title, $languageCode) use ($phpunit, &$calls) {
+					$phpunit->assertNull($site->title()->value());
+					$phpunit->assertSame('New Title', $title);
+					$phpunit->assertNull($languageCode);
+					$calls++;
+				}
+			]
+		]);
 
-        $this->assertSame(2, $calls);
-    }
+		$app->site()->changeTitle('New Title');
 
-    public function testPurge()
-    {
-        // we're going to test it on translations because it's just that public propery
-        $app = $this->app->clone([
-            'languages' => [
-                [
-                    'code'    => 'en',
-                    'name'    => 'English',
-                    'default' => true
-                ],
-                [
-                    'code'    => 'de',
-                    'name'    => 'Deutsch'
-                ]
-            ],
-            'site' => [
-                'translations' => [
-                    [
-                        'code' => 'en',
-                        'content' => [
-                            'title' => 'Site',
-                        ]
-                    ],
-                    [
-                        'code' => 'de',
-                        'content' => [
-                            'title' => 'Seite',
-                        ]
-                    ],
-                ]
-            ]
-        ]);
+		$this->assertSame(1, $calls);
+	}
 
-        $this->assertNotNull([], $app->site()->translations);
-        $app->site()->purge();
-        $this->assertNull($app->site()->translations);
-    }
+	public function testChangeTitleHookBeforeHookSecondaryLanguage()
+	{
+		$calls = 0;
+		$phpunit = $this;
+
+		$app = $this->app->clone([
+			'languages' => [
+				[
+					'code' => 'en',
+					'name' => 'English',
+					'default' => true
+				],
+				[
+					'code' => 'de',
+					'name' => 'Deutsch',
+				]
+			],
+			'hooks' => [
+				'site.changeTitle:before' => function (Site $site, $title, $languageCode) use ($phpunit, &$calls) {
+					$phpunit->assertNull($site->title()->value());
+					$phpunit->assertSame('New Title', $title);
+					$phpunit->assertSame('de', $languageCode);
+					$calls++;
+				}
+			]
+		]);
+
+		$app->site()->changeTitle('New Title', 'de');
+
+		$this->assertSame(1, $calls);
+	}
+
+	public function testUpdateHooks()
+	{
+		$calls = 0;
+		$phpunit = $this;
+		$input = [
+			'copyright' => 'Kirby'
+		];
+
+		$app = $this->app->clone([
+			'hooks' => [
+				'site.update:before' => function (Site $site, $values, $strings) use ($phpunit, $input, &$calls) {
+					$phpunit->assertNull($site->copyright()->value());
+					$phpunit->assertSame($input, $values);
+					$phpunit->assertSame($input, $strings);
+					$calls++;
+				},
+				'site.update:after' => function (Site $newSite, Site $oldSite) use ($phpunit, &$calls) {
+					$phpunit->assertSame('Kirby', $newSite->copyright()->value());
+					$phpunit->assertNull($oldSite->copyright()->value());
+					$calls++;
+				}
+			]
+		]);
+
+		$app->site()->update($input);
+
+		$this->assertSame(2, $calls);
+	}
+
+	public function testPurge()
+	{
+		// we're going to test it on translations because it's just that public propery
+		$app = $this->app->clone([
+			'languages' => [
+				[
+					'code'    => 'en',
+					'name'    => 'English',
+					'default' => true
+				],
+				[
+					'code'    => 'de',
+					'name'    => 'Deutsch'
+				]
+			],
+			'site' => [
+				'translations' => [
+					[
+						'code' => 'en',
+						'content' => [
+							'title' => 'Site',
+						]
+					],
+					[
+						'code' => 'de',
+						'content' => [
+							'title' => 'Seite',
+						]
+					],
+				]
+			]
+		]);
+
+		$site = $app->site();
+
+		$site->children();
+		$site->drafts();
+		$site->childrenAndDrafts();
+
+		$this->assertNotNull([], $site->translations);
+		$this->assertNotNull($site->children);
+		$this->assertNotNull($site->drafts);
+		$this->assertNotNull($site->childrenAndDrafts);
+
+		$site->purge();
+
+		$this->assertNull($site->translations);
+		$this->assertNull($site->children);
+		$this->assertNull($site->drafts);
+		$this->assertNull($site->childrenAndDrafts);
+	}
 }

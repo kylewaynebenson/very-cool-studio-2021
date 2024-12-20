@@ -4,53 +4,53 @@ namespace Kirby\Toolkit;
 
 class CollectionGetterTest extends TestCase
 {
-    public function testGetMagic()
-    {
-        $collection = new Collection([
-            'one' => 'eins',
-            'two' => 'zwei'
-        ]);
+	public function testGetMagic()
+	{
+		$collection = new Collection([
+			'one' => 'eins',
+			'two' => 'zwei'
+		]);
 
-        $this->assertEquals('eins', $collection->one);
-        $this->assertEquals('eins', $collection->ONE);
-        $this->assertEquals(null, $collection->three);
-    }
+		$this->assertSame('eins', $collection->one);
+		$this->assertSame('eins', $collection->ONE);
+		$this->assertNull($collection->three);
+	}
 
-    public function testGet()
-    {
-        $collection = new Collection([
-            'one' => 'eins',
-            'two' => 'zwei'
-        ]);
+	public function testGet()
+	{
+		$collection = new Collection([
+			'one' => 'eins',
+			'two' => 'zwei'
+		]);
 
-        $this->assertEquals('eins', $collection->get('one'));
-        $this->assertEquals(null, $collection->get('three'));
-        $this->assertEquals('default', $collection->get('three', 'default'));
-    }
+		$this->assertSame('eins', $collection->get('one'));
+		$this->assertNull($collection->get('three'));
+		$this->assertSame('default', $collection->get('three', 'default'));
+	}
 
-    public function testMagicMethods()
-    {
-        $collection = new Collection([
-            'one' => 'eins',
-            'two' => 'zwei'
-        ]);
+	public function testMagicMethods()
+	{
+		$collection = new Collection([
+			'one' => 'eins',
+			'two' => 'zwei'
+		]);
 
-        $this->assertEquals('eins', $collection->one());
-        $this->assertEquals('zwei', $collection->two());
-        $this->assertEquals(null, $collection->three());
-    }
+		$this->assertSame('eins', $collection->one());
+		$this->assertSame('zwei', $collection->two());
+		$this->assertNull($collection->three());
+	}
 
-    public function testGetAttribute()
-    {
-        $collection = new Collection([
-            'one' => 'eins',
-            'two' => 'zwei'
-        ]);
+	public function testGetAttribute()
+	{
+		$collection = new Collection([
+			'one' => 'eins',
+			'two' => 'zwei'
+		]);
 
-        $this->assertEquals('eins', $collection->getAttribute($collection->toArray(), 'one'));
-        $this->assertEquals(null, $collection->getAttribute($collection->toArray(), 'three'));
+		$this->assertSame('eins', $collection->getAttribute($collection->toArray(), 'one'));
+		$this->assertNull($collection->getAttribute($collection->toArray(), 'three'));
 
-        $this->assertEquals('zwei', $collection->getAttribute($collection, 'two'));
-        $this->assertEquals(null, $collection->getAttribute($collection, 'three'));
-    }
+		$this->assertSame('zwei', $collection->getAttribute($collection, 'two'));
+		$this->assertNull($collection->getAttribute($collection, 'three'));
+	}
 }

@@ -2,255 +2,394 @@
 
 namespace Kirby\Sane;
 
+use Kirby\Exception\InvalidArgumentException;
+
 /**
  * @covers \Kirby\Sane\Svg
  */
 class SvgTest extends TestCase
 {
-    protected $type = 'svg';
+	public const TMP = KIRBY_TMP_DIR . '/Sane.Svg';
 
-    /**
-     * @dataProvider allowedProvider
-     */
-    public function testAllowed(string $file)
-    {
-        $this->assertNull(Svg::validateFile($this->fixture($file)));
-    }
+	protected static $type = 'svg';
 
-    public function allowedProvider()
-    {
-        return $this->fixtureList('allowed', 'svg');
-    }
+	/**
+	 * @dataProvider allowedProvider
+	 */
+	public function testAllowed(string $file)
+	{
+		$fixture = $this->fixture($file);
+		$cleaned = $this->fixture(str_replace('allowed', 'cleaned', $file));
 
-    /**
-     * @dataProvider invalidProvider
-     */
-    public function testInvalid(string $file)
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The file could not be parsed');
+		$this->assertNull(Svg::validateFile($fixture));
 
-        Svg::validateFile($this->fixture($file));
-    }
+		$sanitized = Svg::sanitize(file_get_contents($fixture));
+		$this->assertStringEqualsFile(is_file($cleaned) ? $cleaned : $fixture, $sanitized);
+	}
 
-    public function invalidProvider()
-    {
-        return $this->fixtureList('invalid', 'svg');
-    }
+	public static function allowedProvider()
+	{
+		return static::fixtureList('allowed', 'svg');
+	}
 
-    public function testIsAllowedUrlJavascript()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The URL is not allowed in attribute: href (line 2)');
+	public function testAllowedAriaAttr()
+	{
+		$fixture = '<svg><path aria-label="Test" /></svg>';
+		$cleaned = '<svg><path aria-label="Test"/></svg>';
 
-        Svg::validate("<svg>\n<a href='javascript:alert(1)'><path /></a>\n</svg>");
-    }
+		$this->assertNull(Svg::validate($fixture));
+		$this->assertSame($cleaned, Svg::sanitize($fixture));
+	}
 
-    public function testIsAllowedUrlJavascriptWithUnicodeLS()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The URL is not allowed in attribute: href (line 1)');
+	public function testAllowedAriaData()
+	{
+		$fixture = '<svg><path data-color="test" /></svg>';
+		$cleaned = '<svg><path data-color="test"/></svg>';
 
-        /**
-         * Test fixture inspired by DOMPurify
-         * @link https://github.com/cure53/DOMPurify
-         * @copyright 2015 Mario Heiderich
-         * @license https://www.apache.org/licenses/LICENSE-2.0
-         */
-        Svg::validate('<svg>123<a href="\u2028javascript:alert(1)">I am a dolphin!</a></svg>');
-    }
+		$this->assertNull(Svg::validate($fixture));
+		$this->assertSame($cleaned, Svg::sanitize($fixture));
+	}
 
-    public function testIsAllowedUrlXlink()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The URL is not allowed in attribute: xlink:href (line 2)');
+	/**
+	 * @dataProvider invalidProvider
+	 */
+	public function testInvalid(string $file)
+	{
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The markup could not be parsed');
 
-        Svg::validateFile($this->fixture('disallowed/xlink-attack.svg'));
-    }
+		Svg::validateFile($this->fixture($file));
+	}
 
-    public function testIsAllowedUrlXmlns1()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The namespace "xmlns" (around line 2) is not allowed or has an invalid value');
+	public static function invalidProvider()
+	{
+		return static::fixtureList('invalid', 'svg');
+	}
 
-        Svg::validateFile($this->fixture('disallowed/external-xmlns-1.svg'));
-    }
+	public function testDisallowedJavascriptUrl()
+	{
+		$fixture   = "<svg>\n<a href='javascript:alert(1)'><path /></a>\n</svg>";
+		$sanitized = "<svg>\n<a><path/></a>\n</svg>";
 
-    public function testIsAllowedUrlXmlns2()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The namespace "xmlns:malicious" (around line 2) is not allowed or has an invalid value');
+		$this->assertSame($sanitized, Svg::sanitize($fixture));
 
-        Svg::validateFile($this->fixture('disallowed/external-xmlns-2.svg'));
-    }
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The URL is not allowed in attribute "href" (line 2): Unknown URL type');
+		Svg::validate($fixture);
+	}
 
-    public function testLoadNonSvg()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The file is not a SVG (got <html>)');
+	public function testDisallowedJavascriptUrlWithUnicodeLS()
+	{
+		/**
+		 * Test fixture inspired by DOMPurify
+		 * @link https://github.com/cure53/DOMPurify
+		 * @copyright 2015 Mario Heiderich
+		 * @license https://www.apache.org/licenses/LICENSE-2.0
+		 */
+		$fixture = '<svg>123<a href="\u2028javascript:alert(1)">I am a dolphin!</a></svg>';
+		$sanitized = '<svg>123<a>I am a dolphin!</a></svg>';
 
-        Svg::validate('<html></html>');
-    }
+		$this->assertSame($sanitized, Svg::sanitize($fixture));
 
-    public function testValidateAttrsAria()
-    {
-        $this->assertNull(Svg::validate('<svg><path aria-label="Test" /></svg>'));
-    }
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The URL is not allowed in attribute "href" (line 1): Unknown URL type');
+		Svg::validate($fixture);
+	}
 
-    public function testValidateAttrsData()
-    {
-        $this->assertNull(Svg::validate('<svg><path data-color="test" /></svg>'));
-    }
+	public function testDisallowedXlinkAttack()
+	{
+		$fixture   = $this->fixture('disallowed/xlink-attack.svg');
+		$sanitized = $this->fixture('sanitized/xlink-attack.svg');
 
-    public function testValidateAttrsDataUri1()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The URL is not allowed in attribute: style (line 7)');
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
 
-        Svg::validateFile($this->fixture('disallowed/data-uri-svg-1.svg'));
-    }
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The URL is not allowed in attribute "xlink:href" (line 2): Unknown URL type');
+		Svg::validateFile($fixture);
+	}
 
-    public function testValidateAttrsDataUri2()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The URL is not allowed in attribute: filter (line 7)');
+	public function testDisallowedExternalFile()
+	{
+		$fixture   = $this->fixture('disallowed/xlink-subfolder.svg');
+		$sanitized = $this->fixture('sanitized/xlink-subfolder.svg');
 
-        Svg::validateFile($this->fixture('disallowed/data-uri-svg-2.svg'));
-    }
+		$this->assertStringEqualsFile($fixture, Svg::sanitize(file_get_contents($fixture)));
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture), isExternal: true));
 
-    public function testValidateAttrsExternalSource1()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The URL is not allowed in attribute: style (line 3)');
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The URL points outside of the site index URL');
+		Svg::validateFile($fixture);
+	}
 
-        Svg::validateFile($this->fixture('disallowed/external-source-1.svg'));
-    }
+	public function testDisallowedExternalXmlns1()
+	{
+		$fixture   = $this->fixture('disallowed/external-xmlns-1.svg');
+		$sanitized = $this->fixture('sanitized/external-xmlns-1.svg');
 
-    public function testValidateAttrsExternalSource2()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The URL is not allowed in attribute: href (line 3)');
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
 
-        Svg::validateFile($this->fixture('disallowed/external-source-2.svg'));
-    }
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The namespace "https://malicious.com/script.php" is not allowed (around line 1)');
+		Svg::validateFile($fixture);
+	}
 
-    public function testValidateAttrsOnclick()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The "onclick" attribute (line 2) is not allowed in SVGs');
+	public function testDisallowedExternalXmlns2()
+	{
+		$fixture   = $this->fixture('disallowed/external-xmlns-2.svg');
+		$sanitized = $this->fixture('sanitized/external-xmlns-2.svg');
 
-        Svg::validate("<svg>\n<path onclick='alert(1)' />\n</svg>");
-    }
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
 
-    public function testValidateAttrsOnload()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The "onload" attribute (line 1) is not allowed in SVGs');
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The namespace "https://malicious.com/script.php" is not allowed (around line 1)');
+		Svg::validateFile($fixture);
+	}
 
-        Svg::validate('<svg onload="alert(1)"></svg>');
-    }
+	public function testDisallowedDataUriSvg1()
+	{
+		$fixture   = $this->fixture('disallowed/data-uri-svg-1.svg');
+		$sanitized = $this->fixture('sanitized/data-uri-svg-1.svg');
 
-    public function testValidateAttrsUse1()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('Nested "use" elements are not allowed in SVGs (used in line 15)');
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
 
-        Svg::validateFile($this->fixture('disallowed/use-attack-1.svg'));
-    }
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The URL is not allowed in attribute "style" (line 7)');
+		Svg::validateFile($fixture);
+	}
 
-    public function testValidateAttrsUse2()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('Nested "use" elements are not allowed in SVGs (used in line 19)');
+	public function testDisallowedDataUriSvg2()
+	{
+		$fixture   = $this->fixture('disallowed/data-uri-svg-2.svg');
+		$sanitized = $this->fixture('sanitized/data-uri-svg-2.svg');
 
-        Svg::validateFile($this->fixture('disallowed/use-attack-2.svg'));
-    }
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
 
-    public function testValidateDoctypeExternalSubset1()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The doctype must not reference external files');
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The URL is not allowed in attribute "filter" (line 7)');
+		Svg::validateFile($fixture);
+	}
 
-        Svg::validateFile($this->fixture('disallowed/doctype-external-1.svg'));
-    }
+	public function testDisallowedExternalSource1()
+	{
+		$fixture   = $this->fixture('disallowed/external-source-1.svg');
+		$sanitized = $this->fixture('sanitized/external-source-1.svg');
 
-    public function testValidateDoctypeExternalSubset2()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The doctype must not reference external files');
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
 
-        Svg::validateFile($this->fixture('disallowed/doctype-external-2.svg'));
-    }
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The URL is not allowed in attribute "style" (line 2)');
+		Svg::validateFile($fixture);
+	}
 
-    public function testValidateDoctypeInternalSubset()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The doctype must not define a subset');
+	public function testDisallowedExternalSource2()
+	{
+		$fixture   = $this->fixture('disallowed/external-source-2.svg');
+		$sanitized = $this->fixture('sanitized/external-source-2.svg');
 
-        Svg::validateFile($this->fixture('disallowed/doctype-entity-attack.svg'));
-    }
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
 
-    public function testValidateDoctypeWrong()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('Invalid doctype');
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The URL is not allowed in attribute "href" (line 2)');
+		Svg::validateFile($fixture);
+	}
 
-        Svg::validateFile($this->fixture('disallowed/doctype-wrong.svg'));
-    }
+	public function testDisallowedOnclickAttr()
+	{
+		$fixture   = "<svg>\n<path onclick='alert(1)' />\n</svg>";
+		$sanitized = "<svg>\n<path/>\n</svg>";
 
-    public function testValidateElementsCaseSensitive()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The "Text" element (line 2) is not allowed in SVGs');
+		$this->assertSame($sanitized, Svg::sanitize($fixture));
 
-        Svg::validate("<svg>\n<Text x='0' y='20'>Hello</Text>\n</svg>");
-    }
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The "onclick" attribute (line 2) is not allowed');
+		Svg::validate($fixture);
+	}
 
-    public function testValidateElementsForeignobject()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The "foreignobject" element (line 1) is not allowed in SVGs');
+	public function testDisallowedOnloadAttr()
+	{
+		$fixture   = '<svg onload="alert(1)"></svg>';
+		$sanitized = '<svg/>';
 
-        Svg::validate('<svg><foreignobject><iframe onload="alert(1)" /></foreignobject></svg>');
-    }
+		$this->assertSame($sanitized, Svg::sanitize($fixture));
 
-    public function testValidateElementsSet()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The "set" element (line 7) is not allowed in SVGs');
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The "onload" attribute (line 1) is not allowed');
+		Svg::validate($fixture);
+	}
 
-        Svg::validateFile($this->fixture('disallowed/set.svg'));
-    }
+	public function testDisallowedUseAttack1()
+	{
+		$fixture   = $this->fixture('disallowed/use-attack-1.svg');
+		$sanitized = $this->fixture('sanitized/use-attack-1.svg');
 
-    public function testValidateElementsScript()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The "script" element (line 1) is not allowed in SVGs');
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
 
-        Svg::validate('<svg><script>alert(1)</script></svg>');
-    }
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('Nested "use" elements are not allowed (used in line 14)');
+		Svg::validateFile($fixture);
+	}
 
-    public function testValidateElementsUnknown()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The "blockquote" element (line 1) is not allowed in SVGs');
+	public function testDisallowedUseAttack2()
+	{
+		$fixture   = $this->fixture('disallowed/use-attack-2.svg');
+		$sanitized = $this->fixture('sanitized/use-attack-2.svg');
 
-        Svg::validate('<svg><blockquote>SVGs are SVGs are SVGs</blockquote></svg>');
-    }
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
 
-    public function testValidateElementsStyleURL()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The URL is not allowed in the <style> element (around line 3)');
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('Nested "use" elements are not allowed (used in line 18)');
+		Svg::validateFile($fixture);
+	}
 
-        Svg::validateFile($this->fixture('disallowed/style-url-external.svg'));
-    }
+	public function testDisallowedUseAttack3()
+	{
+		$fixture   = $this->fixture('disallowed/use-attack-3.svg');
+		$sanitized = $this->fixture('sanitized/use-attack-3.svg');
 
-    public function testValidateProcessingInstructionsStylesheet()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The "xml-stylesheet" processing instruction (line 6) is not allowed');
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
 
-        Svg::validateFile($this->fixture('disallowed/stylesheet.svg'));
-    }
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('Nested "use" elements are not allowed (used in line 18)');
+		Svg::validateFile($fixture);
+	}
+
+	public function testDisallowedDoctypeExternal1()
+	{
+		$fixture   = $this->fixture('disallowed/doctype-external-1.svg');
+		$sanitized = $this->fixture('sanitized/doctype-external-1.svg');
+
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
+
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The doctype must not reference external files');
+		Svg::validateFile($fixture);
+	}
+
+	public function testDisallowedDoctypeExternal2()
+	{
+		$fixture   = $this->fixture('disallowed/doctype-external-2.svg');
+		$sanitized = $this->fixture('sanitized/doctype-external-2.svg');
+
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
+
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The doctype must not reference external files');
+		Svg::validateFile($fixture);
+	}
+
+	public function testDisallowedDoctypeEntityAttack()
+	{
+		$fixture   = $this->fixture('disallowed/doctype-entity-attack.svg');
+		$sanitized = $this->fixture('sanitized/doctype-entity-attack.svg');
+
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
+
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The doctype must not define a subset');
+		Svg::validateFile($fixture);
+	}
+
+	public function testDisallowedDoctypeWrong()
+	{
+		$fixture   = $this->fixture('disallowed/doctype-wrong.svg');
+		$sanitized = $this->fixture('sanitized/doctype-wrong.svg');
+
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
+
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('Invalid doctype');
+		Svg::validateFile($fixture);
+	}
+
+	public function testDisallowedCaseSensitive()
+	{
+		$fixture   = "<svg>\n<Text x='0' y='20'>Hello</Text>\n</svg>";
+		$sanitized = "<svg>\n\n</svg>";
+
+		$this->assertSame($sanitized, Svg::sanitize($fixture));
+
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The "Text" element (line 2) is not allowed');
+		Svg::validate($fixture);
+	}
+
+	public function testDisallowedForeignobject()
+	{
+		$fixture   = '<svg><foreignobject><iframe onload="alert(1)" /></foreignobject></svg>';
+		$sanitized = '<svg/>';
+
+		$this->assertSame($sanitized, Svg::sanitize($fixture));
+
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The "foreignobject" element (line 1) is not allowed');
+		Svg::validate($fixture);
+	}
+
+	public function testDisallowedSet()
+	{
+		$fixture   = $this->fixture('disallowed/set.svg');
+		$sanitized = $this->fixture('sanitized/set.svg');
+
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
+
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The "set" element (line 7) is not allowed');
+		Svg::validateFile($fixture);
+	}
+
+	public function testDisallowedScript()
+	{
+		$fixture   = '<svg><script>alert(1)</script></svg>';
+		$sanitized = '<svg/>';
+
+		$this->assertSame($sanitized, Svg::sanitize($fixture));
+
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The "script" element (line 1) is not allowed');
+		Svg::validate($fixture);
+	}
+
+	public function testDisallowedBlockquote()
+	{
+		$fixture   = '<svg><blockquote>SVGs are SVGs are SVGs</blockquote></svg>';
+		$sanitized = '<svg/>';
+
+		$this->assertSame($sanitized, Svg::sanitize($fixture));
+
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The "blockquote" element (line 1) is not allowed');
+		Svg::validate($fixture);
+	}
+
+	public function testDisallowedStyleUrlExternal()
+	{
+		$fixture   = $this->fixture('disallowed/style-url-external.svg');
+		$sanitized = $this->fixture('sanitized/style-url-external.svg');
+
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
+
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The URL is not allowed in the "style" element (around line 3)');
+		Svg::validateFile($fixture);
+	}
+
+	public function testDisallowedStylesheet()
+	{
+		$fixture   = $this->fixture('disallowed/stylesheet.svg');
+		$sanitized = $this->fixture('sanitized/stylesheet.svg');
+
+		$this->assertStringEqualsFile($sanitized, Svg::sanitize(file_get_contents($fixture)));
+
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The "xml-stylesheet" processing instruction (line 6) is not allowed');
+		Svg::validateFile($fixture);
+	}
+
+	public function testParseNonSvg()
+	{
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The file is not a SVG (got <html>)');
+
+		Svg::validate('<html></html>');
+	}
 }

@@ -1,12 +1,27 @@
 <template>
-  <k-icon class="k-loader" type="loader" />
+	<span class="k-loader">
+		<k-icon class="k-loader-icon" type="loader" />
+	</span>
 </template>
 
-<style lang="scss">
+<script>
+/**
+ * @deprecated 4.0.0 Use `<k-icon type="loader" />` instead
+ */
+export default {
+	mounted() {
+		window.panel.deprecated(
+			'<k-loader> will be removed in a future version. Use <k-icon type="loader" /> instead.'
+		);
+	}
+};
+</script>
+
+<style>
 .k-loader {
-  z-index: 1;
+	z-index: 1;
 }
-.k-loader svg {
-  animation: Spin .9s linear infinite;
+.k-loader-icon {
+	animation: Spin 0.9s linear infinite;
 }
 </style>

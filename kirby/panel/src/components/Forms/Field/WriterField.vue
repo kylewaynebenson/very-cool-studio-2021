@@ -1,51 +1,41 @@
 <template>
-  <k-field
-    :input="_uid"
-    :counter="false"
-    v-bind="$props"
-    class="k-writer-field"
-  >
-    <k-input
-      v-bind="$props"
-      :after="after"
-      :before="before"
-      :icon="icon"
-      theme="field"
-    >
-      <k-writer
-        ref="input"
-        v-bind="$props"
-        :value="value"
-        class="k-writer-field-input"
-        @input="$emit('input', $event)"
-      />
-    </k-input>
-  </k-field>
+	<k-field
+		v-bind="$props"
+		:input="id"
+		:counter="counterOptions"
+		class="k-writer-field"
+	>
+		<k-input
+			v-bind="$props"
+			ref="input"
+			:after="after"
+			:before="before"
+			:icon="icon"
+			type="writer"
+			@input="$emit('input', $event)"
+		/>
+	</k-field>
 </template>
 
 <script>
-import Field from "../Field.vue";
-import Input from "../Input.vue";
-import Writer from "@/components/Writer/Writer.vue";
+import { props as Field } from "../Field.vue";
+import { props as Input } from "../Input.vue";
+import { props as WriterInput } from "@/components/Forms/Input/WriterInput.vue";
+import counter from "@/mixins/forms/counter.js";
 
 export default {
-  inheritAttrs: false,
-  props: {
-    ...Field.props,
-    ...Input.props,
-    ...Writer.props,
-  },
-  methods: {
-    focus() {
-      this.$refs.input.focus();
-    }
-  }
-}
+	mixins: [Field, Input, WriterInput, counter],
+	inheritAttrs: false,
+	computed: {
+		counterValue() {
+			const plain = this.$helper.string.stripHTML(this.value ?? "");
+			return this.$helper.string.unescapeHTML(plain);
+		}
+	},
+	methods: {
+		focus() {
+			this.$refs.input.focus();
+		}
+	}
+};
 </script>
-
-<style lang="scss">
-.k-writer-field-input {
-  line-height: 1.5em;
-  padding: .375rem .5rem;
-}
-</style>

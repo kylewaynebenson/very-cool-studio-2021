@@ -2,251 +2,301 @@
 
 namespace Kirby\Cms;
 
-use Kirby\Toolkit\Dir;
-use Kirby\Toolkit\F;
-use PHPUnit\Framework\TestCase;
+use Kirby\Filesystem\Dir;
+use Kirby\Filesystem\F;
 
 class MediaTest extends TestCase
 {
-    protected $app;
-    protected $fixtures;
+	public const FIXTURES = __DIR__ . '/fixtures';
+	public const TMP      = KIRBY_TMP_DIR . '/Cms.Media';
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => $this->fixtures = __DIR__ . '/fixtures/MediaTest',
-            ],
-        ]);
+	public function testLinkSiteFile()
+	{
+		F::write(static::TMP . '/content/test.svg', '<svg xmlns="http://www.w3.org/2000/svg"/>');
 
-        Dir::make($this->fixtures);
-    }
+		$file   = $this->app->file('test.svg');
+		$result = Media::link($this->app->site(), $file->mediaHash(), $file->filename());
 
-    public function tearDown(): void
-    {
-        Dir::remove($this->fixtures);
-    }
+		$this->assertInstanceOf(Response::class, $result);
+		$this->assertSame(200, $result->code());
+		$this->assertSame('image/svg+xml', $result->type());
+	}
 
-    public function testLinkSiteFile()
-    {
-        F::write($this->fixtures . '/content/test.svg', '<svg xmlns="http://www.w3.org/2000/svg"/>');
+	public function testLinkPageFile()
+	{
+		F::write(static::TMP . '/content/projects/test.svg', '<svg xmlns="http://www.w3.org/2000/svg"/>');
 
-        $file   = $this->app->file('test.svg');
-        $result = Media::link($this->app->site(), $file->mediaHash(), $file->filename());
+		$file   = $this->app->file('projects/test.svg');
+		$result = Media::link($this->app->page('projects'), $file->mediaHash(), $file->filename());
 
-        $this->assertInstanceOf(Response::class, $result);
-        $this->assertEquals(200, $result->code());
-        $this->assertEquals('image/svg+xml', $result->type());
-    }
+		$this->assertInstanceOf(Response::class, $result);
+		$this->assertSame(200, $result->code());
+		$this->assertSame('image/svg+xml', $result->type());
+	}
 
-    public function testLinkPageFile()
-    {
-        F::write($this->fixtures . '/content/projects/test.svg', '<svg xmlns="http://www.w3.org/2000/svg"/>');
+	public function testLinkWithInvalidHash()
+	{
+		F::write(static::TMP . '/content/projects/test.svg', '<svg xmlns="http://www.w3.org/2000/svg"/>');
 
-        $file   = $this->app->file('projects/test.svg');
-        $result = Media::link($this->app->page('projects'), $file->mediaHash(), $file->filename());
+		// with the correct media token
+		$file   = $this->app->file('projects/test.svg');
+		$result = Media::link($this->app->page('projects'), $file->mediaToken() . '-12345', $file->filename());
 
-        $this->assertInstanceOf(Response::class, $result);
-        $this->assertEquals(200, $result->code());
-        $this->assertEquals('image/svg+xml', $result->type());
-    }
+		$this->assertInstanceOf(Response::class, $result);
+		$this->assertSame(307, $result->code());
 
-    public function testLinkWithInvalidHash()
-    {
-        F::write($this->fixtures . '/content/projects/test.svg', '<svg xmlns="http://www.w3.org/2000/svg"/>');
+		// with a completely invalid hash
+		$file   = $this->app->file('projects/test.svg');
+		$result = Media::link($this->app->page('projects'), 'abcde-12345', $file->filename());
 
-        // with the correct media token
-        $file   = $this->app->file('projects/test.svg');
-        $result = Media::link($this->app->page('projects'), $file->mediaToken() . '-12345', $file->filename());
+		$this->assertFalse($result);
+	}
 
-        $this->assertInstanceOf(Response::class, $result);
-        $this->assertEquals(307, $result->code());
+	public function testLinkWithoutModel()
+	{
+		$this->assertFalse(Media::link(null, 'hash', 'filename.jpg'));
+	}
 
-        // with a completely invalid hash
-        $file   = $this->app->file('projects/test.svg');
-        $result = Media::link($this->app->page('projects'), 'abcde-12345', $file->filename());
+	public function testLinkNonExistingFile()
+	{
+		$this->assertFalse(Media::link($this->app->site(), 'hash', 'filename.jpg'));
+	}
 
-        $this->assertInstanceOf(Response::class, $result);
-        $this->assertEquals(404, $result->code());
-    }
+	public function testPublish()
+	{
+		$site = new Site();
 
-    public function testLinkWithoutModel()
-    {
-        $this->assertFalse(Media::link(null, 'hash', 'filename.jpg'));
-    }
+		F::write($src = static::TMP . '/content/test.jpg', 'nice jpg');
+		$file = new File([
+			'kirby'    => $this->app,
+			'parent'   => $site,
+			'filename' => $filename = 'test.jpg'
+		]);
 
-    public function testPublish()
-    {
-        F::write($src = $this->fixtures . '/content/test.jpg', 'nice jpg');
-        $file = new File([
-            'kirby'    => $this->app,
-            'filename' => $filename = 'test.jpg'
-        ]);
+		$oldToken  = crc32($filename);
+		$newToken  = $file->mediaToken();
+		$directory = static::TMP . '/media/site';
 
-        $oldToken  = crc32($filename);
-        $newToken  = $file->mediaToken();
-        $directory = $this->fixtures . '/media/site';
+		Dir::make($versionA1 = $directory . '/' . $oldToken . '-1234');
+		Dir::make($versionA2 = $directory . '/' . $oldToken . '-5678');
+		Dir::make($versionB1 = $directory . '/' . $newToken . '-1234');
+		Dir::make($versionB2 = $directory . '/' . $newToken . '-5678');
 
-        Dir::make($versionA1 = $directory . '/' . $oldToken . '-1234');
-        Dir::make($versionA2 = $directory . '/' . $oldToken . '-5678');
-        Dir::make($versionB1 = $directory . '/' . $newToken . '-1234');
-        Dir::make($versionB2 = $directory . '/' . $newToken . '-5678');
+		$this->assertTrue(Media::publish($file, $dest = $versionB2 . '/test.jpg'));
 
-        $this->assertTrue(Media::publish($file, $dest = $versionB2 . '/test.jpg'));
+		// the file should be copied
+		$this->assertDirectoryExists($versionB2);
+		$this->assertFileExists($dest);
 
-        // the file should be copied
-        $this->assertTrue(is_dir($versionB2));
-        $this->assertTrue(is_file($dest));
+		// older versions should be removed
+		$this->assertDirectoryDoesNotExist($versionA1);
+		$this->assertDirectoryDoesNotExist($versionA2);
+		$this->assertDirectoryDoesNotExist($versionB1);
+	}
 
-        // older versions should be removed
-        $this->assertFalse(is_dir($versionA1));
-        $this->assertFalse(is_dir($versionA2));
-        $this->assertFalse(is_dir($versionB1));
-    }
+	public function testUnpublish()
+	{
+		$page = new Page([
+			'slug' => 'test'
+		]);
 
-    public function testUnpublish()
-    {
-        F::write($src = $this->fixtures . '/content/test.jpg', 'nice jpg');
-        $file = new File([
-            'kirby'    => $this->app,
-            'filename' => $filename = 'test.jpg'
-        ]);
+		F::write($src = static::TMP . '/content/test.jpg', 'nice jpg');
+		$file = new File([
+			'kirby'    => $this->app,
+			'parent'   => $page,
+			'filename' => $filename = 'test.jpg'
+		]);
 
-        $oldToken  = crc32($filename);
-        $newToken  = $file->mediaToken();
-        $directory = $this->fixtures . '/media/site';
+		$oldToken  = crc32($filename);
+		$newToken  = $file->mediaToken();
+		$directory = static::TMP . '/media/site';
 
-        Dir::make($versionA1 = $directory . '/' . $oldToken . '-1234');
-        Dir::make($versionA2 = $directory . '/' . $oldToken . '-5678');
-        Dir::make($versionB1 = $directory . '/' . $newToken . '-1234');
-        Dir::make($versionB2 = $directory . '/' . $newToken . '-5678');
+		Dir::make($versionA1 = $directory . '/' . $oldToken . '-1234');
+		Dir::make($versionA2 = $directory . '/' . $oldToken . '-5678');
+		Dir::make($versionB1 = $directory . '/' . $newToken . '-1234');
+		Dir::make($versionB2 = $directory . '/' . $newToken . '-5678');
 
-        $this->assertTrue(is_dir($versionA1));
-        $this->assertTrue(is_dir($versionA2));
-        $this->assertTrue(is_dir($versionB1));
-        $this->assertTrue(is_dir($versionB2));
+		$this->assertDirectoryExists($versionA1);
+		$this->assertDirectoryExists($versionA2);
+		$this->assertDirectoryExists($versionB1);
+		$this->assertDirectoryExists($versionB2);
 
-        Media::unpublish($directory, $file);
+		Media::unpublish($directory, $file);
 
-        $this->assertFalse(is_dir($versionA1));
-        $this->assertFalse(is_dir($versionA2));
-        $this->assertFalse(is_dir($versionB1));
-        $this->assertFalse(is_dir($versionB2));
-    }
+		$this->assertDirectoryDoesNotExist($versionA1);
+		$this->assertDirectoryDoesNotExist($versionA2);
+		$this->assertDirectoryDoesNotExist($versionB1);
+		$this->assertDirectoryDoesNotExist($versionB2);
+	}
 
-    public function testUnpublishAndIgnore()
-    {
-        F::write($src = $this->fixtures . '/content/test.jpg', 'nice jpg');
-        $file = new File([
-            'kirby'    => $this->app,
-            'filename' => $filename = 'test.jpg'
-        ]);
+	public function testUnpublishAndIgnore()
+	{
+		$page = new Page([
+			'slug' => 'test'
+		]);
 
-        $oldToken  = crc32($filename);
-        $newToken  = $file->mediaToken();
-        $directory = $this->fixtures . '/media/site';
+		F::write($src = static::TMP . '/content/test.jpg', 'nice jpg');
+		$file = new File([
+			'kirby'    => $this->app,
+			'parent'   => $page,
+			'filename' => $filename = 'test.jpg'
+		]);
 
-        Dir::make($versionA1 = $directory . '/' . $oldToken . '-1234');
-        Dir::make($versionA2 = $directory . '/' . $oldToken . '-5678');
-        Dir::make($versionB1 = $directory . '/' . $newToken . '-1234');
-        Dir::make($versionB2 = $directory . '/' . $newToken . '-5678');
+		$oldToken  = crc32($filename);
+		$newToken  = $file->mediaToken();
+		$directory = static::TMP . '/media/site';
 
-        $this->assertTrue(is_dir($versionA1));
-        $this->assertTrue(is_dir($versionA2));
-        $this->assertTrue(is_dir($versionB1));
-        $this->assertTrue(is_dir($versionB2));
+		Dir::make($versionA1 = $directory . '/' . $oldToken . '-1234');
+		Dir::make($versionA2 = $directory . '/' . $oldToken . '-5678');
+		Dir::make($versionB1 = $directory . '/' . $newToken . '-1234');
+		Dir::make($versionB2 = $directory . '/' . $newToken . '-5678');
 
-        Media::unpublish($directory, $file, $versionB1);
+		$this->assertDirectoryExists($versionA1);
+		$this->assertDirectoryExists($versionA2);
+		$this->assertDirectoryExists($versionB1);
+		$this->assertDirectoryExists($versionB2);
 
-        $this->assertTrue(is_dir($versionB1));
-        $this->assertFalse(is_dir($versionA1));
-        $this->assertFalse(is_dir($versionA2));
-        $this->assertFalse(is_dir($versionB2));
-    }
+		Media::unpublish($directory, $file, $versionB1);
 
-    public function testUnpublishNonExistingDirectory()
-    {
-        $directory = $this->fixtures . '/does-not-exist';
+		$this->assertDirectoryExists($versionB1);
+		$this->assertDirectoryDoesNotExist($versionA1);
+		$this->assertDirectoryDoesNotExist($versionA2);
+		$this->assertDirectoryDoesNotExist($versionB2);
+	}
 
-        $file = new File([
-            'kirby'    => $this->app,
-            'filename' => 'does-not-exist.jpg'
-        ]);
+	public function testUnpublishNonExistingDirectory()
+	{
+		$directory = static::TMP . '/does-not-exist';
 
-        $this->assertTrue(Media::unpublish($directory, $file));
-    }
+		$page = new Page([
+			'slug' => 'test'
+		]);
 
-    public function testThumb()
-    {
-        Dir::make($this->fixtures . '/content');
+		$file = new File([
+			'kirby'    => $this->app,
+			'parent'   => $page,
+			'filename' => 'does-not-exist.jpg'
+		]);
 
-        // copy test image to content
-        F::copy($this->fixtures . '/../files/test.jpg', $this->fixtures . '/content/test.jpg');
+		$this->assertTrue(Media::unpublish($directory, $file));
+	}
 
-        // get file object
-        $file  = $this->app->file('test.jpg');
-        Dir::make(dirname($file->mediaRoot()));
-        $this->assertInstanceOf('\Kirby\Cms\File', $file);
+	public function testThumb()
+	{
+		Dir::make(static::TMP . '/content');
 
-        // invalid with no job file
-        $thumb = Media::thumb($file, $file->mediaHash(), $file->filename());
-        $this->assertFalse($thumb);
+		// copy test image to content
+		F::copy(static::FIXTURES . '/files/test.jpg', static::TMP . '/content/test.jpg');
 
-        // invalid with empty job file
-        F::write(dirname($file->mediaRoot()) . '/.jobs/' . $file->filename() . '.json', '{}');
-        $thumb = Media::thumb($file, $file->mediaHash(), $file->filename());
-        $this->assertFalse($thumb);
+		// get file object
+		$file  = $this->app->file('test.jpg');
+		Dir::make(dirname($file->mediaRoot()));
+		$this->assertIsFile($file);
 
-        // create job file
-        $jobString = '{"width":64,"height":64,"quality":null,"crop":"center","filename":"test.jpg"}';
-        F::write(dirname($file->mediaRoot()) . '/.jobs/' . $file->filename() . '.json', $jobString);
+		// create job file
+		$jobString = '{"width":64,"height":64,"quality":null,"crop":"center","filename":"test.jpg"}';
+		F::write(dirname($file->mediaRoot()) . '/.jobs/' . $file->filename() . '.json', $jobString);
 
-        // invalid with file not found
-        $thumb = Media::thumb($file, $file->mediaHash(), $file->filename());
-        $this->assertInstanceOf('Kirby\Cms\Response', $thumb);
-        $this->assertSame('', $thumb->body());
+		// copy to media folder
+		$file->asset()->copy($mediaPath = $file->mediaRoot());
 
-        // copy to media folder
-        $file->asset()->copy($mediaPath = $file->mediaRoot());
+		$thumb = Media::thumb($file, $file->mediaHash(), $file->filename());
+		$this->assertInstanceOf(Response::class, $thumb);
+		$this->assertNotFalse($thumb->body());
+		$this->assertSame(200, $thumb->code());
+		$this->assertSame('image/jpeg', $thumb->type());
 
-        $thumb = Media::thumb($file, $file->mediaHash(), $file->filename());
-        $this->assertInstanceOf('Kirby\Cms\Response', $thumb);
-        $this->assertNotFalse($thumb->body());
-        $this->assertSame(200, $thumb->code());
-        $this->assertSame('image/jpeg', $thumb->type());
+		$thumbInfo = getimagesize($mediaPath);
+		$this->assertSame(64, $thumbInfo[0]);
+		$this->assertSame(64, $thumbInfo[1]);
+	}
 
-        $thumbInfo = getimagesize($mediaPath);
-        $this->assertSame(64, $thumbInfo[0]);
-        $this->assertSame(64, $thumbInfo[1]);
-    }
+	public function testThumbWithoutJobsFile()
+	{
+		Dir::make(static::TMP . '/content');
 
-    public function testThumbStringModel()
-    {
-        Dir::make($this->fixtures . '/content');
+		// copy test image to content
+		F::copy(static::FIXTURES . '/files/test.jpg', static::TMP . '/content/test.jpg');
 
-        // copy test image to content
-        F::copy($this->fixtures . '/../files/test.jpg', $this->fixtures . '/content/test.jpg');
+		// get file object
+		$file = $this->app->file('test.jpg');
 
-        // get file object
-        $file  = $this->app->file('test.jpg');
-        Dir::make($this->fixtures . '/media/assets/site/' . $file->mediaHash());
-        $this->assertInstanceOf('\Kirby\Cms\File', $file);
+		$this->expectException(\Kirby\Exception\NotFoundException::class);
+		$this->expectExceptionMessage('The thumbnail configuration could not be found');
 
-        // create job file
-        $jobString = '{"width":64,"height":64,"quality":null,"crop":"center","filename":"test.jpg"}';
-        F::write($this->fixtures . '/media/assets/site/' . $file->mediaHash() . '/.jobs/' . $file->filename() . '.json', $jobString);
+		// invalid with no job file
+		$thumb = Media::thumb($file, $file->mediaHash(), $file->filename());
+		$this->assertFalse($thumb);
+	}
 
-        // copy to media folder
-        $file->asset()->copy($mediaPath = $this->fixtures . '/media/assets/site/' . $file->mediaHash() . '/' . $file->filename());
+	public function testThumbWithIncompleteJobFile()
+	{
+		Dir::make(static::TMP . '/content');
 
-        $thumb = Media::thumb('site', $file->mediaHash(), $file->filename());
-        $this->assertInstanceOf('Kirby\Cms\Response', $thumb);
-        $this->assertNotFalse($thumb->body());
-        $this->assertSame(200, $thumb->code());
-        $this->assertSame('image/jpeg', $thumb->type());
+		// copy test image to content
+		F::copy(static::FIXTURES . '/files/test.jpg', static::TMP . '/content/test.jpg');
 
-        $thumbInfo = getimagesize($mediaPath);
-        $this->assertSame(64, $thumbInfo[0]);
-        $this->assertSame(64, $thumbInfo[1]);
-    }
+		// get file object
+		$file = $this->app->file('test.jpg');
+
+		// create an empty job file
+		F::write(dirname($file->mediaRoot()) . '/.jobs/' . $file->filename() . '.json', '{}');
+
+		$this->expectException(\Kirby\Exception\InvalidArgumentException::class);
+		$this->expectExceptionMessage('Incomplete thumbnail configuration');
+
+		$thumb = Media::thumb($file, $file->mediaHash(), $file->filename());
+		$this->assertFalse($thumb);
+	}
+
+	public function testThumbWhenGenerationFails()
+	{
+		Dir::make(static::TMP . '/content');
+
+		// copy test image to content
+		F::copy(static::FIXTURES . '/files/test.jpg', static::TMP . '/content/test.jpg');
+
+		// get file object
+		$file = $this->app->file('test.jpg');
+
+		// create a valid job file
+		$jobString = '{"width":64,"height":64,"quality":null,"crop":"center","filename":"test.jpg"}';
+		F::write(dirname($file->mediaRoot()) . '/.jobs/' . $file->filename() . '.json', $jobString);
+
+		$this->expectException(\Exception::class);
+		$this->expectExceptionMessage('File not found');
+
+		// but the file cannot be found in the media folder
+		Media::thumb($file, $file->mediaHash(), $file->filename());
+	}
+
+	public function testThumbStringModel()
+	{
+		Dir::make(static::TMP . '/content');
+
+		// copy test image to content
+		F::copy(static::FIXTURES . '/files/test.jpg', static::TMP . '/content/test.jpg');
+
+		// get file object
+		$file  = $this->app->file('test.jpg');
+		Dir::make(static::TMP . '/media/assets/site/' . $file->mediaHash());
+		$this->assertIsFile($file);
+
+		// create job file
+		$jobString = '{"width":64,"height":64,"quality":null,"crop":"center","filename":"test.jpg"}';
+		F::write(static::TMP . '/media/assets/site/' . $file->mediaHash() . '/.jobs/' . $file->filename() . '.json', $jobString);
+
+		// copy to media folder
+		$file->asset()->copy($mediaPath = static::TMP . '/media/assets/site/' . $file->mediaHash() . '/' . $file->filename());
+
+		$thumb = Media::thumb('site', $file->mediaHash(), $file->filename());
+		$this->assertInstanceOf(Response::class, $thumb);
+		$this->assertNotFalse($thumb->body());
+		$this->assertSame(200, $thumb->code());
+		$this->assertSame('image/jpeg', $thumb->type());
+
+		$thumbInfo = getimagesize($mediaPath);
+		$this->assertSame(64, $thumbInfo[0]);
+		$this->assertSame(64, $thumbInfo[1]);
+	}
 }

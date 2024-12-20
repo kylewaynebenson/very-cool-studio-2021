@@ -2,21 +2,21 @@
 
 namespace Kirby\Cms;
 
-use PHPUnit\Framework\TestCase;
+use Kirby\TestCase;
 
 class SiteBlueprintTest extends TestCase
 {
-    public function testOptions()
-    {
-        $blueprint = new SiteBlueprint([
-            'model' => new Site()
-        ]);
+	public function testOptions()
+	{
+		$blueprint = new SiteBlueprint([
+			'model' => new Site()
+		]);
 
-        $expected = [
-            'changeTitle' => null,
-            'update'      => null,
-        ];
+		$expected = [
+			'changeTitle' => null,
+			'update'      => null,
+		];
 
-        $this->assertEquals($expected, $blueprint->options());
-    }
+		$this->assertSame($expected, $blueprint->options());
+	}
 }

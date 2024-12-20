@@ -2,253 +2,355 @@
 
 namespace Kirby\Cms;
 
-use PHPUnit\Framework\TestCase;
+use Kirby\Content\Field;
+use Kirby\Exception\InvalidArgumentException;
+use Kirby\Filesystem\Asset;
+use Kirby\TestCase;
 
 class FileModificationsTest extends TestCase
 {
-    protected $app;
+	protected $app;
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ],
-            'site' => [
-                'files' => [
-                    ['filename' => 'test.jpg']
-                ]
-            ]
-        ]);
-    }
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => '/dev/null'
+			],
+			'site' => [
+				'files' => [
+					['filename' => 'test.jpg']
+				]
+			]
+		]);
+	}
 
-    public function testThumb()
-    {
-        $input = [
-            'width'  => 300,
-            'height' => 200
-        ];
+	public function testThumb()
+	{
+		$input = [
+			'width'  => 300,
+			'height' => 200,
+			'focus'  => '20%, 80%'
+		];
 
-        $app = $this->app->clone([
-            'components' => [
-                'file::version' => function ($kirby, $file, $options = []) use ($input) {
-                    $this->assertEquals($input, $options);
-                    return $file;
-                }
-            ]
-        ]);
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => function ($kirby, $file, $options = []) use ($input) {
+					$this->assertSame($input, $options);
+					return $file;
+				}
+			],
+			'site' => [
+				'files' => [
+					[
+						'filename' => 'test.jpg',
+						'content' => ['focus' => '70%, 30%']
+					]
+				]
+			]
+		]);
 
-        $file = $app->file('test.jpg');
-        $file->thumb($input);
-    }
+		$file = $app->file('test.jpg');
+		$file->thumb($input);
+	}
 
-    public function testThumbWithDefaultPreset()
-    {
-        $app = $this->app->clone([
-            'components' => [
-                'file::version' => function ($kirby, $file, $options = []) {
-                    $expected = [
-                        'width' => 300
-                    ];
+	public function testThumbWithAssetObject()
+	{
+		$app = $this->app->clone();
+		$asset = new Asset('');
+		$result = $asset->thumb([
+			'crop' => true
+		]);
 
-                    $this->assertEquals($expected, $options);
-                    return $file;
-                }
-            ],
-            'options' => [
-                'thumbs' => [
-                    'presets' => [
-                        'default' => ['width' => 300]
-                    ]
-                ]
-            ]
-        ]);
+		$this->assertInstanceOf(Asset::class, $result);
+	}
 
-        $file = $app->file('test.jpg');
-        $file->thumb();
-        $file->thumb('default');
-    }
+	public function testThumbWithDefaultPreset()
+	{
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => function ($kirby, $file, $options = []) {
+					$expected = [
+						'width' => 300
+					];
 
-    public function testThumbWithCustomPreset()
-    {
-        $app = $this->app->clone([
-            'components' => [
-                'file::version' => function ($kirby, $file, $options = []) {
-                    $expected = [
-                        'width' => 300
-                    ];
+					$this->assertSame($expected, $options);
+					return $file;
+				}
+			],
+			'options' => [
+				'thumbs' => [
+					'presets' => [
+						'default' => ['width' => 300]
+					]
+				]
+			]
+		]);
 
-                    $this->assertEquals($expected, $options);
-                    return $file;
-                }
-            ],
-            'options' => [
-                'thumbs' => [
-                    'presets' => [
-                        'test' => ['width' => 300]
-                    ]
-                ]
-            ]
-        ]);
+		$file = $app->file('test.jpg');
+		$file->thumb();
+		$file->thumb('default');
+	}
 
-        $file = $app->file('test.jpg');
-        $file->thumb('test');
-    }
+	public function testThumbWithCustomPreset()
+	{
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => function ($kirby, $file, $options = []) {
+					$expected = [
+						'width' => 300
+					];
 
-    public function testThumbWithInvalidReturnValue()
-    {
-        $app = $this->app->clone([
-            'components' => [
-                'file::version' => function ($kirby, $file, $options = []) {
-                    return 'image';
-                }
-            ]
-        ]);
+					$this->assertSame($expected, $options);
+					return $file;
+				}
+			],
+			'options' => [
+				'thumbs' => [
+					'presets' => [
+						'test' => ['width' => 300]
+					]
+				]
+			]
+		]);
 
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('The file::version component must return a File or FileVersion object');
+		$file = $app->file('test.jpg');
+		$file->thumb('test');
+	}
 
-        $file = $app->file('test.jpg');
-        $file->thumb(['width' => 100]);
-    }
+	public function testThumbWithInvalidReturnValue()
+	{
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => fn ($kirby, $file, $options = []) => 'image'
+			]
+		]);
 
-    public function testBlur()
-    {
-        $app = $this->app->clone([
-            'components' => [
-                'file::version' => function ($kirby, $file, $options = []) {
-                    $this->assertEquals(['blur' => 5], $options);
-                    return $file;
-                }
-            ]
-        ]);
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('The file::version component must return a File, FileVersion or Asset object');
 
-        $file = $app->file('test.jpg');
-        $file->blur(5);
-    }
+		$file = $app->file('test.jpg');
+		$file->thumb(['width' => 100]);
+	}
 
-    public function testBw()
-    {
-        $app = $this->app->clone([
-            'components' => [
-                'file::version' => function ($kirby, $file, $options = []) {
-                    $this->assertEquals(['grayscale' => true], $options);
-                    return $file;
-                }
-            ]
-        ]);
+	public function testThumbWithFormatOption()
+	{
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => function ($kirby, $file, $options = []) {
+					$this->assertSame('webp', $options['format']);
+					return $file;
+				}
+			],
+			'options' => [
+				'thumbs.format' => 'webp'
+			]
+		]);
 
-        $file = $app->file('test.jpg');
-        $file->bw();
-    }
+		$file = $app->file('test.jpg');
+		$file->thumb(['width' => 100]);
+	}
 
-    public function cropOptions()
-    {
-        $field = new Field(null, 'crop', 'top left');
+	public function testThumbWithFocusFromContent()
+	{
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => function ($kirby, $file, $options = []) {
+					$this->assertSame('70%, 30%', $options['crop']);
+					return $file;
+				}
+			],
+			'site' => [
+				'files' => [
+					[
+						'filename' => 'test.jpg',
+						'content' => ['focus' => '70%, 30%']
+					]
+				]
+			]
+		]);
 
-        return [
-            [
-                [300],
-                [
-                    'width' => 300,
-                    'height' => null,
-                    'quality' => null,
-                    'crop' => 'center'
-                ]
-            ],
-            [
-                [300, 200],
-                [
-                    'width' => 300,
-                    'height' => 200,
-                    'quality' => null,
-                    'crop' => 'center'
-                ]
-            ],
-            [
-                [300, 200, 10],
-                [
-                    'width' => 300,
-                    'height' => 200,
-                    'quality' => 10,
-                    'crop' => 'center'
-                ]
-            ],
-            [
-                [300, 200, $field],
-                [
-                    'width' => 300,
-                    'height' => 200,
-                    'quality' => null,
-                    'crop' => 'top left'
-                ]
-            ],
-            [
-                [300, 200, 'top left'],
-                [
-                    'width' => 300,
-                    'height' => 200,
-                    'quality' => null,
-                    'crop' => 'top left'
-                ]
-            ],
-            [
-                [300, 200, ['crop' => 'top left', 'quality' => 20]],
-                [
-                    'width' => 300,
-                    'height' => 200,
-                    'quality' => 20,
-                    'crop' => 'top left'
-                ]
-            ],
-        ];
-    }
+		$file = $app->file('test.jpg');
+		$file->thumb(['width' => 100, 'crop' => true]);
+	}
 
-    /**
-     * @dataProvider cropOptions
-     */
-    public function testCrop($args, $expected)
-    {
-        $app = $this->app->clone([
-            'components' => [
-                'file::version' => function ($kirby, $file, $options = []) use ($expected) {
-                    $this->assertEquals($expected, $options);
-                    return $file;
-                }
-            ]
-        ]);
+	public function testThumbWithNoOptions()
+	{
+		$file = $this->app->file('test.jpg');
+		$this->assertIsFile($file, $file->thumb([]));
+	}
 
-        $file = $app->file('test.jpg');
-        $file->crop(...$args);
-    }
+	public function testBlur()
+	{
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => function ($kirby, $file, $options = []) {
+					$this->assertSame(['blur' => 5], $options);
+					return $file;
+				}
+			]
+		]);
 
-    public function testQuality()
-    {
-        $app = $this->app->clone([
-            'components' => [
-                'file::version' => function ($kirby, $file, $options = []) {
-                    $this->assertEquals(['quality' => 10], $options);
-                    return $file;
-                }
-            ]
-        ]);
+		$file = $app->file('test.jpg');
+		$file->blur(5);
+	}
 
-        $file = $app->file('test.jpg');
-        $file->quality(10);
-    }
+	public function testBw()
+	{
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => function ($kirby, $file, $options = []) {
+					$this->assertSame(['grayscale' => true], $options);
+					return $file;
+				}
+			]
+		]);
 
-    public function testResize()
-    {
-        $app = $this->app->clone([
-            'components' => [
-                'file::version' => function ($kirby, $file, $options = []) {
-                    $this->assertEquals(['width' => 100, 'height' => 200, 'quality' => 10], $options);
-                    return $file;
-                }
-            ]
-        ]);
+		$file = $app->file('test.jpg');
+		$file->bw();
+	}
 
-        $file = $app->file('test.jpg');
-        $file->resize(100, 200, 10);
-    }
+	public static function cropOptionsProvider(): array
+	{
+		$field = new Field(null, 'crop', 'top left');
+
+		return [
+			[
+				[300],
+				[
+					'width' => 300,
+					'height' => null,
+					'quality' => null,
+					'crop' => 'center'
+				]
+			],
+			[
+				[300, 200],
+				[
+					'width' => 300,
+					'height' => 200,
+					'quality' => null,
+					'crop' => 'center'
+				]
+			],
+			[
+				[300, 200, 10],
+				[
+					'width' => 300,
+					'height' => 200,
+					'quality' => 10,
+					'crop' => 'center'
+				]
+			],
+			[
+				[300, 200, $field],
+				[
+					'width' => 300,
+					'height' => 200,
+					'quality' => null,
+					'crop' => 'top left'
+				]
+			],
+			[
+				[300, 200, 'top left'],
+				[
+					'width' => 300,
+					'height' => 200,
+					'quality' => null,
+					'crop' => 'top left'
+				]
+			],
+			[
+				[300, 200, ['crop' => 'top left', 'quality' => 20]],
+				[
+					'width' => 300,
+					'height' => 200,
+					'quality' => 20,
+					'crop' => 'top left'
+				]
+			],
+		];
+	}
+
+	/**
+	 * @dataProvider cropOptionsProvider
+	 */
+	public function testCrop($args, $expected)
+	{
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => function ($kirby, $file, $options = []) use ($expected) {
+					$this->assertSame($expected, $options);
+					return $file;
+				}
+			]
+		]);
+
+		$file = $app->file('test.jpg');
+		$file->crop(...$args);
+	}
+
+	public function testQuality()
+	{
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => function ($kirby, $file, $options = []) {
+					$this->assertSame(['quality' => 10], $options);
+					return $file;
+				}
+			]
+		]);
+
+		$file = $app->file('test.jpg');
+		$file->quality(10);
+	}
+
+	public function testResize()
+	{
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => function ($kirby, $file, $options = []) {
+					$this->assertSame([
+						'width' => 100,
+						'height' => 200,
+						'quality' => 10
+					], $options);
+					return $file;
+				}
+			]
+		]);
+
+		$file = $app->file('test.jpg');
+		$file->resize(100, 200, 10);
+	}
+
+	public function testSharpen()
+	{
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => function ($kirby, $file, $options = []) {
+					$this->assertSame(['sharpen' => 50], $options);
+					return $file;
+				}
+			]
+		]);
+
+		$file = $app->file('test.jpg');
+		$file->sharpen();
+	}
+
+	public function testSharpenWithCustomValue()
+	{
+		$app = $this->app->clone([
+			'components' => [
+				'file::version' => function ($kirby, $file, $options = []) {
+					$this->assertSame(['sharpen' => 20], $options);
+					return $file;
+				}
+			]
+		]);
+
+		$file = $app->file('test.jpg');
+		$file->sharpen(20);
+	}
 }

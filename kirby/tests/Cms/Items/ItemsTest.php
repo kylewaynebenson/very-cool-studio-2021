@@ -2,81 +2,109 @@
 
 namespace Kirby\Cms;
 
-use PHPUnit\Framework\TestCase;
+use Kirby\Content\Field;
+use Kirby\TestCase;
 
 class ItemsTest extends TestCase
 {
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => '/dev/null',
-            ],
-        ]);
+	protected $app;
+	protected $field;
+	protected $page;
 
-        $this->page = new Page(['slug' => 'test']);
-    }
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => '/dev/null',
+			],
+		]);
 
-    public function testConstruct()
-    {
-        $items = new Items();
+		$this->page  = new Page(['slug' => 'test']);
+		$this->field = new Field($this->page, 'test', 'abcde');
+	}
 
-        $a = new Item(['type' => 'a']);
-        $b = new Item(['type' => 'b']);
+	public function testConstruct()
+	{
+		$items = new Items();
 
-        $items->append($a->id(), $a);
-        $items->append($b->id(), $b);
+		$a = new Item(['type' => 'a']);
+		$b = new Item(['type' => 'b']);
 
-        $this->assertCount(2, $items);
-        $this->assertSame($a->id(), $items->first()->id());
-        $this->assertSame($b->id(), $items->last()->id());
-    }
+		$items->append($a->id(), $a);
+		$items->append($b->id(), $b);
 
-    public function testFactoryFromArray()
-    {
-        $items = Items::factory([
-            [
-                'id' => 'a',
-            ],
-            [
-                'id' => 'b',
-            ]
-        ]);
+		$this->assertCount(2, $items);
+		$this->assertSame($a->id(), $items->first()->id());
+		$this->assertSame($b->id(), $items->last()->id());
+	}
 
-        $this->assertCount(2, $items);
-        $this->assertSame($items, $items->first()->siblings());
-        $this->assertEquals('a', $items->first()->id());
-        $this->assertEquals('b', $items->last()->id());
-    }
+	public function testFactoryFromArray()
+	{
+		$items = Items::factory(
+			[
+				[
+					'id' => 'a',
+				],
+				[
+					'id' => 'b',
+				]
+			],
+			[
+				'parent' => $this->page,
+				'field'  => $this->field
+			]
+		);
 
-    public function testParent()
-    {
-        $items = new Items([]);
+		$this->assertCount(2, $items);
+		$this->assertSame($items, $items->first()->siblings());
+		$this->assertSame('a', $items->first()->id());
+		$this->assertSame('b', $items->last()->id());
+		$this->assertSame($this->page, $items->first()->parent());
+		$this->assertSame($this->field, $items->first()->field());
+	}
 
-        $this->assertSame($this->app->site(), $items->parent());
+	public function testField()
+	{
+		$items = new Items([]);
 
-        $items = new Blocks([], [
-            'parent' => $this->page
-        ]);
+		$this->assertNull($items->field());
 
-        $this->assertSame($this->page, $items->parent());
-    }
+		$items = new Blocks([], [
+			'parent' => $this->page,
+			'field'  => $this->field
+		]);
 
-    public function testToArray()
-    {
-        $items = new Items();
+		$this->assertSame($this->field, $items->field());
+	}
 
-        $a = new Item(['id' => 'a']);
-        $b = new Item(['id' => 'b']);
+	public function testParent()
+	{
+		$items = new Items([]);
 
-        $items->append($a->id(), $a);
-        $items->append($b->id(), $b);
+		$this->assertSame($this->app->site(), $items->parent());
 
-        $expected = [
-            $a->toArray(),
-            $b->toArray(),
-        ];
+		$items = new Blocks([], [
+			'parent' => $this->page
+		]);
 
-        $this->assertSame($expected, $items->toArray());
-    }
+		$this->assertSame($this->page, $items->parent());
+	}
+
+	public function testToArray()
+	{
+		$items = new Items();
+
+		$a = new Item(['id' => 'a']);
+		$b = new Item(['id' => 'b']);
+
+		$items->append($a->id(), $a);
+		$items->append($b->id(), $b);
+
+		$expected = [
+			$a->toArray(),
+			$b->toArray(),
+		];
+
+		$this->assertSame($expected, $items->toArray());
+	}
 }

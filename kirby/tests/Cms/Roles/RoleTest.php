@@ -4,106 +4,108 @@ namespace Kirby\Cms;
 
 class RoleTest extends TestCase
 {
-    public function app()
-    {
-        return new App([
-            'roots' => [
-                'site' => __DIR__ . '/fixtures'
-            ]
-        ]);
-    }
+	public const FIXTURES = __DIR__ . '/fixtures';
 
-    public function testProps()
-    {
-        $role = new Role([
-            'description' => 'Test',
-            'name'  => 'admin',
-            'title' => 'Admin'
-        ]);
+	public function app()
+	{
+		return new App([
+			'roots' => [
+				'site' => static::FIXTURES
+			]
+		]);
+	}
 
-        $this->assertEquals('admin', $role->name());
-        $this->assertEquals('Admin', $role->title());
-        $this->assertEquals('Test', $role->description());
-    }
+	public function testProps()
+	{
+		$role = new Role([
+			'description' => 'Test',
+			'name'  => 'admin',
+			'title' => 'Admin'
+		]);
 
-    public function testFactory()
-    {
-        $app  = $this->app();
-        $role = Role::load(__DIR__ . '/fixtures/blueprints/users/editor.yml');
+		$this->assertSame('admin', $role->name());
+		$this->assertSame('Admin', $role->title());
+		$this->assertSame('Test', $role->description());
+	}
 
-        $this->assertEquals('editor', $role->name());
-        $this->assertEquals('Editor', $role->title());
-    }
+	public function testFactory()
+	{
+		$app  = $this->app();
+		$role = Role::load(static::FIXTURES . '/blueprints/users/editor.yml');
 
-    public function testMissingRole()
-    {
-        $this->expectException('Exception');
+		$this->assertSame('editor', $role->name());
+		$this->assertSame('Editor', $role->title());
+	}
 
-        $app  = $this->app();
-        $role = Role::load('does-not-exist');
-    }
+	public function testMissingRole()
+	{
+		$this->expectException('Exception');
 
-    public function testAdmin()
-    {
-        $app  = $this->app();
-        $role = Role::admin();
+		$app  = $this->app();
+		$role = Role::load('does-not-exist');
+	}
 
-        $this->assertEquals('admin', $role->name());
-        $this->assertEquals('Admin', $role->title());
-    }
+	public function testAdmin()
+	{
+		$app  = $this->app();
+		$role = Role::admin();
 
-    public function testNobody()
-    {
-        $app  = $this->app();
-        $role = Role::nobody();
+		$this->assertSame('admin', $role->name());
+		$this->assertSame('Admin', $role->title());
+	}
 
-        $this->assertEquals('nobody', $role->name());
-        $this->assertEquals('Nobody', $role->title());
-        $this->assertTrue($role->isNobody());
-    }
+	public function testNobody()
+	{
+		$app  = $this->app();
+		$role = Role::nobody();
 
-    public function testTranslateTitle()
-    {
-        $role = new Role([
-            'name' => 'editor',
-            'title' => [
-                'en' => 'Editor',
-                'de' => 'Bearbeiter'
-            ]
-        ]);
+		$this->assertSame('nobody', $role->name());
+		$this->assertSame('Nobody', $role->title());
+		$this->assertTrue($role->isNobody());
+	}
 
-        $this->assertEquals('Editor', $role->title());
-    }
+	public function testTranslateTitle()
+	{
+		$role = new Role([
+			'name' => 'editor',
+			'title' => [
+				'en' => 'Editor',
+				'de' => 'Bearbeiter'
+			]
+		]);
 
-    public function testTranslateDescription()
-    {
-        $role = new Role([
-            'name' => 'editor',
-            'description' => [
-                'en' => 'Editor',
-                'de' => 'Bearbeiter'
-            ]
-        ]);
+		$this->assertSame('Editor', $role->title());
+	}
 
-        $this->assertEquals('Editor', $role->title());
-    }
+	public function testTranslateDescription()
+	{
+		$role = new Role([
+			'name' => 'editor',
+			'description' => [
+				'en' => 'Editor',
+				'de' => 'Bearbeiter'
+			]
+		]);
 
-    public function testToArrayAndDebugInfo()
-    {
-        $role = new Role([
-            'name'        => 'editor',
-            'description' => 'Editor'
-        ]);
+		$this->assertSame('Editor', $role->title());
+	}
 
-        $expected = [
-            'description' => 'Editor',
-            'id'          => 'editor',
-            'name'        => 'editor',
-            'permissions' => $role->permissions()->toArray(),
-            'title'       => 'Editor'
-        ];
+	public function testToArrayAndDebugInfo()
+	{
+		$role = new Role([
+			'name'        => 'editor',
+			'description' => 'Editor'
+		]);
 
-        $this->assertEquals($expected, $role->toArray());
-        $this->assertEquals($expected, $role->__debugInfo());
-    }
+		$expected = [
+			'description' => 'Editor',
+			'id'          => 'editor',
+			'name'        => 'editor',
+			'permissions' => $role->permissions()->toArray(),
+			'title'       => 'Editor'
+		];
+
+		$this->assertSame($expected, $role->toArray());
+		$this->assertSame($expected, $role->__debugInfo());
+	}
 }

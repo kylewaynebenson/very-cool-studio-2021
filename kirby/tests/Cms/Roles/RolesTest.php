@@ -2,124 +2,197 @@
 
 namespace Kirby\Cms;
 
+use Kirby\Data\Data;
+
 class RolesTest extends TestCase
 {
-    public function testFactory()
-    {
-        $roles = Roles::factory([
-            [
-                'name'  => 'editor',
-                'title' => 'Editor'
-            ]
-        ]);
+	public const FIXTURES = __DIR__ . '/fixtures';
+	public const TMP      = KIRBY_TMP_DIR . '/Cms.Roles';
 
-        $this->assertInstanceOf(Roles::class, $roles);
+	public function testFactory()
+	{
+		$roles = Roles::factory([
+			[
+				'name'  => 'editor',
+				'title' => 'Editor'
+			]
+		]);
 
-        // should contain the editor role from fixtures and the default admin role
-        $this->assertCount(2, $roles);
-        $this->assertEquals('admin', $roles->first()->name());
-        $this->assertEquals('editor', $roles->last()->name());
-    }
+		$this->assertInstanceOf(Roles::class, $roles);
 
-    public function testLoad()
-    {
-        $roles = Roles::load(__DIR__ . '/fixtures/blueprints/users');
+		// should contain the editor role from fixtures and the default admin role
+		$this->assertCount(2, $roles);
+		$this->assertSame('admin', $roles->first()->name());
+		$this->assertSame('editor', $roles->last()->name());
+	}
 
-        $this->assertInstanceOf(Roles::class, $roles);
+	public function testLoad()
+	{
+		$roles = Roles::load(static::FIXTURES . '/blueprints/users');
 
-        // should contain the editor role from fixtures and the default admin role
-        $this->assertCount(2, $roles);
-        $this->assertEquals('admin', $roles->first()->name());
-        $this->assertEquals('editor', $roles->last()->name());
-    }
+		$this->assertInstanceOf(Roles::class, $roles);
 
-    public function testLoadFromPlugins()
-    {
-        $app = new App([
-            'blueprints' => [
-                'users/admin' => [
-                    'name'  => 'admin',
-                    'title' => 'Admin'
-                ],
-                'users/editor' => [
-                    'name'  => 'editor',
-                    'title' => 'Editor'
-                ],
-            ]
-        ]);
+		// should contain the editor role from fixtures and the default admin role
+		$this->assertCount(2, $roles);
+		$this->assertSame('admin', $roles->first()->name());
+		$this->assertSame('editor', $roles->last()->name());
+	}
 
-        $roles = Roles::load();
+	public function testLoadFromPlugins()
+	{
+		$app = new App([
+			'blueprints' => [
+				'users/admin' => [
+					'name'  => 'admin',
+					'title' => 'Admin'
+				],
+				'users/editor' => [
+					'name'  => 'editor',
+					'title' => 'Editor'
+				],
+			]
+		]);
 
-        $this->assertCount(2, $roles);
-        $this->assertEquals('admin', $roles->first()->name());
-        $this->assertEquals('editor', $roles->last()->name());
-    }
+		$roles = Roles::load();
 
-    public function testCanBeChanged()
-    {
-        new App([
-            'user'  => 'admin@getkirby.com',
-            'users' => [
-                [
-                    'email' => 'admin@getkirby.com',
-                    'role'  => 'admin'
-                ],
-                [
-                    'email' => 'editor@getkirby.com',
-                    'role'  => 'editor'
-                ]
-            ],
-            'blueprints' => [
-                'users/admin' => [
-                    'name'  => 'admin',
-                    'title' => 'Admin'
-                ],
-                'users/editor' => [
-                    'name'  => 'editor',
-                    'title' => 'Editor'
-                ],
-            ]
-        ]);
+		$this->assertCount(2, $roles);
+		$this->assertSame('admin', $roles->first()->name());
+		$this->assertSame('editor', $roles->last()->name());
+	}
 
-        $roles = Roles::load();
-        $canBeChanged = $roles->canBeChanged();
+	public function testLoadFromPluginsCallbackString()
+	{
+		new App([
+			'roots' => [
+				'index' => '/dev/null',
+				'blueprints' => static::TMP,
+			],
+			'blueprints' => [
+				'users/admin' => function () {
+					return static::TMP . '/custom/admin.yml';
+				},
+				'users/editor' => function () {
+					return static::TMP . '/custom/editor.yml';
+				}
+			]
+		]);
 
-        $this->assertInstanceOf('\Kirby\Cms\Roles', $roles);
-        $this->assertCount(2, $roles);
-        $this->assertCount(1, $canBeChanged);
-    }
+		Data::write(static::TMP . '/custom/admin.yml', [
+			'name' => 'admin',
+			'title' => 'Admin'
+		]);
 
-    public function testCanBeCreated()
-    {
-        new App([
-            'user'  => 'admin@getkirby.com',
-            'users' => [
-                [
-                    'email' => 'admin@getkirby.com',
-                    'role'  => 'admin'
-                ],
-                [
-                    'email' => 'editor@getkirby.com',
-                    'role'  => 'editor'
-                ]
-            ],
-            'blueprints' => [
-                'users/admin' => [
-                    'name'  => 'admin',
-                    'title' => 'Admin'
-                ],
-                'users/editor' => [
-                    'name'  => 'editor',
-                    'title' => 'Editor'
-                ],
-            ]
-        ]);
+		Data::write(static::TMP . '/custom/editor.yml', [
+			'name' => 'editor',
+			'title' => 'Editor'
+		]);
 
-        $roles = Roles::load();
-        $canBeCreated = $roles->canBeCreated();
+		$roles = Roles::load();
 
-        $this->assertInstanceOf('\Kirby\Cms\Roles', $roles);
-        $this->assertCount(2, $roles);
-        $this->assertCount(2, $canBeCreated);
-    }
+		$this->assertCount(2, $roles);
+		$this->assertSame('admin', $roles->first()->name());
+		$this->assertSame('editor', $roles->last()->name());
+	}
+
+	public function testLoadFromPluginsCallbackArray()
+	{
+		new App([
+			'blueprints' => [
+				'users/admin' => function () {
+					return [
+						'name' => 'admin',
+						'title' => 'Admin'
+					];
+				},
+				'users/editor' => function () {
+					return [
+						'name' => 'editor',
+						'title' => 'Editor'
+					];
+				}
+			]
+		]);
+
+		$roles = Roles::load();
+
+		$this->assertCount(2, $roles);
+		$this->assertSame('admin', $roles->first()->name());
+		$this->assertSame('editor', $roles->last()->name());
+	}
+
+	public function testCanBeChanged()
+	{
+		$app = new App([
+			'users' => [
+				[
+					'email' => 'admin@getkirby.com',
+					'role'  => 'admin'
+				],
+				[
+					'email' => 'editor@getkirby.com',
+					'role'  => 'editor'
+				]
+			],
+			'blueprints' => [
+				'users/admin' => [
+					'name'  => 'admin',
+					'title' => 'Admin'
+				],
+				'users/editor' => [
+					'name'  => 'editor',
+					'title' => 'Editor'
+				],
+			]
+		]);
+
+		$roles = Roles::load();
+		$this->assertInstanceOf(Roles::class, $roles);
+		$this->assertCount(2, $roles);
+
+		$app->impersonate('editor@getkirby.com');
+		$canBeChanged = $roles->canBeChanged();
+		$this->assertCount(1, $canBeChanged);
+
+		$app->impersonate('admin@getkirby.com');
+		$canBeChanged = $roles->canBeChanged();
+		$this->assertCount(2, $canBeChanged);
+	}
+
+	public function testCanBeCreated()
+	{
+		$app = new App([
+			'users' => [
+				[
+					'email' => 'admin@getkirby.com',
+					'role'  => 'admin'
+				],
+				[
+					'email' => 'editor@getkirby.com',
+					'role'  => 'editor'
+				]
+			],
+			'blueprints' => [
+				'users/admin' => [
+					'name'  => 'admin',
+					'title' => 'Admin'
+				],
+				'users/editor' => [
+					'name'  => 'editor',
+					'title' => 'Editor'
+				],
+			]
+		]);
+
+		$roles = Roles::load();
+		$this->assertInstanceOf(Roles::class, $roles);
+		$this->assertCount(2, $roles);
+
+		$app->impersonate('editor@getkirby.com');
+		$canBeCreated = $roles->canBeCreated();
+		$this->assertCount(1, $canBeCreated);
+
+		$app->impersonate('admin@getkirby.com');
+		$canBeCreated = $roles->canBeCreated();
+		$this->assertCount(2, $canBeCreated);
+	}
 }

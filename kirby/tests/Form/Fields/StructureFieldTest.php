@@ -7,352 +7,455 @@ use Kirby\Form\Field;
 
 class StructureFieldTest extends TestCase
 {
-    public function testDefaultProps()
-    {
-        $field = $this->field('structure', [
-            'fields' => [
-                'text' => [
-                    'type' => 'text'
-                ]
-            ]
-        ]);
+	public function testDefaultProps()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'text' => [
+					'type' => 'text'
+				]
+			]
+		]);
 
-        $this->assertEquals('structure', $field->type());
-        $this->assertEquals('structure', $field->name());
-        $this->assertEquals(null, $field->limit());
-        $this->assertTrue(is_array($field->fields()));
-        $this->assertEquals([], $field->value());
-        $this->assertTrue($field->save());
-    }
+		$this->assertSame('structure', $field->type());
+		$this->assertSame('structure', $field->name());
+		$this->assertNull($field->limit());
+		$this->assertIsArray($field->fields());
+		$this->assertSame([], $field->value());
+		$this->assertTrue($field->save());
+	}
 
-    public function testTagsFieldInStructure()
-    {
-        $field = $this->field('structure', [
-            'fields' => [
-                'tags' => [
-                    'label' => 'Tags',
-                    'type'  => 'tags'
-                ]
-            ],
-            'value' => [
-                [
-                    'tags' => 'a, b'
-                ]
-            ]
-        ]);
+	public function testTagsFieldInStructure()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'tags' => [
+					'label' => 'Tags',
+					'type'  => 'tags'
+				]
+			],
+			'value' => [
+				[
+					'tags' => 'a, b'
+				]
+			]
+		]);
 
-        $expectedValue = [
-            [
-                'text' => 'a',
-                'value' => 'a'
-            ],
-            [
-                'text' => 'b',
-                'value' => 'b'
-            ]
-        ];
+		$expected = [
+			[
+				'tags' => 'a, b'
+			]
+		];
 
-        $this->assertEquals($expectedValue, $field->value()[0]['tags']);
+		$this->assertSame($expected, $field->data());
+		$this->assertSame('a, b', $field->data()[0]['tags']);
+		$this->assertSame(['a', 'b'], $field->value()[0]['tags']);
+	}
 
-        $expected = [
-            [
-                'tags' => 'a, b'
-            ]
-        ];
+	public function testColumnsFromFields()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'a' => [
+					'type' => 'text'
+				],
+				'b' => [
+					'type' => 'text'
+				]
+			],
+		]);
 
-        $this->assertEquals($expected, $field->data());
-    }
+		$expected = [
+			'a' => [
+				'type' => 'text',
+				'label' => 'a',
+				'mobile' => true // the first column should be automatically kept on mobile
+			],
+			'b' => [
+				'type' => 'text',
+				'label' => 'b',
+			],
+		];
 
-    public function testLowerCaseColumnsNames()
-    {
-        $field = $this->field('structure', [
-            'columns' => [
-                'camelCase' => true
-            ],
-            'fields' => [
-                'camelCase' => [
-                    'type' => 'text'
-                ]
-            ],
-        ]);
+		$this->assertSame($expected, $field->columns());
+	}
 
-        $this->assertEquals(['camelcase'], array_keys($field->columns()));
-    }
+	public function testColumnsWithCustomMobileSetup()
+	{
+		$field = $this->field('structure', [
+			'columns' => [
+				'b' => [
+					'mobile' => true
+				]
+			],
+			'fields' => [
+				'a' => [
+					'type' => 'text'
+				],
+				'b' => [
+					'type' => 'text'
+				]
+			],
+		]);
 
-    public function testMin()
-    {
-        $field = $this->field('structure', [
-            'fields' => [
-                'title' => [
-                    'type' => 'text'
-                ]
-            ],
-            'value' => [
-                ['title' => 'a'],
-            ],
-            'min' => 2
-        ]);
+		$expected = [
+			'b' => [
+				'mobile' => true,
+				'type'   => 'text',
+				'label'  => 'b',
+			],
+		];
 
-        $this->assertFalse($field->isValid());
-        $this->assertEquals(2, $field->min());
-        $this->assertTrue($field->required());
-        $this->assertArrayHasKey('min', $field->errors());
-    }
+		$this->assertSame($expected, $field->columns());
+	}
 
-    public function testMax()
-    {
-        $field = $this->field('structure', [
-            'fields' => [
-                'title' => [
-                    'type' => 'text'
-                ]
-            ],
-            'value' => [
-                ['title' => 'a'],
-                ['title' => 'b'],
-            ],
-            'max' => 1
-        ]);
+	public function testColumnsWithI18nLabel()
+	{
+		$field = $this->field('structure', [
+			'columns' => [
+				'b' => [
+					'label' => [
+						'en' => 'Field B',
+						'de' => 'Feld B'
+					]
+				]
+			],
+			'fields' => [
+				'b' => [
+					'type' => 'text'
+				]
+			],
+		]);
 
-        $this->assertFalse($field->isValid());
-        $this->assertEquals(1, $field->max());
-        $this->assertArrayHasKey('max', $field->errors());
-    }
+		$expected = [
+			'b' => [
+				'label'  => 'Field B',
+				'type'   => 'text',
+				'mobile' => true
+			],
+		];
 
-    public function testNestedStructures()
-    {
-        $field = $this->field('structure', [
-            'model'  => 'test',
-            'name'   => 'mothers',
-            'fields' => [
-                'name' => [
-                    'type' => 'text',
-                ],
-                'children' => [
-                    'type' => 'structure',
-                    'fields' => [
-                        'name' => [
-                            'type' => 'text'
-                        ]
-                    ]
-                ]
-            ],
-            'value' => $value = [
-                [
-                    'name' => 'Marge',
-                    'children' => [
-                        [
-                            'name' => 'Lisa',
-                        ],
-                        [
-                            'name' => 'Maggie',
-                        ],
-                        [
-                            'name' => 'Bart',
-                        ]
-                    ]
-                ]
-            ]
-        ]);
+		$this->assertSame($expected, $field->columns());
+	}
 
-        $this->assertEquals($value, $field->value());
-        $this->assertEquals($value, $field->data());
+	public function testLowerCaseColumnsNames()
+	{
+		$field = $this->field('structure', [
+			'columns' => [
+				'camelCase' => true
+			],
+			'fields' => [
+				'camelCase' => [
+					'type' => 'text'
+				]
+			],
+		]);
 
-        // empty mother form
-        $motherForm = $field->form();
+		$this->assertSame(['camelcase'], array_keys($field->columns()));
+	}
 
-        $expected = [
-            'name'     => null,
-            'children' => []
-        ];
+	public function testMin()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'title' => [
+					'type' => 'text'
+				]
+			],
+			'value' => [
+				['title' => 'a'],
+			],
+			'min' => 2
+		]);
 
-        $this->assertEquals($expected, $motherForm->data());
+		$this->assertFalse($field->isValid());
+		$this->assertSame(2, $field->min());
+		$this->assertTrue($field->required());
+		$this->assertArrayHasKey('min', $field->errors());
+	}
 
-        // filled mother form
-        $motherForm = $field->form($value[0]);
-        $expected   = $value[0];
+	public function testMax()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'title' => [
+					'type' => 'text'
+				]
+			],
+			'value' => [
+				['title' => 'a'],
+				['title' => 'b'],
+			],
+			'max' => 1
+		]);
 
-        $this->assertEquals($expected, $motherForm->data());
+		$this->assertFalse($field->isValid());
+		$this->assertSame(1, $field->max());
+		$this->assertArrayHasKey('max', $field->errors());
+	}
 
-        $childrenField = $motherForm->fields()->children();
+	public function testNestedStructures()
+	{
+		$field = $this->field('structure', [
+			'model'  => 'test',
+			'name'   => 'mothers',
+			'fields' => [
+				'name' => [
+					'type' => 'text',
+				],
+				'children' => [
+					'type' => 'structure',
+					'fields' => [
+						'name' => [
+							'type' => 'text'
+						]
+					]
+				]
+			],
+			'value' => $value = [
+				[
+					'name' => 'Marge',
+					'uuid' => 'my-marge',
+					'children' => [
+						[
+							'name' => 'Lisa',
+							'uuid' => 'my-lisa'
+						],
+						[
+							'name' => 'Maggie',
+							'uuid' => 'my-maggie'
+						],
+						[
+							'name' => 'Bart',
+							'uuid' => 'my-bart'
+						]
+					]
+				]
+			]
+		]);
 
-        $this->assertEquals('structure', $childrenField->type());
-        $this->assertEquals('test', $childrenField->model());
+		$this->assertEquals($value, $field->value()); // cannot use strict assertion (array order)
+		$this->assertEquals($value, $field->data()); // cannot use strict assertion (array order)
 
-        // empty children form
-        $childrenForm = $childrenField->form();
+		// empty mother form
+		$motherForm = $field->form();
+		$data       = $motherForm->data();
 
-        $this->assertEquals(['name' => null], $childrenForm->data());
+		$expected = [
+			'name'     => '',
+			'children' => []
+		];
 
-        // filled children form
-        $childrenForm = $childrenField->form([
-            'name' => 'Test'
-        ]);
+		unset($data['uuid']);
 
-        $this->assertEquals(['name' => 'Test'], $childrenForm->data());
+		$this->assertSame($expected, $data);
 
-        // children name field
-        $childrenNameField = $childrenField->form()->fields()->name();
+		// filled mother form
+		$motherForm = $field->form($value[0]);
+		$expected   = $value[0];
 
-        $this->assertEquals('text', $childrenNameField->type());
-        $this->assertEquals('test', $childrenNameField->model());
-        $this->assertEquals(null, $childrenNameField->data());
-    }
+		$this->assertEquals($expected, $motherForm->data()); // cannot use strict assertion (array order)
 
-    public function testFloatsWithNonUsLocale()
-    {
-        $field = $this->field('structure', [
-            'fields' => [
-                'number' => [
-                    'type' => 'number'
-                ]
-            ],
-            'value' => [
-                [
-                    'number' => 3.2
-                ]
-            ]
-        ]);
+		$childrenField = $motherForm->fields()->children();
 
-        $this->assertTrue(is_float($field->data()[0]['number']));
-    }
+		$this->assertSame('structure', $childrenField->type());
+		$this->assertSame('test', $childrenField->model());
 
-    public function testEmpty()
-    {
-        $field = $this->field('structure', [
-            'fields' => [
-                'text' => [
-                    'type' => 'text'
-                ]
-            ],
-            'empty' => 'Test'
-        ]);
+		// empty children form
+		$childrenForm = $childrenField->form();
 
-        $this->assertEquals('Test', $field->empty());
-    }
+		$this->assertSame('', $childrenForm->data()['name']);
 
-    public function testTranslatedEmpty()
-    {
-        $field = $this->field('structure', [
-            'fields' => [
-                'text' => [
-                    'type' => 'text'
-                ]
-            ],
-            'empty' => ['en' => 'Test', 'de' => 'Töst']
-        ]);
+		// filled children form
+		$childrenForm = $childrenField->form([
+			'name' => 'Test'
+		]);
 
-        $this->assertEquals('Test', $field->empty());
-    }
+		$this->assertSame('Test', $childrenForm->data()['name']);
 
-    public function testTranslate()
-    {
-        $app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ],
-            'options' => [
-                'languages' => true
-            ],
-            'languages' => [
-                [
-                    'code' => 'en',
-                    'default' => true
-                ],
-                [
-                    'code' => 'de',
-                ]
-            ]
-        ]);
+		// children name field
+		$childrenNameField = $childrenField->form()->fields()->name();
 
-        $field = $this->field('structure', [
-            'fields' => [
-                'a' => [
-                    'type' => 'text'
-                ],
-                'b' => [
-                    'type' => 'text',
-                    'translate' => false
-                ]
-            ]
-        ]);
+		$this->assertSame('text', $childrenNameField->type());
+		$this->assertSame('test', $childrenNameField->model());
+		$this->assertSame('', $childrenNameField->data());
+	}
 
-        $app->setCurrentLanguage('en');
+	public function testFloatsWithNonUsLocale()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'number' => [
+					'type' => 'number'
+				]
+			],
+			'value' => [
+				[
+					'number' => 3.2
+				]
+			]
+		]);
 
-        $this->assertFalse($field->form()->fields()->a()->disabled());
-        $this->assertFalse($field->form()->fields()->b()->disabled());
+		$this->assertTrue(is_float($field->data()[0]['number']));
+	}
 
-        $app->setCurrentLanguage('de');
+	public function testEmpty()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'text' => [
+					'type' => 'text'
+				]
+			],
+			'empty' => 'Test'
+		]);
 
-        $this->assertFalse($field->form()->fields()->a()->disabled());
-        $this->assertTrue($field->form()->fields()->b()->disabled());
-    }
+		$this->assertSame('Test', $field->empty());
+	}
 
-    public function testDefault()
-    {
-        $field = $this->field('structure', [
-            'fields' => [
-                'a' => [
-                    'type' => 'text'
-                ],
-                'b' => [
-                    'type' => 'text',
-                ]
-            ],
-            'default' => $data = [
-                [
-                    'a' => 'A',
-                    'b' => 'B'
-                ]
-            ]
-        ]);
+	public function testTranslatedEmpty()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'text' => [
+					'type' => 'text'
+				]
+			],
+			'empty' => ['en' => 'Test', 'de' => 'Töst']
+		]);
 
-        $this->assertEquals($data, $field->data(true));
-    }
+		$this->assertSame('Test', $field->empty());
+	}
 
-    public function testRequiredProps()
-    {
-        $field = $this->field('structure', [
-            'fields' => [
-                'title' => [
-                    'type' => 'text'
-                ]
-            ],
-            'required' => true
-        ]);
+	public function testTranslate()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null'
+			],
+			'options' => [
+				'languages' => true
+			],
+			'languages' => [
+				[
+					'code' => 'en',
+					'default' => true
+				],
+				[
+					'code' => 'de',
+				]
+			]
+		]);
 
-        $this->assertTrue($field->required());
-        $this->assertEquals(1, $field->min());
-    }
+		$field = $this->field('structure', [
+			'fields' => [
+				'a' => [
+					'type' => 'text'
+				],
+				'b' => [
+					'type' => 'text',
+					'translate' => false
+				]
+			]
+		]);
 
-    public function testRequiredInvalid()
-    {
-        $field = $this->field('structure', [
-            'fields' => [
-                'title' => [
-                    'type' => 'text'
-                ]
-            ],
-            'required' => true
-        ]);
+		$app->setCurrentLanguage('en');
 
-        $this->assertFalse($field->isValid());
-    }
+		$this->assertFalse($field->form()->fields()->a()->disabled());
+		$this->assertFalse($field->form()->fields()->b()->disabled());
 
-    public function testRequiredValid()
-    {
-        $field = $this->field('structure', [
-            'fields' => [
-                'title' => [
-                    'type' => 'text'
-                ]
-            ],
-            'value' => [
-                ['title' => 'a'],
-            ],
-            'required' => true
-        ]);
+		$app->setCurrentLanguage('de');
 
-        $this->assertTrue($field->isValid());
-    }
+		$this->assertFalse($field->form()->fields()->a()->disabled());
+		$this->assertTrue($field->form()->fields()->b()->disabled());
+	}
+
+	public function testDefault()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'a' => [
+					'type' => 'text'
+				],
+				'b' => [
+					'type' => 'text',
+				]
+			],
+			'default' => [
+				[
+					'a' => 'A',
+					'b' => 'B'
+				]
+			]
+		]);
+
+		$this->assertSame('A', $field->data(true)[0]['a']);
+		$this->assertSame('B', $field->data(true)[0]['b']);
+	}
+
+	public function testRequiredProps()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'title' => [
+					'type' => 'text'
+				]
+			],
+			'required' => true
+		]);
+
+		$this->assertTrue($field->required());
+		$this->assertSame(1, $field->min());
+	}
+
+	public function testRequiredInvalid()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'title' => [
+					'type' => 'text'
+				]
+			],
+			'required' => true
+		]);
+
+		$this->assertFalse($field->isValid());
+	}
+
+	public function testRequiredValid()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'title' => [
+					'type' => 'text'
+				]
+			],
+			'value' => [
+				['title' => 'a'],
+			],
+			'required' => true
+		]);
+
+		$this->assertTrue($field->isValid());
+	}
+
+	public function testValidationsInvalid()
+	{
+		$field = $this->field('structure', [
+			'fields' => [
+				'title' => [
+					'type' => 'text',
+					'required' => true
+				]
+			],
+			'value' => [
+				['title' => ''],
+			]
+		]);
+
+		$this->assertFalse($field->isValid());
+		$this->assertSame([
+			'structure' => 'There\'s an error on the "Title" field in row 1'
+		], $field->errors());
+	}
 }

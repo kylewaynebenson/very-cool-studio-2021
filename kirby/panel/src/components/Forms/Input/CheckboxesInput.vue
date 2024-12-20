@@ -1,109 +1,108 @@
 <template>
-  <ul :style="'--columns:' + columns" class="k-checkboxes-input">
-    <li v-for="(option, index) in options" :key="index">
-      <k-checkbox-input
-        :id="id + '-' + index"
-        :label="option.text"
-        :value="selected.indexOf(option.value) !== -1"
-        @input="onInput(option.value, $event)"
-      />
-    </li>
-  </ul>
+	<ul
+		:style="{ '--columns': columns }"
+		class="k-checkboxes-input k-grid"
+		data-variant="choices"
+	>
+		<li v-for="(choice, index) in choices" :key="index">
+			<k-choice-input v-bind="choice" @input="input(choice.value, $event)" />
+		</li>
+	</ul>
 </template>
 
 <script>
-import { required, minLength, maxLength } from "vuelidate/lib/validators";
+import Input, { props as InputProps } from "@/mixins/input.js";
+import { options } from "@/mixins/props.js";
+
+import {
+	required as validateRequired,
+	minLength as validateMinLength,
+	maxLength as validateMaxLength
+} from "vuelidate/lib/validators";
+
+export const props = {
+	mixins: [InputProps, options],
+	props: {
+		columns: {
+			default: 1,
+			type: Number
+		},
+		max: Number,
+		min: Number,
+		theme: String,
+		/**
+		 * The value for the input should be provided as array. Each value in the array corresponds with the value in the options. If you provide a string, the string will be split by comma.
+		 */
+		value: {
+			type: Array,
+			default: () => []
+		}
+	}
+};
 
 export default {
-  inheritAttrs: false,
-  props: {
-    autofocus: Boolean,
-    columns: Number,
-    disabled: Boolean,
-    id: {
-      type: [Number, String],
-      default() {
-        return this._uid;
-      }
-    },
-    max: Number,
-    min: Number,
-    options: Array,
-    required: Boolean,
-    /**
-     * The value for the input should be provided as array. Each value in the array corresponds with the value in the options. If you provide a string, the string will be split by comma.
-     */
-    value: {
-      type: [Array, Object],
-      default() {
-        return [];
-      }
-    }
-  },
-  data() {
-    return {
-      selected: this.valueToArray(this.value)
-    }
-  },
-  watch: {
-    value(value) {
-      this.selected = this.valueToArray(value);
-    },
-    selected() {
-      this.onInvalid();
-    }
-  },
-  mounted() {
-    this.onInvalid();
-
-    if (this.$props.autofocus) {
-      this.focus();
-    }
-  },
-  methods: {
-    focus() {
-      this.$el.querySelector("input").focus();
-    },
-    onInput(key, value) {
-      if (value === true) {
-        this.selected.push(key);
-      } else {
-        const index = this.selected.indexOf(key);
-        if (index !== -1) {
-          this.selected.splice(index, 1);
-        }
-      }
-      this.$emit("input", this.selected);
-    },
-    onInvalid() {
-      this.$emit("invalid", this.$v.$invalid, this.$v);
-    },
-    select() {
-      this.focus();
-    },
-    valueToArray(value) {
-      if (Array.isArray(value) === true) {
-        return value;
-      }
-
-      if (typeof value === "string") {
-        return String(value).split(",");
-      }
-
-      if (typeof value === "object") {
-        return Object.values(value);
-      }
-    },
-  },
-  validations() {
-    return {
-      selected: {
-        required: this.required ? required : true,
-        min: this.min ? minLength(this.min) : true,
-        max: this.max ? maxLength(this.max) : true,
-      }
-    };
-  }
-}
-
+	mixins: [Input, props],
+	data() {
+		return {
+			selected: []
+		};
+	},
+	computed: {
+		choices() {
+			return this.options.map((option, index) => {
+				return {
+					autofocus: this.autofocus && index === 0,
+					checked: this.selected.includes(option.value),
+					disabled: this.disabled || option.disabled,
+					id: `${this.id}-${index}`,
+					info: option.info,
+					label: option.text,
+					name: this.name ?? this.id,
+					type: "checkbox",
+					value: option.value
+				};
+			});
+		}
+	},
+	watch: {
+		value: {
+			handler(value) {
+				this.selected = Array.isArray(value) ? value : [];
+				this.validate();
+			},
+			immediate: true
+		}
+	},
+	methods: {
+		focus() {
+			this.$el.querySelector("input")?.focus();
+		},
+		input(key, value) {
+			if (value === true) {
+				this.selected.push(key);
+			} else {
+				const index = this.selected.indexOf(key);
+				if (index !== -1) {
+					this.selected.splice(index, 1);
+				}
+			}
+			this.$emit("input", this.selected);
+		},
+		select() {
+			this.focus();
+		},
+		validate() {
+			this.$emit("invalid", this.$v.$invalid, this.$v);
+		}
+	},
+	validations() {
+		return {
+			selected: {
+				required: this.required ? validateRequired : true,
+				min: this.min ? validateMinLength(this.min) : true,
+				max: this.max ? validateMaxLength(this.max) : true
+			}
+		};
+	}
+};
 </script>

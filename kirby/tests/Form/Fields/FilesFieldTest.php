@@ -9,225 +9,321 @@ use Kirby\Cms\User;
 
 class FilesFieldTest extends TestCase
 {
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ],
-            'site' => [
-                'children' => [
-                    [
-                        'slug' => 'test',
-                        'files' => [
-                            [
-                                'filename' => 'a.jpg'
-                            ],
-                            [
-                                'filename' => 'b.jpg'
-                            ],
-                            [
-                                'filename' => 'c.jpg'
-                            ]
-                        ]
-                    ],
-                ],
-                'drafts' => [
-                    [
-                        'slug'  => 'test-draft',
-                        'files' => [
-                            [
-                                'filename' => 'a.jpg'
-                            ],
-                            [
-                                'filename' => 'b.jpg'
-                            ],
-                            [
-                                'filename' => 'c.jpg'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        ]);
-    }
+	public const TMP = KIRBY_TMP_DIR . '/Form.Fields.Languages';
 
-    public function model()
-    {
-        return $this->app->page('test');
-    }
+	public function setUp(): void
+	{
+		parent::setUp();
 
-    public function testDefaultProps()
-    {
-        $field = $this->field('files', [
-            'model' => $this->model()
-        ]);
+		$this->app = new App([
+			'roots' => [
+				'index' => static::TMP
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'test',
+						'files' => [
+							[
+								'filename' => 'a.jpg'
+							],
+							[
+								'filename' => 'b.jpg'
+							],
+							[
+								'filename' => 'c.jpg'
+							]
+						]
+					]
+				],
+				'drafts' => [
+					[
+						'slug'  => 'test-draft',
+						'files' => [
+							[
+								'filename' => 'a.jpg'
+							],
+							[
+								'filename' => 'b.jpg'
+							],
+							[
+								'filename' => 'c.jpg'
+							]
+						]
+					]
+				]
+			]
+		]);
+	}
 
-        $this->assertEquals('files', $field->type());
-        $this->assertEquals('files', $field->name());
-        $this->assertEquals([], $field->value());
-        $this->assertEquals([], $field->default());
-        $this->assertEquals('list', $field->layout());
-        $this->assertEquals(null, $field->max());
-        $this->assertEquals(true, $field->multiple());
-        $this->assertTrue($field->save());
-    }
+	public function model()
+	{
+		return $this->app->page('test');
+	}
 
-    public function testValue()
-    {
-        $field = $this->field('files', [
-            'model' => $this->model(),
-            'value' => [
-                'a.jpg', // exists
-                'b.jpg', // exists
-                'e.jpg'  // does not exist
-            ]
-        ]);
+	public function testDefaultProps()
+	{
+		$field = $this->field('files', [
+			'model' => $this->model()
+		]);
 
-        $value = $field->value();
-        $ids   = array_column($value, 'id');
+		$this->assertSame('files', $field->type());
+		$this->assertSame('files', $field->name());
+		$this->assertSame([], $field->value());
+		$this->assertSame([], $field->default());
+		$this->assertSame('list', $field->layout());
+		$this->assertNull($field->max());
+		$this->assertTrue($field->multiple());
+		$this->assertTrue($field->save());
+		$this->assertSame('uuid', $field->store());
+	}
 
-        $expected = [
-            'test/a.jpg',
-            'test/b.jpg'
-        ];
+	public function testValue()
+	{
+		$field = $this->field('files', [
+			'model' => $this->model(),
+			'value' => [
+				'a.jpg', // exists
+				'b.jpg', // exists
+				'e.jpg'  // does not exist
+			]
+		]);
 
-        $this->assertEquals($expected, $ids);
-    }
+		$value = $field->value();
+		$ids   = array_column($value, 'id');
 
-    public function testMin()
-    {
-        $field = $this->field('files', [
-            'model' => $this->model(),
-            'value' => [
-                'a.jpg', // exists
-                'b.jpg', // exists
-            ],
-            'min' => 3
-        ]);
+		$expected = [
+			'a.jpg',
+			'b.jpg'
+		];
 
-        $this->assertFalse($field->isValid());
-        $this->assertEquals(3, $field->min());
-        $this->assertTrue($field->required());
-        $this->assertArrayHasKey('min', $field->errors());
-    }
+		$this->assertSame($expected, $ids);
+	}
 
-    public function testMax()
-    {
-        $field = $this->field('files', [
-            'model' => $this->model(),
-            'value' => [
-                'a.jpg', // exists
-                'b.jpg', // exists
-            ],
-            'max' => 1
-        ]);
+	public function testMin()
+	{
+		$field = $this->field('files', [
+			'model' => $this->model(),
+			'value' => [
+				'a.jpg', // exists
+				'b.jpg', // exists
+			],
+			'min' => 3
+		]);
 
-        $this->assertFalse($field->isValid());
-        $this->assertEquals(1, $field->max());
-        $this->assertArrayHasKey('max', $field->errors());
-    }
+		$this->assertFalse($field->isValid());
+		$this->assertSame(3, $field->min());
+		$this->assertTrue($field->required());
+		$this->assertArrayHasKey('min', $field->errors());
+	}
 
-    public function testFilesInDraft()
-    {
-        $field = $this->field('files', [
-            'model' => $this->app->page('test-draft'),
-            'value' => [
-                'a.jpg', // exists
-                'b.jpg', // exists
-                'e.jpg', // does not exist
-            ]
-        ]);
+	public function testMax()
+	{
+		$field = $this->field('files', [
+			'model' => $this->model(),
+			'value' => [
+				'a.jpg', // exists
+				'b.jpg', // exists
+			],
+			'max' => 1
+		]);
 
-        $value = $field->value();
-        $ids   = array_column($value, 'id');
+		$this->assertFalse($field->isValid());
+		$this->assertSame(1, $field->max());
+		$this->assertArrayHasKey('max', $field->errors());
+	}
 
-        $expected = [
-            'test-draft/a.jpg',
-            'test-draft/b.jpg'
-        ];
+	public function testFilesInDraft()
+	{
+		$field = $this->field('files', [
+			'model' => $this->app->page('test-draft'),
+			'value' => [
+				'a.jpg', // exists
+				'b.jpg', // exists
+				'e.jpg', // does not exist
+			]
+		]);
 
-        $this->assertEquals($expected, $ids);
-    }
+		$value = $field->value();
+		$ids   = array_column($value, 'id');
 
-    public function testQueryWithPageParent()
-    {
-        $field = $this->field('files', [
-            'model' => new Page(['slug' => 'test']),
-        ]);
+		$expected = [
+			'a.jpg',
+			'b.jpg'
+		];
 
-        $this->assertEquals('page.files', $field->query());
-    }
+		$this->assertSame($expected, $ids);
+	}
 
-    public function testQueryWithSiteParent()
-    {
-        $field = $this->field('files', [
-            'model' => new Site(),
-        ]);
+	public function testQueryWithPageParent()
+	{
+		$field = $this->field('files', [
+			'model' => new Page(['slug' => 'test']),
+		]);
 
-        $this->assertEquals('site.files', $field->query());
-    }
+		$this->assertSame('page.files', $field->query());
+	}
 
-    public function testQueryWithUserParent()
-    {
-        $field = $this->field('files', [
-            'model' => new User(['email' => 'test@getkirby.com']),
-        ]);
+	public function testQueryWithSiteParent()
+	{
+		$field = $this->field('files', [
+			'model' => new Site(),
+		]);
 
-        $this->assertEquals('user.files', $field->query());
-    }
+		$this->assertSame('site.files', $field->query());
+	}
 
-    public function testEmpty()
-    {
-        $field = $this->field('files', [
-            'model' => new Page(['slug' => 'test']),
-            'empty' => 'Test'
-        ]);
+	public function testQueryWithUserParent()
+	{
+		$field = $this->field('files', [
+			'model' => new User(['email' => 'test@getkirby.com']),
+		]);
 
-        $this->assertEquals('Test', $field->empty());
-    }
+		$this->assertSame('user.files', $field->query());
+	}
 
-    public function testTranslatedEmpty()
-    {
-        $field = $this->field('files', [
-            'model' => new Page(['slug' => 'test']),
-            'empty' => ['en' => 'Test', 'de' => 'Töst']
-        ]);
+	public function testEmpty()
+	{
+		$field = $this->field('files', [
+			'model' => new Page(['slug' => 'test']),
+			'empty' => 'Test'
+		]);
 
-        $this->assertEquals('Test', $field->empty());
-    }
+		$this->assertSame('Test', $field->empty());
+	}
 
-    public function testRequiredProps()
-    {
-        $field = $this->field('files', [
-            'model'    => $this->model(),
-            'required' => true
-        ]);
+	public function testTranslatedEmpty()
+	{
+		$field = $this->field('files', [
+			'model' => new Page(['slug' => 'test']),
+			'empty' => ['en' => 'Test', 'de' => 'Töst']
+		]);
 
-        $this->assertTrue($field->required());
-        $this->assertEquals(1, $field->min());
-    }
+		$this->assertSame('Test', $field->empty());
+	}
 
-    public function testRequiredInvalid()
-    {
-        $field = $this->field('files', [
-            'model'    => $this->model(),
-            'required' => true
-        ]);
+	public function testRequiredProps()
+	{
+		$field = $this->field('files', [
+			'model'    => $this->model(),
+			'required' => true
+		]);
 
-        $this->assertFalse($field->isValid());
-    }
+		$this->assertTrue($field->required());
+		$this->assertSame(1, $field->min());
+	}
 
-    public function testRequiredValid()
-    {
-        $field = $this->field('files', [
-            'model'    => $this->model(),
-            'required' => true,
-            'value' => [
-                'a.jpg',
-            ],
-        ]);
+	public function testRequiredInvalid()
+	{
+		$field = $this->field('files', [
+			'model'    => $this->model(),
+			'required' => true
+		]);
 
-        $this->assertTrue($field->isValid());
-    }
+		$this->assertFalse($field->isValid());
+	}
+
+	public function testRequiredValid()
+	{
+		$field = $this->field('files', [
+			'model'    => $this->model(),
+			'required' => true,
+			'value' => [
+				'a.jpg',
+			],
+		]);
+
+		$this->assertTrue($field->isValid());
+	}
+
+	public function testApi()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => static::TMP
+			],
+			'options' => ['api.allowImpersonation' => true],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'test',
+						'files' => [
+							['filename' => 'a.jpg'],
+							['filename' => 'b.jpg'],
+							['filename' => 'c.jpg'],
+						],
+						'blueprint' => [
+							'title' => 'Test',
+							'name' => 'test',
+							'fields' => [
+								'gallery' => [
+									'type' => 'files',
+								]
+							]
+						]
+					]
+				]
+			]
+		]);
+
+		$app->impersonate('kirby');
+		$api = $app->api()->call('pages/test/fields/gallery');
+
+		$this->assertCount(2, $api);
+		$this->assertArrayHasKey('data', $api);
+		$this->assertArrayHasKey('pagination', $api);
+		$this->assertCount(3, $api['data']);
+		$this->assertSame('a.jpg', $api['data'][0]['id']);
+		$this->assertSame('b.jpg', $api['data'][1]['id']);
+		$this->assertSame('c.jpg', $api['data'][2]['id']);
+	}
+
+	public function testParentModel()
+	{
+		$field = $this->field('files', [
+			'model' => $this->model()
+		]);
+
+		$this->assertSame($this->model(), $field->parentModel());
+
+		$field = $this->field('files', [
+			'model'  => $this->model(),
+			'parent' => 'site'
+		]);
+
+		$this->assertSame($this->app->site(), $field->parentModel());
+	}
+
+	public function testStore()
+	{
+		// Default
+		$field = $this->field('files', [
+			'model' => new Page(['slug' => 'test']),
+		]);
+
+		$this->assertSame('uuid', $field->store());
+
+		// Custom
+		$field = $this->field('files', [
+			'model' => new Page(['slug' => 'test']),
+			'store' => 'id'
+		]);
+
+		$this->assertSame('id', $field->store());
+
+		// Disabled UUIDs
+		$this->app->clone([
+			'options' => [
+				'content' => [
+					'uuid' => false
+				]
+			]
+		]);
+
+		$field = $this->field('files', [
+			'model' => new Page(['slug' => 'test']),
+		]);
+
+		$this->assertSame('id', $field->store());
+	}
 }

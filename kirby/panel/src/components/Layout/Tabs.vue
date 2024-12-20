@@ -1,240 +1,193 @@
 <template>
-  <div
-    v-if="tabs && tabs.length > 1"
-    :data-theme="theme"
-    class="k-tabs"
-  >
-    <nav>
-      <k-button
-        v-for="tabButton in visibleTabs"
-        :key="tabButton.name"
-        :link="'#' + tabButton.name"
-        :current="current === tabButton.name"
-        :icon="tabButton.icon"
-        :tooltip="tabButton.label"
-        class="k-tab-button"
-      >
-        {{ tabButton.label || tabButton.text || tabButton.name }}
+	<nav v-if="tabs.length > 1" class="k-tabs">
+		<div v-for="btn in buttons" :key="btn.name" class="k-tabs-tab">
+			<k-button
+				ref="visible"
+				v-bind="btn"
+				variant="dimmed"
+				class="k-tab-button"
+			>
+				{{ btn.text }}
+			</k-button>
+			<span v-if="btn.badge" :data-theme="theme" class="k-tabs-badge">
+				{{ btn.badge }}
+			</span>
+		</div>
 
-        <span
-          v-if="tabButton.badge"
-          class="k-tabs-badge"
-        >
-          {{ tabButton.badge }}
-        </span>
-      </k-button>
-
-      <k-button
-        v-if="invisibleTabs.length"
-        :text="$t('more')"
-        class="k-tab-button k-tabs-dropdown-button"
-        icon="dots"
-        @click.stop="$refs.more.toggle()"
-      />
-    </nav>
-
-    <k-dropdown-content
-      v-if="invisibleTabs.length"
-      ref="more"
-      align="right"
-      class="k-tabs-dropdown"
-    >
-      <k-dropdown-item
-        v-for="tabButton in invisibleTabs"
-        :key="'more-' + tabButton.name"
-        :link="'#' + tabButton.name"
-        :current="tab === tabButton.name"
-        :icon="tabButton.icon"
-        :tooltip="tabButton.label"
-      >
-        {{ tabButton.label || tabButton.name }}
-      </k-dropdown-item>
-    </k-dropdown-content>
-  </div>
+		<template v-if="invisible.length">
+			<k-button
+				:current="!!invisible.find((button) => tab === button.name)"
+				:title="$t('more')"
+				class="k-tab-button k-tabs-dropdown-button"
+				icon="dots"
+				variant="dimmed"
+				@click.stop="$refs.more.toggle()"
+			/>
+			<k-dropdown-content
+				ref="more"
+				:options="dropdown"
+				align-x="end"
+				class="k-tabs-dropdown"
+			/>
+		</template>
+	</nav>
 </template>
 
 <script>
+/**
+ * @example <k-tabs
+ * 	tab="content"
+ * 	tabs="[
+ * 		{ name: 'content', label: 'Content', link: '/content' },
+ * 		{ name: 'settings', label: 'Settings', link: '/settings', badge: 3 }
+ * 	]"
+ * />
+ */
 export default {
-  props: {
-    tab: String,
-    tabs: Array,
-    theme: String
-  },
-  data() {
-    return {
-      size: null,
-      visibleTabs: this.tabs,
-      invisibleTabs: []
-    }
-  },
-  computed: {
-    current() {
-      const tab = this.tabs.find(tab => tab.name === this.tab) || this.tabs[0] || {};
-      return tab.name;
-    }
-  },
-  watch: {
-    tabs(tabs) {
-      this.visibleTabs = tabs,
-      this.invisibleTabs = [];
-      this.resize(true);
-    }
-  },
-  created() {
-    window.addEventListener("resize", this.resize);
-  },
-  destroyed() {
-    window.removeEventListener("resize", this.resize);
-  },
-  methods: {
-    resize(force) {
+	props: {
+		/**
+		 * Name of the currently active tab
+		 */
+		tab: String,
+		/**
+		 * List of tabs to display. Each entry must be an object with the following properties: `name`, `label`, `link`, `icon`, `badge`
+		 */
+		tabs: {
+			type: Array,
+			default: () => []
+		},
+		/**
+		 * Theme to style any badge
+		 * @values "positive", "negative", "notice", "warning", "info", "passive"
+		 */
+		theme: {
+			type: String,
+			default: "passive"
+		}
+	},
+	data() {
+		return {
+			observer: null,
+			visible: this.tabs,
+			invisible: []
+		};
+	},
+	computed: {
+		buttons() {
+			return this.visible.map(this.button);
+		},
+		current() {
+			const tab =
+				this.tabs.find((tab) => tab.name === this.tab) ?? this.tabs[0];
+			return tab?.name;
+		},
+		dropdown() {
+			return this.invisible.map(this.button);
+		}
+	},
+	watch: {
+		tabs: {
+			async handler() {
+				// disconnect any previous observer
+				this.observer?.disconnect();
+				await this.$nextTick();
 
-      if (!this.tabs || this.tabs.length <= 1) {
-        return;
-      }
+				// only if $el exists (more than one tab),
+				// add new observer and measure tab sizes
+				if (this.$el instanceof Element) {
+					this.observer = new ResizeObserver(this.resize);
+					this.observer.observe(this.$el);
+				}
+			},
+			immediate: true
+		}
+	},
+	destroyed() {
+		this.observer?.disconnect();
+	},
+	methods: {
+		button(tab) {
+			return {
+				...tab,
+				current: tab.name === this.current,
+				title: tab.label,
+				text: tab.label ?? tab.text ?? tab.name
+			};
+		},
+		async resize() {
+			// container width
+			const width = this.$el.offsetWidth;
 
-      if (this.tabs.length <= 3) {
-        this.visibleTabs = this.tabs;
-        this.invisibleTabs = [];
-        return;
-      }
+			// reset all tabs
+			this.visible = this.tabs;
+			this.invisible = [];
 
-      if (window.innerWidth >= 700) {
-        if (this.size === "large" && !force) {
-          return;
-        }
+			// measure tab sizes
+			await this.$nextTick();
+			const sizes = [...this.$refs.visible].map((tab) => tab.$el.offsetWidth);
 
-        this.visibleTabs = this.tabs;
-        this.invisibleTabs = [];
-        this.size = "large";
-      } else {
-        if (this.size === "small" && !force) {
-          return;
-        }
+			// initial width of visible tabs
+			// that already account for the dropdown button
+			let tabs = 32;
 
-        this.visibleTabs = this.tabs.slice(0, 2);
-        this.invisibleTabs = this.tabs.slice(2);
-        this.size = "small";
-      }
+			for (let index = 0; index < this.tabs.length; index++) {
+				// tab size plus grid gap
+				tabs += sizes[index] + 4;
 
-    }
-  }
+				if (tabs > width) {
+					this.visible = this.tabs.slice(0, index);
+					this.invisible = this.tabs.slice(index);
+					return;
+				}
+			}
+		}
+	}
 };
 </script>
 
-<style lang="scss">
+<style>
 .k-tabs {
-  position: relative;
-  background: #e9e9e9;
-  border-top: 1px solid $color-border;
-  border-left: 1px solid $color-border;
-  border-right: 1px solid $color-border;
+	--button-height: var(--height-md);
+	--button-padding: var(--spacing-2);
+	display: flex;
+	gap: var(--spacing-1);
+	margin-bottom: var(--spacing-12);
+	margin-inline: calc(var(--button-padding) * -1);
 }
-.k-tabs nav {
-  display: flex;
-  justify-content: center;
-  margin-left: -1px;
-  margin-right: -1px;
+
+.k-tabs-tab {
+	position: relative;
 }
+
 .k-tab-button.k-button {
-  position: relative;
-  z-index: 1;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: .625rem .75rem;
-  font-size: $text-xs;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 500;
-  border-left: 1px solid transparent;
-  border-right: 1px solid $color-border;
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-direction: column;
-  max-width: 15rem;
-
-  @media screen and (min-width: $breakpoint-sm) {
-    flex-direction: row;
-  }
+	margin-block: 2px;
+	overflow-x: visible;
 }
-.k-tab-button.k-button .k-icon {
-  @media screen and (min-width: $breakpoint-sm) {
-    margin-right: .5rem;
-  }
+
+.k-tab-button[aria-current]::after {
+	position: absolute;
+	content: "";
+	height: 2px;
+	inset-inline: var(--button-padding);
+	bottom: -2px;
+	background: currentColor;
 }
-.k-tab-button.k-button > .k-button-text {
-  padding-top: .375rem;
-  font-size: 10px;
-  overflow: hidden;
-  max-width: 10rem;
 
-  [dir="ltr"] & {
-    padding-left: 0;
-  }
-
-  [dir="rtl"] & {
-    padding-right: 0;
-  }
-
-  text-overflow: ellipsis;
-
-  @media screen and (min-width: $breakpoint-sm) {
-    font-size: $text-xs;
-    padding-top: 0;
-  }
-
-}
-.k-tab-button:last-child {
-  border-right: 1px solid transparent;
-}
-.k-tab-button[aria-current] {
-  position: relative;
-  background: $color-background;
-  border-right: 1px solid $color-border;
-  pointer-events: none;
-
-  &:first-child {
-    border-left: 1px solid $color-border;
-  }
-
-  &::before,
-  &::after {
-    position: absolute;
-    content: "";
-  }
-
-  &::before {
-    left: -1px;
-    right: -1px;
-    height: 2px;
-    top: -1px;
-    background: $color-black;
-  }
-
-  &::after {
-    left: 0;
-    right: 0;
-    height: 1px;
-    bottom: -1px;
-    background: $color-background;
-  }
-
-}
-.k-tabs-dropdown {
-  top: 100%;
-  right: 0;
-}
 .k-tabs-badge {
-  [dir="ltr"] & {
-    padding-left: .25rem;
-  }
-
-  [dir="rtl"] & {
-    padding-right: .25rem;
-  }
-}
-.k-tabs[data-theme="notice"] .k-tabs-badge {
-  color: $color-orange-600;
+	position: absolute;
+	top: 2px;
+	font-variant-numeric: tabular-nums;
+	inset-inline-end: var(--button-padding);
+	transform: translateX(75%);
+	line-height: 1.5;
+	padding: 0 var(--spacing-1);
+	border-radius: 1rem;
+	text-align: center;
+	font-size: 10px;
+	box-shadow: var(--shadow-md);
+	background: var(--theme-color-back);
+	border: 1px solid var(--theme-color-500);
+	color: var(--theme-color-text);
+	z-index: 1;
 }
 </style>

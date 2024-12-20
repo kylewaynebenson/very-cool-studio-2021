@@ -3,230 +3,253 @@
 namespace Kirby\Cms;
 
 use Kirby\Data\Yaml;
-use PHPUnit\Framework\TestCase;
+use Kirby\TestCase;
 
 class BlocksTest extends TestCase
 {
-    protected $page;
+	public const FIXTURES = __DIR__ . '/fixtures';
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => '/dev/null',
-            ],
-        ]);
+	protected $app;
+	protected $page;
 
-        $this->page = new Page(['slug' => 'test']);
-    }
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => '/dev/null',
+			],
+		]);
 
-    public function testFactoryFromLayouts()
-    {
-        $layouts = [
-            [
-                'columns' => [
-                    [
-                        'blocks' => [
-                            [
-                                'type' => 'heading'
-                            ]
-                        ]
-                    ]
-                ]
-            ],
-            [
-                'columns' => [
-                    [
-                        'blocks' => [
-                            [
-                                'type' => 'text'
-                            ]
-                        ]
-                    ]
-                ]
-            ]
-        ];
+		$this->page = new Page(['slug' => 'test']);
+	}
 
-        $blocks = Blocks::factory($layouts);
+	public function testFactoryFromLayouts()
+	{
+		$layouts = [
+			[
+				'columns' => [
+					[
+						'blocks' => [
+							[
+								'type' => 'heading'
+							]
+						]
+					]
+				]
+			],
+			[
+				'columns' => [
+					[
+						'blocks' => [
+							[
+								'type' => 'text'
+							]
+						]
+					]
+				]
+			]
+		];
 
-        $this->assertCount(2, $blocks);
-        $this->assertSame('heading', $blocks->first()->type());
-        $this->assertSame('text', $blocks->last()->type());
-    }
+		$blocks = Blocks::factory($layouts);
 
-    public function testFactoryFromBuilderWithColumns()
-    {
-        $builder = [
-            [
-                '_key' => 'heading',
-                'columns' => 1,
-            ],
-            [
-                '_key' => 'text',
-                'columns' => 2,
-            ]
-        ];
+		$this->assertCount(2, $blocks);
+		$this->assertSame('heading', $blocks->first()->type());
+		$this->assertSame('text', $blocks->last()->type());
+	}
 
-        $blocks = Blocks::factory($builder);
+	/**
+	 * @todo block.converter remove eventually
+	 */
+	public function testFactoryFromBuilderWithColumns()
+	{
+		$builder = [
+			[
+				'_key' => 'heading',
+				'columns' => 1,
+			],
+			[
+				'_key' => 'text',
+				'columns' => 2,
+			]
+		];
 
-        $this->assertCount(2, $blocks);
-        $this->assertSame('heading', $blocks->first()->type());
-        $this->assertSame('text', $blocks->last()->type());
-    }
+		$blocks = Blocks::factory($builder);
 
-    public function testParseJson()
-    {
-        $input = [
-            [
-                'type' => 'heading'
-            ]
-        ];
+		$this->assertCount(2, $blocks);
+		$this->assertSame('heading', $blocks->first()->type());
+		$this->assertSame('text', $blocks->last()->type());
+	}
 
-        $result = Blocks::parse(json_encode($input));
-        $this->assertSame($input, $result);
-    }
+	public function testHasType()
+	{
+		$input = [
+			[
+				'type' => 'heading'
+			]
+		];
 
-    public function testParseYaml()
-    {
-        $input = [
-            [
-                'type' => 'heading'
-            ]
-        ];
+		$blocks = Blocks::factory($input);
 
-        $result = Blocks::parse(Yaml::encode($input));
-        $this->assertSame($input, $result);
-    }
+		$this->assertTrue($blocks->hasType('heading'));
+		$this->assertFalse($blocks->hasType('code'));
+	}
 
-    public function testParseHtml()
-    {
-        $input = '<h1>Test</h1>';
-        $expected = [
-            [
-                'content' => [
-                    'level' => 'h1',
-                    'text' => 'Test'
-                ],
-                'type' => 'heading',
-            ]
-        ];
+	public function testParseJson()
+	{
+		$input = [
+			[
+				'type' => 'heading'
+			]
+		];
 
-        $result = Blocks::parse($input);
-        $this->assertSame($expected, $result);
-    }
+		$result = Blocks::parse(json_encode($input));
+		$this->assertSame($input, $result);
+	}
 
-    public function testParseEmpty()
-    {
-        $result = Blocks::parse(null);
-        $this->assertSame([], $result);
+	public function testParseHtml()
+	{
+		$input = '<h1>Test</h1>';
+		$expected = [
+			[
+				'content' => [
+					'level' => 'h1',
+					'text' => 'Test'
+				],
+				'type' => 'heading',
+			]
+		];
 
-        $result = Blocks::parse('');
-        $this->assertSame([], $result);
-    }
+		$result = Blocks::parse($input);
+		$this->assertSame($expected, $result);
+	}
 
-    public function testParseString()
-    {
-        $expected = [
-            [
-                'content' => [
-                    'text' => '<p>This is test string</p>'
-                ],
-                'type' => 'text',
-            ]
-        ];
+	public function testParseEmpty()
+	{
+		$result = Blocks::parse(null);
+		$this->assertSame([], $result);
 
-        $result = Blocks::parse('This is test string');
-        $this->assertSame($expected, $result);
-    }
+		$result = Blocks::parse('');
+		$this->assertSame([], $result);
+	}
 
-    public function testParsePageObject()
-    {
-        $expected = [
-            [
-                'content' => [
-                    'text' => '<p>test</p>'
-                ],
-                'type' => 'text',
-            ]
-        ];
+	public function testParseString()
+	{
+		$expected = [
+			[
+				'content' => [
+					'text' => '<p>This is test string</p>'
+				],
+				'type' => 'text',
+			]
+		];
 
-        $result = Blocks::parse($this->page);
-        $this->assertSame($expected, $result);
-    }
+		$result = Blocks::parse('This is test string');
+		$this->assertSame($expected, $result);
+	}
 
-    public function testToHtml()
-    {
-        $blocks = Blocks::factory([
-            [
-                'content' => [
-                    'text' => 'Hello world'
-                ],
-                'type' => 'heading'
-            ],
-            [
-                'content' => [
-                    'text' => 'Nice blocks'
-                ],
-                'type' => 'text'
-            ],
-        ]);
+	public function testParsePageObject()
+	{
+		$expected = [
+			[
+				'content' => [
+					'text' => '<p>test</p>'
+				],
+				'type' => 'text',
+			]
+		];
 
-        $expected = "<h2>Hello world</h2>\nNice blocks";
+		$result = Blocks::parse($this->page);
+		$this->assertSame($expected, $result);
+	}
 
-        $this->assertSame($expected, $blocks->toHtml());
-    }
+	public function testToHtml()
+	{
+		$blocks = Blocks::factory([
+			[
+				'content' => [
+					'text' => 'Hello world'
+				],
+				'type' => 'heading'
+			],
+			[
+				'content' => [
+					'text' => 'Nice blocks'
+				],
+				'type' => 'text'
+			],
+		]);
 
-    public function testToHtmlWithCustomSnippets()
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => '/dev/null',
-                'snippets' => __DIR__ . '/fixtures/snippets'
-            ],
-        ]);
+		$expected = "<h2>Hello world</h2>\nNice blocks";
 
-        $blocks = Blocks::factory([
-            [
-                'content' => [
-                    'text' => 'Hello world'
-                ],
-                'type' => 'heading'
-            ],
-            [
-                'content' => [
-                    'text' => 'Nice blocks'
-                ],
-                'type' => 'text'
-            ],
-        ]);
+		$this->assertSame($expected, $blocks->toHtml());
+	}
 
-        $expected = "<h1 class=\"custom-heading\">Hello world</h1>\n<p class=\"custom-text\">Nice blocks</p>\n";
+	public function testToHtmlWithCustomSnippets()
+	{
+		$this->app = new App([
+			'roots' => [
+				'index' => '/dev/null',
+				'snippets' => static::FIXTURES . '/snippets'
+			],
+		]);
 
-        $this->assertSame($expected, $blocks->toHtml());
-    }
+		$blocks = Blocks::factory([
+			[
+				'content' => [
+					'text' => 'Hello world'
+				],
+				'type' => 'heading'
+			],
+			[
+				'content' => [
+					'text' => 'Nice blocks'
+				],
+				'type' => 'text'
+			],
+		]);
 
-    public function testExcerpt()
-    {
-        $blocks = Blocks::factory([
-            [
-                'content' => [
-                    'text' => 'Hello world'
-                ],
-                'type' => 'heading'
-            ],
-            [
-                'content' => [
-                    'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-                ],
-                'type' => 'text'
-            ],
-        ]);
+		$expected = "<h1 class=\"custom-heading\">Hello world</h1>\n<p class=\"custom-text\">Nice blocks</p>\n";
 
-        $expected = "<h2>Hello world</h2>\nLorem ipsum dolor sit amet, consectetur adipiscing elit.";
+		$this->assertSame($expected, $blocks->toHtml());
+	}
 
-        $this->assertSame($expected, $blocks->toHtml());
-        $this->assertSame('Hello world Lorem ipsum dolor sit amet, consectetur adipiscing elit.', $blocks->excerpt());
-        $this->assertSame('Hello world Lorem ipsum dolor sit amet, …', $blocks->excerpt(50));
-        $this->assertSame($expected, (string)$blocks);
-    }
+	public function testExcerpt()
+	{
+		$blocks = Blocks::factory([
+			[
+				'content' => [
+					'text' => 'Hello world'
+				],
+				'type' => 'heading'
+			],
+			[
+				'content' => [
+					'text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+				],
+				'type' => 'text'
+			],
+		]);
+
+		$expected = "<h2>Hello world</h2>\nLorem ipsum dolor sit amet, consectetur adipiscing elit.";
+
+		$this->assertSame($expected, $blocks->toHtml());
+		$this->assertSame('Hello world Lorem ipsum dolor sit amet, consectetur adipiscing elit.', $blocks->excerpt());
+		$this->assertSame('Hello world Lorem ipsum dolor sit amet, …', $blocks->excerpt(50));
+		$this->assertSame($expected, (string)$blocks);
+	}
+
+	/**
+	 * @todo block.converter remove eventually
+	 */
+	public function testParseYaml()
+	{
+		$input = [
+			[
+				'type' => 'heading'
+			]
+		];
+
+		$result = Blocks::parse(Yaml::encode($input));
+		$this->assertSame($input, $result);
+	}
 }

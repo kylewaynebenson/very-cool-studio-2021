@@ -1,82 +1,47 @@
-<template>
-  <k-dialog
-    ref="dialog"
-    :submit-button="$t('insert')"
-    @close="cancel"
-    @submit="$refs.form.submit()"
-  >
-    <k-form
-      ref="form"
-      v-model="value"
-      :fields="fields"
-      @submit="submit"
-    />
-  </k-dialog>
-</template>
-
 <script>
+import LinkDialog from "@/components/Dialogs/LinkDialog.vue";
+
 export default {
-  data() {
-    return {
-      value: {
-        url: null,
-        text: null
-      },
-      fields: {
-        url: {
-          label: this.$t("link"),
-          type: 'text',
-          placeholder: this.$t("url.placeholder"),
-          icon: 'url'
-        },
-        text: {
-          label: this.$t("link.text"),
-          type: 'text'
-        }
-      }
-    };
-  },
-  computed: {
-    kirbytext() {
-      return this.$store.state.system.info.kirbytext;
-    }
-  },
-  methods: {
-    open(input, selection) {
-      this.value.text = selection;
-      this.$refs.dialog.open();
-    },
-    cancel() {
-      this.$emit("cancel");
-    },
-    createKirbytext() {
-      if (this.value.text.length > 0) {
-        return `(link: ${this.value.url} text: ${this.value.text})`;
-      } else {
-        return `(link: ${this.value.url})`;
-      }
-    },
-    createMarkdown() {
-      if (this.value.text.length > 0) {
-        return `[${this.value.text}](${this.value.url})`;
-      } else {
-        return `<${this.value.url}>`;
-      }
-    },
-    submit() {
+	extends: LinkDialog,
+	props: {
+		// eslint-disable-next-line vue/require-prop-types
+		fields: {
+			default: () => ({
+				href: {
+					label: window.panel.$t("link"),
+					type: "link",
+					placeholder: window.panel.$t("url.placeholder"),
+					icon: "url"
+				},
+				title: {
+					label: window.panel.$t("link.text"),
+					type: "text",
+					icon: "title"
+				}
+			})
+		}
+	},
+	methods: {
+		submit() {
+			const url = this.values.href ?? "";
+			const text = this.values.title ?? "";
 
-      // insert the link
-      this.$emit("submit", this.kirbytext ? this.createKirbytext() : this.createMarkdown());
+			// KirbyText
+			if (this.$panel.config.kirbytext) {
+				if (text?.length > 0) {
+					return this.$emit("submit", `(link: ${url} text: ${text})`);
+				}
 
-      // reset the form
-      this.value = {
-        url: null,
-        text: null
-      };
+				return this.$emit("submit", `(link: ${url})`);
+			}
 
-      // close the modal
-      this.$refs.dialog.close();
-    }
-  }
-}
+			// Markdown
+			if (text?.length > 0) {
+				return this.$emit("submit", `[${text}](${url})`);
+			}
+
+			return this.$emit("submit", `<${url}>`);
+		}
+	}
+};
 </script>

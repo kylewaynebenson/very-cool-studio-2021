@@ -2,45 +2,48 @@
 
 namespace Kirby\Cms;
 
-use PHPUnit\Framework\TestCase;
+use Kirby\Exception\InvalidArgumentException;
+use Kirby\Filesystem\Dir;
+use Kirby\TestCase;
 
 class AuthRoutesTest extends TestCase
 {
-    protected $app;
+	public const TMP = KIRBY_TMP_DIR . '/Cms.AuthRoutes';
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'options' => [
-                'api.allowImpersonation' => true
-            ],
-            'roots' => [
-                'index' => $fixtures = __DIR__ . '/fixtures/AuthRoutesTest'
-            ],
-        ]);
+	protected $app;
 
-        Dir::remove($fixtures);
-    }
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'options' => [
+				'api.allowImpersonation' => true
+			],
+			'roots' => [
+				'index' => static::TMP
+			],
+		]);
+	}
 
-    public function tearDown(): void
-    {
-        $this->app->session()->destroy();
-    }
+	public function tearDown(): void
+	{
+		$this->app->session()->destroy();
+		Dir::remove(static::TMP);
+	}
 
-    public function testGet()
-    {
-        $this->app->impersonate('kirby');
+	public function testGet()
+	{
+		$this->app->impersonate('kirby');
 
-        $response = $this->app->api()->call('auth');
+		$response = $this->app->api()->call('auth');
 
-        $this->assertEquals('kirby@getkirby.com', $response['data']['email']);
-    }
+		$this->assertSame('kirby@getkirby.com', $response['data']['email']);
+	}
 
-    public function testLoginWithoutCSRF()
-    {
-        $this->expectException('Kirby\Exception\InvalidArgumentException');
-        $this->expectExceptionMessage('Invalid CSRF token');
+	public function testLoginWithoutCSRF()
+	{
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('Invalid CSRF token');
 
-        $response = $this->app->api()->call('auth/login', 'POST');
-    }
+		$response = $this->app->api()->call('auth/login', 'POST');
+	}
 }

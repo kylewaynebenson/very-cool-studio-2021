@@ -2,214 +2,330 @@
 
 namespace Kirby\Cms;
 
-use Kirby\Toolkit\F;
-use PHPUnit\Framework\TestCase;
+use Kirby\Cache\Value;
+use Kirby\Filesystem\Dir;
+use Kirby\TestCase;
 
 class PageCacheTest extends TestCase
 {
-    protected $app;
-    protected $fixtures;
+	public const FIXTURES = __DIR__ . '/fixtures/PageCacheTest';
+	public const TMP      = KIRBY_TMP_DIR . '/Cms.PageCache';
 
-    public function setUp(): void
-    {
-        $this->app = new App([
-            'roots' => [
-                'index' => $this->fixtures = __DIR__ . '/fixtures/PageCacheTest'
-            ],
-            'site' => [
-                'children' => [
-                    [
-                        'slug' => 'a'
-                    ],
-                    [
-                        'slug'     => 'b',
-                        'template' => 'expiry'
-                    ],
-                    [
-                        'slug'     => 'c',
-                        'template' => 'disabled'
-                    ]
-                ]
-            ],
-            'options' => [
-                'cache.pages' => true
-            ]
-        ]);
+	protected $app;
 
-        Dir::make($this->fixtures);
-        F::write(
-            $this->fixtures . '/site/templates/default.php',
-            'This is a test: <?= uniqid() ?>'
-        );
-        F::write(
-            $this->fixtures . '/site/templates/disabled.php',
-            'This is a test: <?= uniqid() ?><?php $kirby->response()->cache(false); ?>'
-        );
-        F::write(
-            $this->fixtures . '/site/templates/expiry.php',
-            '<?php $time = random_int(1000000000, 2000000000); $kirby->response()->expires($time); echo $time;'
-        );
-    }
+	public function setUp(): void
+	{
+		$this->app = new App([
+			'roots' => [
+				'index'     => static::TMP,
+				'templates' => static::FIXTURES
+			],
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'default'
+					],
+					[
+						'slug'     => 'expiry',
+						'template' => 'expiry'
+					],
+					[
+						'slug'     => 'disabled',
+						'template' => 'disabled'
+					],
+					[
+						'slug'     => 'dynamic-auth',
+						'template' => 'dynamic'
+					],
+					[
+						'slug'     => 'dynamic-cookie',
+						'template' => 'dynamic'
+					],
+					[
+						'slug'     => 'dynamic-session',
+						'template' => 'dynamic'
+					],
+					[
+						'slug'     => 'dynamic-auth-session',
+						'template' => 'dynamic'
+					]
+				]
+			],
+			'options' => [
+				'cache.pages' => true
+			]
+		]);
 
-    public function tearDown(): void
-    {
-        Dir::remove($this->fixtures);
-    }
+		Dir::make(static::TMP);
+	}
 
-    public function requestMethodProvider()
-    {
-        return [
-            ['GET', true],
-            ['HEAD', true],
-            ['POST', false],
-            ['DELETE', false],
-            ['PATCH', false],
-            ['PUT', false],
-        ];
-    }
+	public function tearDown(): void
+	{
+		Dir::remove(static::TMP);
 
-    /**
-     * @dataProvider requestMethodProvider
-     */
-    public function testRequestMethod($method, $expected)
-    {
-        $app = $this->app->clone([
-            'request' => [
-                'method' => $method
-            ]
-        ]);
+		unset(
+			$_COOKIE['foo'],
+			$_COOKIE['kirby_session'],
+			$_SERVER['HTTP_AUTHORIZATION']
+		);
+	}
 
-        $this->assertEquals($expected, $app->page('a')->isCacheable());
-    }
+	public static function requestMethodProvider(): array
+	{
+		return [
+			['GET', true],
+			['HEAD', true],
+			['POST', false],
+			['DELETE', false],
+			['PATCH', false],
+			['PUT', false],
+		];
+	}
 
-    /**
-     * @dataProvider requestMethodProvider
-     */
-    public function testRequestData($method)
-    {
-        $app = $this->app->clone([
-            'request' => [
-                'method' => $method,
-                'query'  => ['foo' => 'bar']
-            ]
-        ]);
+	/**
+	 * @dataProvider requestMethodProvider
+	 */
+	public function testRequestMethod($method, $expected)
+	{
+		$app = $this->app->clone([
+			'request' => [
+				'method' => $method
+			]
+		]);
 
-        $this->assertFalse($app->page('a')->isCacheable());
-    }
+		$this->assertSame($expected, $app->page('default')->isCacheable());
+	}
 
-    public function testRequestParams()
-    {
-        $app = $this->app->clone([
-            'request' => [
-                'url' => 'https://getkirby.com/blog/page:2'
-            ]
-        ]);
+	/**
+	 * @dataProvider requestMethodProvider
+	 */
+	public function testRequestData($method)
+	{
+		$app = $this->app->clone([
+			'request' => [
+				'method' => $method,
+				'query'  => ['foo' => 'bar']
+			]
+		]);
 
-        $this->assertFalse($app->page('a')->isCacheable());
-    }
+		$this->assertFalse($app->page('default')->isCacheable());
+	}
 
-    public function testIgnoreId()
-    {
-        $app = $this->app->clone([
-            'options' => [
-                'cache.pages' => [
-                    'ignore' => [
-                        'b'
-                    ]
-                ]
-            ]
-        ]);
+	public function testRequestParams()
+	{
+		$app = $this->app->clone([
+			'request' => [
+				'url' => 'https://getkirby.com/blog/page:2'
+			]
+		]);
 
-        $this->assertTrue($app->page('a')->isCacheable());
-        $this->assertFalse($app->page('b')->isCacheable());
-    }
+		$this->assertFalse($app->page('default')->isCacheable());
+	}
 
-    public function testIgnoreCallback()
-    {
-        $app = $this->app->clone([
-            'options' => [
-                'cache.pages' => [
-                    'ignore' => function ($page) {
-                        return $page->id() === 'a';
-                    }
-                ]
-            ]
-        ]);
+	public function testIgnoreId()
+	{
+		$app = $this->app->clone([
+			'options' => [
+				'cache.pages' => [
+					'ignore' => [
+						'expiry'
+					]
+				]
+			]
+		]);
 
-        $this->assertFalse($app->page('a')->isCacheable());
-        $this->assertTrue($app->page('b')->isCacheable());
-    }
+		$this->assertTrue($app->page('default')->isCacheable());
+		$this->assertFalse($app->page('expiry')->isCacheable());
+	}
 
-    public function testDisabledCache()
-    {
-        // deactivate on top level
-        $app = $this->app->clone([
-            'options' => [
-                'cache.pages' => false
-            ]
-        ]);
+	public function testIgnoreCallback()
+	{
+		$app = $this->app->clone([
+			'options' => [
+				'cache.pages' => [
+					'ignore' => function ($page) {
+						return $page->id() === 'default';
+					}
+				]
+			]
+		]);
 
-        $this->assertFalse($app->page('a')->isCacheable());
+		$this->assertFalse($app->page('default')->isCacheable());
+		$this->assertTrue($app->page('expiry')->isCacheable());
+	}
 
-        // deactivate in array
-        $app = $this->app->clone([
-            'options' => [
-                'cache.pages' => [
-                    'active' => false
-                ]
-            ]
-        ]);
+	public function testDisabledCache()
+	{
+		// deactivate on top level
+		$app = $this->app->clone([
+			'options' => [
+				'cache.pages' => false
+			]
+		]);
 
-        $this->assertFalse($app->page('a')->isCacheable());
-    }
+		$this->assertFalse($app->page('default')->isCacheable());
 
-    public function testRenderCache()
-    {
-        $cache = $this->app->cache('pages');
-        $page  = $this->app->page('a');
+		// deactivate in array
+		$app = $this->app->clone([
+			'options' => [
+				'cache.pages' => [
+					'active' => false
+				]
+			]
+		]);
 
-        $this->assertNull($cache->retrieve('a.html'));
+		$this->assertFalse($app->page('default')->isCacheable());
+	}
 
-        $html1 = $page->render();
-        $this->assertStringStartsWith('This is a test:', $html1);
+	public function testRenderCache()
+	{
+		$cache = $this->app->cache('pages');
+		$page  = $this->app->page('default');
 
-        $value = $cache->retrieve('a.html');
-        $this->assertInstanceOf('Kirby\Cache\Value', $value);
-        $this->assertSame($html1, $value->value()['html']);
-        $this->assertNull($value->expires());
+		$this->assertNull($cache->retrieve('default.html'));
 
-        $html2 = $page->render();
-        $this->assertSame($html1, $html2);
-    }
+		$html1 = $page->render();
+		$this->assertStringStartsWith('This is a test:', $html1);
 
-    public function testRenderCacheCustomExpiry()
-    {
-        $cache = $this->app->cache('pages');
-        $page  = $this->app->page('b');
+		$value = $cache->retrieve('default.html');
+		$this->assertInstanceOf(Value::class, $value);
+		$this->assertSame($html1, $value->value()['html']);
+		$this->assertNull($value->expires());
 
-        $this->assertNull($cache->retrieve('b.html'));
+		$html2 = $page->render();
+		$this->assertSame($html1, $html2);
+	}
 
-        $time = $page->render();
+	public function testRenderCacheCustomExpiry()
+	{
+		$cache = $this->app->cache('pages');
+		$page  = $this->app->page('expiry');
 
-        $value = $cache->retrieve('b.html');
-        $this->assertInstanceOf('Kirby\Cache\Value', $value);
-        $this->assertSame($time, $value->value()['html']);
-        $this->assertSame((int)$time, $value->expires());
-    }
+		$this->assertNull($cache->retrieve('expiry.html'));
 
-    public function testRenderCacheDisabled()
-    {
-        $cache = $this->app->cache('pages');
-        $page  = $this->app->page('c');
+		$time = $page->render();
 
-        $this->assertNull($cache->retrieve('c.html'));
+		$value = $cache->retrieve('expiry.html');
+		$this->assertInstanceOf(Value::class, $value);
+		$this->assertSame($time, $value->value()['html']);
+		$this->assertSame((int)$time, $value->expires());
+	}
 
-        $html1 = $page->render();
-        $this->assertStringStartsWith('This is a test:', $html1);
+	public function testRenderCacheDisabled()
+	{
+		$cache = $this->app->cache('pages');
+		$page  = $this->app->page('disabled');
 
-        $this->assertNull($cache->retrieve('c.html'));
+		$this->assertNull($cache->retrieve('disabled.html'));
 
-        $html2 = $page->render();
-        $this->assertNotSame($html1, $html2);
-    }
+		$html1 = $page->render();
+		$this->assertStringStartsWith('This is a test:', $html1);
+
+		$this->assertNull($cache->retrieve('disabled.html'));
+
+		$html2 = $page->render();
+		$this->assertNotSame($html1, $html2);
+	}
+
+	public static function dynamicProvider(): array
+	{
+		return [
+			['dynamic-auth', ['auth']],
+			['dynamic-cookie', ['cookie']],
+			['dynamic-session', ['session']],
+			['dynamic-auth-session', ['auth', 'session']],
+		];
+	}
+
+	/**
+	 * @dataProvider dynamicProvider
+	 */
+	public function testRenderCacheDynamicNonActive(string $slug, array $dynamicElements)
+	{
+		$cache = $this->app->cache('pages');
+		$page  = $this->app->page($slug);
+
+		$this->assertNull($cache->retrieve($slug . '.html'));
+
+		$html1 = $page->render();
+		$this->assertStringStartsWith('This is a test:', $html1);
+
+		$cacheValue = $cache->retrieve($slug . '.html');
+		$this->assertNotNull($cacheValue);
+		$this->assertSame(in_array('auth', $dynamicElements), $cacheValue->value()['usesAuth']);
+		if (in_array('cookie', $dynamicElements)) {
+			$this->assertSame(['foo'], $cacheValue->value()['usesCookies']);
+		} elseif (in_array('session', $dynamicElements)) {
+			$this->assertSame(['kirby_session'], $cacheValue->value()['usesCookies']);
+		} else {
+			$this->assertSame([], $cacheValue->value()['usesCookies']);
+		}
+
+		// reset the Kirby Responder object
+		$this->setUp();
+		$html2 = $page->render();
+		$this->assertSame($html1, $html2);
+	}
+
+	/**
+	 * @dataProvider dynamicProvider
+	 */
+	public function testRenderCacheDynamicActiveOnFirstRender(string $slug, array $dynamicElements)
+	{
+		$_COOKIE['foo'] = $_COOKIE['kirby_session'] = 'bar';
+		$this->app->clone([
+			'server' => [
+				'HTTP_AUTHORIZATION' => 'Bearer brown-bearer'
+			]
+		]);
+
+		$cache = $this->app->cache('pages');
+		$page  = $this->app->page($slug);
+
+		$this->assertNull($cache->retrieve($slug . '.html'));
+
+		$html1 = $page->render();
+		$this->assertStringStartsWith('This is a test:', $html1);
+
+		$cacheValue = $cache->retrieve($slug . '.html');
+		$this->assertNull($cacheValue);
+
+		// reset the Kirby Responder object
+		$this->setUp();
+		$html2 = $page->render();
+		$this->assertNotSame($html1, $html2);
+	}
+
+	/**
+	 * @dataProvider dynamicProvider
+	 */
+	public function testRenderCacheDynamicActiveOnSecondRender(string $slug, array $dynamicElements)
+	{
+		$cache = $this->app->cache('pages');
+		$page  = $this->app->page($slug);
+
+		$this->assertNull($cache->retrieve($slug . '.html'));
+
+		$html1 = $page->render();
+		$this->assertStringStartsWith('This is a test:', $html1);
+
+		$cacheValue = $cache->retrieve($slug . '.html');
+		$this->assertNotNull($cacheValue);
+		$this->assertSame(in_array('auth', $dynamicElements), $cacheValue->value()['usesAuth']);
+		if (in_array('cookie', $dynamicElements)) {
+			$this->assertSame(['foo'], $cacheValue->value()['usesCookies']);
+		} elseif (in_array('session', $dynamicElements)) {
+			$this->assertSame(['kirby_session'], $cacheValue->value()['usesCookies']);
+		} else {
+			$this->assertSame([], $cacheValue->value()['usesCookies']);
+		}
+
+		$_COOKIE['foo'] = $_COOKIE['kirby_session'] = 'bar';
+		$_SERVER['HTTP_AUTHORIZATION'] = 'Bearer brown-bearer';
+
+		// reset the Kirby Responder object
+		$this->setUp();
+		$html2 = $page->render();
+		$this->assertNotSame($html1, $html2);
+	}
 }

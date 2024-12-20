@@ -2,423 +2,749 @@
 
 namespace Kirby\Cms;
 
-use PHPUnit\Framework\TestCase;
+use Kirby\Filesystem\Dir;
+use Kirby\TestCase;
 
 class FilesSectionTest extends TestCase
 {
-    protected $app;
+	public const TMP = KIRBY_TMP_DIR . '/Cms.FilesSection';
 
-    public function setUp(): void
-    {
-        App::destroy();
+	protected $app;
 
-        $this->app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ]
-        ]);
-    }
+	public function setUp(): void
+	{
+		Dir::make(static::TMP);
+		$this->app();
+	}
 
-    public function testHeadline()
-    {
+	public function tearDown(): void
+	{
+		Dir::remove(static::TMP);
+		App::destroy();
+	}
 
-        // single headline
-        $section = new Section('files', [
-            'name'     => 'test',
-            'model'    => new Page(['slug' => 'test']),
-            'headline' => 'Test'
-        ]);
+	public function app(array $props = [])
+	{
+		$this->app = new App(array_replace_recursive([
+			'roots' => [
+				'index' => static::TMP
+			]
+		], $props));
 
-        $this->assertEquals('Test', $section->headline());
+		// The file section will always be empty for
+		// unauthorized users
+		$this->app->impersonate('kirby');
 
-        // translated headline
-        $section = new Section('files', [
-            'name'     => 'test',
-            'model'    => new Page(['slug' => 'test']),
-            'headline' => [
-                'en' => 'Files',
-                'de' => 'Dateien'
-            ]
-        ]);
+		return $this->app;
+	}
 
-        $this->assertEquals('Files', $section->headline());
-    }
+	public function testAccept()
+	{
+		$section = new Section('files', [
+			'name'     => 'test',
+			'model'    => new Page(['slug' => 'test']),
+			'template' => 'note'
+		]);
 
-    public function testMax()
-    {
-        $model = new Page([
-            'slug'  => 'test',
-            'files' => [
-                [
-                    'filename' => 'a.jpg'
-                ],
-                [
-                    'filename' => 'b.jpg'
-                ]
-            ]
-        ]);
+		$this->assertSame('*', $section->accept());
+	}
 
-        // already reached the max
-        $section = new Section('files', [
-            'name'  => 'test',
-            'model' => $model,
-            'max'   => 2
-        ]);
+	public function testHeadline()
+	{
+		// single headline
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => new Page(['slug' => 'test']),
+			'label' => 'Test'
+		]);
 
-        $this->assertFalse($section->upload());
+		$this->assertSame('Test', $section->headline());
 
-        // one left
-        $section = new Section('files', [
-            'name'  => 'test',
-            'model' => $model,
-            'max'   => 3
-        ]);
+		// translated headline
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => new Page(['slug' => 'test']),
+			'label' => [
+				'en' => 'Files',
+				'de' => 'Dateien'
+			]
+		]);
 
-        $this->assertFalse($section->upload()['multiple']);
+		$this->assertSame('Files', $section->headline());
+	}
 
-        // no max
-        $section = new Section('files', [
-            'name'  => 'test',
-            'model' => $model,
-        ]);
+	public function testMax()
+	{
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				[
+					'filename' => 'a.jpg'
+				],
+				[
+					'filename' => 'b.jpg'
+				]
+			]
+		]);
 
-        $this->assertTrue($section->upload()['multiple']);
-    }
+		// already reached the max
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => $model,
+			'max'   => 2
+		]);
 
-    public function testParent()
-    {
-        $app = new App([
-            'site' => [
-                'children' => [
-                    [
-                        'slug' => 'a'
-                    ],
-                    [
-                        'slug' => 'b'
-                    ]
-                ]
-            ]
-        ]);
+		$this->assertFalse($section->upload());
 
-        $a = $app->page('a');
-        $b = $app->page('b');
+		// one left
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => $model,
+			'max'   => 3
+		]);
 
-        // same parent
-        $section = new Section('files', [
-            'model' => $a,
-        ]);
+		$this->assertFalse($section->upload()['multiple']);
 
-        $this->assertEquals(false, $section->link());
-        $this->assertEquals($a, $section->parent());
-        $this->assertEquals('pages/a/files', $section->upload()['api']);
+		// no max
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => $model,
+		]);
 
-        // different parent
-        $section = new Section('files', [
-            'model'  => $a,
-            'parent' => 'site.find("b")'
-        ]);
+		$this->assertTrue($section->upload()['multiple']);
+	}
 
-        $this->assertEquals('/pages/b', $section->link());
-        $this->assertEquals($b, $section->parent());
-        $this->assertEquals('pages/b/files', $section->upload()['api']);
-    }
+	public function testParent()
+	{
+		$app = new App([
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'a'
+					],
+					[
+						'slug' => 'b'
+					]
+				]
+			]
+		]);
 
-    public function testParentCollectionFail()
-    {
-        $this->expectException('Exception');
-        $this->expectExceptionMessage('The parent for the section "files" has to be a page, site or user object');
+		$a = $app->page('a');
+		$b = $app->page('b');
 
-        $app = new App([
-            'site' => [
-                'children' => [
-                    [
-                        'slug' => 'a'
-                    ],
-                    [
-                        'slug' => 'b'
-                    ]
-                ]
-            ]
-        ]);
+		// same parent
+		$section = new Section('files', [
+			'model' => $a,
+		]);
 
-        $section = new Section('files', [
-            'model'  => $app->page('a'),
-            'parent' => 'site.index'
-        ]);
-        $section->parentModel();
-    }
+		$this->assertNull($section->link());
+		$this->assertSame($a, $section->parent());
+		$this->assertSame('pages/a/files', $section->upload()['api']);
 
-    public function testEmpty()
-    {
-        $section = new Section('files', [
-            'name'  => 'test',
-            'model' => new Page(['slug' => 'test']),
-            'empty' => 'Test'
-        ]);
+		// different parent
+		$section = new Section('files', [
+			'model'  => $a,
+			'parent' => 'site.find("b")'
+		]);
 
-        $this->assertEquals('Test', $section->empty());
-    }
+		$this->assertSame('/pages/b', $section->link());
+		$this->assertSame($b, $section->parent());
+		$this->assertSame('pages/b/files', $section->upload()['api']);
+	}
 
-    public function testTranslatedEmpty()
-    {
-        $section = new Section('files', [
-            'name'  => 'test',
-            'model' => new Page(['slug' => 'test']),
-            'empty' => ['en' => 'Test', 'de' => 'Töst']
-        ]);
+	public function testParentCollectionFail()
+	{
+		$this->expectException('Exception');
+		$this->expectExceptionMessage('The parent for the section "files" has to be a page, site or user object');
 
-        $this->assertEquals('Test', $section->empty());
-    }
+		$app = new App([
+			'site' => [
+				'children' => [
+					[
+						'slug' => 'a'
+					],
+					[
+						'slug' => 'b'
+					]
+				]
+			]
+		]);
 
-    public function testDragText()
-    {
-        $model = new Page([
-            'slug'  => 'test',
-            'files' => [
-                [
-                    'filename' => 'a.jpg'
-                ],
-                [
-                    'filename' => 'b.jpg'
-                ]
-            ]
-        ]);
+		$section = new Section('files', [
+			'model'  => $app->page('a'),
+			'parent' => 'site.index'
+		]);
+		$section->parentModel();
+	}
 
-        // already reached the max
-        $section = new Section('files', [
-            'name'  => 'test',
-            'model' => $model
-        ]);
+	public function testEmpty()
+	{
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => new Page(['slug' => 'test']),
+			'empty' => 'Test'
+		]);
 
-        $data = $section->data();
-        $this->assertEquals('(image: a.jpg)', $data[0]['dragText']);
-    }
+		$this->assertSame('Test', $section->empty());
+	}
 
-    public function testDragTextWithDifferentParent()
-    {
-        $app = $this->app->clone([
-            'site' => [
-                'children' => [
-                    [
-                        'slug'  => 'a',
-                        'files' => [
-                            [
-                                'filename' => 'a.jpg'
-                            ],
-                            [
-                                'filename' => 'b.jpg'
-                            ]
-                        ]
-                    ],
-                    [
-                        'slug' => 'b'
-                    ]
-                ]
-            ]
-        ]);
+	public function testTranslatedEmpty()
+	{
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => new Page(['slug' => 'test']),
+			'empty' => ['en' => 'Test', 'de' => 'Töst']
+		]);
 
-        // already reached the max
-        $section = new Section('files', [
-            'name'   => 'test',
-            'model'  => $app->page('b'),
-            'parent' => 'site.find("a")'
-        ]);
+		$this->assertSame('Test', $section->empty());
+	}
 
-        $data = $section->data();
-        $this->assertEquals('(image: a/a.jpg)', $data[0]['dragText']);
-    }
+	public function testDragText()
+	{
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				[
+					'filename' => 'a.jpg'
+				],
+				[
+					'filename' => 'b.jpg'
+				]
+			]
+		]);
 
-    public function testHelp()
-    {
-        // single help
-        $section = new Section('files', [
-            'name'  => 'test',
-            'model' => new Page(['slug' => 'test']),
-            'help'  => 'Test'
-        ]);
+		// already reached the max
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => $model
+		]);
 
-        $this->assertEquals('<p>Test</p>', $section->help());
+		$data = $section->data();
+		$this->assertSame('(image: a.jpg)', $data[0]['dragText']);
+	}
 
-        // translated help
-        $section = new Section('files', [
-            'name'     => 'test',
-            'model'    => new Page(['slug' => 'test']),
-            'help' => [
-                'en' => 'Information',
-                'de' => 'Informationen'
-            ]
-        ]);
+	public function testDragTextWithDifferentParent()
+	{
+		$app = $this->app->clone([
+			'site' => [
+				'children' => [
+					[
+						'slug'  => 'a',
+						'files' => [
+							[
+								'filename' => 'a.jpg',
+								'content' => ['uuid' => 'test-file-a']
+							],
+							[
+								'filename' => 'b.jpg'
+							]
+						]
+					],
+					[
+						'slug' => 'b'
+					]
+				]
+			]
+		]);
+		$app->impersonate('kirby');
 
-        $this->assertEquals('<p>Information</p>', $section->help());
-    }
+		// already reached the max
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => $app->page('b'),
+			'parent' => 'site.find("a")'
+		]);
 
-    public function testSortBy()
-    {
-        $locale = setlocale(LC_ALL, 0);
-        setlocale(LC_ALL, ['de_DE.ISO8859-1', 'de_DE']);
+		$data = $section->data();
+		$this->assertSame('(image: file://test-file-a)', $data[0]['dragText']);
+	}
 
-        $model = new Page([
-            'slug'  => 'test',
-            'files' => [
-                [
-                    'filename' => 'z.jpg'
-                ],
-                [
-                    'filename' => 'ä.jpg'
-                ],
-                [
-                    'filename' => 'b.jpg'
-                ]
-            ]
-        ]);
+	public function testHelp()
+	{
+		// single help
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => new Page(['slug' => 'test']),
+			'help'  => 'Test'
+		]);
 
-        // no settings
-        $section = new Section('files', [
-            'name'  => 'test',
-            'model' => $model
-        ]);
-        $this->assertEquals('b.jpg', $section->data()[0]['filename']);
-        $this->assertEquals('z.jpg', $section->data()[1]['filename']);
-        $this->assertEquals('ä.jpg', $section->data()[2]['filename']);
+		$this->assertSame('<p>Test</p>', $section->help());
 
-        // custom sorting direction
-        $section = new Section('files', [
-            'name'   => 'test',
-            'model'  => $model,
-            'sortBy' => 'filename desc'
-        ]);
-        $this->assertEquals('ä.jpg', $section->data()[0]['filename']);
-        $this->assertEquals('z.jpg', $section->data()[1]['filename']);
-        $this->assertEquals('b.jpg', $section->data()[2]['filename']);
+		// translated help
+		$section = new Section('files', [
+			'name'     => 'test',
+			'model'    => new Page(['slug' => 'test']),
+			'help' => [
+				'en' => 'Information',
+				'de' => 'Informationen'
+			]
+		]);
 
-        // custom flag
-        $section = new Section('files', [
-            'name'   => 'test',
-            'model'  => $model,
-            'sortBy' => 'filename SORT_LOCALE_STRING'
-        ]);
-        $this->assertEquals('ä.jpg', $section->data()[0]['filename']);
-        $this->assertEquals('b.jpg', $section->data()[1]['filename']);
-        $this->assertEquals('z.jpg', $section->data()[2]['filename']);
+		$this->assertSame('<p>Information</p>', $section->help());
+	}
 
-        // flag & sorting direction
-        $section = new Section('files', [
-            'name'   => 'test',
-            'model'  => $model,
-            'sortBy' => 'filename desc SORT_LOCALE_STRING'
-        ]);
-        $this->assertEquals('z.jpg', $section->data()[0]['filename']);
-        $this->assertEquals('b.jpg', $section->data()[1]['filename']);
-        $this->assertEquals('ä.jpg', $section->data()[2]['filename']);
+	public function testSortBy()
+	{
+		$this->app->impersonate('kirby');
 
-        setlocale(LC_ALL, $locale);
-    }
+		$locale = setlocale(LC_ALL, 0);
+		setlocale(LC_ALL, ['de_DE.ISO8859-1', 'de_DE']);
 
-    public function testSortable()
-    {
-        $section = new Section('files', [
-            'name'  => 'test',
-            'model' => new Page(['slug' => 'test']),
-        ]);
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				[
+					'filename' => 'z.jpg'
+				],
+				[
+					'filename' => 'ä.jpg'
+				],
+				[
+					'filename' => 'b.jpg'
+				]
+			]
+		]);
 
-        $this->assertTrue($section->sortable());
-    }
+		// no settings
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => $model
+		]);
+		$this->assertSame('b.jpg', $section->data()[0]['filename']);
+		$this->assertSame('z.jpg', $section->data()[1]['filename']);
+		$this->assertSame('ä.jpg', $section->data()[2]['filename']);
 
-    public function testDisableSortable()
-    {
-        $section = new Section('files', [
-            'name'     => 'test',
-            'model'    => new Page(['slug' => 'test']),
-            'sortable' => false
-        ]);
+		// custom sorting direction
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => $model,
+			'sortBy' => 'filename desc'
+		]);
+		$this->assertSame('ä.jpg', $section->data()[0]['filename']);
+		$this->assertSame('z.jpg', $section->data()[1]['filename']);
+		$this->assertSame('b.jpg', $section->data()[2]['filename']);
 
-        $this->assertFalse($section->sortable());
-    }
+		// custom flag
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => $model,
+			'sortBy' => 'filename SORT_LOCALE_STRING'
+		]);
+		$this->assertSame('ä.jpg', $section->data()[0]['filename']);
+		$this->assertSame('b.jpg', $section->data()[1]['filename']);
+		$this->assertSame('z.jpg', $section->data()[2]['filename']);
 
-    public function testDisableSortableWhenSortBy()
-    {
-        $section = new Section('files', [
-            'name'   => 'test',
-            'model'  => new Page(['slug' => 'test']),
-            'sortBy' => 'filename desc'
-        ]);
+		// flag & sorting direction
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => $model,
+			'sortBy' => 'filename desc SORT_LOCALE_STRING'
+		]);
+		$this->assertSame('z.jpg', $section->data()[0]['filename']);
+		$this->assertSame('b.jpg', $section->data()[1]['filename']);
+		$this->assertSame('ä.jpg', $section->data()[2]['filename']);
 
-        $this->assertFalse($section->sortable());
-    }
+		setlocale(LC_ALL, $locale);
+	}
 
-    public function testFlip()
-    {
-        $model = new Page([
-            'slug'  => 'test',
-            'files' => [
-                [
-                    'filename' => 'c.jpg'
-                ],
-                [
-                    'filename' => 'a.jpg'
-                ],
-                [
-                    'filename' => 'b.jpg'
-                ]
-            ]
-        ]);
+	public function testSortable()
+	{
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => new Page(['slug' => 'test']),
+		]);
 
-        $section = new Section('files', [
-            'name'  => 'test',
-            'model' => $model,
-            'flip'  => true
-        ]);
+		$this->assertTrue($section->sortable());
+	}
 
-        $this->assertEquals('c.jpg', $section->data()[0]['filename']);
-        $this->assertEquals('b.jpg', $section->data()[1]['filename']);
-        $this->assertEquals('a.jpg', $section->data()[2]['filename']);
-    }
+	public function testDisableSortable()
+	{
+		$section = new Section('files', [
+			'name'     => 'test',
+			'model'    => new Page(['slug' => 'test']),
+			'sortable' => false
+		]);
 
-    public function testTranslatedInfo()
-    {
-        $model = new Page([
-            'slug'  => 'test',
-            'files' => [
-                ['filename' => 'a.jpg'],
-                ['filename' => 'b.jpg']
-            ]
-        ]);
+		$this->assertFalse($section->sortable());
+	}
 
-        $section = new Section('files', [
-            'name'  => 'test',
-            'model' => $model,
-            'info'  => [
-                'en' => 'en: {{ file.page.title }}',
-                'de' => 'de: {{ file.page.title }}'
-            ]
-        ]);
+	public function testDisableSortableWhenSortBy()
+	{
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => new Page(['slug' => 'test']),
+			'sortBy' => 'filename desc'
+		]);
 
-        $this->assertSame('en: {{ file.page.title }}', $section->info());
-        $this->assertSame('en: test', $section->data()[0]['info']);
-        $this->assertSame('en: test', $section->data()[1]['info']);
-    }
+		$this->assertFalse($section->sortable());
+	}
 
-    public function testTranslatedText()
-    {
-        $model = new Page([
-            'slug'  => 'test',
-            'files' => [
-                ['filename' => 'a.jpg'],
-                ['filename' => 'b.jpg']
-            ]
-        ]);
+	public function testFlip()
+	{
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				[
+					'filename' => 'c.jpg'
+				],
+				[
+					'filename' => 'a.jpg'
+				],
+				[
+					'filename' => 'b.jpg'
+				]
+			]
+		]);
 
-        $section = new Section('files', [
-            'name'  => 'test',
-            'model' => $model,
-            'text'  => [
-                'en' => 'en: {{ file.filename }}',
-                'de' => 'de: {{ file.filename }}'
-            ]
-        ]);
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => $model,
+			'flip'  => true
+		]);
 
-        $this->assertSame('en: {{ file.filename }}', $section->text());
-        $this->assertSame('en: a.jpg', $section->data()[0]['text']);
-        $this->assertSame('en: b.jpg', $section->data()[1]['text']);
-    }
+		$this->assertSame('c.jpg', $section->data()[0]['filename']);
+		$this->assertSame('b.jpg', $section->data()[1]['filename']);
+		$this->assertSame('a.jpg', $section->data()[2]['filename']);
+	}
+
+	public function testTranslatedInfo()
+	{
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				['filename' => 'a.jpg'],
+				['filename' => 'b.jpg']
+			]
+		]);
+
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => $model,
+			'info'  => [
+				'en' => 'en: {{ file.page.title }}',
+				'de' => 'de: {{ file.page.title }}'
+			]
+		]);
+
+		$this->assertSame('en: {{ file.page.title }}', $section->info());
+		$this->assertSame('en: test', $section->data()[0]['info']);
+		$this->assertSame('en: test', $section->data()[1]['info']);
+	}
+
+	public function testTranslatedText()
+	{
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				['filename' => 'a.jpg'],
+				['filename' => 'b.jpg']
+			]
+		]);
+
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => $model,
+			'text'  => [
+				'en' => 'en: {{ file.filename }}',
+				'de' => 'de: {{ file.filename }}'
+			]
+		]);
+
+		$this->assertSame('en: {{ file.filename }}', $section->text());
+		$this->assertSame('en: a.jpg', $section->data()[0]['text']);
+		$this->assertSame('en: b.jpg', $section->data()[1]['text']);
+	}
+
+	public function testSearchDefault()
+	{
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				['filename' => 'mount-bike.jpg'],
+				['filename' => 'mountain.jpg'],
+				['filename' => 'bike.jpg']
+			]
+		]);
+
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => $model
+		]);
+
+		$this->assertCount(3, $section->data());
+	}
+
+	public function testSearchWithNoQuery()
+	{
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				['filename' => 'mount-bike.jpg'],
+				['filename' => 'mountain.jpg'],
+				['filename' => 'bike.jpg']
+			]
+		]);
+
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => $model,
+			'search' => true
+		]);
+
+		$this->assertCount(3, $section->data());
+	}
+
+	public function testSearchWithQuery1()
+	{
+		$app = $this->app->clone([
+			'request' => [
+				'query' => ['searchterm' => 'bike']
+			]
+		]);
+		$app->impersonate('kirby');
+
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				['filename' => 'mount-bike.jpg'],
+				['filename' => 'mountain.jpg'],
+				['filename' => 'bike.jpg']
+			]
+		]);
+
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => $model,
+			'search' => true
+		]);
+
+		$this->assertCount(2, $section->data());
+		$this->assertSame('bike.jpg', $section->data()[0]['filename']);
+		$this->assertSame('mount-bike.jpg', $section->data()[1]['filename']);
+	}
+
+	public function testSearchWithQuery2()
+	{
+		$app = $this->app->clone([
+			'request' => [
+				'query' => ['searchterm' => 'mount']
+			]
+		]);
+		$app->impersonate('kirby');
+
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				['filename' => 'mount-bike.jpg'],
+				['filename' => 'mountain.jpg'],
+				['filename' => 'bike.jpg']
+			]
+		]);
+
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => $model,
+			'search' => true
+		]);
+
+		$this->assertCount(2, $section->data());
+		$this->assertSame('mount-bike.jpg', $section->data()[0]['filename']);
+		$this->assertSame('mountain.jpg', $section->data()[1]['filename']);
+	}
+
+	public function testSearchWithQuery3()
+	{
+		$app = $this->app->clone([
+			'request' => [
+				'query' => ['searchterm' => 'mountain']
+			]
+		]);
+		$app->impersonate('kirby');
+
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				['filename' => 'mount-bike.jpg'],
+				['filename' => 'mountain.jpg'],
+				['filename' => 'bike.jpg']
+			]
+		]);
+
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => $model,
+			'search' => true
+
+		]);
+
+		$this->assertCount(1, $section->data());
+		$this->assertSame('mountain.jpg', $section->data()[0]['filename']);
+	}
+
+	public function testSearchWithFlip()
+	{
+		$app = $this->app->clone([
+			'request' => [
+				'query' => ['searchterm' => 'bike']
+			]
+		]);
+		$app->impersonate('kirby');
+
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				['filename' => 'bike.jpg'],
+				['filename' => 'mountain.jpg'],
+				['filename' => 'mount-bike.jpg']
+			]
+		]);
+
+		$section = new Section('files', [
+			'flip'   => true,
+			'name'   => 'test',
+			'model'  => $model,
+			'search' => true
+		]);
+
+		$this->assertCount(2, $section->data());
+		$this->assertSame('bike.jpg', $section->data()[0]['filename']);
+		$this->assertSame('mount-bike.jpg', $section->data()[1]['filename']);
+	}
+
+	public function testSearchWithSortBy()
+	{
+		$app = $this->app->clone([
+			'request' => [
+				'query' => ['searchterm' => 'bike']
+			]
+		]);
+		$app->impersonate('kirby');
+
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				['filename' => 'bike.jpg'],
+				['filename' => 'mountain.jpg'],
+				['filename' => 'mount-bike.jpg']
+			]
+		]);
+
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => $model,
+			'search' => true,
+			'sortBy' => 'filename desc',
+		]);
+
+		$this->assertCount(2, $section->data());
+		$this->assertSame('bike.jpg', $section->data()[0]['filename']);
+		$this->assertSame('mount-bike.jpg', $section->data()[1]['filename']);
+	}
+
+	public function testTableLayout()
+	{
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				['filename' => 'mount-bike.jpg'],
+			]
+		]);
+
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => $model,
+			'layout' => 'table'
+		]);
+
+		$this->assertSame('table', $section->layout());
+
+		$data = $section->data();
+		$item = $data[0];
+
+		$this->assertSame('', $item['info']);
+		$this->assertSame([
+			'text' => 'mount-bike.jpg',
+			'href' => '/pages/test/files/mount-bike.jpg'
+		], $item['title']);
+	}
+
+	public function testTableLayoutWithCustomColumns()
+	{
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				[
+					'filename' => 'mount-bike.jpg',
+					'content'  => ['alt' => 'Alt test']
+				],
+			]
+		]);
+
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => $model,
+			'layout' => 'table',
+			'columns' => [
+				'alt' => [
+					'label' => 'Alt',
+					'type'  => 'text'
+				]
+			]
+		]);
+
+		$this->assertSame('Alt test', $section->data()[0]['alt']);
+	}
+
+	public function testOptions()
+	{
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				[
+					'filename' => 'mount-bike.jpg',
+				],
+			]
+		]);
+
+		$section = new Section('files', [
+			'name'   => 'test',
+			'model'  => $model,
+			'layout' => 'list',
+		]);
+
+		$options = $section->toArray()['options'];
+
+		$this->assertSame([], $options['columns']);
+		$this->assertNull($options['link']);
+	}
+
+	public function testSort()
+	{
+		$model = new Page([
+			'slug'  => 'test',
+			'files' => [
+				['filename' => 'a.jpg'],
+				['filename' => 'b.jpg'],
+				['filename' => 'c.jpg'],
+			]
+		]);
+
+		// fewer files than limit
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => $model,
+			'limit'   => 5
+		]);
+
+		$this->assertSame(4, $section->upload()['attributes']['sort']);
+
+		// more files than limit
+		$section = new Section('files', [
+			'name'  => 'test',
+			'model' => $model,
+			'limit'   => 2
+		]);
+
+		$this->assertSame(4, $section->upload()['attributes']['sort']);
+	}
 }

@@ -4,119 +4,138 @@ namespace Kirby\Cms;
 
 use Kirby\Cache\FileCache;
 use Kirby\Cache\NullCache;
-use Kirby\Toolkit\Dir;
+use Kirby\Exception\InvalidArgumentException;
+use Kirby\Filesystem\Dir;
 
 class AppCachesTest extends TestCase
 {
-    public function app(array $props = [])
-    {
-        return new App(array_merge([
-            'roots' => [
-                'index' => __DIR__ . '/fixtures/AppCachesTest',
-            ]
-        ], $props));
-    }
+	public const TMP = KIRBY_TMP_DIR . '/Cms.AppCaches';
 
-    public function tearDown(): void
-    {
-        parent::tearDown();
+	public function app(array $props = [])
+	{
+		return new App(array_merge([
+			'roots' => [
+				'index' => static::TMP,
+			]
+		], $props));
+	}
 
-        Dir::remove(__DIR__ . '/fixtures/AppCachesTest');
-    }
+	public function tearDown(): void
+	{
+		parent::tearDown();
 
-    public function testDisabledCache()
-    {
-        $this->assertEquals(NullCache::class, get_class($this->app()->cache('pages')));
-    }
+		Dir::remove(static::TMP);
+	}
 
-    public function testEnabledCacheWithoutOptions()
-    {
-        $kirby = $this->app([
-            'options' => [
-                'cache.pages' => true
-            ]
-        ]);
+	public function testDisabledCache()
+	{
+		$this->assertInstanceOf(NullCache::class, $this->app()->cache('pages'));
+	}
 
-        $this->assertInstanceOf(FileCache::class, $kirby->cache('pages'));
-        $this->assertEquals($kirby->root('cache'), $kirby->cache('pages')->options()['root']);
-    }
+	public function testEnabledCacheWithoutOptions()
+	{
+		$kirby = $this->app([
+			'options' => [
+				'cache.pages' => true
+			]
+		]);
 
-    public function testEnabledCacheWithOptions()
-    {
-        $kirby = $this->app([
-            'urls' => [
-                'index' => 'https://getkirby.com/test'
-            ],
-            'options' => [
-                'cache.pages' => [
-                    'type' => 'file',
-                    'root' => $root = __DIR__ . '/fixtures/AppCachesTest/cache'
-                ]
-            ]
-        ]);
+		$this->assertInstanceOf(FileCache::class, $kirby->cache('pages'));
+		$this->assertSame($kirby->root('cache'), $kirby->cache('pages')->options()['root']);
+	}
 
-        $this->assertInstanceOf(FileCache::class, $kirby->cache('pages'));
-        $this->assertEquals($root, $kirby->cache('pages')->options()['root']);
+	public function testInvalidCacheType()
+	{
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('Invalid cache type "not-exists"');
 
-        $kirby->cache('pages')->set('home', 'test');
-        $this->assertFileExists($root . '/getkirby.com_test/pages/home.cache');
-    }
+		$kirby = $this->app([
+			'options' => [
+				'cache.pages' => [
+					'type' => 'not-exists'
+				]
+			]
+		]);
 
-    public function testEnabledCacheWithOptionsAndPortPrefix()
-    {
-        $kirby = $this->app([
-            'urls' => [
-                'index' => 'http://127.0.0.1:8000'
-            ],
-            'options' => [
-                'cache.pages' => [
-                    'type' => 'file',
-                    'root' => $root = __DIR__ . '/fixtures/AppCachesTest/cache'
-                ]
-            ]
-        ]);
+		$kirby->cache('pages');
+	}
 
-        $this->assertInstanceOf(FileCache::class, $kirby->cache('pages'));
-        $this->assertEquals($root, $kirby->cache('pages')->options()['root']);
+	public function testEnabledCacheWithOptions()
+	{
+		$kirby = $this->app([
+			'urls' => [
+				'index' => 'https://getkirby.com/test'
+			],
+			'options' => [
+				'cache.pages' => [
+					'type' => 'file',
+					'root' => $root = static::TMP . '/cache'
+				]
+			]
+		]);
 
-        $kirby->cache('pages')->set('home', 'test');
-        $this->assertFileExists($root . '/127.0.0.1_8000/pages/home.cache');
-    }
+		$this->assertInstanceOf(FileCache::class, $kirby->cache('pages'));
+		$this->assertSame($root, $kirby->cache('pages')->options()['root']);
 
-    public function testPluginDefaultCache()
-    {
-        App::plugin('developer/plugin', [
-            'options' => [
-                'cache' => true
-            ]
-        ]);
+		$kirby->cache('pages')->set('home', 'test');
+		$this->assertFileExists($root . '/getkirby.com_test/pages/home.cache');
+	}
 
-        $this->assertInstanceOf(FileCache::class, $this->app()->cache('developer.plugin'));
-    }
+	public function testEnabledCacheWithOptionsAndPortPrefix()
+	{
+		$kirby = $this->app([
+			'urls' => [
+				'index' => 'http://127.0.0.1:8000'
+			],
+			'options' => [
+				'cache.pages' => [
+					'type' => 'file',
+					'root' => $root = static::TMP . '/cache'
+				]
+			]
+		]);
 
-    public function testPluginCustomCache()
-    {
-        App::plugin('developer/plugin', [
-            'options' => [
-                'cache.api' => true
-            ]
-        ]);
+		$this->assertInstanceOf(FileCache::class, $kirby->cache('pages'));
+		$this->assertSame($root, $kirby->cache('pages')->options()['root']);
 
-        $this->assertInstanceOf(FileCache::class, $this->app()->cache('developer.plugin.api'));
-    }
+		$kirby->cache('pages')->set('home', 'test');
+		$this->assertFileExists($root . '/127.0.0.1_8000/pages/home.cache');
+	}
 
-    public function testDefaultCacheTypeClasses()
-    {
-        $app = new App([
-            'roots' => [
-                'index' => '/dev/null'
-            ]
-        ]);
+	public function testPluginDefaultCache()
+	{
+		App::plugin('developer/plugin', [
+			'options' => [
+				'cache' => true
+			]
+		]);
 
-        $types = $app->extensions('cacheTypes');
+		$this->assertInstanceOf(FileCache::class, $this->app()->cache('developer.plugin'));
+	}
 
-        foreach ($types as $className) {
-            $this->assertTrue(class_exists($className));
-        }
-    }
+	public function testPluginCustomCache()
+	{
+		App::plugin('developer/plugin', [
+			'options' => [
+				'cache.api' => true
+			]
+		]);
+
+		$this->assertInstanceOf(FileCache::class, $this->app()->cache('developer.plugin.api'));
+	}
+
+	public function testDefaultCacheTypeClasses()
+	{
+		$app = new App([
+			'roots' => [
+				'index' => '/dev/null'
+			]
+		]);
+
+		$types = $app->extensions('cacheTypes');
+
+		foreach ($types as $className) {
+			$this->assertTrue(class_exists($className));
+		}
+	}
 }
